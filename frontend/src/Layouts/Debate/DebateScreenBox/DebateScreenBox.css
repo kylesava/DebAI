@@ -1,0 +1,116 @@
+.DebateScreenBoxWrapper {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+}
+.box_wrappers {
+  flex: 1;
+  height: 100%;
+  /* min-height: 300px; */
+  min-height: 200px;
+  background: var(--light_gradient_bg);
+  border-radius: 10px;
+  padding: 10px;
+  padding-top: 20px;
+}
+.pink_wrapper {
+  background: var(--secondary_gradient_bg) !important  ;
+}
+.team_name {
+  letter-spacing: 0.8px;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 700;
+  opacity: 0.7;
+  width: fit-content;
+  /* background:var(--dark_gradient_bg); */
+  padding: 2px 15px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 35px;
+  background: var(--primary_color);
+  color: white !important;
+  font-size: 15px;
+}
+.teamTwo .team_name ::after {
+  content: "";
+  bottom: 0;
+  width: 100%;
+  right: 0;
+  position: absolute;
+  height: 4px;
+  border-radius: 10px;
+  background: linear-gradient(
+    45deg,
+    rgba(174, 174, 174, 0.11),
+    rgba(174, 174, 174, 0.21),
+    rgb(64 70 221 / 52%),
+    rgb(64 70 221 / 62%)
+  );
+}
+.screen_box_header {
+  height: 50px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.speakTime_left_box_time_show{
+  display: flex;
+
+  justify-content: flex-end;
+  gap: 1rem;
+  align-items: center;
+}
+.speakTime_left_box_time_show h4{
+  font-size: 17px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.screen_box_header .team_mic_icon{
+  font-size: 1.2rem !important;
+}
+.teamOne {
+  color: var(--primary_color);
+}
+.teamTwo {
+  margin-left: auto;
+  background: #de009b !important;
+}
+.teamTwo::after {
+  background: linear-gradient(
+    45deg,
+    rgba(174, 174, 174, 0.11),
+    rgba(174, 174, 174, 0.21),
+    #de009b,
+    #de009be8
+  );
+}
+.left_team,
+.right_team {
+  flex: 6;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  height:calc(100% - 80px);
+}
+.no_one_joinedtext {
+  text-align: center;
+  letter-spacing: 1px;
+  color: rgba(128, 128, 128, 0.795);
+}
+.mic_control_wrapper{
+  background: var(--dark_primary_text_color);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+
+  
+}
+.mic_control_wrapper svg{
+  color: white !important;
+}

@@ -1,0 +1,40 @@
+.SelectedParticipantsWrapper {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+.selected_participants {
+  border-radius: 6px;
+  padding: 5px 10px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  position: relative;
+  gap: 5px;
+  background-color: #eff3f6;
+}
+.selected_participants :hover {
+  background-color: #aeaeae;
+}
+
+.delete_button svg {
+  font-size: 17px;
+  color: #ff00004f;
+
+  transition: all 0.3s;
+}
+.delete_button:hover {
+  color: red;
+}
+
+.selected_participants img {
+  width: 22px;
+  height: 22px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.username {
+  font-size: 11px;
+  letter-spacing: 1px;
+}

@@ -1,0 +1,111 @@
+.NavbarWrapper {
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+.nav_logo_box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.navLogo {
+  width: 150px !important;
+}
+
+.nav_logo_box p {
+  color: #686de0;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.other_button_box {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav_list {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  text-transform: uppercase;
+}
+.nav_list li {
+  position: relative;
+  list-style: none;
+  letter-spacing: 0.8px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  color: rgb(14 11 61 / 76%);
+}
+
+.active_li::after {
+  content: "";
+  bottom: -8px;
+  width: 90%;
+  right: 0;
+
+  position: absolute;
+  height: 4px;
+  border-radius: 10px;
+  background: linear-gradient(
+    45deg,
+    rgba(174, 174, 174, 0.11),
+    rgba(174, 174, 174, 0.21),
+    rgb(64 70 221 / 52%),
+    rgb(64 70 221 / 62%)
+  );
+}
+
+.loggedInUserBox {
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+}
+.loggedInUserBox img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border: 3px solid #686de0;
+  padding: 1px;
+
+  border-radius: 50%;
+}
+.loggedInuserDetails p {
+  font-size: 14px;
+  color: rgb(14, 11, 61);
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.loggedInuserDetails p:nth-of-type(2) {
+  font-size: 8px;
+  color: gray;
+  font-weight: 100 !important;
+}
+
+.other_button_box button {
+  height: 32px;
+  background-color: rgb(64 70 221);
+  border: none;
+  outline: none;
+  font-size: 12px;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  color: white;
+  width: fit-content;
+  padding: 0 15px;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+.other_button_box button:hover {
+  background-color: rgb(74 79 181);
+}
+.other_button_box .signup_btn {
+  background-color: white !important;
+  border: 1px solid #686de0;
+  color: #686de0;
+}

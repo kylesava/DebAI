@@ -1,0 +1,11 @@
+.noneJoinedBox {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  gap: 10px;
+  width: 100%;
+  justify-content: center;
+}
+.noneJoinedBox img {
+  width: 30px;
+}

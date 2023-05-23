@@ -1,0 +1,364 @@
+.DebateFormWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
+.create_debate_header {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.team_box_container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.team_header_text {
+  color: var(--dark_primary_text_color);
+  font-size: 15px;
+}
+.team_wrapper_box {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.input_box_wrappers {
+  padding: 2rem 1rem;
+  background: var(--dark_gradient_bg);
+  border-radius: 10px;
+  display: flex;
+  gap: 2rem;
+}
+.input_item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.team_item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+h2 {
+  font-size: 12px;
+  color: gray;
+}
+.team_input_box {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.form_label {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: grey;
+  margin-bottom: 5px;
+
+  display: block;
+}
+.starting_time_item {
+  flex-direction: column;
+  display: flex;
+  gap: 5px;
+}
+.time_name {
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: gray;
+}
+.time_box_row {
+  display: flex;
+  gap: 2rem;
+}
+.time_box {
+  display: flex;
+  flex: 1;
+  background-color: rgb(243 243 243);
+  align-items: center;
+  position: relative;
+}
+.time_box input {
+  background-color: transparent !important;
+  color: gray;
+}
+.time_place {
+  left: 1.7rem;
+  flex: 1;
+  position: absolute;
+  color: gray;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+.input_basic_box {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 1rem;
+}
+.form_input_row_box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.right_input_box {
+  flex: 1;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+.duration_type {
+  display: flex;
+  gap: 5px;
+  height: 38px;
+  align-items: center;
+}
+.DebateFormWrapper button {
+  /* height: 100%;
+  width: 50%;
+  border-radius: 3px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  opacity: 0.9;
+  border: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: 2px solid var(--primary_color);
+  color: black;
+  background-color: rgb(251, 251, 251);
+  opacity: 0.6; */
+}
+.team_format{
+  opacity: 0.7;
+  /* pointer-events: none; */
+}
+.DebateFormWrapper button :hover {
+  background-color: var(--primary_color);
+}
+.active_duration {
+  scale: 1;
+  opacity: 1;
+  background-color: var(--primary_color) !important;
+  border: none;
+  color: white;
+}
+.active_duration:hover {
+  background-color: rgb(56 64 239);
+}
+.starting_time_item {
+  display: flex;
+  gap: 5px;
+}
+
+.instant_box {
+  display: flex;
+  gap: 5px;
+  height: 38px;
+  align-items: center;
+}
+.instant_box button {
+  height: 100%;
+  width: 50%;
+  border-radius: 3px;
+  font-size: 8px;
+  letter-spacing: 1px;
+  opacity: 0.9;
+  border: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: 2px solid var(--primary_color);
+  color: black;
+  background-color: rgb(251, 251, 251);
+  opacity: 0.6;
+}
+.main_text {
+  display: flex;
+}
+
+.instant_box button :hover {
+  background-color: var(--primary_color);
+}
+.active_duration {
+  scale: 1;
+  opacity: 1;
+  background-color: var(--primary_color);
+  border: none;
+  color: white;
+}
+.active_duration :hover {
+  background-color: rgb(56 64 239);
+}
+.time_name {
+  font-size: 10px;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+
+  color: gray;
+}
+.duration_input {
+  display: flex;
+  gap: 10px;
+  height: 40px;
+}
+.time_box {
+  background-color: rgb(243 243 243);
+  display: flex;
+  align-items: center;
+}
+.time_box input {
+  height: 90%;
+}
+.time_box div {
+  padding: 0 5px;
+  color: grey;
+  font-size: 10px;
+}
+.participants_list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  gap: 10px;
+  height: auto;
+  max-height: 300px;
+  overflow-y: scroll;
+  text-align: center;
+}
+
+.input_item input,
+.input_item select {
+  height: 50px;
+  width: 100%;
+  border-radius: 4px;
+  font-size: 13px;
+  padding-left: 8px;
+  outline: none;
+  letter-spacing: 1px;
+  border: none;
+  color: rgba(101, 112, 124, 0.712);
+  background-color: rgb(251 251 251);
+  /* box-shadow: 0px 0px 2px rgb(64, 70, 221); */
+}
+.input_item input::placeholder {
+  color: rgba(128, 128, 128, 0.651) !important;
+}
+.participants_list option {
+  height: 40px;
+}
+.participants_list option::placeholder {
+  font-size: 12px;
+  letter-spacing: 0.8px;
+  color: rgb(118 118 118 / 73%);
+}
+
+.lable_row {
+  display: flex;
+  justify-content: space-between;
+}
+.team_info_text {
+  display: flex;
+  flex-direction: column;
+  font-family: "Catamaran", sans-serif;
+  font-weight: bold;
+}
+.team_info_text span {
+  font-size: 10px;
+  color: gray;
+  font-weight: 300;
+  letter-spacing: 0.71px;
+}
+.team_info_text .red_info{
+  color: rgba(255, 0, 0, 0.845);
+}
+.create_debate_btn {
+  background-color: rgb(64, 70, 221);
+  height: 40px;
+  width: fit-content;
+
+  align-self: flex-end;
+  border-radius: 5px;
+  padding: 0 1rem;
+  color: white;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+.create_debate_btn:disabled {
+  opacity: 0.8;
+  pointer-events: none;
+}
+.create_debate_btn:hover {
+  background-color: rgb(26 33 201);
+}
+.duration_toggle_button {
+  letter-spacing: 1px;
+  border: 1px solid #683ab73a;
+  padding: 10px;
+  font-size: 12px;
+  border-radius: 3px;
+}
+.debateInformationBox{
+  padding: 2rem 1rem;
+  border-radius: 10px;
+  background: var(--primary_secondary_gradient_bg) !important;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+.debateInformationBox b{
+  font-weight: bold;
+  
+  text-transform: uppercase;
+  margin-bottom: 0.51rem;
+  color: var(--primary_color);
+  letter-spacing: 0.81px;
+}
+.debateInformation_box_desc{
+  font-size: 12px ;
+  color: gray;
+  line-height: 25px;
+}
+.disable_team_box_container_form{
+  opacity: 1;
+  pointer-events: none;
+  backdrop-filter: blur(1px);
+}
+.additional_inputs{
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.input_row_box_parent{
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+.input_row_box_parent button{
+  height: 95%;
+  padding: 0 10px;
+  color: white;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background-color: var(--primary_color);
+  border-radius: 7px;
+
+  width: fit-content !important;
+}
+.input_row_box_parent input{
+  flex: 1 !important;
+}
+.error_text{
+  font-size: 12px;
+  margin-top: 5px;
+  color: red;
+  letter-spacing: 0.88px;
+
+}

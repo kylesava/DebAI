@@ -1,0 +1,41 @@
+.AI_option_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.ai_option_container {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 10px;
+}
+.Ai_option_item {
+  flex-direction: column;
+  gap: 10px;
+  padding: 2rem 10px;
+  border-radius: 10px;
+  display: flex;
+  background: var(--primary_secondary_gradient_bg);
+  align-items: center;
+  cursor: pointer;
+}
+.ai_option_name {
+  font-size: 18px;
+  font-weight: bold;
+  font-family: Poppins;
+  letter-spacing: 1px;
+  color: var(--dark_primary_text_color);
+}
+
+.ai_option_desc {
+  color: var(--dark_primary_text_color);
+  text-align: center;
+  font-size: 14px;
+  font-weight: 200;
+}
+.ai_option_main_text {
+  font-size: 20px;
+  color: var(--dark_primary_text_color);
+  font-weight: bold;
+
+  text-align: center;
+}

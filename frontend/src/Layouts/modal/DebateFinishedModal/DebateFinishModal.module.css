@@ -1,0 +1,67 @@
+.finishModalContainer{
+    background: rgba(0, 0, 0, 0.801) !important;
+    padding: 1rem;
+    border-radius: 10px;
+    color: gray;
+    font-size: 13px;
+
+}
+.analyzeModalContainer{
+    background: rgba(0, 0, 0, 0.9) !important;
+    padding: 1rem;
+    border-radius: 10px;
+    color: gray;
+    font-size: 13px;
+}
+.downloadButton , 
+.speakButton{
+    border-radius: 5px !important;
+    letter-spacing: 1px;
+    background: var(--primary_color) !important;
+
+    height: 35px !important    ;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    color: rgb(235, 235, 235) !important; 
+
+}
+.downloadButton p ,.speakButton p{
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    color: rgb(235, 235, 235) !important; 
+}
+.transcript_content p{
+    color: rgb(255, 254, 254) !important ;
+;
+}
+.analyszeText p{
+    font-size: 14px;
+    text-align: center;
+    letter-spacing: 1px;
+    line-height: 40px;
+    color: rgba(248, 248, 255, 0.717);
+
+}
+.analyszeText svg{
+    font-size: 2rem;
+    margin: auto;
+    color: rgba(248, 248, 255, 0.717) !important;
+    margin-bottom: 1rem ;
+    animation:  loading .4s infinite ease-in;
+}
+.para{
+    text-align: justify;
+    margin-bottom: 10px !important;
+    letter-spacing: 1px;
+}
+@keyframes loading {
+
+    0%{
+        rotate: 0deg;
+    }
+    100%{
+        rotate: 360deg;
+    }
+    
+}

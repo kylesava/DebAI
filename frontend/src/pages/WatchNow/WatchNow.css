@@ -1,0 +1,135 @@
+.watchNow_container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    margin-top: 2rem;
+
+}
+.watchNow_main_box{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    width: 50%;
+    background:var(--primary_secondary_gradient_bg);
+    padding: 2rem 1.2rem;
+    border-radius: 10px;
+}
+.watchNow_basic_instructions{
+    width: 40%;
+    font-size: 11px;
+    text-align: center;
+
+    color: gray;
+    letter-spacing: 1px;
+}
+.watchNow_box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+.watchNow_button_wrapper{
+    display: flex;
+     gap: 2rem;
+}
+.watchNow_button_wrapper button{
+    background-color: var(--primary_color);
+    height: 40px;
+    padding: 0 1rem;
+    font-size: 14px;
+    letter-spacing: 1px;
+    align-items: center;
+    gap: 10px;
+    display: flex;
+    color: white;
+    border-radius: 3px;
+    transition: all .1s ease;
+
+
+}
+.watch_now_participate_button{
+
+    background-color: var(--dark_primary_text_color) !important;
+}
+.watch_now_participate_button:disabled{
+    cursor:not-allowed !important;
+}
+.watchNow_button_wrapper button:hover{
+    
+    scale:  1.03;
+}
+.watchNow_button_wrapper button:focus{
+
+    scale:  1.03;
+}
+.watch_now_no_one_text{
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+ .watchNow_box_debate_topic{
+    color: var(--dark_primary_text_color);
+    font-size: 1.3rem ;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+  .watchNow_box .joined_participants_list{
+    gap: 20px;
+    display: flex;
+}
+.watch_box_joined_participants_box{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+.watch_box_joined_participants_text{
+    letter-spacing: 1px;
+    font-size: 14px;
+    color: var(--dark_primary_text_color);
+}
+ .watchNow_box .joined_participants {
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: gray;
+
+}
+.watchNow_box .joined_participants img{
+    width:65px; 
+    height :65px;
+    border-radius:50%;
+    object-fit: cover;
+}
+.watchNow_box .top_box{
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+}
+.watch_box_started_time {
+    font-size: 11px;
+    color: gray;
+    letter-spacing: 1px;
+}
+.watch_box_ending_time{
+    font-size: 11px;
+    color: gray;
+    letter-spacing: 1px;
+}
+.watch_now_time_box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    text-align: center;
+}
+.disable_participateBtn{
+    opacity: 0.7;
+    scale: 0.93;
+    pointer-events: none;
+}

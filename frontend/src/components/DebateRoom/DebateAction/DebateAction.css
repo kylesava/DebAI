@@ -1,0 +1,109 @@
+.DebateActionWrapper {
+  height: 50px;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  backdrop-filter: blur(20px);
+  gap: 2rem;
+  /* background: var(--primary_secondary_gradient_bg); */
+  align-items: center;
+
+  padding: 0 ;
+}
+.debateActionContainer{
+  position: relative;
+  width: 100%;
+  gap: 2rem;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.copy_link_button{
+  position: absolute;
+  right: 0rem;
+  display: flex;
+  align-items: center;
+  background:var(--dark_primary_text_color);
+  color: white;
+  height: 33px;
+gap: 10px;
+  border-radius: 3px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  padding:  0 0.5rem;
+  outline: none;
+  font-size: 11px;
+transition: all .3s;
+}
+.copy_link_button svg{
+  font-size: 1rem !important;
+}
+.copy_link_button:hover{
+  scale: 1.01;
+  background:var(--dark_primary_text_color_hover) !important;
+}
+.DebateActionWrapper svg {
+  font-size: 1.52rem;
+  transition: all 0.3s;
+  color: #808080b0;
+  cursor: pointer;
+  color: var(--dark_primary_text_color);
+}
+.DebateActionWrapper:hover {
+  color: var(--primary_color);
+}
+
+.leaveBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #ff0000b8;
+  height: 80%;
+  padding: 0 15px;
+  font-size: 16px;
+  color: white;
+  letter-spacing: 1px;
+  border-radius: 3px;
+  transition: all 0.3s;
+}
+.leaveBtn svg{
+  color: white !important;
+}
+.leaveBtn:hover {
+  background: red;
+  scale: 1.01;
+}
+.pass_mic_button{
+  background: #ff0000b8;
+  height: 45px;
+  padding: 0 20px;
+  color: white;
+  letter-spacing: 1px;
+  font-size: 12px;
+  border-radius: 3px;
+  transition: all 0.3s;
+  background: var(--dark_primary_text_color);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.pass_mic_button:hover{
+  background:var(--dark_primary_text_color_hover) !important;
+  scale: 1.01;
+}
+.resumeIcon{
+  color: white !important;
+}
+.pass_mic_button svg{
+  fill: white !important;
+  font-size: 1.2rem !important;
+}
+.leave_for_watch_type{
+  height: 40px !important;
+  gap: 6px !important;
+  
+}
+.leave_for_watch_type svg{
+  font-size: 1.3rem !important;
+}

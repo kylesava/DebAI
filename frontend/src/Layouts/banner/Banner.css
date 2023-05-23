@@ -1,0 +1,194 @@
+.BannerWrapper {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 1.4rem;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+.banner_bg_image {
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  z-index: -1;
+}
+.banner_bg_image img {
+  width: 150px;
+  position: absolute;
+  opacity: 0.5;
+}
+.speaker_img {
+  top: 30%;
+  width: 200px;
+  opacity: 1;
+}
+
+.cartoon_speech {
+  left: 1%;
+  top: 20%;
+  opacity: 0.31;
+  width: 120px;
+}
+.hello_dinasour {
+  right: 10%;
+  width: 100px;
+  top: 40%;
+  opacity: 0.2;
+}
+.banner_content {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  word-break: break-all;
+  padding: 2rem;
+}
+.top_site_info {
+  font-weight: bold;
+  color: rgb(64 70 221);
+  cursor: pointer;
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  position: relative;
+}
+.top_site_info ::after {
+  content: "";
+  width: 40%;
+  position: absolute;
+  height: 2px;
+  background: rgb(104, 109, 224);
+  border-radius: 30px;
+  bottom: -7px;
+
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.bottom_text {
+  margin: auto;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.main_text_banner {
+  text-align: center;
+  font-size: 40px;
+  line-height: 52px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: rgb(14, 11, 61);
+}
+.secondary_main_banner_text {
+  color: rgb(14, 11, 61);
+  text-align: center;
+  width: 85%;
+  line-height: 23px;
+  margin-top: 1rem;
+  font-size: 14px;
+}
+.quodium {
+  display: inline;
+  width: 40px;
+}
+
+.banne_bottom_option_box {
+  text-align: center;
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.banne_bottom_option_box button svg {
+  font-size: 1.3rem;
+}
+
+.prepare_for_debate_btn {
+  display: flex;
+  align-items: center;
+  height: 45px;
+  gap: 10px;
+  padding: 0 10px;
+  background-color: white;
+  border: 1px solid var(--primary_color);
+  font-size: 14px;
+  letter-spacing: 1px;
+  border-radius: 3px;
+  outline: none;
+  color: var(--primary_color);
+}
+.prepare_for_debate_btn:hover {
+  background-color: var(--primary_color);
+  color: white !important ;
+}
+
+.debate_link_box {
+  width: 37%;
+  height: 50px;
+  padding: 5px;
+
+  display: flex;
+  gap: 10px;
+}
+.debate_link_box input{
+  font-size: 13px !important; 
+}
+.BannerWrapper input {
+  /* height: 100%;
+  flex: 1;
+  border: none;
+  box-shadow: 0px 0px 2px rgb(64 70 221);
+  padding-left: 10px;
+  color: grey;
+  outline: none;
+  transform: skewX(350deg); */
+}
+.BannerWrapper input::placeholder {
+  color: #a3a3a3;
+  font-size: 12px;
+}
+.banner_bottom_button_option_button {
+  background-color: var(--primary_color);
+
+  width: fit-content;
+  color: white;
+  letter-spacing: 1px;
+  outline: none;
+  display: flex;
+
+  height: 45px;
+  align-items: center;
+  padding: 0 10px;
+  border-radius: 4px;
+  gap: 10px;
+}
+.banner_bottom_button_option_button:hover {
+  background-color: var(--primary_dark_color);
+}
+.watch_button {
+  background-color: var(--primary_color);
+  height: 100%;
+  color: white;
+  display: flex;
+  border-radius: 4px;
+  align-items: center;
+  padding: 0 10px;
+  transform: skewX(350deg);
+  gap: 10px;
+}
+.watch_button:hover {
+  background-color: var(--primary_dark_color);
+}
+.disable_watch_button_banner{
+  opacity: 0.8;
+}
+.disabled_vote_button{
+
+}

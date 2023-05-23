@@ -1,0 +1,73 @@
+.MessageInputWrapper {
+  width: 80%;
+  height: 65px;
+  padding: 0 0.5rem;
+  border-radius: 10px;
+  margin: auto;
+  background-color: #eff3f6;
+  background: linear-gradient(
+    45deg,
+    rgba(174, 174, 174, 0.21),
+    rgb(64 70 221 / 17%),
+    rgba(174, 174, 174, 0.21)
+  );
+  display: flex;
+  gap: 10px;
+  overflow: hidden;
+  align-items: center;
+}
+.voiceText {
+  font-size: 1.62rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s;
+  background: var(--primary_color);
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  opacity: 0.8;
+  padding: 10px;
+}
+
+.voiceText:hover {
+  color: white;
+  scale: 1.1;
+  background: var(--primary_color_dark);
+}
+.active_speaking {
+  color: white;
+  scale: 1.1;
+  background: var(--primary_color_dark);
+}
+.message_input {
+  flex: 1;
+  height: 100%;
+  background-color: transparent;
+  /* background: linear-gradient(45deg, rgba(174, 174, 174, 0.21), rgb(64 70 221 / 17%),rgba(174, 174, 174, 0.21)); */
+  border: none;
+  outline: none;
+  color: gray;
+  font-size: 12px;
+}
+.message_input::placeholder {
+  color: #aeaeae;
+  font-size: 12px;
+  font-weight: 100;
+  letter-spacing: 0.9px;
+}
+.sent_message_box {
+  height: 80%;
+  width: 50px;
+  display: grid;
+  place-items: center;
+  color: white;
+  background-color: #4046dd;
+  cursor: pointer;
+  border-radius: 8px;
+}
+.sent_message_box:hover {
+  background-color: rgb(26 33 201);
+}
+.sent_message_box svg {
+  font-size: 1.52rem;
+}

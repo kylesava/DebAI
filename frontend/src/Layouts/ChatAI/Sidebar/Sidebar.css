@@ -1,0 +1,42 @@
+.sidebar {
+  flex: 3;
+  height: calc(100vh - 120px);
+  padding: 15px;
+  background: var(--dark_gradient_bg);
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+}
+.chat_ai_new_chat_btn {
+  height: 40px;
+  width: 100%;
+  background: var(--primary_color);
+  border-radius: 3px;
+  font-size: 15px;
+  color: aliceblue;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+}
+.chat_ai_new_chat_btn:hover {
+  background-color: rgb(26 33 201);
+}
+
+.chat_history {
+  flex: 1;
+  padding: 1rem 0;
+  height: 100%;
+  font-size: 12px;
+}
+.chat_bot_side_bottom_main_text {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: var(--primary_color);
+}
+.history_text {
+  height: 35px;
+  letter-spacing: 0.41px;
+  border-radius: 5px;
+}

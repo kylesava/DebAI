@@ -1,0 +1,66 @@
+.transcriptBox{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+.modelContent{
+    max-width: 400px;
+    width: 90%;
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    padding-bottom: 1rem;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.582);
+    box-shadow: 1px 1px 3px 2px rgb(0 0 0 / 74%);
+    border-radius: 20px;
+}
+.transcript_header{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+.transcript_header >img{
+    width: 35px;
+}
+.transcript_header h2{
+    font-weight: bold;
+    font-family: 'Ysabeau', sans-serif;
+    font-size: 1.1rem;
+
+}
+.getTranscriptButton{
+    background-color: var(--primary_color);
+    height: 35px;
+    letter-spacing: 1px;
+    width: fit-content;
+    padding: 0 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    opacity: 0.7;
+    scale: 0.9;
+    transition: all .3s ;
+    outline: none;
+}
+.getTranscriptButton:hover ,.getTranscriptButton:active{
+    scale: 1 !important;
+    opacity: 1 !important;
+}
+.transcript_default_info_text{
+    font-size: 13px;
+    color: gray;
+
+    letter-spacing: 1px;
+    text-align: center;
+
+}

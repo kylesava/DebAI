@@ -1,0 +1,39 @@
+.profile_wrapper {
+  width: 100%;
+}
+.profile_container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  width: 100%;
+  padding: 2rem 0;
+}
+.profile_container_my_debate {
+  width: 100%;
+}
+.profile_container_my_debate_heading {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+}
+.my_profile_debate_box_Wrappper {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+._profile_information_text {
+  width: 33%;
+  color: gray;
+  font-size: 12px;
+  cursor: pointer;
+}
+._profile_information_text b {
+  color: var(--dark_primary_text_color);
+}
+.myDebates{
+  padding:  1rem 2rem;
+}

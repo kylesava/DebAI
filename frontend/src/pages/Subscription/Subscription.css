@@ -1,0 +1,85 @@
+.subscription_container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+.subscription_container h1{
+    text-align: center;
+    font-size: 24px;
+}
+.subscription_container .pricing {
+    display: flex;
+    justify-content: space-between;
+    max-width: 960px;
+    margin: auto;
+  }
+  .subscription_container .pricing-plan {
+    flex: 1;
+    background-color: #1f262c;
+    margin: 15px 8px;
+    padding: 30px;
+    border-radius: 6px;
+    color: #fff;
+  }
+
+.subscription_container .pricing-plan h2 {
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e30046;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+  }
+.subscription_container  .pricing-plan p {
+    margin-top: 0;
+  }
+.subscription_container .pricing-plan p span {
+    font-size: 33px;
+  }
+  .subscription_container .pricing-plan ul {
+    margin: 0 0 35px;
+    padding-left: 16px;
+    list-style: none;
+    line-height: 1.8;
+    color: #b5b5b5;
+  }
+  .subscription_container .pricing-plan ul li::before {
+    content: "•";
+    color: #e30046;
+    display: inline-block;
+    width: 20px;
+    margin-left: -15px;
+    position: relative;
+    top: 4px;
+    font-size: 26px;
+    line-height: 0;
+  }
+  .subscription_container .pricing-plan a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    background: #e30046;
+    border: 2px solid #e30046;
+    border-radius: 5px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .subscription_container .pricing-plan a:hover {
+    background-color: #1f262c;
+  }
+
+  
+  @media (max-width: 768px) {
+    .subscription_container .pricing {
+      display: block;
+    }
+  }  
