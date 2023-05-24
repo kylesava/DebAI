@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt")
 const UserModel = require("../models/UserModel")
-const stripe = require("../utils/stripe")
+const {stripe} = require("../utils/stripe")
+const { getUserSubscriptionStatus } = require("./UtilityMethods")
 
 class AuthService {
 

@@ -107,7 +107,7 @@ class UserController {
 
   async getLoggedInUser(req, res) {
     const sessionUser = req.session?.passport?.user || req.session.user;
-
+    console.log(req.session)
     if (sessionUser) {
       let updatedUser = await isUserUpdated(sessionUser);
       const { stripeCustomerId } = updatedUser;
