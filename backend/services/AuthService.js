@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt")
 const UserModel = require("../models/UserModel")
+const stripe = require("../utils/stripe")
 
 class AuthService {
 
@@ -14,17 +15,33 @@ class AuthService {
                             lastLoggedIn: Date.now()
                         }
                     })
-                    const { password, ...others } = User._doc
+                    const {stripeCustomerId} = User._doc;
+                    User._doc.subscription =  await getUserSubscriptionStatus(
+                        stripeCustomerId
+                      );
+                    const { password,  ...others } = User._doc
                     req.session.user = {
                         ...others,
                     }
                     return req.session.user
                 } else {
+                    const customer = await stripe.customers.create(
+                        {
+                          email,
+                        },
+                        {
+                          apiKey: process.env.STRIPE_SECRET_KEY,
+                        }
+                      );
                     const salt = await bcrypt.genSalt(10)
                     const hashedPassword = await bcrypt.hash(user.firstName, salt)
                     user.password = hashedPassword
                     user.lastLoggedIn = Date.now()
+                    user.stripeCustomerId =customer.id;
                     const User = await UserModel.create(user)
+                    User._doc.subscription = await getUserSubscriptionStatus(
+                        customer.id
+                      );
                     const { password, ...others } = User._doc
                     req.session.user = {
                         ...others,
@@ -60,7 +77,6 @@ class AuthService {
 
 
     async hashPassword(password) {
-        console.log()
         try {
             const salt = await bcrypt.genSalt(10)
             const hashed = await bcrypt.hash(password, salt)

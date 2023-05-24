@@ -19,8 +19,10 @@ passport.use(new GoogleStrategy({
         };
 
 
+
         try {
-            const theGoogleUser = await createGoogleUser(googleUser, request)
+            const theGoogleUser = await createGoogleUser(googleUser, request);
+            
             cb(null, theGoogleUser)
         } catch (error) {
             console.log(error)
