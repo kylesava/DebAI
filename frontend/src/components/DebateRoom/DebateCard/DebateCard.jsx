@@ -76,15 +76,13 @@ const DebateCard = ({ debate, isLive }) => {
   // Return a cleanup function to clear the interval when the component unmounts
 
   const handleParticipateInDebate=()=>{
-    if(data?.subscription?.status==="active"){
+
       navigate(`/debate/${debate?.passcode}`,{
         state:debate
       })
-    }else{
-      navigate("/subscription",{
-        state:{from:"alldebates"}
-      })
-    }
+   
+
+  
   }
 
 
