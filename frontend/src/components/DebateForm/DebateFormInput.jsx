@@ -537,9 +537,9 @@ if(formatArr){
 
        <DebateFormat setDebateForm={setDebateForm} debateForm={debateForm} teams={debateForm.teams}/>
       }
-      {currentUser?.subscription?.status && <button type='submit' className='create_debate_btn' disabled={!currentUser} onClick={handleCreateDebate}>
+      <button type='submit' className='create_debate_btn' disabled={!currentUser} onClick={handleCreateDebate}>
         CREATE DEBATE!
-      </button>}
+      </button>
     </div>
   )
 }
