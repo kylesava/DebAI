@@ -54,7 +54,7 @@ const DebatePasscodeInput = () => {
             })
             return 
           }
-          navigate("/watch",{
+          navigate(`/watch/${message[0]?._id}`,{
             state:message[0]
           })
         }

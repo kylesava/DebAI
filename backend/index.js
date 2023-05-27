@@ -4,9 +4,22 @@ const session = require("express-session")
 const MongoStore = require("connect-mongo");
 const passport = require("passport");
 const cookieParser = require("cookie-parser")
+const Emitter = require("events")
 const { Configuration, OpenAIApi } = require("openai")
 const morgan = require("morgan")
+const http = require("http")
+const server = http.createServer(app);
+const {Server} = require("socket.io")
+const io = new  Server(server,{
+    cors:{
+        origin:[process.env.FRONTEND_URL,"http://localhost:3000","http://127.0.0.1:3000"],
+        methods:['GET','POST'],
+        credentials:true
+    }
+})
+// const so 
 const cors = require("cors");
+const Enums = require("./utils/Enums");
 require("dotenv").config()
 
 
@@ -31,7 +44,9 @@ const configuration = new Configuration({
     apiKey: process.env.OPEN_AI_API
 });
 
-const openAi = new OpenAIApi(configuration)
+const EventEmiter = new Emitter()
+app.set("EventEmitter",EventEmiter)
+const openAi = new OpenAIApi(configuration);
 module.exports=openAi
 
 app.use(cookieParser())
@@ -65,9 +80,13 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session());
 
+io.on("connection",(socket)=>{
+    console.log("someone connected")
+})
 
-
-
-
+EventEmiter.on(Enums.UPDATED_DEBATE,(data)=>{
+    console.log("debated participants updated",data)
+    io.emit(Enums.UPDATED_DEBATE,data)
+})
 require("./AllRoutes")(app)
-app.listen(8000, () => console.log(`server started at port 8000`))
+server.listen(8000, () => console.log(`server started at port 8000`))

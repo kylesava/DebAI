@@ -27,6 +27,10 @@ const UserSchema = mongoose.Schema(
     },
     equipedAvatars:[],
     lastLoggedIn: Number,
+    points:{
+      type:Number,
+      default:500,
+    }
   },
   {
     timestamps: true,

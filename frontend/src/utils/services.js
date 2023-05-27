@@ -1,7 +1,7 @@
 import AgoraRTC from "agora-rtc-sdk-ng";
 import { Rtc_client, Rtm_client  } from "../pages/debateRoom/DebateRoom";
 import { Enums } from "../redux/action/actionTypes/Enumss";
-import { chatBotApi, getAgoraTokenApi, joinParticipantApi, updateDebateApi } from "./Api";
+import { chatBotApi, getAgoraTokenApi, joinParticipantApi, removeParticipantApi, updateDebateApi } from "./Api";
 import { avatarsTypeData } from "./data";
 import SpeechRecognition from "react-speech-recognition";
 import moment from "moment";
@@ -226,6 +226,23 @@ class DebateRoomServices{
     this.addLiveMessages= addLiveMessages;
 
    
+
+  }
+
+ async  removeParticipant ()  {
+  console.log("removing participants",this.isAudience)
+    if (!this.isAudience && this.currentUser && this.activeDebate.current) {
+      console.log("removing")
+      try {
+        await removeParticipantApi(this.activeDebate?.current?._id, {
+          participantId: this.currentUser?._id
+        })
+
+
+      } catch (error) {
+        console.log(error)
+      }
+    }
 
   }
   getMyTeamMethod(){
@@ -928,9 +945,9 @@ async startDebate() {
 
 async handleLeaveRoom  () {
   try {
-    
     this.hasLeftRoom.current = true
-    await this.closeTracks()
+   await this.removeParticipant()
+    await this.closeTracks();
     this.navigate(-1)
   } catch (error) {
     console.log(error)

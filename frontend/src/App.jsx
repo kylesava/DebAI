@@ -69,7 +69,7 @@ function App() {
           <Route path="/login" element={data ? <Navigate to={"/"} /> : <Login />} />
           <Route path="/signup" element={data ? <Navigate to={"/"} /> : <Signup />} />
           <Route path="/debate/:debateId" element={<DebateRoom />} />
-          <Route path="/watch" element={<Watchnow />} />
+          <Route path="/watch/:debateId" element={<Watchnow />} />
           <Route path="/subscription" element={<Subscription />} />
           <Route path="/completion/:debateId"  element={<DebateCompletionUi/>}/>
 

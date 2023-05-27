@@ -1,5 +1,6 @@
 const DebateModel = require("../models/DebateModel");
 const { hasVoted } = require("../services/UtilityMethods");
+const Enums = require("../utils/Enums");
 const ObjectId = require("mongoose").Types.ObjectId;
 
 class DebateController {
@@ -110,15 +111,19 @@ class DebateController {
       }
 
       const debate = await DebateModel.findById(debateId);
-      console.log(debate.joinedParticipants);
       if (debate.joinedParticipants.includes(participantId)) {
         throw Error("User is already joined");
       }
-      await DebateModel.findByIdAndUpdate(debateId, {
+ const updatedDoc=await DebateModel.findByIdAndUpdate(debateId, {
         $push: {
           joinedParticipants: participantId,
         },
-      });
+      },{
+        new:true,
+        returnOriginal:false,
+      }).populate("joinedParticipants")
+      console.log("joined ",updatedDoc)
+      req.app.get("EventEmitter").emit(Enums.UPDATED_DEBATE,updatedDoc.joinedParticipants)
       res
         .status(200)
         .json({ message: "successfully added the participant", success: true });
@@ -136,14 +141,18 @@ class DebateController {
       if (!debateId || !participantId) {
         throw Error("fill all the fields");
       }
-      await DebateModel.findByIdAndUpdate(debateId, {
+    const updatedDebate =   await DebateModel.findByIdAndUpdate(debateId, {
         $pull: {
           joinedParticipants: participantId,
         },
-      });
-      res.status(200).json({
-        message: "successfully removed the participant",
-        success: true,
+      },{
+        new:true,
+        returnDocument:true,
+        returnOriginal:false,
+      }).populate("joinedParticipants")
+      console.log( "revmoed ", updatedDebate)
+      req.app.get("EventEmitter").emit(Enums.UPDATED_DEBATE,updatedDebate.joinedParticipants)
+      res.status(200).json({message: "successfully removed the participant", success: true,
       });
     } catch (error) {
       res
@@ -201,6 +210,7 @@ class DebateController {
           returnDocument: true,
         }
       ).populate(["admin", "teams.members", "joinedParticipants"]);
+      
       res.status(200).json({ message: updated, success: true });
     } catch (error) {
       console.log(error);

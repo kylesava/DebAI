@@ -126,10 +126,11 @@ const DebateRoom = () => {
   useEffect(() => {
 
     return async () => {
+      console.log("clearnup funtion")
       if (hasLeftRoom.current) return;
-      await RoomService.handlePauseDebate()
+      console.log("clearnup funtion1")
       await RoomService.closeTracks()
-      await removeParticipant()
+      await RoomService.removeParticipant()
       AddActiveDebate(null)
     }
   }, []);
@@ -147,7 +148,6 @@ const DebateRoom = () => {
 
   useLayoutEffect(() => {
     if (!isLive) return;
-    console.log("initializing agora",isLive)
     RoomService.getAgoraToken()
   }, [isLive]);
 
@@ -306,22 +306,8 @@ const DebateRoom = () => {
       console.log(error)
     }
   }
-  const removeParticipant = async () => {
-    if (!UrlSearchParams.get("audience") && data && activeDebateRef?.current) {
-      try {
-        await removeParticipantApi(activeDebateRef?.current?._id, {
-          participantId: data?._id
-        })
 
 
-      } catch (error) {
-        console.log(error)
-      }
-    }
-
-  }
-
-  console.log(lastApiCallConfig.current.startApiCalled,"start")
 
   return (
     <>

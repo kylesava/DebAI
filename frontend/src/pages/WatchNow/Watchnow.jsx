@@ -1,14 +1,16 @@
 import React  ,{useEffect,useState} from 'react';
-import {  useLocation, useSearchParams } from "react-router-dom";
-import {getSingleDebateApi } from "../../utils/Api"
+import {  useLocation, useParams, useSearchParams } from "react-router-dom";
+import {getDebateByIdApi, getSingleDebateApi } from "../../utils/Api"
 import Navbar from "../../Layouts/Navbar/Navbar";
 import {format} from "timeago.js";
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux"
+import  { io }  from "socket.io-client";
 import moment from "moment"
 import { MdOutlineViewInAr } from "react-icons/md"
 import { AiOutlineUsergroupAdd } from "react-icons/ai"
 import "./WatchNow.css";
+import { Enums } from '../../redux/action/actionTypes/Enumss';
 
 
 const Watchnow = () => {
@@ -16,7 +18,8 @@ const Watchnow = () => {
   const [ linkError,setLinkError] =useState(false)
   const [isLive,setIsLive] = useState(null)
   const [ isParticipant,setIsParticipant] =useState(false);
-  const  debateData =  useLocation().state
+  const {debateId} = useParams()
+  const [debateData,setDebateData] =useState(null)
 
   // when someone new joins the room  or leaves  -->
   // -> api endpoints for joining and leaving --> 
@@ -28,7 +31,20 @@ const Watchnow = () => {
   const [debatorsInRoom,setDebatorsInRoom] =useState([])
 
   useEffect(()=>{
-    if(!data || !debateData)return;
+fetchDebate()
+  },[debateId])
+  useEffect(()=>{
+    if(!data?._id)return
+   const socket =  io("http://localhost:8000");
+   socket.emit("join",data?._id)
+   socket.on(Enums.UPDATED_DEBATE,(data)=>{
+    console.log("debate updated",data)
+    setDebatorsInRoom(data)
+   })
+  },[data])
+
+  useEffect(()=>{
+    if(!debateData)return;
     let now = new Date().getTime();
     setDebatorsInRoom(debateData?.joinedParticipants)
     if (now < debateData?.startTime) {
@@ -48,7 +64,18 @@ const Watchnow = () => {
     setIsParticipant(isParticipant)
   },[data,debateData])
 
-
+  const fetchDebate=async()=>{
+    try {
+      const {data,status} = await getDebateByIdApi(debateId);
+      if(status===200){
+        const {message:[debate]} = data
+        setDebateData(debate)
+      }
+      
+    } catch (error) {
+      console.log(error)
+    }
+  }
    
 
 
@@ -65,7 +92,7 @@ const Watchnow = () => {
           {
           linkError ? <h1>INVALID LINK</h1> :  (debateData && !linkError) ? <div className="watchNow_box">
               <div className="top_box">
-<h1 className="watchNow_box_debate_topic">{debateData.topic}</h1>
+<h1 className="watchNow_box_debate_topic">{debateData?.topic}</h1>
 <div className="watch_box_joined_participants_box">
   {
 
@@ -92,11 +119,11 @@ debatorsInRoom?.length > 0 &&  <p className="watch_box_joined_participants_text"
 {
   isLive ?
   <>
-    <p className="watch_box_started_time">Started {format(debateData.startTime)}</p> 
+    <p className="watch_box_started_time">Started {format(debateData?.startTime)}</p> 
   
   </>
   :<>
-    <p className="watch_box_started_time">Starts at {moment(debateData.startTime).format("LLL")}</p>
+    <p className="watch_box_started_time">Starts at {moment(debateData?.startTime).format("LLL")}</p>
 
   </>
 }

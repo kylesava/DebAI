@@ -44,7 +44,7 @@ const Banner = () => {
       navigate("/login");
       handleShowToastBar("You need to login first ");
     } else  {
-      navigate("/create");
+      navigate(`/create`);
     } 
   };
   const handleShowToastBar = (text) => {
