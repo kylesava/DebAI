@@ -16,9 +16,9 @@ const DebateInfo = () => {
 
     useEffect(()=>{
         if(!activeDebate?.current || !data?._id)return;
-       let V_teamName = getTheVotedTeam(activeDebate?.current.teams,data?._id )
-       if(V_teamName){
-        setVotedTeamAction(V_teamName)
+       let theTeamIVoted = getTheVotedTeam(activeDebate?.current.teams,data?._id )
+       if(theTeamIVoted){
+        setVotedTeamAction(theTeamIVoted)
        }else{
         setVotedTeamAction(null)
        }

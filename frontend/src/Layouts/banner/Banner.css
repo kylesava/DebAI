@@ -43,6 +43,7 @@
   align-items: center;
   word-break: break-all;
   padding: 2rem;
+  padding-bottom: 1rem ;
 }
 .top_site_info {
   font-weight: bold;

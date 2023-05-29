@@ -1,3 +1,4 @@
+import TopDebators from "../../components/TopDebators/TopDebators"
 import Banner from "../../Layouts/banner/Banner"
 import Navbar from "../../Layouts/Navbar/Navbar"
 import "./Home.css"
@@ -7,6 +8,7 @@ const Home = () => {
     <div className="home_wrapper">
       <Navbar />
       <Banner />
+      <TopDebators/>
     </div>
   )
 }

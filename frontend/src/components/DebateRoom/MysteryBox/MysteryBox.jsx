@@ -10,7 +10,7 @@ import { Enums } from "../../../redux/action/actionTypes/Enumss"
 import { useNavigate } from "react-router-dom"
 
 
-const MysteryBox = ({handleNext ,debateResult ,activeDebate}) => {
+const MysteryBox = ({handleNext ,debateResult ,activeDebate ,isAudience}) => {
 
   const [ bothTeams,setBothTeams] = useState([]);
   const [goToNext,setGoToNext] =useState(false)
@@ -30,7 +30,9 @@ const MysteryBox = ({handleNext ,debateResult ,activeDebate}) => {
      return  `Your team won the debate`
     }else if(debateResult===Enums.LOSE){
        return  `Your team lose the debate`
-    }else{
+     }else if(debateResult==="AUDIENCE"){
+      return `${activeDebate?.winner} won the debate`
+     } else{
      return `Debate Tied`
     }
   }
@@ -70,7 +72,7 @@ const MysteryBox = ({handleNext ,debateResult ,activeDebate}) => {
                 index ===0 ?<BiUpvote/> :<BiDownvote/>
               }  
                 <p>
-                {team.vote }  
+                {team.vote }&nbsp;  
                 {team.name}  
                 </p>
              </div>
@@ -78,15 +80,17 @@ const MysteryBox = ({handleNext ,debateResult ,activeDebate}) => {
       ))
       }
         </div>
-        <ClaimReward activeDebate={activeDebate} setGoToNext={setGoToNext} debateResult={debateResult}/>
+      {
+ !isAudience &&        <ClaimReward activeDebate={activeDebate} setGoToNext={setGoToNext} debateResult={debateResult}/>
+      } 
        {
-         ( judgeType===Enums.AIJUDGE &&  goToNext) && <button className={styles.nextButton} onClick={handleNext}>
+         ( judgeType===Enums.AIJUDGE &&  goToNext && !isAudience) && <button className={styles.nextButton} onClick={handleNext}>
           <GrFormNextLink className={styles.nextIcon}/>
           Next
         </button>
         }
         {
-          ( judgeType !==Enums.AIJUDGE && goToNext) && <button className={styles.nextButton} onClick={()=>navigate("/")}>
+          ( judgeType !==Enums.AIJUDGE && goToNext  && !isAudience) && <button className={styles.nextButton} onClick={()=>navigate("/")}>
           <BiArrowBack className={styles.nextIcon}/>
         BACK
         </button>

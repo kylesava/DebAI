@@ -2,6 +2,7 @@ const UserModel = require("../models/UserModel");
 const { isUserUpdated } = require("../services/AuthService");
 const { getUserSubscriptionStatus } = require("../services/UtilityMethods");
 const { stripe } = require("../utils/stripe");
+const Enums = require("../utils/Enums")
 
 class UserController {
   async addUser(req, res) {
@@ -107,7 +108,6 @@ class UserController {
 
   async getLoggedInUser(req, res) {
     const sessionUser = req.session?.passport?.user || req.session.user;
-    console.log(req.session)
     if (sessionUser) {
       let updatedUser = await isUserUpdated(sessionUser);
       const { stripeCustomerId } = updatedUser;
@@ -146,6 +146,61 @@ class UserController {
     } catch (error) {
       console.log(error);
       res.status(500).json({ message: error, success: false });
+    }
+  }
+
+  async handleRateUser(req,res){
+    const {winnerTeam,loserTeam, winner:winnerName ,allUsers } = req.body;
+     
+    let winnerPoint =10 ;
+    let loserPoint = -8;
+
+    try {
+      if(winnerName ===  Enums.TIED){
+
+        await UserModel.updateMany(
+          {
+            _id:{$in:allUsers}
+          },
+          {
+            $inc:{points:5}
+          }
+        )  
+      }else{
+        await UserModel.updateMany(
+          {
+            _id:{$in:winnerTeam}
+          },
+          {
+            $inc:{points:winnerPoint}
+          }
+        )  
+        await UserModel.updateMany(
+          {
+            _id:{$in:loserTeam}
+          },
+          {
+            $inc:{points:loserPoint}
+          }
+        )  
+      }
+      return res.status(200).json({message:"successfulll"})
+      
+    } catch (error) {
+      console.log(error)
+      return res.status(500).json({message:error})
+    }
+  
+  }
+
+  async getTopUsers(req,res){
+    try {
+        const topUsers = await UserModel.find({}).sort({points:-1}).limit(10)
+        return res.status(200).json({message:topUsers,success:true})
+      } catch (error) {
+        console.log(error)
+        return res.status(500).json({message:error,success:false})
+      
     }
   }
 

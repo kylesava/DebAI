@@ -1,4 +1,5 @@
-const { createDebate, getDebate, updateDebate, getSingleDebate, deleteDebate  ,removeParticipant,joinedParticipant, usersDebateCounts, voteTeam, voteAndUnVote, unVoteTeam, checkIfPasscodeIsUnique, getDebateOfUser, addAvatarEquipedMembersInDebate } = require("../controller/DebateController")
+const { createDebate, getDebate,handleDebateEnd, updateDebate, getSingleDebate, deleteDebate  ,removeParticipant,joinedParticipant, usersDebateCounts, voteTeam, voteAndUnVote, unVoteTeam, checkIfPasscodeIsUnique, getDebateOfUser, addAvatarEquipedMembersInDebate } = require("../controller/DebateController");
+const {handleRateUser} = require("../controller/UserController")
 const router = require("express").Router()
 
 router.post("/vote",voteTeam)
@@ -15,6 +16,7 @@ router.post("/joinParticipant/:debateId",joinedParticipant)
 router.post("/checkPasscode",checkIfPasscodeIsUnique)
 router.post("/removeParticipant/:debateId",removeParticipant);
 router.put("/addAvatarEquipedMembersInDebate/:debateId/:userId",addAvatarEquipedMembersInDebate)
+router.post("/debateEnd/:debateId",handleDebateEnd,handleRateUser)
 
 
 module.exports = router 

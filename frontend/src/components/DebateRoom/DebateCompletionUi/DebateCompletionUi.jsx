@@ -15,7 +15,9 @@ const DebateCompletionUi = () => {
   const [activeDebate,setActiveDebate] = useState(null)
   const handleNext =()=>setCompletionStep("translate")
   const [debateResult,setDebateResult] =useState("")
+  const [isAudience,setIsAudience] =  useState(true)
   const {debateId} = useParams();  
+  const [isParticipants,setisparticipants]=useState(false)
 
   useEffect(()=>{
     if(!debateId)return;
@@ -28,7 +30,12 @@ const DebateCompletionUi = () => {
       const {winner,teams,judgeType} = activeDebate;
      
       setCompletionStep( judgeType ===Enums.AIJUDGE ? Enums.TRANSCRIPT_TAB :Enums.MYSTERY_TAB)
-      const myTeamName  =     getMyTeam(teams,currentUser?._id).name; 
+      const myTeamName  =     getMyTeam(teams,currentUser?._id)?.name; 
+      if(!myTeamName){
+        setDebateResult("AUDIENCE")
+        setIsAudience(true)
+        return setisparticipants(false)
+      }
       if(myTeamName===winner){
       setDebateResult(Enums.WON)
     }else if(Enums.MATCH_TIED === winner){
@@ -59,7 +66,7 @@ const DebateCompletionUi = () => {
     <div className={styles.modalBodyContent}
     >
           {
-           completionStep &&  completionStep === Enums.MYSTERY_TAB ? <MysteryBox debateResult={debateResult} activeDebate={activeDebate} handleNext={handleNext}/> :        <Transcript activeDebate={activeDebate}/>
+           completionStep &&  completionStep === Enums.MYSTERY_TAB ? <MysteryBox debateResult={debateResult} activeDebate={activeDebate} isAudience={isAudience} handleNext={handleNext}/> :        <Transcript activeDebate={activeDebate}/>
           }
     </div>
     </div>

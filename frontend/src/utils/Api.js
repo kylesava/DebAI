@@ -12,6 +12,8 @@ export const searchUserByNames = (username) =>
 export const searchUserByIdApi = (userId) =>
   axiosInstance.get(`/user/search?userId=${userId}`);
 
+export const getTopUsersApi = ()=> axiosInstance.get("/user/topDebators")
+
 
 // DEBATE API ENDPOINTS
 export const getIsPassocodeUniqueApi = (passcode) =>
@@ -87,3 +89,4 @@ export const getInvitationDebatesOfCurrentUserApi = (data) =>
   axiosInstance.get(`/debate/${data.userId}?invitation=${data.invitation}`);
 export const updateDebateApi=(debateId,data)=>axiosInstance.put(`/debate/${debateId}`,data)
 export const addAvatarEquipedMembersInDebate=(debateId,userId)=>axiosInstance.put(`/debate/addAvatarEquipedMembersInDebate/${debateId}/${userId}`)
+export const finishDebateApi=(debateId,data)=>axiosInstance.post(`/debate/debateEnd/${debateId}`,data)

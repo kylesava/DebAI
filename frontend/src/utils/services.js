@@ -1,7 +1,7 @@
 import AgoraRTC from "agora-rtc-sdk-ng";
 import { Rtc_client, Rtm_client  } from "../pages/debateRoom/DebateRoom";
 import { Enums } from "../redux/action/actionTypes/Enumss";
-import { chatBotApi, getAgoraTokenApi, joinParticipantApi, removeParticipantApi, updateDebateApi } from "./Api";
+import { chatBotApi, finishDebateApi, getAgoraTokenApi, joinParticipantApi, removeParticipantApi, updateDebateApi } from "./Api";
 import { avatarsTypeData } from "./data";
 import SpeechRecognition from "react-speech-recognition";
 import moment from "moment";
@@ -257,22 +257,49 @@ class DebateRoomServices{
   getWinnerByVote(teams){
     let teamWithLongestVote = null;
     let maxLength = 0;
-  
+    let allUsers=[];
+    let winnerTeam= [];
+    let loserTeam = []
+
     const teamOne = teams[0].vote.length;
     const teamTwo = teams[1].vote.length;
   
     if(teamOne===teamTwo){
-      return Enums.MATCH_TIED;
+       teamWithLongestVote =  Enums.MATCH_TIED;
+    }else{
+      teams.forEach(team => {
+        if (team.vote.length > maxLength) {
+          maxLength = team.vote.length;
+          teamWithLongestVote = team.name;
+        }
+      });
     }
   
-    teams.forEach(team => {
-      if (team.vote.length > maxLength) {
-        maxLength = team.vote.length;
-        teamWithLongestVote = team.name;
-      }
-    });
-  
-      return teamWithLongestVote;
+    
+    if(teamWithLongestVote===Enums.TIED){
+        // get all users id in an array 
+        teams.forEach(team => {
+          team.members.forEach(member => {
+              allUsers.push(member._id);
+          });
+        });
+     }else{
+
+      teams.forEach(team => {
+        if(team.name === teamWithLongestVote){
+          team.members.forEach(member => {
+            winnerTeam.push(member._id);
+        })
+        }else{
+          team.members.forEach(member => {
+            loserTeam.push(member._id);
+        });
+        }
+      });
+     }
+        //  else get the losers team and the winner team in an separate arrray
+
+      return {winnerTeam,loserTeam,allUsers,winner:teamWithLongestVote};
   }
   
    getTeamDataByName (teamName) {
@@ -295,7 +322,6 @@ class DebateRoomServices{
   async handlePauseDebate  () {
     const { isPaused, isStarted } = this.debateState?.current;
     if (!this.RoomMembers || !isStarted || isPaused) return;
-    console.log("room members before leaving",this.RoomMembers)
     const otherDebators = this.RoomMembers.filter(mem=>mem.id !== this.currentUser?._id)
     let debateRoundsPayload = {
       ...this.debateState?.current,
@@ -489,20 +515,21 @@ console.log(error)
 
   }
   async handleLastApiCallForVoting(){
+
+
    const {_id,judgeType,teams} = this.activeDebate.current ;
-   const winnerTeam =  this.getWinnerByVote(teams);
+   const {winner,winnerTeam,loserTeam,allUsers} =  this.getWinnerByVote(teams);
+    console.log("the final decision",winner,winnerTeam,loserTeam,allUsers)
    const payload={
-    winner:winnerTeam,
-    hasEnded:true,
-   }
-   
-   if(judgeType===Enums.AIJUDGE){
-    payload.transcript =  "transcript here"
+    winner,
+    winnerTeam,
+    loserTeam,
+    allUsers
    }
    try {
-     const {status,data} = await updateDebateApi(_id,payload);
+     const {status,data} = await finishDebateApi(_id,payload);
      if(status ===200){
-   
+
      }else{
       throw Error("something went wrong")
      }
@@ -513,9 +540,7 @@ console.log(error)
   async handlLastApiCallForTranscript(){
     const attribute = await this.getChannelAttributeFunc();
     let speech = attribute?.speechText?.value;
-    console.log(speech)
     speech = speech ? JSON.parse(speech) : {};
-    console.log("speech1",speech)
     if(!speech)return;
     const [teamOne,teamTwo] =  this.getTeamName()
      const speechOne =  speech[teamOne];
@@ -532,22 +557,15 @@ console.log(error)
       debateType:type,
       startedTime:startTime
   })
-   console.log("argument",theArgumentext)
 try {
   await  chatBotApi(theArgumentext,_id)
-  
 } catch (error) {
+  console.log(error)
 }
-
-
-
 
   }
 async handleLastSetup(){
 
-
-    
-  
 
   const nextUser = this.getMemberWithHighUid();
   if(nextUser)return;
@@ -955,7 +973,7 @@ async handleLeaveRoom  () {
 }
 
 
-async AmIParticipants(){
+ AmIParticipants(){
 if(!this.activeDebate?.current || !this.currentUser)return
  return this.activeDebate.current.teams.some(team=>team.members.some(mem=>mem._id ===this.currentUser?._id));
   

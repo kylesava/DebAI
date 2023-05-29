@@ -85,8 +85,9 @@ io.on("connection",(socket)=>{
 })
 
 EventEmiter.on(Enums.UPDATED_DEBATE,(data)=>{
-    console.log("debated participants updated",data)
     io.emit(Enums.UPDATED_DEBATE,data)
 })
 require("./AllRoutes")(app)
 server.listen(8000, () => console.log(`server started at port 8000`))
+
+

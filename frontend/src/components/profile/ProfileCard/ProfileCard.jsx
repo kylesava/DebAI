@@ -105,7 +105,6 @@ const ProfileCard = ({ userData }) => {
         }
         handleGetDebatesCount()
     }, [data, userData])
-
     return (
         <div className="ProfileCard">
             <div className="profile_card_top">
@@ -123,9 +122,16 @@ const ProfileCard = ({ userData }) => {
                         <div className="profile_card_item basic_userinfo_item">
                             <div>
 
-                                <h1 className="profile_card_username">{`${userData?.firstName} ${userData?.lastName}`}</h1>
+                                <h1 className="profile_card_username">{`${userData?.firstName} ${userData?.lastName}`}
+                                <p className="profile_card_user_points">
+                             <p>
+                                   {userData?.points} 
+                                </p>
+                                <img width="94" height="94" src="https://img.icons8.com/3d-fluency/94/popular-topic.png" alt="popular-topic"/>
+                                </p>
+                                </h1>
                                 <p className="profile_card_email">{userData?.email}</p>
-
+                      
                             </div>
                             {
                                 isMe === null ? "" : isMe ? <button onClick={handleLogout} className="logout_button">Logout</button> : ""

@@ -1,19 +1,19 @@
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
+import { useToast } from '@chakra-ui/react';
+import { useSelector } from "react-redux"
+import { bindActionCreators } from "redux"
+import AgoraRTC from 'agora-rtc-sdk-ng'
+import { useDispatch } from "react-redux"
+import AgoraRTM from 'agora-rtm-sdk'
+import {  useNavigate, useParams, useSearchParams } from "react-router-dom"
+import  { useSpeechRecognition } from 'react-speech-recognition'
 import { useEffect, useLayoutEffect, useState, useRef } from "react"
 import DebateScreenBox from "../../Layouts/Debate/DebateScreenBox/DebateScreenBox"
-import { useToast } from '@chakra-ui/react';
 import Participants from "../../Layouts/Debate/Participants/Participants"
 import Navbar from "../../Layouts/Navbar/Navbar"
 import LiveChat from "../../components/DebateRoom/LiveChat/LiveChat"
-import { json, useLocation, useNavigate, useParams, useSearchParams } from "react-router-dom"
-import { getAgoraTokenApi, getDebateByPassocde, joinParticipantApi, removeParticipantApi } from "../../utils/Api"
-import { bindActionCreators } from "redux"
-import { actionCreators } from "../../redux/store"
+import {  getDebateByPassocde } from "../../utils/Api"
 import { DebateRoomServices, getTimeCountDown, getTimeFromMs } from "../../utils/services"
-import { useDispatch } from "react-redux"
-import { useSelector } from "react-redux"
-import AgoraRTM from 'agora-rtm-sdk'
-import AgoraRTC from 'agora-rtc-sdk-ng'
+import { actionCreators } from "../../redux/store"
 import DebateAction from "../../components/DebateRoom/DebateAction/DebateAction"
 import "./DebateRoom.css"
 import DebateInfo from "../../Layouts/Debate/DebateInfo/DebateInfo";

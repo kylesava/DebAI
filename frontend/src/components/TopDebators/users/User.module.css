@@ -1,0 +1,42 @@
+.top_user{
+
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    background-color: aliceblue;
+    padding: 0.4rem 1rem ;
+    justify-content: space-between;
+    border-radius: 8px;
+}
+.main_info{
+    gap: 5px;
+
+    display: flex;
+
+}
+.top_user_avatar{
+    width: 40px;
+
+    height: 40px;
+    border-radius: 50%;
+}
+.points_box {
+    display: flex;
+    gap: 7px;
+
+    align-items: center;
+
+    font-size: 13px;
+    font-weight: bold;
+color: rgb(44, 156, 255);
+}
+.points_box img{
+    width: 20px;
+}
+.top_username{
+
+    }
+    .top_email{
+        font-size: 11px;
+        color: rgb(118, 117, 117);
+    }

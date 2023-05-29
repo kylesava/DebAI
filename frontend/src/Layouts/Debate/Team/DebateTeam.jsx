@@ -12,7 +12,7 @@ import { Enums } from "../../../redux/action/actionTypes/Enumss"
 const DebateTeam = ({  team }) => {
   const { isLive, votedTeam ,activeDebate} =useSelector(state=>state.debate);
   const {data} =useSelector(state=>state.user)
-  const {rtmChannel ,RoomService} =useSelector(state=>state.other)
+  const {RoomService} =useSelector(state=>state.other)
   const navigate = useNavigate()
   const dispatch =useDispatch( )
   const {setVotedTeamAction  ,AddActiveDebate} = bindActionCreators(actionCreators,dispatch )
@@ -95,9 +95,9 @@ const DebateTeam = ({  team }) => {
           <div className='vote_count'>
           </div>
           {
-           activeDebate?.judgeType===Enums.VOTING &&  <button 
+           activeDebate?.current?.judgeType===Enums.VOTING &&  <button 
             onClick={handleVote}
-            className={`vote_button ${team?.name === votedTeam ? "voted":"" } ${(!isLive || !data) &&"disabled_vote_button"} ${RoomService.AmIParticipants() && "disable_vote"}`}>
+            className={`vote_button ${team?.name === votedTeam ? "voted":"" } ${(!isLive || !data) &&"disabled_vote_button"} ${RoomService.AmIParticipants() ? "disable_vote":""}`}>
             <BiUpvote />
             <p>{team.vote.length}</p>
             <p>VOTE</p>

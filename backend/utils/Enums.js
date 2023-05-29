@@ -9,7 +9,8 @@ const Enums = {
     MIC_ACTION: "mic action",
     START_TOGGLE_MIC: "start toggle mic",
     REMOVE_USER: "remove user",
-    UPDATED_DEBATE:"UPDATED_DEBATE"
+    UPDATED_DEBATE:"UPDATED_DEBATE",
+    TIED:"MATCH_TIED"
    
 
 }

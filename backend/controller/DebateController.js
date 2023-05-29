@@ -379,6 +379,27 @@ class DebateController {
 
 
 
+
+
+
+  async handleDebateEnd(req,res,next){
+    const {debateId} = req.params;
+    const {winner} = req.body;
+
+    try {
+      await   DebateModel.findByIdAndUpdate(debateId,{
+        hasEnded:true,
+        winner
+      })
+      next()
+    } catch (error) 
+    {
+     return  res.status(500).json({message:error,success:false})
+    }
+  }
+
+
+
 }
 
 
