@@ -29,9 +29,12 @@ class UserController {
         },
         {
           new: true,
+          returnDocument:true,
+          returnOriginal:false
         }
       );
-      res.status(200).json({ message: updatedUser, success: true });
+      const {password,...others} = updatedUser;
+      res.status(200).json({ message: others, success: true });
     } catch (error) {
       console.log(error);
       res.status(500).json({ message: error, success: false });

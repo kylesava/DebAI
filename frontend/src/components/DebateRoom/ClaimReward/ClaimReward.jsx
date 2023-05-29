@@ -1,5 +1,5 @@
 import React, { useEffect, useState  } from 'react'
-import {useSelector} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 import styles from "./ClaimReward.module.css"
 import { getMysterAvatar } from '../../../utils/services'
 import { IoIosDoneAll } from 'react-icons/io';
@@ -7,10 +7,14 @@ import {GiPerspectiveDiceSixFacesSix} from "react-icons/gi"
 import {  addAvatarEquipedMembersInDebate, updateUserapi } from '../../../utils/Api';
 import { useToast } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import { actionCreators } from '../../../redux/store';
 
 
 const ClaimReward = ({debateResult ,setGoToNext ,activeDebate}) => {
   const {data:currentUser} = useSelector(state=>state.user)
+  const dispatch =useDispatch()
+  const {AddLoggedInUser} = bindActionCreators(actionCreators,dispatch )
   const [mysteryAvatarResult ,setMysteryAvatarResult] = useState(null);
   const [claimed,setClaimed] =useState(false)
   const toast =useToast();
@@ -36,7 +40,7 @@ const ClaimReward = ({debateResult ,setGoToNext ,activeDebate}) => {
     const {_id} = currentUser;
     const prevAvatars = currentUser?.equipedAvatars ?? []
     try {
-      await updateUserapi(_id ,{
+    const {data} =   await updateUserapi(_id ,{
         equipedAvatars:[
           ...prevAvatars,
           {
@@ -45,6 +49,7 @@ const ClaimReward = ({debateResult ,setGoToNext ,activeDebate}) => {
           }
         ]
       })
+      AddLoggedInUser(data.message);
       await addAvatarEquipedMembersInDebate(debateId,_id)
       setClaimed(true)
       showToast("Avatar Equiped");
