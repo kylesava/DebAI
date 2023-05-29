@@ -31,10 +31,12 @@ const DebateCompletionUi = () => {
      
       setCompletionStep( judgeType ===Enums.AIJUDGE ? Enums.TRANSCRIPT_TAB :Enums.MYSTERY_TAB)
       const myTeamName  =     getMyTeam(teams,currentUser?._id)?.name; 
+      console.log(myTeamName)
       if(!myTeamName){
         setDebateResult("AUDIENCE")
-        setIsAudience(true)
         return setisparticipants(false)
+      }else{
+        setIsAudience(false)
       }
       if(myTeamName===winner){
       setDebateResult(Enums.WON)
@@ -58,7 +60,6 @@ const DebateCompletionUi = () => {
       
     }
   }
-
   return (
     <div 
     className={styles.finishModalContainer}>
@@ -66,7 +67,14 @@ const DebateCompletionUi = () => {
     <div className={styles.modalBodyContent}
     >
           {
-           completionStep &&  completionStep === Enums.MYSTERY_TAB ? <MysteryBox debateResult={debateResult} activeDebate={activeDebate} isAudience={isAudience} handleNext={handleNext}/> :        <Transcript activeDebate={activeDebate}/>
+           completionStep &&  completionStep === Enums.MYSTERY_TAB ?
+            <MysteryBox 
+            debateResult={debateResult}
+            activeDebate={activeDebate}
+            isAudience={isAudience}
+            handleNext={handleNext}/> :      
+            <Transcript
+            activeDebate={activeDebate}/>
           }
     </div>
     </div>
