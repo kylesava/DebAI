@@ -34,9 +34,21 @@ const getTopDebators=async()=>{
     </div>
 
 <div className={styles.top_users_list}>
-{
-    topUsers.map(user=> <User  key={user._id} user={user}/> )
-} 
+    <div className={styles.list_item}>
+    {
+        topUsers.slice(0,5).map(user=>(
+            <User  key={user._id} user={user}/>
+        ))
+    }
+    </div>
+    <div className={styles.list_item}>
+    {
+        topUsers.slice(5,10).map(user=>(
+            <User  key={user._id} user={user}/>
+        ))
+    }
+    </div>
+
 </div>
 
     </div>

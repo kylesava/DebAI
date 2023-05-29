@@ -7,6 +7,11 @@
     padding: 0.4rem 1rem ;
     justify-content: space-between;
     border-radius: 8px;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+.top_user:hover{
+    scale: 1.02;
 }
 .main_info{
     gap: 5px;
@@ -39,4 +44,9 @@ color: rgb(44, 156, 255);
     .top_email{
         font-size: 11px;
         color: rgb(118, 117, 117);
+    }
+
+    .own{
+        /* background-color: rgba(66, 189, 255, 0.816) !important; */
+        border: 2px solid rgb(44, 156, 255) !important;
     }

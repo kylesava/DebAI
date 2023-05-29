@@ -85,14 +85,14 @@ class DebateController {
     try {
       const upcomingDebate = await DebateModel.find({
         admin: userId,
-        startTime: { $gt: new Date() },
+        $and: [
+          { startTime: { $gt: new Date() } },
+      ],
       }).count();
       const liveDebate = await DebateModel.find({
         admin: userId,
-        $and: [
-          { startTime: { $lt: new Date() } },
-          { endTime: { $gt: new Date() } },
-        ],
+        hasEnded:false,
+        startTime: { $lt: new Date() } 
       }).count();
       res
         .status(200)

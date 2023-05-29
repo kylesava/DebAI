@@ -109,7 +109,13 @@
   margin-right: 10px;
 }
 .circle-image {
+  cursor: pointer;
+  transition: all .3s ease;
+  
   border-radius: 50%;
+}
+.circle-image:hover{
+  scale: 1.05;
 }
 .profile_card_user_points{
   display: flex;
