@@ -45,7 +45,6 @@ export const removeLoggedInUserData=()=>{
 
 
 export const getTimeCountDown=(timeInMs , day,hour,min,sec)=>{
-  console.log(timeInMs)
   if(timeInMs){
       const { day,hour,min, sec} =    getTimeFromMs(timeInMs)
       return ` ${day ? `${day > 1 ? `${day}days` :`${day}day`} :` :""}  ${hour ? `${hour > 1 ? "hours":"hour"}:`:""} ${(min ||  hour) ? `${min}min :`:""} ${`${sec}sec`}
@@ -200,7 +199,6 @@ class DebateRoomServices{
     this.showToast=showToast;
     this.debateState = debateStateRef;
     this.changeDebateState=setDebateState
-
     this.changeMicControlTeam= setActiveMicControlTeam;
     this.AddActiveDebate= AddActiveDebate;
     this.setMessage = setMessage;
@@ -230,15 +228,11 @@ class DebateRoomServices{
   }
 
  async  removeParticipant ()  {
-  console.log("removing participants",this.isAudience)
     if (!this.isAudience && this.currentUser && this.activeDebate.current) {
-      console.log("removing")
       try {
         await removeParticipantApi(this.activeDebate?.current?._id, {
           participantId: this.currentUser?._id
         })
-
-
       } catch (error) {
         console.log(error)
       }
@@ -841,7 +835,6 @@ async handleMicTogggle  () {
     this.audioTracks.localAudioTracks.setMuted(false)
     this.setMicMuted(false)
     await this.UpdateChannelAttr("speaker",this.rtcUid.toString())
-    await  SpeechRecognition.startListening()
   }
   else {
     this.audioTracks.localAudioTracks.setMuted(true);
@@ -937,6 +930,7 @@ async handleFinishSpeakTime(isMicPassed)  {
   let debateShot = this.debateState.current.round_shot;
   let totalShot = timeFormat?.length
   let nextRoundShot = ++debateShot;
+  await this.addSpeechToChannel()
   console.log("the currrent round" , this.debateState.current.round_shot ,nextRoundShot)
   try {
  

@@ -12,11 +12,14 @@ import {useSelector} from "react-redux"
 import { getMyTeam } from "../../../utils/services";
 const DebateAction = ({ 
    micMuted, 
-   isUserParticipant 
+   isUserParticipant ,
+   resetTranscript
    , isLive,
    WatchType,
    debateState,
+   setStopListening,
    micControlTeam,
+   setStartListening,
    RoomService,
   roomMembers}) => {
 
@@ -75,7 +78,6 @@ const DebateAction = ({
         })
 
       })
-      console.log("final", TeamArray)
       setTeams(TeamArray)
     }
   }, [activeDebate?.current, roomMembers])
@@ -120,6 +122,12 @@ const DebateAction = ({
   }
  
 const handleStartMicToggle=async()=>{
+  if(micMuted){
+    setStartListening()
+  }else{
+    resetTranscript()
+    setStopListening()
+  }
   await RoomService.handleMicTogggle()
 }
 const handleStartDebate=async()=>{
@@ -135,7 +143,7 @@ const handleLeaveRoom=async()=>{
   }
 }
 
-console.log(micMuted)
+
 
   return (
     <>

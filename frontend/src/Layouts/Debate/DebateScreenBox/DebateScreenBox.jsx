@@ -73,7 +73,6 @@ RoomService
         })
 
       })
-      console.log("final", TeamArray)
       setTeams(TeamArray)
     }
   }, [activeDebate?.current, roomMembers])

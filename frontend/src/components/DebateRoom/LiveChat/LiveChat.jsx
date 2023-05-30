@@ -17,7 +17,6 @@ const LiveChat = () => {
   const {rtmChannel,RoomService} = useSelector(state=>state.other);
   const inputRef = useRef()
   const scrollRef = useRef()
-  console.log(liveMessage)
   useEffect(()=>{
     if(!activeDebate?.current)return ;
     

@@ -5,7 +5,7 @@ import AgoraRTC from 'agora-rtc-sdk-ng'
 import { useDispatch } from "react-redux"
 import AgoraRTM from 'agora-rtm-sdk'
 import {  useNavigate, useParams, useSearchParams } from "react-router-dom"
-import  { useSpeechRecognition } from 'react-speech-recognition'
+import SpeechRecognition , { useSpeechRecognition } from 'react-speech-recognition'
 import { useEffect, useLayoutEffect, useState, useRef } from "react"
 import DebateScreenBox from "../../Layouts/Debate/DebateScreenBox/DebateScreenBox"
 import Participants from "../../Layouts/Debate/Participants/Participants"
@@ -79,7 +79,7 @@ const DebateRoom = () => {
 
   }
   const hasLeftRoom = useRef(false)
-  const {transcript,resetTranscript} = useSpeechRecognition()
+  const {transcript,resetTranscript , listening} = useSpeechRecognition()
   const RoomService = new DebateRoomServices({
     data,
     isLive,
@@ -260,7 +260,7 @@ const DebateRoom = () => {
 
 
 
-
+  console.log(transcript ,listening  )
 
 
 
@@ -360,6 +360,9 @@ const DebateRoom = () => {
           WatchType={WatchType}
           RoomService={RoomService}
           setMicMuted={setMicMuted}
+          resetTranscript={resetTranscript}
+          setStartListening={()=>SpeechRecognition.startListening({continuous:true})}
+          setStopListening={()=>SpeechRecognition.stopListening()}
           roomMembers={RoomMembers}
           debateState={debateState}
           micControlTeam={activeMicControlTeam}
