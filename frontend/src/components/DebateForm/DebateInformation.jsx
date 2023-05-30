@@ -1,6 +1,6 @@
 import {useState ,useEffect} from "react"
 
-const DebateInformation = ({debateType,debateForm,handleInputChange}) => {
+const DebateInformation = ({debateType}) => {
 
 
     const [ debateInfo,setDebateInfo] =useState(null)
@@ -12,10 +12,6 @@ const DebateInformation = ({debateType,debateForm,handleInputChange}) => {
      
     }, [debateType  ])
     
-    // const DebateTypeInputsMapping={
-    //     british_parliamentry:<ParliamentaryInputs debateForm={debateForm} handleInputChange={handleInputChange}/>
-    // }
-
 
  
   return (

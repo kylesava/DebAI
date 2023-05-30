@@ -84,7 +84,6 @@ useEffect(()=>{
     let missing= false ;
     for(let key in debateForm){
       if(!debateForm[key] && key !=="teams" ){
-        console.log("missing",key)
          missing = true;
       }
     }
@@ -125,13 +124,7 @@ useEffect(()=>{
   const handleCreateDebate = async () => {
 
     if (!currentUser) {
-      toast({
-        description: "You need to login first.",
-        status: 'error',
-        duration: 5000,
-        position: "top",
-        isClosable: true,
-      })
+      handleShowAlert( `You need to login first.`,"error")
       return
     }
 
@@ -139,15 +132,6 @@ useEffect(()=>{
     let theTeams = theFormCopy.teams.map(team => ({ ...team, members: team.members.map(member => member._id) }))
 
     const date = new Date(theFormCopy.startTime);
-
-
-    // Add milliseconds to the date
-
-
-    // Convert the updated date back to UTC format
-
-
-
 
     // payloadData.teams;
     let thePayload = {
@@ -173,25 +157,13 @@ useEffect(()=>{
         const res = await createDebateApi(thePayload)
         if (res.status === 200) {
           const {message} = res.data
-          toast({
-            description: "Debate created successfully",
-            status: 'success',
-            duration: 5000,
-            position: "top",
-            isClosable: true,
-          })
+          handleShowAlert( `Debate successfully created.`,"error")
           navigate(`/debate/${message?.passcode}`)
         } else {
           throw Error(res.data.message)
         }
       } catch (error) {
-        toast({
-          description: "Something went wrong while creating debate",
-          status: 'error',
-          duration: 5000,
-          position: "top",
-          isClosable: true,
-        })
+          handleShowAlert( `Something went wrong..`,"error")
 
         console.log(error.message)
       }
@@ -205,13 +177,7 @@ useEffect(()=>{
     setStartTime(value);
     let startDateInMs = new Date(value).getTime() < new Date().getTime();
     if (startDateInMs) {
-      toast({
-        description: "Please choose the future date.",
-        status: 'error',
-        duration: 5000,
-        position: "top",
-        isClosable: true,
-      })
+      handleShowAlert( `Choose the future date.`,"error")
       return
     }
 
@@ -219,7 +185,7 @@ useEffect(()=>{
       ...prev, startTime: new Date(value).getTime()
     }))
   }
-
+// 
   const handleInstatDebateChange = (string) => {
 
     let durationInMs = 1000 * 60;
@@ -254,71 +220,37 @@ useEffect(()=>{
     // alert(`${missingField.map((key) => key).join("/") } fields are missing`)
     if (missingField.length > 0) {
 
-      toast({
-        description: `${missingField.map((key) => key).join("/")} fields are missing`,
-        status: 'error',
-        duration: 5000,
-        position: "top",
-        isClosable: true,
-      })
+ 
+      handleShowAlert(`${missingField.map((key) => key).join(",")} fields are missing`,"error")
       return false;
     }
 
     if (durationType === "Set Duration") {
       const hasMoreThanOneMember = payload.teams.every(team => team.members.length >= 1);
       if (!hasMoreThanOneMember) {
-        toast({
-          description: `Add atleast one member.`,
-          status: 'error',
-          duration: 5000,
-          position: "top",
-          isClosable: true,
-        })
+        handleShowAlert(" `Add atleast one member`","error")
         return false
       }
     } else {
       const hasOnlyOneMember = payload.teams.every(team => team.members.length === 1);
       if (!hasOnlyOneMember) {
-        toast({
-          description: `Quick Debate should  have  one member.`,
-          status: 'error',
-          duration: 5000,
-          position: "top",
-          isClosable: true,
-        })
+          handleShowAlert(" `Quick debate should have one member`","error")
         return false
       }
     }
     const hasTopic = payload.teams.every(team => team.name);
     if (!hasTopic) {
-      toast({
-        description: `Team name is required.`,
-        status: 'error',
-        duration: 5000,
-        position: "top",
-        isClosable: true,
-      })
+            handleShowAlert(" `Team name is required`","error")
       return false
     }
     if (payload.duration <= 0) {
-      toast({
-        description: `Duration should not be  0.`,
-        status: 'error',
-        duration: 5000,
-        position: "top",
-        isClosable: true,
-      })
+      handleShowAlert(" `Duration should not be  0`","error")
+
       return false
     }
 
     if(payload.teams[0]?.name === payload.teams[1]?.name) {
-      toast({
-        description: `Teams should not have the same name`,
-        status: 'error',
-        duration: 5000,
-        position: "top",
-        isClosable: true,
-      });
+      handleShowAlert(" `Teams should not have the same name`","error")
       return false
     }
 
@@ -398,6 +330,16 @@ if(formatArr){
 
 }
 
+  const handleShowAlert=(text,type)=>{
+    toast({
+      description: text,
+      status: type,
+      duration: 5000,
+      position: "top",
+      isClosable: true,
+    });
+
+  }
 
   return (
     <div className='DebateFormWrapper'>
