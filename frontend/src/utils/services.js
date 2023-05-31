@@ -972,6 +972,17 @@ if(!this.activeDebate?.current || !this.currentUser)return
  return this.activeDebate.current.teams.some(team=>team.members.some(mem=>mem._id ===this.currentUser?._id));
   
 }
+async getArgument(){
+  try {
+    
+    const attr =  await this.getChannelAttributeFunc();
+    let  speechText = attr?.speechText?.value;
+    const thePast = speechText ? JSON.parse(speechText) : {}
+    console.log(thePast)
+  } catch (error) {
+    console.log(error)
+  }
+}
 }
 
 export  { DebateRoomServices}

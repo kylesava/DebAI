@@ -27,7 +27,7 @@ class DebateController {
             { startTime: { $lt: new Date() } },
             {hasEnded:false}
           ],
-        }).populate(["admin", "teams.members", "joinedParticipants"]);
+        }).populate(["admin", "teams.members", "joinedParticipants"]).sort({startTime:-1})
       } else if (req.query.upcoming) {
         fetchedDebate = await DebateModel.find({
           startTime: { $gt: new Date() },

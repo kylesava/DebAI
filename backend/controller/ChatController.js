@@ -1,6 +1,8 @@
 const openAi = require("../index")
 const ChatModel = require("../models/ChatModel")
 const DebateModel = require("../models/DebateModel")
+const UserModel = require("../models/UserModel")
+const { getOpenAiResponse } = require("../services/UtilityMethods")
 class ChatController{
 
     async createChat(req,res){
@@ -29,8 +31,9 @@ class ChatController{
     }
 
 
-    async chatBot(req,res){
-        const {debateId} = req.query
+    async chatBot(req,res,next){
+        const {debateId} = req.query;
+        const {teams} =  req.body;
         try {
             const prompt = req.body.prompt
             const response = await openAi.createCompletion({
@@ -39,20 +42,44 @@ class ChatController{
                 temperature: 0.5,
                 max_tokens:512,
                 top_p: 1,
-            frequency_penalty: 0.0,
-            presence_penalty: 0,
+                frequency_penalty: 0.0,
+                presence_penalty: 0,
             
         })
-        if( debateId !=="undefined"){
+
+            if(debateId){
+            
+            let text = response.data?.choices[0].text;
+            let textARr = text.split(" ")
+            let lastLine = textARr.splice(-30);
+            lastLine = lastLine.join(" ");
+            let prompt = `give one word answer .  Give the name of the winner from the following text : ${lastLine}`
+            let winner  =  await  getOpenAiResponse(prompt)
+            winner =  winner.replace(/\n\n/g, '');
+            console.log(winner,lastLine)
+            const winnerTeam = teams.filter(team=>team.name.toLowerCase()===winner.toLowerCase()).flatMap(team=>team.members.map(mem=>mem._id));
+            const loserTeam = teams.filter(team=>team.name.toLowerCase() !==winner.toLowerCase()).flatMap(team=>team.members.map(mem=>mem._id));
+
+            
+
+            req.body.winnerTeam = winnerTeam;
+            req.body.loserTeam = loserTeam
+            req.body.winner = winner;
 
             await DebateModel.findByIdAndUpdate(debateId,{
-                $set:{
-                    transcript :response.data?.choices[0].text,
-                    hasEnded:true
-                }
+                hasEnded:true,
+                winner:winner,
             })
-        }
-        return res.status(200).json({ message: response.data?.choices[0].text, uid:Date.now() , success: true })
+            
+            // console.log(winnerTeam,loserTeam,winner,req.body)
+            next()
+
+            }else{
+
+                
+                
+                return res.status(200).json({message:response.data?.choices[0].text,success:true})
+            }
     } catch (error) {
         console.log(error)
         return res.status(500).json({ message: error, success: false })
@@ -63,3 +90,5 @@ class ChatController{
 }
 
 module.exports = new ChatController()
+
+

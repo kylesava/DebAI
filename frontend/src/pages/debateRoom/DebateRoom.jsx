@@ -34,7 +34,7 @@ const DebateRoom = () => {
   debateId = debateId.toString()
   const dispatch = useDispatch()
   const rtmChannelRef = useRef()
-  const { AddActiveDebate, addLiveMessages, SetRoomIsLiveOrNot, SetIsUserParticipant, setRtmChannelAction, setIsLoading, SetRoomLoading ,setRoomService } = bindActionCreators(actionCreators, dispatch)
+  const { AddActiveDebate, addLiveMessages, SetRoomIsLiveOrNot, SetIsUserParticipant, setRtmChannelAction,  SetRoomLoading ,setRoomService } = bindActionCreators(actionCreators, dispatch)
   const [activeMicControlTeam, setActiveMicControlTeam] = useState(null)
   const [audioTracks, setAudioTracks] = useState({
     localAudioTracks: null,
@@ -218,6 +218,11 @@ const DebateRoom = () => {
     }
   }, [data, activeDebateRef.current?.teams])
 
+
+  console.log("speakers",activeSpeakers)
+  console.log("members",RoomMembers)
+
+
   useEffect(() => {
 
 
@@ -260,8 +265,7 @@ const DebateRoom = () => {
 
 
 
-  console.log(transcript ,listening  )
-
+  console.log( RoomMembers, transcript ,listening  )
 
 
   
@@ -315,7 +319,7 @@ const DebateRoom = () => {
       {
        (startAnalyze ) && <AnalyzeResultModal activeDebate={activeDebateRef.current}/>
       }
-      <div  className='DebateRoomWrapper' onClick={()=>RoomService.getChannelAttributeFunc()} >
+      <div  className='DebateRoomWrapper' onClick={()=>RoomService.getArgument()} >
         <div className='debate_room_top_header'>
           {isLive &&
             <div className="debate_room_top_header_left">
@@ -384,5 +388,4 @@ const DebateRoom = () => {
 }
 
 export default DebateRoom
-
 

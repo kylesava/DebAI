@@ -1,3 +1,4 @@
+const openAi = require("../index");
 const { stripe } = require("../utils/stripe");
 const moment = require("moment");
 
@@ -48,6 +49,24 @@ class UtilityMethods {
         return false;
       }
     });
+  }
+
+  async getOpenAiResponse(prompt){
+    try {
+        const res =  await openAi.createCompletion({
+          model: "text-davinci-003",
+          prompt,
+          temperature: 0.5,
+          max_tokens:512,
+          top_p: 1,
+          frequency_penalty: 0.0,
+          presence_penalty: 0,
+      
+  })
+    return res.data?.choices[0].text;
+    } catch (error) {
+      return error.message
+    }
   }
 }
 module.exports = new UtilityMethods();

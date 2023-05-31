@@ -155,7 +155,8 @@ class UserController {
   async handleRateUser(req,res){
     const {winnerTeam,loserTeam, winner:winnerName ,allUsers } = req.body;
      
-    let winnerPoint =10 ;
+    console.log("inside rate",winnerTeam,loserTeam,winnerName)
+    let winnerPoint = 10 ;
     let loserPoint = -8;
 
     try {
@@ -175,12 +176,12 @@ class UserController {
             _id:{$in:winnerTeam}
           },
           {
-            $inc:{points:winnerPoint}
+            $inc:{points: winnerPoint}
           }
         )  
         await UserModel.updateMany(
           {
-            _id:{$in:loserTeam}
+            _id:{$in: loserTeam}
           },
           {
             $inc:{points:loserPoint}
