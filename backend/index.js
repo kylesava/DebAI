@@ -5,6 +5,7 @@ const MongoStore = require("connect-mongo");
 const passport = require("passport");
 const cookieParser = require("cookie-parser")
 const Emitter = require("events")
+const cron = require("node-cron")
 const { Configuration, OpenAIApi } = require("openai")
 const morgan = require("morgan")
 const http = require("http")
@@ -20,10 +21,8 @@ const io = new  Server(server,{
 // const so 
 const cors = require("cors");
 const Enums = require("./utils/Enums");
+const {endTheDebateAfterTwoDays}=require("./services/autoScript")
 require("dotenv").config()
-
-
-
 
 app.use(cors({
     origin: [
@@ -39,7 +38,6 @@ app.use(function (req, res, next) {
     next();
 });
 app.set('trust proxy', 1) // trust first proxy
-
 const configuration = new Configuration({
     apiKey: process.env.OPEN_AI_API
 });
@@ -61,8 +59,6 @@ const store = MongoStore.create({
     ttl: 31556952000,
     autoRemove: 'native',
 })
-
-
 app.use(session({
     name: "debatosour.sid",
     secret: "helloworld",
@@ -76,10 +72,11 @@ app.use(session({
         httpOnly: true,
     },
 }))
+
 // middlewares
 app.use(passport.initialize())
 app.use(passport.session());
-
+cron.schedule("0 0 * * *",endTheDebateAfterTwoDays)
 io.on("connection",(socket)=>{
     console.log("someone connected")
 })

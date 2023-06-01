@@ -176,13 +176,7 @@ export const generateArgument =({
 
 
 return `
- GIVE THE TITLE OF THIS DEBATE INCLUDING THE WINNERS NAME AT THE LAST LINE I WANT A JAVASCRIPT CODE AN OBJECT WITH PROPERTY WINNER ENCLOSED IN CURLY BRASIS {} . AND ITS VALUE SUMMERIZE THE BELOW DEBATE IN 300 WORDS AND 3 PARAGRAPHS . This debate was started in ${startedTime} . This type of debate was  ${debateType} . the debate was on ${topic}. 
-
- . THERE ARE TWO TEAMS "${teamOne}" and "${teamTwo}" .  The argument of the debate is below in the form of array of object . but i want response in palin text except for the last line that i mentioned above. 
- 
-  There are two object one with ${teamOne} team speech and another ${teamTwo} teams speech . Now I want you to analyze this debate and choose the debate winner . And also explain why that team won the debate . And the decision should be precised . The debate should not be tied . There should be only one winner const arguments=[ ${teamOne}:{ ${speechOne} } , ${teamTwo}:{ ${speechTwo} } ]
-
-
+SUMMERIZE THE BELOW DEBATE IN 300 WORDS AND 3 PARAGRAPHS. MOST IMPORTANTLY THE TEAMS NAME IN THE RESPONSE SHOULD BE SAME AS IT IS IN THE PROMPT WITH THE SAME LETTER CASE NO CHANGE IN THE SPELLING . THE LAST LINE OF YOUR RESPONSE SHOULD START WITH  THE NAME OF THE WINNER TEAM.      .With the debate heading at the top with the winner team name   .THERE ARE TWO TEAMS ${teamOne} and ${teamTwo} . This debate was started in ${startedTime}. The type of debate was ${debateType} . the debate was on topic ${topic} .There are two object in an arry one for ${teamOne} team's speech and another ${teamTwo} teams speech . Now I want you to analyze this debate and choose the debate winner . And also explain why that team won the debate . And the decision should be precised . The debate should not be tied . There should be only one winner const arguments=[ ${teamOne} :{${speechOne} } , ${teamTwo}: {${speechTwo}} ]
 `
 
 }
@@ -539,7 +533,7 @@ console.log(error)
     const [teamOne,teamTwo] =  this.getTeamName()
      const speechOne =  speech[teamOne];
      const speechTwo = speech[teamTwo];
-     let {startTime , topic  ,type ,_id } = this.activeDebate.current;
+     let {startTime , topic  ,type ,_id ,teams } = this.activeDebate.current;
      startTime = moment(startTime).format('LLLL');
 
    const theArgumentext =   generateArgument({
@@ -552,7 +546,7 @@ console.log(error)
       startedTime:startTime
   })
 try {
-  await  chatBotApi(theArgumentext,_id)
+  await  chatBotApi(theArgumentext,_id ,teams)
 } catch (error) {
   console.log(error)
 }

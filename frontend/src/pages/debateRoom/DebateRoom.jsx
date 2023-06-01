@@ -126,9 +126,7 @@ const DebateRoom = () => {
   useEffect(() => {
 
     return async () => {
-      console.log("clearnup funtion")
       if (hasLeftRoom.current) return;
-      console.log("clearnup funtion1")
       await RoomService.closeTracks()
       await RoomService.removeParticipant()
       AddActiveDebate(null)
@@ -147,9 +145,10 @@ const DebateRoom = () => {
   },[activeDebateRef.current])
 
   useLayoutEffect(() => {
-    if (!isLive) return;
+    if (!isLive && !activeDebate?.current ) return;
+    if(activeDebate?.current?.hasEnded)return;
     RoomService.getAgoraToken()
-  }, [isLive]);
+  }, [isLive , activeDebate?.current?.hasEnded]);
 
   useEffect(() => {
     debateStateRef.current = debateState
@@ -218,9 +217,12 @@ const DebateRoom = () => {
     }
   }, [data, activeDebateRef.current?.teams])
 
-
-  console.log("speakers",activeSpeakers)
-  console.log("members",RoomMembers)
+  useEffect(()=>{
+    if(activeDebate?.current?.hasEnded){
+      const {_id} = activeDebate.current
+      navigate(`/completion/${_id}`)
+    }
+  },[activeDebate?.current])
 
 
   useEffect(() => {
@@ -265,7 +267,6 @@ const DebateRoom = () => {
 
 
 
-  console.log( RoomMembers, transcript ,listening  )
 
 
   

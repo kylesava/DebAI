@@ -26,7 +26,7 @@ const ClaimReward = ({debateResult ,setGoToNext ,activeDebate}) => {
     if(!activeDebate || !currentUser)return;
 
    setClaimed(activeDebate.avatarEquipedMembers.some(mem=>mem === currentUser._id))
-
+  setGoToNext(activeDebate.avatarEquipedMembers.some(mem=>mem === currentUser._id))
   },[activeDebate ,currentUser])
 
 

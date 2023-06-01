@@ -10,10 +10,10 @@ import { Enums } from "../../../redux/action/actionTypes/Enumss"
 
 
 const DebateCompletionUi = () => {
-  const [ completionStep,setCompletionStep ] =useState("")
+  const [ completionStep,setCompletionStep ] =useState(Enums.MYSTERY_TAB)
   const {data:currentUser} =useSelector(state=>state.user)
   const [activeDebate,setActiveDebate] = useState(null)
-  const handleNext =()=>setCompletionStep("translate")
+  const handleNext =(type)=>setCompletionStep(type)
   const [debateResult,setDebateResult] =useState("")
   const [isAudience,setIsAudience] =  useState(true)
   const {debateId} = useParams();  
@@ -24,21 +24,18 @@ const DebateCompletionUi = () => {
     fetchDebateById()
   },[debateId])
  
+
   useEffect(()=>{
     if(activeDebate && currentUser){
-      
-      const {winner,teams,judgeType} = activeDebate;
-     
-      setCompletionStep( judgeType ===Enums.AIJUDGE ? Enums.TRANSCRIPT_TAB :Enums.MYSTERY_TAB)
+      const {winner,teams} = activeDebate;
       const myTeamName  =     getMyTeam(teams,currentUser?._id)?.name; 
-      console.log(myTeamName)
       if(!myTeamName){
         setDebateResult("AUDIENCE")
         return setisparticipants(false)
       }else{
         setIsAudience(false)
       }
-      if(myTeamName===winner){
+      if(myTeamName.toLowerCase()===winner.toLowerCase()){
       setDebateResult(Enums.WON)
     }else if(Enums.MATCH_TIED === winner){
       setDebateResult(Enums.TIED)
@@ -74,7 +71,8 @@ const DebateCompletionUi = () => {
             isAudience={isAudience}
             handleNext={handleNext}/> :      
             <Transcript
-            activeDebate={activeDebate}/>
+            activeDebate={activeDebate}
+            handleNext={handleNext}/> 
           }
     </div>
     </div>

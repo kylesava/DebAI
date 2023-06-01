@@ -20,12 +20,13 @@ const MysteryBox = ({handleNext ,debateResult ,activeDebate ,isAudience}) => {
     if(!activeDebate)return;
     const {judgeType:type} = activeDebate;
     setJudgeType(type)
-   setBothTeams(getNameAndVoteOfTeams(activeDebate.teams))
+     setBothTeams(getNameAndVoteOfTeams(activeDebate.teams))
 
   },[activeDebate])
 
 
   const getResultText=()=>{
+    if(!activeDebate || !debateResult)return;
     if(debateResult===Enums.WON){
      return  `Your team won the debate`
     }else if(debateResult===Enums.LOSE){
@@ -57,15 +58,15 @@ const MysteryBox = ({handleNext ,debateResult ,activeDebate ,isAudience}) => {
       transition={{ duration: 0.5 ,bounce:200 }}
       className={styles.modelContent}
     >
-
     <div className={styles.top_winning_team}>
         <img  className={styles.win_logo} width="40" height="40" src="https://img.icons8.com/external-smashingstocks-flat-smashing-stocks/66/external-Win-casino-smashingstocks-flat-smashing-stocks.png" alt="external-Win-casino-smashingstocks-flat-smashing-stocks"/>
         <h1 className={styles.winning_team_text}> {getResultText()}</h1> 
         </div>
+      <h1 className={styles.debate_topic}>{activeDebate?.topic}</h1>
         <div className={styles.vote_count_box}>
           {
 
-            bothTeams.map((team,index)=>(
+           activeDebate?.judgeType !==Enums.AIJUDGE  &&  bothTeams.map((team,index)=>(
               <>
             <div key={index} className={`${styles.vote_button_count } ${ index===0 && styles.winning_team_vote}`}   >
               {
@@ -81,10 +82,10 @@ const MysteryBox = ({handleNext ,debateResult ,activeDebate ,isAudience}) => {
       }
         </div>
       {
- !isAudience &&        <ClaimReward activeDebate={activeDebate} setGoToNext={setGoToNext} debateResult={debateResult}/>
+ !isAudience && <ClaimReward activeDebate={activeDebate} setGoToNext={setGoToNext} debateResult={debateResult}/>
       } 
        {
-         ( judgeType===Enums.AIJUDGE &&  goToNext && !isAudience) && <button className={styles.nextButton} onClick={handleNext}>
+         ( judgeType===Enums.AIJUDGE &&  goToNext ) && <button className={styles.nextButton} onClick={()=>handleNext(Enums.TRANSCRIPT_TAB)}>
           <GrFormNextLink className={styles.nextIcon}/>
           Next
         </button>

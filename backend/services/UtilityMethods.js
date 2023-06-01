@@ -1,4 +1,5 @@
 const openAi = require("../index");
+const DebateModel = require("../models/DebateModel");
 const { stripe } = require("../utils/stripe");
 const moment = require("moment");
 
@@ -68,5 +69,8 @@ class UtilityMethods {
       return error.message
     }
   }
+
+
+
 }
 module.exports = new UtilityMethods();

@@ -10,8 +10,6 @@ import "./DebateCard.css"
 import { deleteDebateApi } from "../../../utils/Api"
 
 const DebateCard = ({ debate, isLive }) => {
-
-
   const location = useLocation().pathname.split("/")[1]
   const [isParticipant, setIsParticipant] = useState(null)
   const { data } = useSelector((state) => state.user)
@@ -154,7 +152,7 @@ const DebateCard = ({ debate, isLive }) => {
             </button>
           }
 
-          <Link to={`/debate/${debate?.passcode}?audience=${true}`} state={{debate}}>
+          <Link to={`${debate.hasEnded ? `/completion/${debate?._id}`:`/debate/${debate?.passcode}?audience=${true}`}` }  state={{debate}}>
             <button> <MdOutlineViewInAr /> <p> {isLive ? "Watch" : "View Debate"} </p> </button>
           </Link>
             {

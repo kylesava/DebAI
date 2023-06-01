@@ -2,13 +2,15 @@ import styles from "./Transcript.module.css"
 import DebateTranscriptModal from "../../../Layouts/modal/DebateFinishedModal/DebateTranscriptModal"
 import {motion} from "framer-motion"
 import { useEffect, useState } from "react"
-const Transcript = ({activeDebate}) => {
+import { BiArrowBack } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
+import { Enums } from "../../../redux/action/actionTypes/Enumss";
+const Transcript = ({activeDebate ,handleNext}) => {
 
 
 
 
   const [ transcriptText,setTranscriptText ] =useState([]);
-
   
 
 useEffect(()=>{
@@ -48,6 +50,9 @@ useEffect(()=>{
     
     transition={{ duration: 0.5 ,bounce:200 }}
     className={styles.modelContent}>
+      <button className={styles.nextButton}>
+       <BiArrowBack onClick={()=>handleNext(Enums.MYSTERY_TAB)}/>
+      </button>
             <div className={styles.transcript_header}>
 
                 <img width={"60"} height={"60"} src="/icons/transcript.png" alt="tanscriptIcon" />

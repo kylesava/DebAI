@@ -1,5 +1,5 @@
 const { createDebate, getDebate,handleDebateEnd, updateDebate, getSingleDebate, deleteDebate  ,removeParticipant,joinedParticipant, usersDebateCounts, voteTeam, voteAndUnVote, unVoteTeam, checkIfPasscodeIsUnique, getDebateOfUser, addAvatarEquipedMembersInDebate } = require("../controller/DebateController");
-const {handleRateUser} = require("../controller/UserController")
+const {handleRateUser} = require("../controller/UserController");
 const router = require("express").Router()
 
 router.post("/vote",voteTeam)
