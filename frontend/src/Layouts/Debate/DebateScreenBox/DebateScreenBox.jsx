@@ -172,10 +172,7 @@ RoomService
                 <div className='screen_box_header'>
 
                   <h4 className='team_name teamOne'>{teams[0]?.name}</h4>
-                  {
-                    ((isLive && activeMicControlTeam?.name === teams[0]?.name) || (activeMicControlTeam === "both" && isLive)) && <div className="mic_control_wrapper">
-                      <TbMicrophone2 className={"team_mic_icon"} /></div>
-                  }
+              
 
                 </div>
                 <div className="left_team">
@@ -190,17 +187,11 @@ RoomService
                     !isLive &&
                     <NotStartedView team={activeDebate?.current?.teams[0]?.members} />
                   }
-
                 </div>
               </div>
               <div className='box_wrappers pink_wrapper'>
 
                 <div className='screen_box_header'>
-                  {
-                    ((isLive && activeMicControlTeam?.name === teams[1]?.name) || (activeMicControlTeam === "both" && isLive)) &&
-                    <div className="mic_control_wrapper"> <TbMicrophone2 className={"team_mic_icon"} />
-                    </div>
-                  }
                   <div className='team_name teamTwo'> {teams[1]?.name}</div>
                 </div>
                 <div className="right_team">
@@ -215,7 +206,6 @@ RoomService
                 </div>
               </div>
             </>
-
             :
             <DebateScreenSkeleton />
         }

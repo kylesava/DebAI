@@ -12,7 +12,7 @@ import Participants from "../../Layouts/Debate/Participants/Participants"
 import Navbar from "../../Layouts/Navbar/Navbar"
 import LiveChat from "../../components/DebateRoom/LiveChat/LiveChat"
 import {  getDebateByPassocde } from "../../utils/Api"
-import { DebateRoomServices, getTimeCountDown, getTimeFromMs } from "../../utils/services"
+import { DebateRoomServices, getTime, getTimeCountDown, getTimeFromMs } from "../../utils/services"
 import { actionCreators } from "../../redux/store"
 import DebateAction from "../../components/DebateRoom/DebateAction/DebateAction"
 import "./DebateRoom.css"
@@ -65,7 +65,6 @@ const DebateRoom = () => {
     isPaused: false,
     both: false,
     remainingTime: 0,
-
   })
   const showToast = (message, type) => {
     toast({
@@ -136,7 +135,6 @@ const DebateRoom = () => {
   if(activeDebateRef.current){
 
     const {admin:{_id}} = activeDebateRef.current;
-
     lastApiCallConfig.current={
       ...lastApiCallConfig.current,
       admin:_id
@@ -145,7 +143,7 @@ const DebateRoom = () => {
   },[activeDebateRef.current])
 
   useLayoutEffect(() => {
-    if (!isLive && !activeDebate?.current ) return;
+    if (!isLive && !activeDebate?.current) return;
     if(activeDebate?.current?.hasEnded)return;
     RoomService.getAgoraToken()
   }, [isLive , activeDebate?.current?.hasEnded]);
@@ -245,12 +243,9 @@ const DebateRoom = () => {
   useEffect(() => {
 
 
-    if (!Rtm_client || !rtmChannelRef.current) return;
+    if (!Rtm_client || !rtmChannelRef.current || !activeDebateRef.current) return;
     setInitialDebateState()
-
-
-
-  }, [rtmChannelRef.current])
+  }, [rtmChannelRef.current , activeDebateRef?.current])
 
   useEffect(()=>{
     if(lastApiCallConfig.current.hasApiCalled){
@@ -275,9 +270,18 @@ const DebateRoom = () => {
     try {
     const attr = await RoomService.getChannelAttributeFunc()
     let { speakersData, debateRounds } = attr;
+    if(!speakersData || !debateRounds){
+      const {state} = activeDebateRef.current;
+      const {speakTeam} =state;
+      setDebateState(state)
+      setActiveMicControlTeam(speakTeam ?? null);
+      return ;
+    }
+
     if (speakersData) {
       speakersData = JSON.parse(speakersData?.value);
       const activeSpeakerTeam = speakersData;
+
       if (activeSpeakerTeam === "null") {
         setActiveMicControlTeam(null)
       } else if (activeSpeakerTeam === "both") {
@@ -304,11 +308,10 @@ const DebateRoom = () => {
       const res = await getDebateByPassocde(debateId)
       if (res.status !== 200) throw Error(res.data.message)
       activeDebateRef.current = res.data.message[0];
-
       AddActiveDebate(activeDebateRef);
 
     } catch (error) {
-      console.log(error)
+      console.log(error.message)
     }
   }
 
@@ -334,7 +337,7 @@ const DebateRoom = () => {
               <div>
 
                 <h1 className="main_timing_text">
-                  {`ROUND FINISH IN ${getTimeCountDown(timeRemainingRef.current)} `}
+                  {`ROUND FINISH IN ${getTime(timeRemainingRef.current)} `}
                 </h1>
               </div>
             </>

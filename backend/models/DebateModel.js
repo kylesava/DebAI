@@ -50,6 +50,18 @@ const MongooseSchema = mongoose.Schema({
         type: Number, // milliseconds
         required: [true, "starting time is required"]
     },
+    state:{
+        round_shot: 0,
+        speakTime: 0,
+        speakTeam: "",
+        isStarted: false,
+        hasFinished: false,
+        changedAt: 0,
+        startedAt: 0,
+        isPaused: false,
+        both: false,
+        remainingTime: 0,
+    },
     endTime: {
         type: Number, // milliseconds
         required: [true, "endTime time is required"]

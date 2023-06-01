@@ -56,6 +56,14 @@ export const getTimeCountDown=(timeInMs , day,hour,min,sec)=>{
   }
 }
 
+
+export const getTime=(diff)=>{
+  let min = Math.floor(diff / (1000 * 60));
+  let sec = Math.floor((diff / 1000) % 60);
+
+  return `${min ? `${min}min : `:"" } ${sec}sec`
+}
+
 export const getTimeFromMs=(startTime)=>{
     const currentTime = Date.now();
     const timeDifference = startTime - currentTime;
