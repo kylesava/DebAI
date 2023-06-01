@@ -62,6 +62,15 @@ const SpeakTimeLeft = ({debateState,countDown ,startTeam}) => {
             
             <td className="speak_time_value">{activeDebate?.current?.timeFormat?.length}</td>
           </tr>
+          <tr className="speakTime_item" >
+            <td className="speakTime_title">
+
+            <RiTimerFlashFill/>
+            <p className="speak_time_key">Judge Type  </p>
+            </td>
+            
+            <td className="speak_time_value">{activeDebate?.current?.judgeType}</td>
+          </tr>
           {
            ( debateState?.isStarted || debateState?.isPaused ) &&
             <tr className="speakTime_item" >
@@ -73,6 +82,7 @@ const SpeakTimeLeft = ({debateState,countDown ,startTeam}) => {
             
             <td className="speak_time_value">{debateState?.round_shot}</td>
           </tr>
+          
           }
       {
 
@@ -95,6 +105,7 @@ const SpeakTimeLeft = ({debateState,countDown ,startTeam}) => {
             
             <td className="speak_time_value">{countDown?.min} min &nbsp; {countDown?.sec} sec</td>
           </tr>
+          
           }
       </tbody>
         </table>

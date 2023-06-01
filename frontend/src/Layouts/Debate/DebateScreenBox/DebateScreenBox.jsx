@@ -28,7 +28,7 @@ RoomService
 
 
   useEffect(() => {
-    if (activeDebate?.current) {
+    if (activeDebate?.current && roomMembers) {
       let speakerTeams = roomMembers.filter(speaker => {
         return activeDebate?.current.teams.some(team => {
           return team.members.some(member => {

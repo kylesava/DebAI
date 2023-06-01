@@ -241,10 +241,8 @@ const DebateRoom = () => {
 
   }, [isLive, activeSpeakers, activeDebateRef.current])
   useEffect(() => {
-
-
     if (!Rtm_client || !rtmChannelRef.current || !activeDebateRef.current) return;
-    setInitialDebateState()
+    RoomService.setInitialDebateState()
   }, [rtmChannelRef.current , activeDebateRef?.current])
 
   useEffect(()=>{
@@ -260,47 +258,6 @@ const DebateRoom = () => {
   },[lastApiCallConfig.current.startApiCalled])
 
 
-
-
-
-
-  
-
-  const setInitialDebateState = async () => {
-    try {
-    const attr = await RoomService.getChannelAttributeFunc()
-    let { speakersData, debateRounds } = attr;
-    if(!speakersData || !debateRounds){
-      const {state} = activeDebateRef.current;
-      const {speakTeam} =state;
-      setDebateState(state)
-      setActiveMicControlTeam(speakTeam ?? null);
-      return ;
-    }
-
-    if (speakersData) {
-      speakersData = JSON.parse(speakersData?.value);
-      const activeSpeakerTeam = speakersData;
-
-      if (activeSpeakerTeam === "null") {
-        setActiveMicControlTeam(null)
-      } else if (activeSpeakerTeam === "both") {
-        setActiveMicControlTeam("both")
-      } else {
-        setActiveMicControlTeam(RoomService.getTeamDataByName(activeSpeakerTeam.teamName))
-      }
-    } else {
-      setActiveMicControlTeam(null);
-    }
-    if (debateRounds) {
-      debateRounds = JSON.parse(debateRounds?.value)
-      setDebateState(debateRounds);
-    }
-  } catch (error) {
-      console.log(error)
-  }
-  }
-
   
   const fetchDebateById = async () => {
     if (!debateId) return;
@@ -315,6 +272,8 @@ const DebateRoom = () => {
     }
   }
 
+  console.log("room Members",RoomMembers)
+  console.log("active speakers",activeSpeakers)
 
 
   return (

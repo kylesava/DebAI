@@ -93,8 +93,11 @@ const MongooseSchema = mongoose.Schema({
     },
     winner:{
     },
-    // debate_arguments:{},
     transcript:String,
-    avatarEquipedMembers:[User]
+    avatarEquipedMembers:[User],
+    arguments:Object,
 },{timestamps:true});
-module.exports = mongoose.model("Debate", MongooseSchema)
+
+module.exports = mongoose.model("Debate", MongooseSchema);
+
+
