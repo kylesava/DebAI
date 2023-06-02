@@ -87,6 +87,7 @@
   margin: 0 auto;
   max-width: 1400px;
   height: 100vh;
+  overflow-x: hidden;
   padding: 0 ;
 }
 .avatar_item {

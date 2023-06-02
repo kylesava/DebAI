@@ -59,6 +59,9 @@ const Banner = () => {
   };
   return (
     <div className="BannerWrapper">
+      <img className="robo roboLeft" src="/images/robo1.png" alt="roboImg" />
+      <img className="robo roboRight" src="/images/robo2.png" alt="roboImg" />
+
       <div className="banner_content">
         <p className="top_site_info">Virtual Debate platform</p>
         <h1 className="main_text_banner">Online platform to organize</h1>

@@ -332,7 +332,6 @@ class DebateRoomServices{
     try {
       if (otherDebators.length === 0) {
         console.log("pausing",otherDebators)
-        // await updateDebateApi(this.activeDebate?.current?._id,{state:debateRoundsPayload});
         await this.UpdateChannelAttr("debateRounds",debateRoundsPayload)
         await this.createChannelMessage({
           ...debateRoundsPayload,
@@ -344,7 +343,6 @@ class DebateRoomServices{
       console.log(error)
       
     }
-
   }
 
   async updateDebateInDb(state){
@@ -377,6 +375,7 @@ class DebateRoomServices{
   async removIntervalFunc(){
     const { removeInterval } = this.otherState;
     if (!removeInterval) return;
+    console.log("interval removed")
     clearInterval(removeInterval?.intervalRef?.current);
     removeInterval.intervalArrRef.current = [];
   }
@@ -434,7 +433,7 @@ class DebateRoomServices{
       }
       if (Rtc_client) {
        await Rtc_client?.unpublish()
-        await Rtc_client?.leave()
+       await Rtc_client?.leave()
       }
     } catch (error) {
         console.log(error)
@@ -590,8 +589,6 @@ try {
 async handleLastSetup(){
 
 
-  const nextUser = this.getMemberWithHighUid();
-  if(nextUser)return;
   try {
     
     this.lastApiCallConfig.current.startApiCalled=true;
@@ -616,7 +613,8 @@ async handleLastSetup(){
     
   }
   async handleCloseDebate () {
-    const { timeFormat } = this.activeDebate.current;
+    console.log("inside close debate")
+    const { timeFormat } = this.activeDebate?.current;
     let debateRoundsPayload = {
       round_shot: timeFormat.length + 1,
       speakTeam: "",
@@ -649,7 +647,8 @@ async handleMemberJoined   (MemberId)  {
 
   let { name, rtcUid, avatar, isAdmin, id, type } = await Rtm_client.getUserAttributes(MemberId, ['name', 'id', 'rtcUid', 'avatar', 'isAdmin', 'type'])
   const doesUserExist = this.RoomMembers.find(mem => mem.id === id)
-  if (type === "audience") return;
+  if (type === "audience" || !name) return;
+
   if (!doesUserExist) {
 
     this.changeRoomMember(mem => ([
@@ -691,39 +690,56 @@ async handleMemberLeft (MemberId)  {
 async handleChannelMessage  (message)  {
 
   const data = JSON.parse(message.text);
-    console.log("incoming",data)
-  if (data.type === "resume_debate") {
-    this.changeDebateState(data)
-  } else if (data.type === "live_chat") {
-    delete data.type;
-    this.addLiveMessages(data)
-  } else if (data.type === "live_vote") {
-    delete data.type;
-    this.activeDebate.current = data;
-    this.AddActiveDebate(this.activeDebate)
-  }else if(data.type==="last_api_call_success"){
-    this.lastApiCallConfig.current.hasApiCalled=true
-  }else if(data.type==="debate_start"){
-    const {rounds,speakers} = data;
-    if(rounds.isMicPassed){
-     await this.removIntervalFunc();
-    }
-    this.changeDebateState(rounds);
-    this.changeMicControlTeam(speakers)
-  }else if(data.type==="start_last_api_call"){
-    this.lastApiCallConfig.current.startApiCalled=true;
-  }else if(data.type==="pause_debate"){
-    delete data.type;
-    await this.removIntervalFunc();
-    this.changeDebateState(data)
-    // change the active speaker team
+
+  switch (data.type) {
+    case "resume_debate":
+      this.changeDebateState(data)
+      break;
+
+    case "live_chat":
+      delete data.type;
+      this.addLiveMessages(data)
+      break;
+
+    case "live_vote":
+      delete data.type;
+      this.activeDebate.current = data;
+      this.AddActiveDebate(this.activeDebate)
+      break;
+
+    case "last_api_call_success":
+      this.lastApiCallConfig.current.hasApiCalled=true
+      break;
+
+    case "debate_start":
+      const {rounds,speakers} = data;
+      if(rounds.isMicPassed){
+        await this.removIntervalFunc();
+      }
+      this.changeDebateState(rounds);
+      this.changeMicControlTeam(speakers)
+      break;
+
+    case "start_last_api_call":
+      this.lastApiCallConfig.current.startApiCalled=true;
+      break;
+
+    case "pause_debate":
+      delete data.type;
+      this.changeDebateState(data);
+
+    default:
+      // 
+      break;
   }
+  
+
 }
 async InitRTM({token}){
 
   try {
     const {_id,avatar,firstName,lastName}   =  this.currentUser;
-    const {admin:{_id:adminId}} = this.activeDebate.current
+    const {admin:{_id:adminId}} = this.activeDebate?.current
     let rtcUid = this.rtcUid.toString();
     let isAdmin  = _id === adminId
     await Rtm_client.login({ uid:rtcUid, token });
@@ -1025,6 +1041,7 @@ async setInitialDebateState  () {
       debateRounds = JSON.parse(debateRounds?.value)
       this.changeDebateState(debateRounds);
     }
+  console.log("intial ",debateRounds,speakersData);
   }
 
 } catch (error) {

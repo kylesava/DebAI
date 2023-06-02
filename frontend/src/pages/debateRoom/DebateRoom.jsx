@@ -111,13 +111,13 @@ const DebateRoom = () => {
     setRoomLoading:SetRoomLoading,
     isAudience: UrlSearchParams.get("audience"),
   });
-
   const [handleRemaining, setHandleRemaining] = useState({
     day: 0,
     hour: 0,
     min: 0,
     sec: 0,
   })
+  const [speakTimeLeft,setSpeakTimeLeft] = useState(0)
 
   useEffect(()=>{
     setRoomService(RoomService)
@@ -125,6 +125,7 @@ const DebateRoom = () => {
   useEffect(() => {
 
     return async () => {
+      console.log("unmounting");
       if (hasLeftRoom.current) return;
       await RoomService.closeTracks()
       await RoomService.removeParticipant()
@@ -258,6 +259,7 @@ const DebateRoom = () => {
   },[lastApiCallConfig.current.startApiCalled])
 
 
+
   
   const fetchDebateById = async () => {
     if (!debateId) return;
@@ -271,9 +273,11 @@ const DebateRoom = () => {
       console.log(error.message)
     }
   }
+  
 
-  console.log("room Members",RoomMembers)
+  console.log("tracks   ",audioTracks.localAudioTracks)
   console.log("active speakers",activeSpeakers)
+  
 
 
   return (
@@ -294,18 +298,18 @@ const DebateRoom = () => {
           {isLive &&
             (debateState.isStarted && !debateState.isPaused) && (<>
               <div>
-
                 <h1 className="main_timing_text">
-                  {`ROUND FINISH IN ${getTime(timeRemainingRef.current)} `}
+                  {`ROUND FINISH IN ${getTime(speakTimeLeft)} `}
                 </h1>
               </div>
             </>
             )
           }
-
         </div>
         <DebateScreenBox
           isLive={isLive}
+          lastApiCallConfig={lastApiCallConfig}
+          setSpeakTimeLeft={setSpeakTimeLeft}
           roomMembers={RoomMembers}
           debateState={debateState}
           activeSpeakers={activeSpeakers}
@@ -314,7 +318,7 @@ const DebateRoom = () => {
           isNotWatch={WatchType !== "AUDIENCE"}
           activeMicControlTeam={activeMicControlTeam}
           RoomService={RoomService}
-          handleCloseDebate={RoomService.handleCloseDebate}
+         
           startTeam={activeDebateRef.current?.timeFormat[0].team}
         />
       

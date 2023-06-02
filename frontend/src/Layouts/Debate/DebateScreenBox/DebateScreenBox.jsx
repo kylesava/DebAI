@@ -11,7 +11,7 @@ import { bindActionCreators } from 'redux';
 import { actionCreators } from '../../../redux/store';
 import DebateBanner from '../../../components/DebateRoom/DebateBanner/DebateBanner';
 
-const DebateScreenBox = ({ timeRemainingRef, roomMembers, startTeam, handleCloseDebate, activeSpeakers, isLive, debateState, activeMicControlTeam ,
+const DebateScreenBox = ({ setSpeakTimeLeft, lastApiCallConfig, timeRemainingRef, roomMembers, startTeam, handleCloseDebate, activeSpeakers, isLive, debateState, activeMicControlTeam ,
 RoomService
 }) => {
   const { activeDebate, activeParticipants } = useSelector((state) => state.debate);
@@ -82,19 +82,24 @@ RoomService
     const { hasFinished, isStarted, isPaused } = debateState;
     if(!isStarted || hasFinished)return;
 
-    if (   intervalArrRef.current.length < 1 && !isPaused) {
-      handleTimeLeft()
-    } else if (isPaused  ) {
+    if(isPaused){
       handlePausedTimeLeft()
-
-    } else if (hasFinished) {
-      closeDebate()
+    }else if(intervalArrRef.current.length < 1){
+      handleTimeLeft()
     }
-  }, [debateState, intervalArrRef])
 
+  }, [debateState, intervalArrRef.current])
+
+  useEffect(()=>{
+    if(!debateState)return;
+    const {hasFinished}  = debateState;
+    if(!hasFinished)return;
+    closeDebate()
+  },[debateState?.hasFinished])
 
   const closeDebate=async()=>{
-      await handleCloseDebate()
+      await RoomService.handleCloseDebate();
+      closeInterval()
   }
 
   useEffect(()=>{
@@ -102,14 +107,14 @@ RoomService
   },[intervalArrRef.current,intervalRef.current])
   
   const handleTimeLeft = () => {
-    const { remainingTime  , changedAt} = debateState;
-
-    intervalRef.current = setInterval(() => {
+      const { remainingTime  , changedAt} = debateState;
+      intervalRef.current = setInterval(() => {
       const end = changedAt + remainingTime;
       const diff = end - Date.now();
 
       if (diff >= 0) {
-         timeRemainingRef.current = diff;
+        timeRemainingRef.current = diff;
+        setSpeakTimeLeft(diff)
         let min = Math.floor(diff / (1000 * 60));
         let sec = Math.floor((diff / 1000) % 60);
 
@@ -135,13 +140,15 @@ RoomService
 
   const handlePausedTimeLeft = () => {
     const { remainingTime } = debateState;
-
       let min = Math.floor(remainingTime / (1000 * 60));
       let sec = Math.floor((remainingTime / 1000) % 60);
       setCountDown({
         min,
         sec
       })
+
+      closeInterval()
+    
     } 
 
     const handleSetFunc=()=>{
@@ -153,6 +160,14 @@ RoomService
     }
 
 
+    const closeInterval=()=>{
+      if(intervalRef?.current){
+        clearInterval(intervalRef.current);
+      }
+      if(intervalArrRef.current.length !==0){
+        intervalArrRef.current = [];
+      }
+    }
   return (
     <>
 

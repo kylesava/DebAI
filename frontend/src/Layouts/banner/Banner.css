@@ -7,6 +7,18 @@
   position: relative;
   z-index: 2;
 }
+.robo{
+  position: absolute;
+  z-index: -1;
+  width: 15%; 
+}
+.roboLeft{
+
+  left: 0 ;
+}
+.roboRight{
+  right: 0 !important;
+}
 .banner_bg_image {
   width: 100%;
   position: absolute;
