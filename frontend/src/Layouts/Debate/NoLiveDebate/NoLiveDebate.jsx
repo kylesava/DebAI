@@ -14,7 +14,7 @@ const NoLiveDebate = ({ text, buttonText, btnLink ,show_btn }) => {
     return (
         <div className='NoLiveDebateWrapper'>
 
-            <img draggable={false} className="no_live_debate_dino_img" src="/images/error_dino.png" alt="error_dino" />
+            <img draggable={false} className="no_live_debate_dino_img" src="/images/robo.png" alt="error_dino" />
             <div className="_noLive_debate_bottom_">
                 <h3 className="no_live_debate_text">{text} </h3>
             {
