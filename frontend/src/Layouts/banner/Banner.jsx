@@ -68,7 +68,7 @@ const Banner = () => {
         <div className="bottom_text">
           <h1 className="main_text_banner">
             a virtual debate for all{" "}
-            <img className="quodium" src="/images/qodium.png" alt="quodium" />{" "}
+           
           </h1>
           <p className="secondary_main_banner_text">
             Debatasour lets a users to create a online debate and manages the
@@ -93,14 +93,6 @@ const Banner = () => {
         </Link>
       </div>
       <DebatePasscodeInput />
-      {/* <div className="debate_link_box">
-
-        <input type="text" value={debateLink} onChange={(e)=>setdebateLink(e.target.value)} placeholder="Enter or paste link of debate"  />
-
-          <button onClick={handleWatch} className={`watch_button ${!validLink && "disable_watch_button_banner" }`}>  <HiOutlineViewfinderCircle className="watch_icon" /> WATCH</button>
-
-
-      </div> */}
     </div>
   );
 };

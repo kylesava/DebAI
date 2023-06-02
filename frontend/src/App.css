@@ -7,7 +7,9 @@
   list-style: none;
   font-family: "Poppins", sans-serif;
 }
-
+h5{
+  margin-bottom: 0 !important;
+}
 :root {
   --dark_primary_text_color: rgb(14, 11, 61);
   --dark_primary_text_color_hover:rgba(14, 11, 61, 0.774);

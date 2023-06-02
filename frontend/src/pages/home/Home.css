@@ -5,3 +5,12 @@
   background-color: rgb(255, 255, 255);
   margin: 0 auto;
 }
+
+.home_bottom_info{
+  margin-top: 5rem;
+  width: 95%;
+  margin: auto;
+  margin-top: 5rem;
+  display: flex;
+  gap: 1rem;
+}

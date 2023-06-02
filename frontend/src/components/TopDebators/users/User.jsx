@@ -5,7 +5,7 @@ const User = ({user}) => {
 const {data} = useSelector(state=>state.user)
 
   return (
-    <div className={`${styles.top_user} ${user?._id === data?._id && styles.own}`}>
+    <div className={`${styles.top_user} ${user?._id === data?._id && styles.own }`}>
         <div className={styles.main_info}>
 
         <img referrerPolicy="no-referrer" className={styles.top_user_avatar} src={user.avatar} alt={`${user.firstName}'s avatar`} />

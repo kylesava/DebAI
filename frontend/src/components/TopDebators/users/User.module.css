@@ -28,12 +28,10 @@
 .points_box {
     display: flex;
     gap: 7px;
-
     align-items: center;
-
     font-size: 13px;
     font-weight: bold;
-color: rgb(44, 156, 255);
+    color: rgb(44, 156, 255);
 }
 .points_box img{
     width: 20px;

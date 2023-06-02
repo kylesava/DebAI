@@ -29,7 +29,7 @@ const getTopDebators=async()=>{
 
 
     <div className={styles.top_debators_heading}>
-        <h4 className={styles.top_debators_main_text}>Top 10 Debators in DebAi</h4>
+        <h4 className={styles.top_debators_main_text}> <img width="64" height="64" src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-first-prize-achievements-flaticons-lineal-color-flat-icons-2.png" alt="external-first-prize-achievements-flaticons-lineal-color-flat-icons-2"/> Top 10 Debators in DebAi</h4>
         <p className={styles.top_deb_sub_heading}>DebAi ranks debators by their points.Win more debate to earn points.</p>
     </div>
 
