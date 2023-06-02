@@ -85,7 +85,6 @@ const Login = () => {
 
   return (
     <div className='AuthWrapper'>
-      <img draggable={false} className='dinasour_image' src='/images/dinasour_coffee.png' alt='dinasourImg' />
       <div className="login_main_box">
 
         <img draggable={false} className='logo_img' src="/images/logo.jpg" alt="logo" />

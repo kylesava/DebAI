@@ -104,9 +104,7 @@ const Signup = () => {
   }
   return (
     <div className='AuthWrapper'>
-      <img draggable={false} className='dinasour_image' src='/images/dinasour_coffee.png' alt='dinasourImg' />
       <div className="login_main_box">
-
         <img draggable={false} className='logo_img' src="/images/logo.jpg" alt="logo" />
         <div className="login_welcome_text">
           {/* <h5 className='welcome_back_text'>Welcome  😋</h5>
