@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styles from "./liveDebates.module.css"
 import { getCurrentDebateApi } from '../../utils/Api';
 import {format} from "timeago.js"
+import {Link} from "react-router-dom"
 const LiveDebates = () => {
 
     const [liveDebates,setLiveDebates] =useState([]);
@@ -39,10 +40,13 @@ const LiveDebates = () => {
                     <h5> 💥 {debate?.topic}</h5>
                     <p className={styles.started_time_ago}>{format(debate?.startTime)}</p>
                     </div>
+                  <Link to={`/debate/${debate?.passcode}?audience=true`}>
+                  
                     <button className={styles.join_button}>
                         <p>Join</p>
                     <img width="64" height="64" src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-link-web-flaticons-lineal-color-flat-icons-8.png" alt="external-link-web-flaticons-lineal-color-flat-icons-8"/>
                     </button>
+                  </Link>
                 </div>
             ))
         }
