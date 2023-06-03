@@ -11,7 +11,7 @@ export const Loader = () => {
             <div className="loader_plate"></div>
             <div className='image_wrapper'>
 
-                <img width={"130px"} draggable={false} src="/images/dinasour_fly.png" alt="dinasour_welcom" />
+                <img width={"130px"} draggable={false} src="/images/robo.png" alt="dinasour_welcom" />
             </div>
         </div>
     </div>, document.getElementById("loader-root")

@@ -107,3 +107,14 @@ h5{
 p , h1{
   margin-bottom: 0 !important;
 }
+.css-4t6ey5[data-status=complete] {
+  background-color: rgb(64, 70, 221) !important;
+
+}
+.css-kq5oaw[data-status=complete] {
+  background-color: rgb(64, 70, 221) !important;
+}
+
+.css-kq5oaw[data-status=active] {
+border-color: rgb(64,70,221) !important;
+}

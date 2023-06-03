@@ -2,21 +2,19 @@ import { useToast } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { createDebateApi, getIsPassocodeUniqueApi } from '../../utils/Api'
-import TeamForm from './TeamForm/TeamForm'
-import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from 'react-router-dom'
-import DebateInformation from "./DebateInformation.jsx"
 import './DebateFormInput.css'
-import DebateFormat from './DebateFormat/DebateFormat'
 import { generateRandomNumber, getLoggedInUserData } from '../../utils/services'
 import { debateFormat } from '../../utils/data'
-import { Enums } from '../../redux/action/actionTypes/Enumss'
-import DebateMotionModal from '../../Layouts/modal/DebateMotions/DebateMotions'
+import MainDebateInput from './MainDebateInput'
+import Teams from './Teams';
+import TeamFormat from './TeamFormat';
+import ConfirmCreate from './ConfirmCreate';
 
 
 
-const DebateFormInput = () => {
+const DebateFormInput = ({stepIndex,setStepIndex}) => {
   const { data:currentUser } = useSelector((state) => state.user)
   const [duration, setDuration] = useState({
     hour: 1,
@@ -158,7 +156,7 @@ useEffect(()=>{
         const res = await createDebateApi(thePayload)
         if (res.status === 200) {
           const {message} = res.data
-          handleShowAlert( `Debate successfully created.`,"error")
+          handleShowAlert( `Debate successfully created.`,"success")
           navigate(`/debate/${message?.passcode}`)
         } else {
           throw Error(res.data.message)
@@ -342,145 +340,75 @@ if(formatArr){
     ))
   }
 
+  const goToNext=()=>{
+    const {topic,timeFormat,startTime,judgeType,passcode,team_format} = debateForm;
+    if(stepIndex===0){
+
+      if(!topic || !timeFormat || !startTime || !judgeType || !passcode || !team_format){
+        return false
+      }
+    }
+    return true
+  }
+
+  const debateStepMap={
+    "0":    <MainDebateInput 
+         debateForm={debateForm}
+        handleAutoGenerateePasscode={handleAutoGenerateePasscode}  
+        handleInputChange={handleInputChange}
+        handleStartDate={handleStartDate}
+        handleDebateTopicChange={handleDebateTopicChange}
+        handlePassCodeChange={handlePassCodeChange}
+        startTime={startTime}
+        durationType={durationType}
+        filterPassedTime={filterPassedTime}
+        handleInstatDebateChange={handleInstatDebateChange}
+        instantDebateTimes={instantDebateTimes}
+        isPasscodeValid={isPasscodeValid}
+        returnTeamFormatOptions={returnTeamFormatOptions}
+        
+
+        />,
+        "1": <Teams 
+          handleTeamName={handleTeamName}
+         setDebateForm={setDebateForm}
+          debateForm={debateForm}
+          formLevel={formLevel}
+          />,
+
+          "2":<TeamFormat
+          debateForm={debateForm}
+          setDebateForm={setDebateForm}
+          /> ,
+          "3":<ConfirmCreate
+          currentUser={currentUser}
+          handleCreateDebate={handleCreateDebate}
+          />
+  }
+
   return (
     <div className='DebateFormWrapper'>
-      <div className="create_debate_header">
-        <h1 className='main_text'>CREATE <h1 className='secondary_main_text'>DEBATE</h1> </h1>
-      </div>
-      <h2 className='header_text_with_bg'>DEBATE INFORMATION</h2>
-      <div className='input_box_wrappers'>
 
-        <div className='input_basic_box'>
-          <DebateMotionModal activeTopic={debateForm.topic} handleDebateTopicChange={handleDebateTopicChange}>
-
-          <div className='input_item'>
-
-            <input type="text" disabled placeholder='Topic for debate' name='topic' onChange={handleInputChange}  value={debateForm.topic}/>
-          </div>
-          </DebateMotionModal>
-       
-          <div className='input_item'>
-            <select id="" name='type' onChange={handleInputChange}>
-              <option selected disabled>choose debate type</option>
-              <option value="British Parliamentary">British Parliamentary</option>
-              {/* <option value="World Schools format (WSDC)">World Schools format (WSDC)</option> */}
-              <option value="Public forum">Public forum</option>
-              <option value="Lincoln–Douglas">Lincoln–Douglas</option>
-
-            </select>
-          </div>
-          <div className='input_item'>
-
-
-<div className='input_row_box_parent'>
-<input type="number" minLength={6} maxLength={6} max={6} placeholder='random 6 digit number'  name='passcode' onChange={handlePassCodeChange} value={debateForm.passcode}/>
-<button onClick={handleAutoGenerateePasscode}>Auto Generate</button>
-</div>
-{
- !isPasscodeValid && <label className='error_text' >This passcode is already taken  try next ! </label>}
-</div>
-  
-
-
-        </div>
-        <div className="right_input_box">
-          <div className='form_input_row_box input_item'>
-
-            <div className='starting_time_item_box'>
-
-              <div className='starting_time_item'>
-                <DatePicker
-                  selected={startTime}
-                  onChange={(date) => handleStartDate(date)}
-                  showTimeInput
-
-                  timeInputLabel="Time:"
-                  filterTime={filterPassedTime}
-                  dateFormat="yyyy/MM/dd , h:mm aa"
-                />
-
-              </div >
-
-            </div>
-          </div>
-          <div className='input_item'>
-            <select value={debateForm.team_format}  name='team_format' className='team_format' onChange={handleInputChange}>
-              <option value="" selected disabled>chose team format</option>
-              {
-                returnTeamFormatOptions()
-              }
-
-            </select>
-          </div>
-            <div className='input_item'>
-              <select value={debateForm.judgeType}  name='judgeType' className='team_format' onChange={handleInputChange}>
-              <option value={""} disabled selected >Choose Judge Type</option>
-              <option value={`${Enums.AIJUDGE}`}>AI Judge</option>
-              <option value={`${Enums.VOTING}`}>Voting</option>
-              <option value={`${Enums.NOJUDGE}`}>No Judge </option>
-              </select>
-            </div>
-          {/* <div className='input_item'>
-
-            <label className='form_label' >Starting time </label>
-            <div className='duration_type'>
-            
-              <button onClick={() => setDurationType("Instant Debate")} className={`${durationType === "Instant Debate" && "active_duration"} duration_toggle_button`}>Instant Debate </button>
-
-            </div>
-          </div> */}
-
-
-
-          <div className='starting_time_item input_item'>
-
-            {
-              durationType === "Instant Debate" && <div className='instant_box'>
-                <button className={`${instantDebateTimes === "1Minute" && "active_duration"}`} onClick={() => handleInstatDebateChange("1Minute")}>1 Minutes </button>
-                <button className={`${instantDebateTimes === "2Minute" && "active_duration"}`} onClick={() => handleInstatDebateChange("2Minute")}>2 Minutes  </button>
-                <button className={`${instantDebateTimes === "3Minute" && "active_duration"}`} onClick={() => handleInstatDebateChange("3Minute")}>3 Minutes  </button>
-
-              </div> 
-              
-            }
-
-
-          </div>
-        </div>
-      </div>
-
-            <DebateInformation  handleInputChange={handleInputChange} debateForm={debateForm} debateType={debateForm.type}/>
-
-      <div className={`team_box_container ${formLevel !== 1 && "disable_team_box_container_form" } `}>
-
-        <div className='lable_row'>
-          <label className="header_text_with_bg">ADD TEAM MEMBERS</label>
-          <div className='team_info_text'>
-        {
-
-         formLevel === 0 && <span className="red_info">Fill the above debate information to add teams</span>
-        } 
-            <span >Members must be registed in this site</span>
-          </div>
-        </div>
-        <div className="team_wrapper_box">
-
-          {
-            debateForm.teams.map((team, index) => <TeamForm
-             debateForm={debateForm}
-              setDebateForm={setDebateForm} 
-              handleTeamName={handleTeamName}
-               team={team} index={index} key={index} />)}
-        </div>
-
-      </div>
       {
-
-       <DebateFormat setDebateForm={setDebateForm} debateForm={debateForm} teams={debateForm.teams}/>
+        debateStepMap[String(stepIndex)]
       }
-      <button type='submit' className='create_debate_btn' disabled={!currentUser} onClick={handleCreateDebate}>
-        CREATE DEBATE!
+
+
+<div  className="create_debate_bottom_button">
+     {
+
+
+      stepIndex !==0 && <button onClick={()=>setStepIndex(prev=>prev-1)} className='back_button'>
+        BACK
       </button>
+      }
+       {
+         stepIndex !== 3 && <button className={`${ !goToNext() ? "disableNext":"" }  next_debate_step`} onClick={()=>setStepIndex(prev=>prev+1)}> NEXT </button>
+        }  
+        </div>
+            {/* <DebateInformation  handleInputChange={handleInputChange} debateForm={debateForm} debateType={debateForm.type}/> */}
+
+    
     </div>
   )
 }
