@@ -6,7 +6,7 @@ const Teams = ({formLevel,debateForm,setDebateForm ,handleTeamName}) => {
        <div className={`team_box_container ${formLevel !== 1 && "disable_team_box_container_form" } `}>
 
         <div className='lable_row'>
-          <label className="header_text_with_bg">ADD TEAM MEMBERS</label>
+
           <div className='team_info_text'>
         {
 
