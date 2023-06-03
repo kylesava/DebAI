@@ -355,7 +355,7 @@ if(formatArr){
 
           <div className='input_item'>
 
-            <input type="text" placeholder='Topic for debate' name='topic' onChange={handleInputChange}  value={debateForm.topic}/>
+            <input type="text" disabled placeholder='Topic for debate' name='topic' onChange={handleInputChange}  value={debateForm.topic}/>
           </div>
           </DebateMotionModal>
        
