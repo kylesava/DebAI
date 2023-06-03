@@ -1,9 +1,9 @@
 import { DebateMotion } from "../../../utils/data"
 import { Tabs, TabList, TabPanels, Tab, TabPanel, Box } from '@chakra-ui/react';
 import styles from "./debateMotionTabs.module.css"
-import { useState } from "react";
 
-const DebateMotionTabs = ({handleChangeTopic,userTopic}) => {
+
+const DebateMotionTabs = ({handleChangeTopic,userTopic,setCustomTopic,setActiveTab }) => {
 
 
   return (
@@ -14,10 +14,17 @@ const DebateMotionTabs = ({handleChangeTopic,userTopic}) => {
 
     {
         Object.entries(DebateMotion).map(([key,value])=>(
-            <Tab textTransform={"uppercase"} fontSize={"14px"} letterSpacing={"1px"}>{key}</Tab>
+            <Tab
+            onClick={()=>setActiveTab(key)}
+             textTransform={"uppercase"}
+             fontSize={"14px"}
+             letterSpacing={"1px"}
+               >
+                {key}
+               </Tab>
             ))
         }
-
+              <Tab  onClick={()=>setActiveTab("custom")} textTransform={"uppercase"} fontSize={"14px"} letterSpacing={"1px"}>custom</Tab>
   </TabList>
   <TabPanels>
     {
@@ -38,7 +45,7 @@ const DebateMotionTabs = ({handleChangeTopic,userTopic}) => {
         ))
     }
    <TabPanel>
-      <p>one!</p>
+    <input type="text" onChange={(e)=>setCustomTopic(e.target.value)} placeholder="Create your custrom topic" className={styles.custom_topic_input}/>
     </TabPanel>
 
   </TabPanels>

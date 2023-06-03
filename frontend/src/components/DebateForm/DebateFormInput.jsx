@@ -341,7 +341,7 @@ if(formatArr){
       {...prev,topic}
     ))
   }
-  console.log(debateForm)
+
   return (
     <div className='DebateFormWrapper'>
       <div className="create_debate_header">
