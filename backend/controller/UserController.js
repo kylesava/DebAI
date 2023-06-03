@@ -209,5 +209,44 @@ class UserController {
   }
 
 
+  async getTopTenDebators(req,res){
+    try {
+
+
+
+  const topDebators =  await UserModel.aggregate([
+  {
+    $lookup: {
+      from: 'debates',
+      localField: '_id',
+      foreignField: 'teams.members',
+      as: 'debateCount'
+    }
+  },
+  {
+    $project: {
+      _id: 1,
+      firstName: 1,
+      lastName:1,
+      avatar:1,
+      points: 1,
+      country:1,
+      debateCount: { $size: '$debateCount' }
+    }
+  },
+  {
+    $sort: { points: -1 }
+  },
+  {
+    $limit: 10
+  }
+])
+
+res.status(200).json({message:topDebators,success:true})
+
+    } catch (error) {
+        res.status(500).json({message:error.message,success:false})
+    }
+  }
 }
 module.exports = new UserController();

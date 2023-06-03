@@ -9,20 +9,32 @@
     border-radius: 8px;
     cursor: pointer;
     transition: all .3s ease-in-out;
+    align-items: center;
+}
+.user_name_box{
+
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}.user_country_flag{
+    width: 15px;
+    padding-top: 5px;
+
+    align-self: flex-start;
 }
 .top_user:hover{
     scale: 1.02;
 }
 .main_info{
-    gap: 5px;
-
+    gap:10px;
+    align-items: center;
     display: flex;
 
 }
 .top_user_avatar{
-    width: 40px;
+    width: 35px ;
 
-    height: 40px;
+    height: 35px;
     border-radius: 50%;
 }
 .points_box {
@@ -37,7 +49,7 @@
     width: 20px;
 }
 .top_username{
-
+font-size: 13px;
     }
     .top_email{
         font-size: 11px;

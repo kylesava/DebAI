@@ -166,7 +166,7 @@ const ProfileCard = ({ userData }) => {
                         </div>
                     }
                     {
-                        (data.subscription !== null) && <><div className="other_info_text_item">
+                        (userData?.subscription !== null) && <><div className="other_info_text_item">
 
                             <BsCurrencyDollar className="upcoming_icon" />
                             <p className="other_info_text"> Plan: {getSubscriptionPlan()}</p>
@@ -175,10 +175,10 @@ const ProfileCard = ({ userData }) => {
                         </div>
                         {
 
-                        data?.subscription?.status==="active" &&    <div className="other_info_text_item">
+                        userData?.subscription?.status==="active" &&    <div className="other_info_text_item">
 
                             <BsFillCalendarFill className="upcoming_icon" />
-                            <p className="other_info_text">Reamining Days: {data?.subscription?.remainingDays}</p>
+                            <p className="other_info_text">Reamining Days: {userData?.subscription?.remainingDays}</p>
 
                         </div>
 
@@ -193,7 +193,7 @@ const ProfileCard = ({ userData }) => {
                 <h1 className="profile_card_item_title">Equipped Avatars</h1>
                 <div className="image-row">
                     {
-                        data.equipedAvatars?.map((item, index) => (
+                        userData?.equipedAvatars?.map((item, index) => (
                             <img className="circle-image" width={"40px"} src={item.avatar} alt="avatar1" onClick={() => handleUpdateAvatar(item.type, item.avatar) } />
                         ))
                     }

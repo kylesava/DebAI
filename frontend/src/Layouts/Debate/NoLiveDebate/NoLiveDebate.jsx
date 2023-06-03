@@ -11,6 +11,10 @@ const NoLiveDebate = ({ text, buttonText, btnLink ,show_btn }) => {
     }
 
 
+
+
+
+
     return (
         <div className='NoLiveDebateWrapper'>
 

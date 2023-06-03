@@ -96,6 +96,8 @@
 }
 .single_item {
   display: flex;
+  flex: 1;
+  width: 100%;
   gap: 10px;
 }
 
@@ -120,7 +122,7 @@
   transition: all 0.5s;
   box-shadow: 0px 0px 3px white;
   font-size: 13px;
-  color: rgb(99, 109, 126);
+  color: rgb(99, 109, 126) ;
 }
 .auth_input_item .input_element::placeholder {
   color: rgba(128, 128, 128, 0.678);
@@ -176,4 +178,20 @@
   color: #3f51b5;
   cursor: pointer;
   font-size: 14px;
+}
+.country_flag{
+  
+  width: 27px;
+}
+.country_name{
+  font-size: 12px;
+}
+.country_item{
+      padding: 10px 0;
+
+}
+.country_item:hover{
+  background-color: aliceblue;
+  cursor: pointer;
+
 }

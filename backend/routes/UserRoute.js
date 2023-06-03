@@ -6,7 +6,8 @@ const {
   setStripeSession,
   cancelSubscription,
   handleRateUser,
-  getTopUsers
+  getTopUsers,
+  getTopTenDebators
 } = require("../controller/UserController");
 const router = require("express").Router();
 
@@ -18,4 +19,5 @@ router.post("/cancelSubscription", cancelSubscription);
 router.get("/search", searchUser);
 router.put("/:userId", updateUser);
 router.get("/topDebators",getTopUsers)
+router.get("/leadingDebators",getTopTenDebators)
 module.exports = router;

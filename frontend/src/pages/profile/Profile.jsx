@@ -76,13 +76,16 @@ const Profile = () => {
                 {
                     nextUserProfile && <ProfileCard userData={nextUserProfile} />
                 }
-                <MyDebates 
+               {
+                data?._id === profileId &&
+
+                 <MyDebates 
                     pastDebates={pastDebates}
                     futureDebates={futureDebates}
                     invitationDebates={invitationDebates} 
                 />
-
-            </div>
+               }             
+               </div>
 
         </div>
     )

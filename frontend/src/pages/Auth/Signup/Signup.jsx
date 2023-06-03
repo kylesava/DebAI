@@ -1,16 +1,16 @@
 import { useToast } from '@chakra-ui/react';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { AddLoggedInUser } from '../../../redux/action/actionCreators';
-import { RegisterUserApi } from '../../../utils/Api';
+import { RegisterUserApi, getCountries } from '../../../utils/Api';
 import "../Auth.css"
-import AvatarCarousel from '../../../Layouts/Slider/Avatar/Avatar';
+import SelectCountry from '../../../Layouts/popovers/selectCountry/SelectCountry';
 
 
 
 
 
-const Signup = () => {
+const Signup = () => {  
 
 
   const [userDetails, setUserDetails] = useState({
@@ -19,6 +19,7 @@ const Signup = () => {
     email: "",
     password: "",
     confirmPassword: "",
+    country:"",
     others: {
       missingFields: [],
       error: ""
@@ -26,9 +27,28 @@ const Signup = () => {
   })
   const navigate = useNavigate()
   const toast = useToast()
+  const [countries,setCountries] =useState([])
   const handleInputChange = (name, value) => {
     setUserDetails((prev) => ({ ...prev, [name]: value }))
   }
+
+
+
+useEffect(()=>{
+  handleGetCountries()
+},[])
+
+const handleGetCountries=async()=>{
+
+  try {
+      const {data,status} = await getCountries()
+      if(status!==200)return;
+      setCountries(data);
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 
   const handleRegister = async () => {
 
@@ -61,6 +81,7 @@ const Signup = () => {
         lastName: userDetails.lastName,
         password: userDetails.password,
         email: userDetails.email,
+        country:userDetails.country
       }
 
 
@@ -102,6 +123,7 @@ const Signup = () => {
     await  handleRegister()
     }
   }
+  console.log(userDetails)
   return (
     <div className='AuthWrapper'>
       <div className="login_main_box">
@@ -134,7 +156,6 @@ const Signup = () => {
 
             <div className='auth_input_item'>
 
-              <label>First Name</label>
               <input className="input_element" type="text" placeholder='First Name'
                 value={userDetails.firstName}
                 onChange={(e) => handleInputChange("firstName", e.target.value)} />
@@ -142,26 +163,45 @@ const Signup = () => {
             </div>
             <div className='auth_input_item'>
 
-              <label>Last Name</label>
               <input className="input_element" type="text" placeholder='Last Name'
                 value={userDetails.lastName}
                 onChange={(e) => handleInputChange("lastName", e.target.value)} />
 
             </div>
           </div>
+          <div className="single_item">
+
+
           <div className='auth_input_item'>
 
-            <label>Email</label>
+
             <input className="input_element" type="email" placeholder='Enter your email address'
               value={userDetails.email}
               onChange={(e) => handleInputChange("email", e.target.value)} />
 
           </div>
+           <div className='auth_input_item'>
+
+
+        <SelectCountry countries={countries}  handleInputChange={setUserDetails}>
+          <div className='input_element' style={{height:"100%" ,color:"rgba(128, 128, 128, 0.678)" , display:"flex",alignItems:"center"}}>
+            <p>
+
+        {
+          userDetails.country ? userDetails.country :"select country"
+        }
+
+</p>
+
+          </div>
+        </SelectCountry>
+
+          </div>
+              </div>
           <div className="single_item">
 
             <div className='auth_input_item'>
 
-              <label>Password</label>
               <input onKeyDown={handleKeyDown} className={`input_element ${userDetails?.password !== userDetails.confirmPassword ? "error_input" : ""}`} type="password" placeholder='Enter your password'
                 value={userDetails.password}
                 onChange={(e) => handleInputChange("password", e.target.value)} />
@@ -169,7 +209,6 @@ const Signup = () => {
             </div>
             <div className='auth_input_item'>
 
-              <label>Confirm Password</label>
               <input onKeyDown={handleKeyDown} className={`input_element ${userDetails?.password !== userDetails.confirmPassword ? "error_input" : ""}`} type="password" placeholder='Confirm password'
 
                 value={userDetails.confirmPassword}

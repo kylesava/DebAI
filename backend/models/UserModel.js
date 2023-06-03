@@ -27,6 +27,7 @@ const UserSchema = mongoose.Schema(
     },
     equipedAvatars:[],
     lastLoggedIn: Number,
+    country:String,
     points:{
       type:Number,
       default:500,
