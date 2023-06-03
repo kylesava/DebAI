@@ -1,0 +1,32 @@
+.debate_topic_list{
+    display: flex;
+    flex-direction: column;
+    gap:6px;
+    padding: 0 1rem;
+    padding-bottom: 0 !important;
+    height: 100%;
+    height:270px;
+    overflow: auto;
+}
+.debate_topic_list li{
+    cursor: pointer;
+  
+    background-color: aliceblue;
+    padding: 7px;
+    border-radius: 3px;
+    color: var();
+    font-size: 11px;
+    letter-spacing: 1px;
+
+    color: var(--dark_primary_text_color);
+    transition: all .3s ease-in-out;
+}
+
+.debate_topic_list li:hover{
+    background-color: rgb(203, 223, 240);
+}
+
+.active_topic{
+    border:1px solid var(--dark_primary_text_color);
+}
+

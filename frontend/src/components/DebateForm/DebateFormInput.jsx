@@ -12,6 +12,7 @@ import DebateFormat from './DebateFormat/DebateFormat'
 import { generateRandomNumber, getLoggedInUserData } from '../../utils/services'
 import { debateFormat } from '../../utils/data'
 import { Enums } from '../../redux/action/actionTypes/Enumss'
+import DebateMotionModal from '../../Layouts/modal/DebateMotions/DebateMotions'
 
 
 
@@ -274,10 +275,7 @@ if(formatArr){
   ))
 }
   }
-  const handleDebateTeamFormat=(type,format)=>{
-    console.log("hello")
-    console.log(type,format)
-  }
+
   const handlePassCodeChange=async(event)=>{
 
     const value = event.target.value ;
@@ -338,6 +336,12 @@ if(formatArr){
 
   }
 
+  const handleDebateTopicChange=(topic)=>{
+    setDebateForm(prev=>(
+      {...prev,topic}
+    ))
+  }
+  console.log(debateForm)
   return (
     <div className='DebateFormWrapper'>
       <div className="create_debate_header">
@@ -347,14 +351,15 @@ if(formatArr){
       <div className='input_box_wrappers'>
 
         <div className='input_basic_box'>
+          <DebateMotionModal activeTopic={debateForm.topic} handleDebateTopicChange={handleDebateTopicChange}>
+
           <div className='input_item'>
 
-            <label className="form_label" >Topic name</label>
-            <input type="text" placeholder='Topic for debate' name='topic' onChange={handleInputChange} />
+            <input type="text" placeholder='Topic for debate' name='topic' onChange={handleInputChange}  value={debateForm.topic}/>
           </div>
+          </DebateMotionModal>
        
           <div className='input_item'>
-            <label className="form_label">Debate Type</label>
             <select id="" name='type' onChange={handleInputChange}>
               <option selected disabled>choose debate type</option>
               <option value="British Parliamentary">British Parliamentary</option>
@@ -366,7 +371,6 @@ if(formatArr){
           </div>
           <div className='input_item'>
 
-<label className="form_label" >PASSCODE FOR DEBATE</label>
 
 <div className='input_row_box_parent'>
 <input type="number" minLength={6} maxLength={6} max={6} placeholder='random 6 digit number'  name='passcode' onChange={handlePassCodeChange} value={debateForm.passcode}/>
@@ -381,7 +385,6 @@ if(formatArr){
         </div>
         <div className="right_input_box">
           <div className='form_input_row_box input_item'>
-            <label className='form_label' >Starting time </label>
 
             <div className='starting_time_item_box'>
 
@@ -401,7 +404,6 @@ if(formatArr){
             </div>
           </div>
           <div className='input_item'>
-            <label className="form_label">Team format</label>
             <select value={debateForm.team_format}  name='team_format' className='team_format' onChange={handleInputChange}>
               <option value="" selected disabled>chose team format</option>
               {
@@ -411,7 +413,6 @@ if(formatArr){
             </select>
           </div>
             <div className='input_item'>
-              <label className="form_label">Judge Type</label>
               <select value={debateForm.judgeType}  name='judgeType' className='team_format' onChange={handleInputChange}>
               <option value={""} disabled selected >Choose Judge Type</option>
               <option value={`${Enums.AIJUDGE}`}>AI Judge</option>

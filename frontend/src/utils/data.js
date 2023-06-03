@@ -289,3 +289,501 @@ export const avatarsTypeData={
 "https://firebasestorage.googleapis.com/v0/b/vrumies-1f269.appspot.com/o/36.jpg?alt=media&token=2370433e-faa2-4747-9afb-4f7055935095",
     ],
 }
+
+
+export const DebateMotion={
+
+ mini: [
+    "Should people be allowed to sell body parts?It's illegal to sell human organs in most countries , but some peope say changing the law could help to save lives.",
+    "Are urban foxes pests?Some peope say foxes should be treated as pests,like rats.",
+    "Should young peope rent toys?Some people say renting instead of buying is better for the planet.",
+    "Should parents track their children?Some parents feel safer knowning where their children are at all times.",
+    "Are teenagers too young to drink coffee?Some people say caffeine isn't good for young people's health.",
+    "Should school ties to be scrapped?Some people feel that school ties are outdated and unnecessary.",
+    "Is fake grass better than a lawn?Some people think that plastic grass is bad for the environment.",
+    "Should athletes be allowed to protest?Some people say sporting competitions should be about sport- and nothing else.",
+    "Is it ok to post pet videos online?Some people say it's cruel for people to post videos of pets.",
+    "Is it time to change classic hot cross buns?Some people think the sticky treat is ready for an upgrade.",
+    "Should Shakespeare be updated?Some think it is time to bring the writer's work up to date to make them clearer for today's audience.",
+    "Should you have a weekly screen-free day?Some people say it could make you healthier and happier.",
+    "Should shoes be worn indoors?Some peope say  all outdoor footwear belongs at the door.",
+    "Should you read for fun every day?The number of young people reading for enjoyment is falling.",
+    "Should rich countries do more to help refugees?Some say that countries with more resources could help more.",
+    "Should takeaway apps be banned?Some people think the apps are harming people's health.",
+    "Are emojis a good way to communicate?Some people think emojis are ruining how people interact.",
+    "Should people ditch smartphones?Some say that smartphones aren't good for people's health.",
+    "Are wasps treated unfairly?Some think wasps just spoil picnics but others respect them.",
+    "Should cars be banned in cities?Some peope think cities should favour walking and cycling.",
+    "Is exploring space worth the money?Some say that the money would be better spent closer to home.",
+    "Should workers strike? Some people say it is unfailr and selfish for workders to strike.",
+    "Should idleness be enouraged  ?Feeling bored and lazy might not be as bad as you think.",
+    "Should homework be banned？Homework supports learning say some , but others disagree.",
+    "Is it fair to ban Russian culture?Some places will no longer host Russian music ,dance and films.",
+    "Is social media a suitable news source?Some say that news on social media can't always be trusted.",
+    "Are school lunch periods too short?Some say lunch is an important break, but others think learning time is lost.",
+    "Should children start school at a later age?Some people say that the school age should be raised to six.",
+    "Should factory farming be banned?Some people say it's cruel and causes animals to suffer.",
+    "Do good manners  matter?Some people think they are old-fashioned and unnecessary.",
+    "Should online games be used in classroom?Some say digital learning is a useful tool, but others worry it distracts students.",
+    "Is chocolate the best halloween candy?Many people think there's no better sweet than chocalate, while others say no way.",
+    "Should middle and high schools have recess?Some people say all students need a break, but is there enough time in the day?",
+    "Should it cost money to be a footy mascot? Some clubs charge hundreds of pounds for the opportunity.",
+    
+    "Should the products be made to last longer? Some people say goods should be easier to repair, too.",
+    
+    "Should snow days be for study? Some schools say that bad weather should no longer mean a day off.",
+    
+    "Should online libraries lend ebooks for free? It’s great for readers but some say it will harm the publishing industry.",
+    
+    "Should schools welcome parents for lunch? It’s common in the US to invite a parent or guardian for lunch.",
+    
+    "Do historical films need to be accurate? Some people are annoyed that the films don’t always tell the truth.",
+    
+    "Should grey squirrels be on the menu? One UK restaurant has started serving grey squirrel lasagne.",
+    
+    "Should school breaks be made longer? A report says children might benefit from longer breaks throughout the day.",
+    
+    "Should breakdancing be an Olympic sport? The street dance could be included in the Games in 2024.",
+    
+    "Do MPs deserve to be paid more money? Politicians have been given a pay rise, but not everybody is happy about it.",
+    
+    "Should students take part in climate strikes? Some politicians say young people should stay at school.",
+    
+    "Should we have a second EU referendum? There has already been one vote but some people think it’s time for another.",
+    
+    "Should all schools have a pet dog? Some people believe it could help pupils relax in class and cope with stress.",
+    
+    "Should parents ask before posting pictures? Some children think their parents should ask permission to post photos of them.",
+    
+    "Are Easter eggs sold too early? One charity says that supermarkets are encouraging unhealthy diets.",
+    
+    "Is it fair to exclude students from school? A school in North Yorkshire has stopped removing students from class.",
+    
+    "Should human remains in museums be returned to where they came from? Not everyone agrees that ancient bones should be kept on display.",
+    
+    "Should people talk more about death? It’s a difficult topic, but some people say it’s important to open up.",
+    
+    "Should the UK ban trophy-hunting imports? Some people say it’s time to stop animal parts being brought into the country.",
+    
+    "Are tourists causing more harm than good? Lots of visitors to famous locations could put these places in danger.",
+    
+    "Should all schools have one meat-free day? Supporters of idea say it will be better for the environment.",
+    
+    "Should facial-recognition tech be banned? Some schools in the US have started using cameras to scan people’s faces.",
+    
+    "Should we be more respectful to politicians? Some people say that we need to treat politicians better.",
+    
+    "Should tourists be allowed to visit the ISS? The International Space Station will open to visitors next year.",
+    
+    "Should the BBC licence be free for over-75s? Some people say it’s not fair to make the elderly pay to watch TV.",
+    
+    "Is technology ruining football games? Some people say referees are relying on video replays too much.",
+    
+    "Is Marmite delicious or disgusting? Some people love the famous brown spread; others hate it.",
+    
+    "Is it ok to stop reading a book halfway through? Cressida Cowell says it’s fine to give up on books you don’t enjoy.",
+    
+    "Should students choose the books they study? The number of pupils studying English at A level has dropped this year.",
+    
+    "Should football players quit social media? Some say social media companies need to do more to stop online abuse.",
+    
+    "Should people stop taking flights? Some people say that fewer trips by plane will help save the planet.",
+    
+    "Should Fortnite have its own World Cup? The first ever tournament was held this year in the US.",
+    
+    "Are film remakes unnecessary? Lots of famous films are being remade at the moment.",
+    
+    "Should people keep the treasure they find? Under the current rules, historical objects are usually sold to museums.",
+    
+    "Should classrooms have CCTV? Some people say it will improve students’ behaviour in the classroom.",
+    
+    "Should vehicles be banned from city centres? World Car Free Day will be marked on 22 September.",
+    
+    "Should loot boxes be banned for children? Some MPs have said that loot boxes in video games are a form of gambling.",
+    
+    "Should people spend less time at work? Working fewer days and having a longer weekend is a popular idea.",
+    
+    "Should theatres, museums and galleries accept money from fossil-fuel companies? Arts organisations often rely on funding from oil and gas companies.",
+    
+    "Is it time to ditch scary films? Not everyone enjoys being spooked by a frightening film.",
+    
+    "Should there be a general election? Members of Parliament have voted for an election on 12 December.",
+    
+    "Should heading balls be banned for under-12s? The Scottish Football Association might introduce a new rule.",
+    
+    "Should Christmas songs be banned in shops? One business owner says she’ll no longer play them in her store.",
+    
+    "Should some playground games be banned? One school in Brighton has introduced tough new rules to stop pupils playing “physical games”.",
+    
+    "Should bands stop going on tour? Some people say pop concerts are bad for the environment.",
+    
+    "Should social media apps get rid of “likes”? Some people think this would make social media users less anxious.",
+    
+    "Have Christmas light displays gone too far? They light up the dark winter nights, but not everyone enjoys them.",
+    
+    "Should there only ever be one winner? Several recent awards have crowned more than one winner.",
+    
+    "Should teenagers work at the weekend? Fewer young people have Saturday jobs than they did 20 years ago.",
+    
+    "Is it time for a new Scottish independence vote? Some politicians believe voters should have their say on Scotland’s future.",
+    
+    "Should schools use isolation booths? Some people think they are too harsh a punishment for students.",
+    
+    "Should cameras be allowed in courtrooms? Some people say that parts of criminal trials should be shown on TV.",
+    
+    "Should books always be kept in a good condition? People have been sharing their opinions online about the issue.",
+    
+    "Should athletes be allowed to use performance-enhancing technology? Some people say that athletes shouldn’t use special running shoes.",
+    
+    "Should great apes have similar rights as humans? Some people think they deserve more protection and better treatment.",
+    
+    "Should all theatres be more relaxed? Some people think the rules at theatre shows are too strict.",
+    
+    "Is Shakespeare the greatest writer of all time? This week schools will be celebrating the playwright’s work.",
+    
+    "Should people use reusable toilet roll? Some people say it is great idea, but others think it’s gross.",
+    
+    "Are April Fool’s pranks funny? Some people love to share a joke on this day, but others are not as amused.",
+    
+    "Should you have to study comic books?Some people say that comics aren’t taken seriously enough.",
+    
+    "Is watching films at home better than a trip to the cinema?Cinemas have better technology, but films at home can be just as good.",
+    
+    "Should we mine moons and planets?The US president, Donald Trump, supports plans to mine on the Moon.",
+    
+    "Should fast-food restaurants stick to serving meat?Some people think that vegan meals don’t belong on fast-food menus.",
+    
+    "Should the current football season be scrapped?With matches suspended, It’s unclear how the 2019/20 season can continue.",
+    
+    "Are video games good for you?Some people say they can improve our brains but others are not convinced.",
+    
+    "Should there be rules for baby names?A celebrity couple recently gave their son an unusual name.",
+    
+    "Should pupils wear uniforms at home?Some teachers say it helps students concentrate on their school work.",
+    
+    "Should wolves be reintroduced to Britain?Some people are worried that they could do more harm than good.",
+    
+    "Should people in the UK eat more British food?Some people say that more UK produce should be eaten this summer.",
+    
+    "Should items be rescued from the Titanic?Some people want to explore the shipwreck while there’s still time.",
+    
+    "Should athletes be permitted to protest?There are rules against sports stars making political statements.",
+    
+    "Are robotic pets better than real ones?Some people think technology can provide pets that are just as lovable.",
+    
+    "Is football better with a crowd?Games are currently being played inside empty stadiums.",
+    
+    "Is a traditional fry-up the best breakfast?Some prefer more modern options; others say the fry-up is unbeatable.",
+    
+    "Can a book be judged by its cover?Some bookshops want people to spend more time reading the blurbs.",
+    
+    "Should graffiti be considered art?A new piece of work by Banksy has been removed in London.",
+    
+    "Should there be a limit on wealth?Some say that the world’s richest people have too much money.",
+    
+    "Should museums always have set routes?New safety measures mean some museums have pre-planned trails.",
+    
+    "Should you read a book more than once?Some people prefer old favourites rather than trying something new.",
+    
+    "Is summer better than winter?Some people love long, hot summer days but other prefer a cosy, cold winter.",
+    
+    "Should books only use an author’s real name?A new book collection is raising awareness of female authors.",
+    
+    "Is it good to be bored?Some people say that having nothing to do makes us more creative.",
+    
+    "Is punctuation important?Some people think full stops, commas and other symbols aren’t necessary.",
+    
+    "Should humans trust robots?A robot has written an article in a popular UK newspaper.",
+    
+    "Are exams the best way to test pupils?Some people believe there are better ways to assess knowledge and ability.",
+    
+    "Is it better to cook food that goes further?Some people love tucking into leftover meals, but not everyone.",
+    
+    "Should curtseying and bowing make a comeback?Now could be a good time to consider new ways to greet one another.",
+    
+    "Are drive-ins the best way to enjoy events?The way people celebrate and have fun has changed this year.",
+    
+    "Should Halloween be celebrated? Some people love the spookiest day of the year, but not everyone.",
+    
+    "Is a model building better than Minecraft?More people have been making models during lockdown.",
+    
+    "Is it too early to turn on Christmas lights?Some people say the displays will bring festive cheer to a strange year, others think they’re wasteful.",
+    
+    "Are brutalist buildings awesome?Some people think they symbolize hope, others say they are ugly.",
+    
+    "Are virtual events as good as the real thing?Many public Christmas events are taking place online this year.",
+    
+    "Does a world leader’s age matter?Some people say that with age comes wisdom but not everyone agrees.",
+    
+    "Should there be a women’s SPOTY award?Hollie Doyle is the only woman on the shortlist for this year’s BBS Spots Personality of the Year.",
+    
+    "Are mince pies a tasty festive treat?There is arguably no Christmas food that splits opinion like a mince pie.",
+    
+    "Is January the right time to set goals?This month is when people often decide to make new resolutions.",
+    
+    "Should people walk where they want?In most of England, walkers are restricted to footpaths.",
+    
+    "Should athletes jump the vaccine queue?Some people think it is important for top-level sport to continue.",
+    
+    "Is fiction better than non-fiction?Some people say that true stories are better than tall tales.",
+    
+    "Is less foreign travel a good thing?With holidays abroad on hold, staycations might be popular.",
+    
+    "Is event TV better than bingeing?Some people say that traditional television is still the best.",
+    
+    "Is it time to stop using cash?Some people say paying by card is easier than notes and coins.",
+    
+    "Is country life better than city living?Some say that cities are full of life and the best places to live.",
+    
+    "Are dogs better than cats?A surge in pet ownership has reignited this age-old debate.",
+    
+    "Should children watch TV with subtitles?Research shows that watching TV with subtitles helps reading.",
+    
+    "Is mathematics beautiful?Maths is useful, and some people say it has great beauty too.",
+    
+    "Is digital art the future?Digital artworks are now going up for auction.",
+    
+    "Was life better in the past?Some log for the old days but others live in the moment.",
+    
+    "Should athletes boycott the Winter Olympics?Some say athletes should not go because of human rights abuses.",
+    
+    "Should New Year be celebrated in spring?Many countries mark the new year after winter is over.",
+    
+    "Should the UK ban short domestic flights?Some people say the UK should follow France’s example.",
+    
+    "Should all 16-year-olds be allowed to vote?Some say the voting age should be lowered for all UK nations.",
+    
+    "Should children play as they like?Some say young people should be free to play as they please.",
+    
+    "Should fans own football clubs?Lots of football fans want to take control of their clubs.",
+    
+    "Should ancient monuments be altered?Some say that old sites must be updated to attract new visitors.",
+    
+    "Should all adults be given free money?Wales is due to test a universal basic income scheme.",
+    
+    "Would you use snail slime soap?Some people say washing in snail mucus is good for the skin.",
+    
+    "Are villains more interesting than heroes?Some say that villains are more memorable than boring heroes.",
+    
+    "Should people hang portraits of the Queen?Some say the monarch represents the bad parts of British history.",
+    
+    "Should young people get an arts allowance?France is giving young people money to spend on culture.",
+    
+    "Should the school day be longer?There is talk of extending the school day in England.",
+    
+    "Should all pets be microchipped?The law on microchips for pets might soon be changing.",
+    
+    "Are fantasy tales better than realistic ones? There’s a novel for every taste.",
+    
+    "Should young people have summer jobs?Staff shortages mean there are job opportunities for teenagers.",
+    
+    "Is reducing waste better than recycling?Some say we could try harder to make less waste in the first place.",
+    
+    "Are there too many streaming services?Some people are frustrated by having too much choice on TV.",
+    
+    "Are audiobooks better than printed books?Some say listening to a book is superior to reading it on paper.",
+    
+    "Do emojis enrich language?Some people think the symbols are more confusing than helpful.",
+    
+    "Can robots replace artists?Some people believe machines can compete with sculptors.",
+    
+    "Should mountain visits be limited?Some people say there are too many walkers on the hillsides.",
+    "Should gaming have a time limit?Some people feel that time limits would protect young people.",
+    "Should first-class train travel be scrapped?A new long-distance train service has no first-class carriages.",
+    "Should selfies with wild animals be banned?Some say they can harm wildlife.",
+    "Should the next James Bond be female?Bond is back and some say it’s time to shake things up.",
+    "Are home robots a good idea?Some people say they make our lives better but others disagree.",
+    "Should slang be banned in schools?One school has banned certain words and phrases.",
+    "Is formal dancing the best kind?Some people favour traditional dances, others prefer freestyle.",
+    "Is space tourism a good idea?Some say Earth’s problems need to be fixed before going to space.",
+    "Should drones replace fireworks?Drone displays are becoming more popular with the public.",
+    "Are there too many film spin-offs?Some say there are too many films about the same characters.",
+    "Should politicians be allowed second jobs?Several Members of Parliament have more than one job.",
+    "Should dogs be banned from sports fields?Some people think they make too much mess in public spaces.",
+    "Are fake Christmas trees best?Some people say artificial trees are better for the environment.",
+    "Should all students study classics?Some say studying ancient history belongs in the past.",
+    "Should all shows be “pay what you can”?At some venues people decide how much to pay for tickets.",
+    "Is it ok to regift presents?Unwanted gifts are a fact of life. Some say pass them on.",
+
+
+
+],
+
+environment :[
+
+    "Animals, like humans, should have rights.",
+    "Everyone should switch to electric cars.",
+    "Urban gardening is good for your pocket and environment.",
+    "Plastics should be banned worldwide.",
+    "Exports of live animals should be prohibited.",
+    "Is organic farming the solution for soil pollution?",
+    "Should nuclear power be used instead of fossil fuels?",
+    "Is nuclear power the solution for sustainable energy production?",
+    "Renewable energy sources harm the environment.",
+    "Are people to blame for global warming?",
+    "Is reforestation efficient in reducing global warming?",
+    "Tree planting should be a mandatory activity in schools.",
+    "Are Solar Panels effective in energy conservation?",
+    "Is ecotourism a sustainable practice?",
+    "Sustainable development should be included in the curriculum.",
+    "To reduce carbon footprint, a carbon tax should be established.",
+    "Is tourism good or bad for the environment?",
+    "Rabbit as alternative meat.",
+    "Our national parks are essential to the environment.",
+"Is carpooling help in reducing carbon footprint?",
+"We should build more refilling stations to avoid plastic usage.",
+"Are zoos harmful to the animals?",
+"Use of bidet instead of tissue papers.",
+"Is there a risk to the environment from overpopulation? ",
+"Being a vegetarian will help to solve global warming.",
+
+"We can reverse climate change.",
+"The selling of fur products should be banned",
+'Are energy-saving life bulbs helping the environment?',
+'Increase fuel prices to encourage people to switch to more energy-efficient vehicles.',
+"Should mining be prohibited to preserve the environment?",
+"Is global warming a myth or a fact?",
+"Global warming is primarily caused by overpopulation.",
+"Should government impose a law limiting the number of children in each family?",
+"Nuclear power: is it a threat or protection?",
+"Capitalism is the cause of pollution.",
+"Urban farming is the future of agriculture and food production.",
+"Are air conditioners can cause pollution?",
+"Should we ban the use of pesticides?",
+"Are you in favour of a penalty for leftover foods in restaurants?",
+"Firecrackers should be banned.",
+"Should the government invest heavily in renewable energy?",
+"Is vegetarianism beneficial to one’s health?",
+"Animal testing is not necessary for terms of science.",
+"Organic farming is better than traditional farming.",
+"Zoos should be shut down.",
+"Is it possible to live in a zero-waste society?",
+"Are wind farms safe for the environment?",
+"Sustainable fishing is the key to saving marine life.",
+"Are septic tanks beneficial?",
+"Agriculture is the main cause of water pollution.",
+"Are UV LED lamps the solution for Water Disinfection?",
+"Installing an efficient toilet will help you conserve water.",
+" Changing your lifestyle will not combat global warming.",
+"The world is better without humans.",
+"Nuclear energy to replace fossil fuels.",
+"Climate change is a natural phenomenon not manmade.",
+"Vertical farming is beneficial to the environment.",
+"Solar panels should be required in each household.",
+"Private cars should be banned in large cities.",
+"The wealthy are more accountable for environmental harm than the poor.",
+"Should Genetically Modified Organisms (GMO) be part of a sustainable agricultural economy?",
+"Banning the use of single-use plastics will harm the economy.",
+"It is impossible to stop climate change and its impact now.",
+"Edible lawns are good for the environment.",
+"Should the government tax the use of single-use plastic?",
+"Social media influencers are to blame for glorifying fast fashion that is harmful to the environment.",
+"Factory Farming is essential for food security.",
+"Trade bans on animals: Boon or Bane?",
+"Eating meat is wrong.",
+"As a means of reducing environmental impact, solar energy can be used . ",
+" Should biodiversity be taught as part of global warming teaching in middle schools?",
+"Land degradation is caused by human-induced activities, not because of extreme weather conditions.",
+"Fossil fuels, natural gas, and nuclear power are destructive to the environment.",
+"Are dams good or bad for the environment?",
+"Noise pollution affects marine life.",
+"Should government spend more money on environmental issues rather than on poverty and the healthcare system?",
+"As a result of urbanization, our environment is deteriorating.",
+"Recycling is causing more trash in the environment.",
+"Human diets pollute the environment and threaten the extinction of animals.",
+"Science and Technology contributed a bad impact on the environment.",
+],
+// philososy
+ philosophy:[
+
+    "Are online privacy protections more important than safety?",
+    
+    "Can our senses be trusted?",
+    
+    "Do the benefits of direct democracy outweigh the costs?",
+    
+    "Is it a good thing that most human work will likely be done by machines?",
+    
+    "Is justice more important than peace?",
+    
+    "Is religious faith compatible with science?",
+    
+    "Is the right to privacy more important than freedom of the press?",
+    
+    "Is torture justifiable in the name of security?",
+    
+'Should "victimless crimes" remain illegal?',
+
+"Should animal testing be banned?",
+
+"Should cloning humans be legal?",
+
+"Should governments impose population controls?",
+"Should judges be elected by the people?",
+
+"Should people be able to own personal vehicles?",
+
+"Should the British Museum return artifacts to their countries of origin??",
+"Should the Pavolsk Experimental Station scientists have eaten the seeds during the siege of Leningrad?",
+"Should voting be compulsory?",
+"Should we begin relocating people from coastlines vulnerable to climate change?",
+"Should we create artificial wombs for humans?",
+"Should we ever use force to create peace?",
+
+"Was the atomic bombing of Japan justified?",
+"What is the strongest argument in favor of the separation of church and state?",
+
+"Which purpose of the criminal justice system is most important?",
+
+"Can morality exist without religion?",
+
+"Can we ever truly know history?",
+
+'In "The Ones Who Walk Away from Omelas," is it morally justifiable to stay in Omelas?',
+
+"Is it wrong to pure-breed pets?",
+
+"Is pacifism moral?",
+"Is taking care of global issues more important than caring about local issues?",
+
+'Is there any justice in "King Lear"?',
+
+"National Referendums: Should more laws be put to the citizens to accept or reject?",
+
+"Should all citizens be required to vote?",
+
+"Should animals have rights?",
+
+"Should deepfake technology be regulated by law?",
+
+"Should humans eat animals?",
+
+"Should monarchies be abolished?",,
+
+"Should people break unjust laws?",
+
+"Should the genetic engineering of human embryos be banned?",
+
+"Should there be a death penalty?",
+
+"Should we admire Alexander the Great?",
+
+"Should we change our vocabulary for referring to oppressed groups?",
+
+"Should we discourage nationalism?",
+
+"Was Catherine the Great an enlightened ruler?",
+
+"What is the best mode of peaceful protest?",
+'Which is better: "big" or "small" government?',
+
+"Who decides the meaning of art?",
+
+],
+// CURRENT affairs 
+currentAffairs:[
+
+     "Which system is better at delivering stability, growth and innovation?",
+      "Economic growth is the most important element in tackling global inequality",
+]
+}

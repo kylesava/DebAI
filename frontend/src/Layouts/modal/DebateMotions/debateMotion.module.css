@@ -1,0 +1,17 @@
+.motion_tab_content{
+
+}   
+.close_button ,.confirm_button{
+    height: 33px !important; 
+    font-weight: 300 !important;
+    font-size: 13px !important;
+    letter-spacing: 1px !important;
+    border-radius: 4px !important;
+
+
+}
+.confirm_button{
+
+    border: 1px solid  var(--primary_color);
+    color: var(--primary_color);
+}
