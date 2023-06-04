@@ -1,15 +1,15 @@
 .teamFormWrapper {
   width: 100%;
-  background: var(--secondary_gradient_bg);
   border-radius: 10px;
   padding: 1rem;
 }
 .teamFormWrapper h2 {
   text-transform: uppercase;
-  font-weight: bold;
-  letter-spacing: normal;
+  font-weight: 400;
+ letter-spacing: normal;
   margin-bottom: 10px;
-  color: var(--secondary_color);
+  color:gray
+  ;
 }
 .team_form_input_box {
   display: flex;
@@ -52,4 +52,10 @@
   cursor: pointer;
 
 
+}
+.team_info_text{
+  text-align: center;
+}
+.team_info_text span{
+  color: rgba(128, 128, 128, 0.479) !important;
 }

@@ -28,7 +28,6 @@
 }
 .input_box_wrappers {
   padding: 2rem 1rem;
-  background: var(--dark_gradient_bg);
   border-radius: 10px;
   display: flex;
   gap: 2rem;
@@ -136,10 +135,10 @@ h2 {
   opacity: 0.6; */
 }
 .team_format{
-  opacity: 0.7;
+  /* opacity: 0.7; */
   /* pointer-events: none; */
 }
-.DebateFormWrapper button :hover {
+.DebateFormWrapper button:hover {
   background-color: var(--primary_color);
 }
 .active_duration {
@@ -236,17 +235,17 @@ h2 {
   height: 50px;
   width: 100%;
   border-radius: 4px;
-  font-size: 13px;
+  font-size: 11px;
   padding-left: 8px;
   outline: none;
   letter-spacing: 1px;
   border: none;
-  color: rgba(101, 112, 124, 0.712);
-  background-color: rgb(251 251 251);
+     color: rgba(101, 112, 124, 0.712);
+  background-color: rgba(245, 245, 245, 0.808);
   /* box-shadow: 0px 0px 2px rgb(64, 70, 221); */
 }
 .input_item input::placeholder {
-  color: rgba(128, 128, 128, 0.651) !important;
+  color: rgba(143, 143, 143, 0.651) !important;
 }
 .participants_list option {
   height: 40px;
@@ -349,8 +348,13 @@ h2 {
   text-transform: uppercase;
   background-color: var(--primary_color);
   border-radius: 7px;
-
+  transition: all .3s ease;
+    background-color: rgb(104 109 224 / 66%);
   width: fit-content !important;
+}
+.input_row_box_parent button:hover{
+  opacity: 1;
+background-color: rgba(104, 108, 224, 0.918) !important;
 }
 .input_row_box_parent input{
   flex: 1 !important;
@@ -378,10 +382,13 @@ h2 {
   width: 100%;
 }
 .confirm_create_box p{
-  color: gray;
+  color: rgb(214, 214, 214);
   font-size: 14px;
-  display: block;
+  margin: 1rem 0 ;
   margin-bottom: 2rem;
+  font-weight: 200;
+  display: block;
+
 }
 .disableNext{
   pointer-events: none !important;
@@ -397,6 +404,7 @@ h2 {
 }
 
 .back_button {
-  background-color: rgb(10, 112, 116);
-  
+
+    color: #00000075;
+    background-color: rgb(223 223 223 / 24%); 
 }

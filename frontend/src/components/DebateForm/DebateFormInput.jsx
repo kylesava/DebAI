@@ -399,7 +399,8 @@ if(formatArr){
 
 
       stepIndex !==0 && <button onClick={()=>setStepIndex(prev=>prev-1)} className='back_button'>
-        BACK
+       PREVIOUS
+       
       </button>
       }
        {

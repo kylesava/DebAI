@@ -85,25 +85,7 @@ const DebateFormat = ({ teams ,debateForm ,setDebateForm}) => {
 
     (teamArr[0] && teamArr[1])  ?  <div className="team_format_container">
 
-      <div className="header_text_with_bg">
-
-<p> Time Format for {debateForm.type}</p>
-      </div>
-      <div   className="team_format_header">
-      <div className="team_format_team_selection">
-
-        <h2 className="team_format_selection_text">Select  which team will speak first</h2>
-
-      <select onChange={(e)=>setStartBy(e.target.value)}>
-        <option disabled selected value="">--select-team--</option>
-      {
-         teamArr?.map(item=>(
-          <option   value={item}  > {item} </option>
-          ))
-        }
-      </select>
-        </div>
-      </div>
+   
     <div className='debateFormatBox'>
 
       <table>
@@ -153,8 +135,8 @@ const DebateFormat = ({ teams ,debateForm ,setDebateForm}) => {
               </td>
            <td className="t_input_data">
       
-            <input min={1} disabled={debateForm.type==="Lincoln–Douglas"} onChange={(e)=>handleSpeakTimeChange(e,index)} type="number" name="" id="" value={item.time}/>
-            </td> 
+            <input className="debate_format_time_input" min={1} disabled={debateForm.type==="Lincoln–Douglas"} onChange={(e)=>handleSpeakTimeChange(e,index)} type="number" name="" id="" value={item.time}/>
+            </td>
    
     </tr>
 ))
@@ -162,7 +144,18 @@ const DebateFormat = ({ teams ,debateForm ,setDebateForm}) => {
 }
 </tbody>
 </table>
+ <div className="team_format_team_selection">
 
+
+      <select onChange={(e)=>setStartBy(e.target.value)}>
+        <option disabled selected value="">--select-team--</option>
+      {
+         teamArr?.map(item=>(
+          <option   value={item}  > {item} </option>
+          ))
+        }
+      </select>
+        </div>
     </div>
 </div>:""
 }

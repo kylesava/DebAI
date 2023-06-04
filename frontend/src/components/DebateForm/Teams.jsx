@@ -7,13 +7,6 @@ const Teams = ({formLevel,debateForm,setDebateForm ,handleTeamName}) => {
 
         <div className='lable_row'>
 
-          <div className='team_info_text'>
-        {
-
-         formLevel === 0 && <span className="red_info">Fill the above debate information to add teams</span>
-        } 
-            <span >Members must be registed in this site</span>
-          </div>
         </div>
         <div className="team_wrapper_box">
 
@@ -24,6 +17,10 @@ const Teams = ({formLevel,debateForm,setDebateForm ,handleTeamName}) => {
               handleTeamName={handleTeamName}
                team={team} index={index} key={index} />)}
         </div>
+          <div className='team_info_text'>
+
+            <span >Members must be registed in this site</span>
+          </div>
 
       </div> 
   )
