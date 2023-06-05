@@ -1,8 +1,9 @@
 .speak_time_left_box{
-    background: linear-gradient( 45deg, rgb(174 174 174 / 5%), rgb(64 70 221 / 6%), rgba(174, 174, 174, 0.21) );
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     border-radius: 5px;
     padding: 10px ;
     position: relative;
+
 }
 .speak_time_debate_state{
     position: absolute;

@@ -51,7 +51,7 @@ class ChatController{
             
             let text = response.data?.choices[0].text;
             let textARr = text.split(" ")
-            let lastLine = textARr.splice(-30);
+            let lastLine = textARr.splice(-60);
             lastLine = lastLine.join(" ");
             let prompt = `give one word answer .  Give the name of the winner from the following text : ${lastLine}`
             let winner  =  await  getOpenAiResponse(prompt)
@@ -69,8 +69,10 @@ class ChatController{
             await DebateModel.findByIdAndUpdate(debateId,{
                 hasEnded:true,
                 winner:winner,
+                transcript:response.data?.choices[0].text,
             })
-            
+            console.log("line",lastLine)
+            console.log("winner",winner)
             // console.log(winnerTeam,loserTeam,winner,req.body)
             next()
 

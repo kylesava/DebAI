@@ -19,13 +19,11 @@ const MainDebateInput = ({debateForm,handleInputChange,handleAutoGenerateePassco
       </DebateMotionModal>
    
       <div className='input_item'>
-        <select id="" name='type' onChange={handleInputChange}>
+        <select id="" name='type'  value={debateForm?.type} onChange={handleInputChange}>
           <option selected disabled>choose debate type</option>
           <option value="British Parliamentary">British Parliamentary</option>
-          {/* <option value="World Schools format (WSDC)">World Schools format (WSDC)</option> */}
           <option value="Public forum">Public forum</option>
           <option value="Lincoln–Douglas">Lincoln–Douglas</option>
-
         </select>
       </div>
       <div className='input_item'>

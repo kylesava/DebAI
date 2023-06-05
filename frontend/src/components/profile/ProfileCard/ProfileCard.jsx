@@ -8,12 +8,14 @@ import { useToast } from "@chakra-ui/react";
 import { actionCreators } from "../../../redux/store";
 import AvatarCarousel from "../../../Layouts/Slider/Avatar/Avatar";
 import { useEffect, useState } from "react";
+import { getFlag } from "../../../utils/services";
 const ProfileCard = ({ userData }) => {
 
     const dispatch = useDispatch()
     const toast = useToast()
     const { RemoveLoggedInUser, SetRefreshNow } = bindActionCreators(actionCreators, dispatch)
-    const { data } = useSelector((state) => state.user)
+    const { data } = useSelector((state) => state.user);
+    const [flag,setFlag] = useState("")
     const [debatesCount, setDebatesCount] = useState({
         upcomingDebate: null,
         liveDebate: null,
@@ -96,6 +98,9 @@ const ProfileCard = ({ userData }) => {
     }
 
     useEffect(() => {
+        getFlag(userData?.country).then(flag=>{
+            setFlag(flag)
+        })
         if (!userData?._id) return;
         if (userData._id === data?._id) {
             setIsMe(true
@@ -130,6 +135,10 @@ const ProfileCard = ({ userData }) => {
                                 <img width="94" height="94" src="https://img.icons8.com/3d-fluency/94/popular-topic.png" alt="popular-topic"/>
                                 </p>
                                 </h1>
+                                <div className="profile_card_user_country_box">
+                                <img width={"20px"} src={ flag} alt="" />
+                                <p>{userData?.country   } </p>
+                                </div>
                                 <p className="profile_card_email">{userData?.email}</p>
                       
                             </div>

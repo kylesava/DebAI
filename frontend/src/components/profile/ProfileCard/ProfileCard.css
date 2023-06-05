@@ -136,3 +136,15 @@
 .profile_card_user_points img{
   width: 20px;
 }
+.profile_card_user_country_box{
+  display: flex;
+  align-items: center ;
+  justify-content: start;
+
+  margin: 5px 0;
+  gap: 5px;
+}
+.profile_card_user_country_box p{
+  font-size: 13px;
+  letter-spacing: 1px;
+}

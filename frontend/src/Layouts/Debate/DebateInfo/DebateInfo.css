@@ -1,7 +1,8 @@
 .DebateInfoWrapper {
   min-height: 200px;
   border-radius: 10px;
-  background: var(--dark_gradient_bg);
+
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   margin: 2rem 0;
   padding: 1rem;
   display: flex;

@@ -5,15 +5,11 @@
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.5s;
-  padding: 5px;
-  background: linear-gradient(
-    45deg,
-    rgba(174, 174, 174, 0.11),
-    rgb(64 70 221 / 8%)
-  );
+  padding: 0.71rem  10px;
+  background:#fafafa;
   backdrop-filter: blur(45px);
 }
-.ParticipationPersonWrapper :hover {
+.ParticipationPersonWrapper:hover {
   background: linear-gradient(
     45deg,
     rgba(174, 174, 174, 0.21),
@@ -25,4 +21,15 @@
   height: 35px;
   border-radius: 50%;
   object-fit: cover;
+}
+.participation_person_box{
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.participation_person_box p{
+  text-transform: uppercase;
+  color: rgb(91, 90, 90);
+  letter-spacing: 1px;
+  font-size: 14px;
 }

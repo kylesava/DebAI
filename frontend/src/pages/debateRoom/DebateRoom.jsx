@@ -39,10 +39,11 @@ const DebateRoom = () => {
   const [audioTracks, setAudioTracks] = useState({
     localAudioTracks: null,
     remoteAudioTracks: {}
-  })
+  });
   const toast = useToast();
   const navigate = useNavigate()
   const debateStateRef = useRef()
+  const MicElmRef = useRef();
   const activeDebateRef = useRef()
   const timeRemainingRef = useRef()
   const [micMuted, setMicMuted] = useState(true)
@@ -85,6 +86,7 @@ const DebateRoom = () => {
     rtcUid,
     navigate,
     hasLeftRoom,
+    MicElmRef,
     debateId,
     micMuted,
     showToast,
@@ -176,7 +178,7 @@ const DebateRoom = () => {
     }
 
   }, [activeDebateRef.current, data])
-
+  
   useEffect(() => {
     if (!isLive && activeDebateRef.current) {
       const { startTime } = activeDebateRef.current;
@@ -273,11 +275,8 @@ const DebateRoom = () => {
       console.log(error.message)
     }
   }
-  
 
-  console.log("tracks   ",audioTracks.localAudioTracks)
-  console.log("active speakers",activeSpeakers)
-  
+ console.log(transcript)
 
 
   return (
@@ -325,6 +324,7 @@ const DebateRoom = () => {
         <div className="debate_bottom_content">
         {
           !debateStateRef.current?.hasFinished  &&   <DebateAction
+          MicElmRef={MicElmRef}
           isLive={isLive}
           roomId={debateId}
           micMuted={micMuted}

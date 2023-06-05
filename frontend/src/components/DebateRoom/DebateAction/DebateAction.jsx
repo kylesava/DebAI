@@ -1,27 +1,28 @@
-import {useState ,useEffect} from "react"
-
+import {useState ,useEffect} from "react";
 import { BsFillMicFill, BsFillMicMuteFill } from "react-icons/bs"
-import {HiOutlineClipboardDocument} from "react-icons/hi2";
-import {CopyToClipboard} from 'react-copy-to-clipboard';
-import {RxResume} from "react-icons/rx"
-import "./DebateAction.css"
+import {RxResume} from "react-icons/rx";
+import "./DebateAction.css";
 import { useToast } from '@chakra-ui/react';
 import {TbMicroscope} from "react-icons/tb";
 import {TiArrowBackOutline} from "react-icons/ti";
 import {useSelector} from "react-redux"
 import { getMyTeam } from "../../../utils/services";
+
 const DebateAction = ({ 
+   isLive,
    micMuted, 
-   isUserParticipant ,
-   resetTranscript
-   , isLive,
+   MicElmRef,
+   isUserParticipant,
+   resetTranscript,
    WatchType,
    debateState,
    setStopListening,
    micControlTeam,
    setStartListening,
    RoomService,
-  roomMembers}) => {
+  roomMembers
+
+}) => {
 
   const { activeDebate } = useSelector((state) => state.debate);
   const {data} = useSelector((state)=>state.user)
@@ -85,7 +86,6 @@ const DebateAction = ({
   useEffect(()=>{
       if(micControlTeam && data){
         const isMyTeam=   micControlTeam?.members?.find(mem => mem?._id === data?._id);
-        console.log("miccontrol",isMyTeam)
         setIsMicWithUs(isMyTeam ?? false)
       }
   },[micControlTeam,data])
@@ -101,7 +101,7 @@ const DebateAction = ({
     
   },[data,activeDebate?.current]);
 
-  const handleCopyLink=()=>{
+const handleCopyLink=()=>{
 
     toast({
       title: '',
@@ -113,13 +113,13 @@ const DebateAction = ({
     })
   }
 
-  const passTurnToNextTeam=()=>{
+const passTurnToNextTeam=()=>{
     if(removeInterval){
      clearInterval(removeInterval.intervalRef?.current);
      removeInterval.intervalArrRef.current=[];
       RoomService.handleFinishSpeakTime(true);
     }
-  }
+}
  
 const handleStartMicToggle=async()=>{
   if(micMuted){
@@ -130,11 +130,14 @@ const handleStartMicToggle=async()=>{
   }
   await RoomService.handleMicTogggle()
 }
+
 const handleStartDebate=async()=>{
 
  await RoomService.startDebate()
 
 }
+
+
 const handleLeaveRoom=async()=>{
   try {
       await RoomService.handleLeaveRoom()
@@ -172,10 +175,24 @@ const handleLeaveRoom=async()=>{
           </button>:""
           } 
     <div className="DebateActionWrapper">
+
+      
       {
-   ( debateState.isStarted && !debateState.isPaused) ?    (micMuted ? <BsFillMicMuteFill onClick={handleStartMicToggle} /> :
-         <BsFillMicFill className="activeMic" onClick={handleStartMicToggle} />) :""
-      }
+        (debateState.isStarted && !debateState.isPaused) ?   
+         (micMuted ?
+         <BsFillMicMuteFill
+         ref={MicElmRef}
+        
+          onClick={handleStartMicToggle} 
+         /> :
+         <BsFillMicFill
+          className="activeMic"
+          ref={MicElmRef}
+          onClick={handleStartMicToggle} 
+          />
+          ) :""
+        }
+   
       <button className="leaveBtn" onClick={handleLeaveRoom}>
         <TiArrowBackOutline/>
         LEAVE
@@ -186,19 +203,12 @@ const handleLeaveRoom=async()=>{
     :""
         }
       {
- 
- (  isLive && WatchType !== "PARTICIPANT")&&
+      (isLive && WatchType !== "PARTICIPANT") &&
         <button className="leaveBtn leave_for_watch_type" onClick={handleLeaveRoom}>
         <TiArrowBackOutline/>
         LEAVE
       </button>
         } 
-    {/* <CopyToClipboard text={`${process.env.REACT_APP_FRONTEND_URL}/debate/${activeDebate?.current?.passcode}`} onCopy={handleCopyLink}>
-      <button   className="copy_link_button">
-        <HiOutlineClipboardDocument/> 
-        <p>COPY LINK</p>
-      </button>
-    </CopyToClipboard> */}
       </div>
       </>
   )

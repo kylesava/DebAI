@@ -50,7 +50,7 @@ const DebateFormInput = ({stepIndex,setStepIndex}) => {
   })
 
 
-
+console.log(debateForm)
 
   useEffect(() => {
     if (durationType === "Instant Debate") {
@@ -341,10 +341,10 @@ if(formatArr){
   }
 
   const goToNext=()=>{
-    const {topic,timeFormat,startTime,judgeType,passcode,team_format} = debateForm;
+    const {topic, type, timeFormat,startTime,judgeType,passcode,team_format} = debateForm;
     if(stepIndex===0){
 
-      if(!topic || !timeFormat || !startTime || !judgeType || !passcode || !team_format){
+      if(!topic  || !type || !timeFormat || !startTime || !judgeType || !passcode || !team_format){
         return false
       }
     }

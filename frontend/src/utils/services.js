@@ -1,7 +1,7 @@
 import AgoraRTC from "agora-rtc-sdk-ng";
 import { Rtc_client, Rtm_client  } from "../pages/debateRoom/DebateRoom";
 import { Enums } from "../redux/action/actionTypes/Enumss";
-import { chatBotApi, finishDebateApi, getAgoraTokenApi, joinParticipantApi, removeParticipantApi, updateDebateApi } from "./Api";
+import { chatBotApi, finishDebateApi, getAgoraTokenApi, getCountries, joinParticipantApi, removeParticipantApi, updateDebateApi } from "./Api";
 import { avatarsTypeData } from "./data";
 import SpeechRecognition from "react-speech-recognition";
 import moment from "moment";
@@ -189,9 +189,21 @@ SUMMERIZE THE BELOW DEBATE IN 300 WORDS AND 3 PARAGRAPHS. MOST IMPORTANTLY THE T
 
 }
 
+export const getFlag=(country)=>{
+
+  return    getCountries().then(res=>{
+  
+     let flag =   res.data.find(coun=>coun.name?.common ===country)?.flags?.svg
+     
+      return flag;
+      })
+      
+
+}
+
 class DebateRoomServices{
 
-  constructor({rtmChannelRef ,hasLeftRoom , addLiveMessages, navigate,rtcUid ,data:user , lastApiCallConfig, setRoomLoading ,activeDebateRef , debateStateRef ,setDebateState ,setActiveMicControlTeam  ,isAudience ,setRoomMembers ,setMicMuted ,debateId ,RoomMembers ,audioTracks ,setActiveSpeakers ,setRtmChannelAction ,isLive  ,micMuted  ,AddActiveDebate,setMessage  ,showToast , transcript,resetTranscript, activeSpeakers ,timeRemainingRef ,otherState  ,activeMicControlTeam
+  constructor({rtmChannelRef, MicElmRef ,hasLeftRoom , addLiveMessages, navigate,rtcUid ,data:user , lastApiCallConfig, setRoomLoading ,activeDebateRef , debateStateRef ,setDebateState ,setActiveMicControlTeam  ,isAudience ,setRoomMembers ,setMicMuted ,debateId ,RoomMembers ,audioTracks ,setActiveSpeakers ,setRtmChannelAction ,isLive  ,micMuted  ,AddActiveDebate,setMessage  ,showToast , transcript,resetTranscript, activeSpeakers ,timeRemainingRef ,otherState  ,activeMicControlTeam
   }){
     this.navigate = navigate
     this.rtmChannelRef = rtmChannelRef; 
@@ -205,7 +217,8 @@ class DebateRoomServices{
     this.AddActiveDebate= AddActiveDebate;
     this.setMessage = setMessage;
     this.isAudience = isAudience ;
-    this.changeRoomMember=setRoomMembers;
+    this.MicElmRef = MicElmRef;
+    this.changeRoomMember = setRoomMembers;
     this.debateId = debateId;
     this.RoomMembers=RoomMembers;
     this.audioTracks = audioTracks;
@@ -317,7 +330,7 @@ class DebateRoomServices{
   console.log(error)      
     }
   }
- 
+
   async handlePauseDebate  () {
     const { isPaused, isStarted } = this.debateState?.current;
     if (!this.RoomMembers || !isStarted || isPaused) return;
@@ -375,7 +388,7 @@ class DebateRoomServices{
   async removIntervalFunc(){
     const { removeInterval } = this.otherState;
     if (!removeInterval) return;
-    console.log("interval removed")
+
     clearInterval(removeInterval?.intervalRef?.current);
     removeInterval.intervalArrRef.current = [];
   }
@@ -879,15 +892,10 @@ async handleMicTogggle  () {
     if (!await this.checkIfUserCanUnMute()) {
       return;
     };
-    this.audioTracks.localAudioTracks.setMuted(false)
-    this.setMicMuted(false)
-    await this.UpdateChannelAttr("speaker",this.rtcUid.toString())
+   await this.openMic();
   }
   else {
-    this.audioTracks.localAudioTracks.setMuted(true);
-    this.setMicMuted(true)
-    await this.UpdateChannelAttr("speaker","null")
-    await this.addSpeechToChannel()
+    await this.closeMic()
   }
 } catch (error) {
     console.log(error)
@@ -946,6 +954,7 @@ async addSpeechToChannel(){
   const attr =  await this.getChannelAttributeFunc();
   let  speechText = attr?.speechText?.value;
   const thePast = speechText ? JSON.parse(speechText) : {}
+ console.log(thePast); 
   const myTeam = this.getMyTeamMethod().name;
   let teamSpeech;
   if(thePast[myTeam]){
@@ -974,13 +983,12 @@ async handleFinishSpeakTime(isMicPassed)  {
   let debateShot = this.debateState.current.round_shot;
   let totalShot = timeFormat?.length
   let nextRoundShot = ++debateShot;
-  await this.addSpeechToChannel()
-  console.log("the currrent round" , this.debateState.current.round_shot ,nextRoundShot)
   try {
- 
-  if(!this.micMuted){
-   await this.handleMicTogggle()
-  }
+  await this.addSpeechToChannel()
+
+    if(!this.audioTracks?.localAudioTracks?.muted){
+   await   this.closeMic();
+    }
   if (nextRoundShot > totalShot) {
     await this.handleCloseDebate()
   } else {
@@ -1083,6 +1091,20 @@ async getArgument(){
     console.log(error)
   }
 }
+
+async closeMic(){
+  this.audioTracks.localAudioTracks.setMuted(true);
+  this.setMicMuted(true);
+  await this.UpdateChannelAttr("speaker","null");
+  await this.addSpeechToChannel();
+}
+
+async openMic(){
+  this.audioTracks.localAudioTracks.setMuted(false);
+  this.setMicMuted(false);
+  await this.UpdateChannelAttr("speaker",this.rtcUid.toString())
+}
+
 }
 
 export  { DebateRoomServices}
