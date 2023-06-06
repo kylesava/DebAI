@@ -26,6 +26,10 @@ const UserSchema = mongoose.Schema(
       default: "https://cdn-icons-png.flaticon.com/512/8353/8353258.png",
     },
     equipedAvatars:[],
+    verified:{
+      type:Boolean,
+      default:false,
+    },  
     lastLoggedIn: Number,
     country:String,
     points:{

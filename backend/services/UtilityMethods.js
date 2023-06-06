@@ -2,6 +2,7 @@ const openAi = require("../index");
 const DebateModel = require("../models/DebateModel");
 const { stripe } = require("../utils/stripe");
 const moment = require("moment");
+const { hashPassword } = require("./AuthService");
 
 class UtilityMethods {
   async getUserSubscriptionStatus(stripeCustomerId) {
@@ -69,6 +70,7 @@ class UtilityMethods {
       return error.message
     }
   }
+
 
 
 

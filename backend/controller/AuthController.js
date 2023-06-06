@@ -5,6 +5,7 @@ const {
   compareHashPassword,
 } = require("../services/AuthService");
 const { getUserSubscriptionStatus } = require("../services/UtilityMethods");
+const EmailService = require("../services/EmailService");
 
 class AuthController {
   async register(req, res) {
@@ -30,11 +31,19 @@ class AuthController {
       savedUser._doc.subscription = await getUserSubscriptionStatus(
         customer.id
       );
-      const { password, ...other } = savedUser._doc;
+      const confirmationHash =  EmailService.createEmailConfirmationHash(email)
+      console.log("the hash",confirmationHash)
+      
+       await EmailService.confirmationEmail({
 
-      req.session.user = other;
+          text:"Confirm  your DebAi gmail account",
+          subject:"DebAi wants to confirm your email . ",
+          email,
+          html:`<div> <h1> Hello DebAi welcomes you  </h1> </br> <h3> You are closer to be the part of debAi .  </h3> </br> <h4>Click the button below to confirm your email address. </h4> <br/> <a style="background:blue;height:40px; padding:8px ; cursor:pointer;letter-spacing:1px; border-radius:4px;text-align:center;color:white;" href="http://localhost:3000/confirmation/${confirmationHash}"> CONFIRM EMAIL </a> </br> <br> <br>  </div>`
+        })
 
-      return res.status(200).json({ message: other, success: true });
+
+      return res.status(200).json({ message: "email sent for verification", success: true });
     } catch (error) {
       return res.status(500).json({ message: error.message, success: false });
     }
@@ -66,7 +75,7 @@ class AuthController {
         );
         userExist._doc.lastLoggedIn = lastLoggedIn;
         req.session.user = userExist._doc;
-        console.log(userExist._doc);
+ 
 
         res.status(200).json({ message: userExist._doc, success: true });
       } else {
@@ -93,6 +102,37 @@ class AuthController {
       });
     } catch (error) {
       res.status(500).json({ message: error.message, success: false });
+    }
+  }
+
+  async handleConfirmation(req,res){
+    const {token} = req.params;
+    console.log("i am inside",token)
+
+    try {
+    const {email,exp,invalidLink} =  await  EmailService.verifyEmailConfirmationToken(token);
+    console.log("the res",email,exp,invalidLink);
+
+    
+    if(email){
+      const user = await UserModel.findOneAndUpdate(
+        {
+        email  
+        },{
+        verified:true
+      },{
+        new:true,
+        returnOriginal:false
+      })
+      const {password,...other} = user._doc;
+      req.session.user=  other;
+      return res.status(200).json({message:other,success:true ,exp:false})
+    }else{
+      return res.status(200).json({message:"Link  expired try again",success:false ,exp:true})
+
+    }
+    } catch (error) {
+      return res.status(500).json({message:"Invalid link try again later ",success:false ,exp:true})
     }
   }
 }

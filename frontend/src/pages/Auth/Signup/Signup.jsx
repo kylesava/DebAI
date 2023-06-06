@@ -83,12 +83,10 @@ const handleGetCountries=async()=>{
         email: userDetails.email,
         country:userDetails.country
       }
-
-
       const res = await RegisterUserApi(payloadData);
       if (res.status === 200) {
         AddLoggedInUser(res.data.message)
-        navigate("/")
+        navigate("/");
         toast({
           title: 'Account created.',
           description: "You registered successfully",

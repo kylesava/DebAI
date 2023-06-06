@@ -14,6 +14,7 @@ export const searchUserByIdApi = (userId) =>
   axiosInstance.get(`/user/search?userId=${userId}`);
 
 export const getTopUsersApi = ()=> axiosInstance.get("/user/leadingDebators")
+export const emailConfirmationApi=(code)=>axiosInstance.post(`/auth/email_confirmation/${code}`)
 
 
 // DEBATE API ENDPOINTS
