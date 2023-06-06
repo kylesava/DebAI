@@ -11,12 +11,7 @@
     transition: all .3s ease-in-out;
     align-items: center;
 }
-.user_name_box{
-
-    display: flex;
-    gap: 5px;
-    align-items: center;
-}.user_country_flag{
+.user_country_flag{
     width: 15px;
     padding-top: 5px;
 

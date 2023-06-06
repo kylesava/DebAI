@@ -87,7 +87,7 @@ h5{
   background-color: rgba(255, 255, 255);
   width: 100%;
   margin: 0 auto;
-  max-width: 1400px;
+  max-width: 1200px;
   height: 100vh;
   overflow-x: hidden;
   padding: 0 ;
@@ -105,7 +105,6 @@ h5{
   background: var(--primary_color) !important;
 }
 p , h1{
-  margin-bottom: 0 !important;
 }
 .css-4t6ey5[data-status=complete] {
   background-color: rgb(64, 70, 221) !important;

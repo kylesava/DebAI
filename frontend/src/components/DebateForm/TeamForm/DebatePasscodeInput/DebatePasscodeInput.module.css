@@ -45,4 +45,19 @@
     font-size: 12px;
     transform: skewX(350deg);
     letter-spacing: 0.9px;
+    text-align: center;
+}
+
+@media only screen and (min-width: 480px) and (max-width: 600px){
+
+    
+    .passcode_text {
+        font-size: 9px;
+    }
+    .watchButton{
+       
+        height: 38px;
+        width: 60%;
+        font-size: 13px;
+      }
 }

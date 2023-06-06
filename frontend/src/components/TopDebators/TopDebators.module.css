@@ -19,6 +19,7 @@
     display: flex;
     gap: 10px;
     margin-bottom: 2rem;
+
 }
 .top_debators_main_text{
     display: flex;
@@ -45,4 +46,10 @@
     width: 100%;
     flex-direction: column;
     gap: 5px;
+}
+
+@media only screen and (min-width: 480px) and (max-width: 600px){
+    .top_users_list{
+        flex-direction: column;
+    }
 }
