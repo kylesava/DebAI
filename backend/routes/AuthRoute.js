@@ -1,12 +1,17 @@
 const passport = require("passport");
-const { register, login, logout, handleConfirmation } = require("../controller/AuthController");
+const { register, login, logout, handleConfirmation, sentLinkToResetPassword } = require("../controller/AuthController");
 const router = require("express").Router()
 const { RtcTokenBuilder, RtcRole, RtmTokenBuilder, RtmRole } = require('agora-access-token');
 //routes 
 router.post("/register", register)
 router.post("/login", login);
 router.post("/logout", logout);
-router.post("/email_confirmation/:token",handleConfirmation)
+router.post("/email_confirmation/:token",handleConfirmation);
+router.post("/sentLinkToResetPassword",sentLinkToResetPassword);                       
+
+
+
+
 const nocache = (_, resp, next) => {
     resp.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
     resp.header('Expires', '-1');

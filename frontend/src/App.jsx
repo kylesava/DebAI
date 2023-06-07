@@ -21,6 +21,8 @@ import  Subscription from "./pages/Subscription/Subscription";
 import DebateCompletionUi from "./components/DebateRoom/DebateCompletionUi/DebateCompletionUi";
 import Confirmation from "./pages/confirmation/Confirmation";
 import ConfirmationEmailSent from "./pages/Auth/ConfirmationSent/Confirmation_email_sent";
+import SentEmailForPassword from "./pages/Auth/SentEmailForPassword/SentEmailForPassword";
+import ResetPassword from "./pages/Auth/ResetPassword/ResetPassword";
 
 function App() {
   const { data } = useSelector((state) => state.user)
@@ -63,20 +65,23 @@ function App() {
           ( roomLoading  || isLoading) ? <Loader /> :""
         }
         <Routes>
-          <Route path="" element={<Home/>} />
-          <Route path="/alldebates" element={<CurrentDebates />} />
-          <Route path="/chatbot" element={<ChatBot />} />
-          <Route path="/create" element={<CreateDebate />} />
-          <Route path="/profile/:profileId" element={!data ? <Navigate to={"/login"} /> : <Profile />} />
-          <Route path="/login" element={data ? <Navigate to={"/"} /> : <Login />} />
-          <Route path="/signup" element={data ? <Navigate to={"/"} /> : <Signup />} />
-          <Route path="/debate/:debateId" element={<DebateRoom />} />
-          <Route path="/watch/:debateId" element={<Watchnow />} />
-          <Route path="/subscription" element={<Subscription />} />
-          <Route path="/completion/:debateId"  element={<DebateCompletionUi/>}/>
-          <Route  path="/account" >
-          <Route path="confirmation/:confirmationCode"  element={<Confirmation/>}/>
-          <Route path="confirmation_email_sent"  element={<ConfirmationEmailSent/>}/>
+        <Route path="" element={<Home/>} />
+        <Route path="/alldebates" element={<CurrentDebates />} />
+        <Route path="/chatbot" element={<ChatBot />} />
+        <Route path="/create" element={<CreateDebate />} />
+        <Route path="/profile/:profileId" element={!data ? <Navigate to={"/login"} /> : <Profile />} />
+        <Route path="/login" element={data ? <Navigate to={"/"} /> : <Login />} />
+        <Route path="/signup" element={data ? <Navigate to={"/"} /> : <Signup />} />
+        <Route path="/debate/:debateId" element={<DebateRoom />} />
+        <Route path="/watch/:debateId" element={<Watchnow />} />
+        <Route path="/subscription" element={<Subscription />} />
+        <Route path="/completion/:debateId"  element={<DebateCompletionUi/>}/>
+        <Route  path="/account" >
+        <Route path="confirmation/:confirmationCode"  element={<Confirmation/>}/>
+        <Route path="confirmation_email_sent"  element={<ConfirmationEmailSent/>}/>
+        <Route path="passwordresetlink" element={<SentEmailForPassword/>} />  
+        <Route path="resetpassword/:resetlink" element={<ResetPassword/>}/>
+
           </Route>
         </Routes>
       </div>

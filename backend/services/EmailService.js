@@ -61,7 +61,7 @@ class EmailService{
 
 
      const hash =    this.createEmailToken(email);
-     console.log(hash)
+     
      return hash;
     
   }
@@ -72,14 +72,14 @@ class EmailService{
          return token;
 
    
-  }
+  }  
 
   async verifyEmailConfirmationToken(token){
-    console.log("inside verify 0",token);
+
     try {
         
         const decoded =  jwt.verify(token,process.env.CONFIRMATION_HASH)
-        console.log("inside verify");
+
 
 
         

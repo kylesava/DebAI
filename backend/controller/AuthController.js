@@ -135,5 +135,42 @@ class AuthController {
       return res.status(500).json({message:"Invalid link try again later ",success:false ,exp:true})
     }
   }
+
+
+  async sentLinkToResetPassword(req,res){
+
+    const {email} = req.body;
+    
+    try {
+      
+      const user =   await UserModel.findOne({email});
+      if(!user){
+       throw {
+        type:"custom",
+        message:"This email is not registered in DebAi"
+       }
+      }
+
+      const emailHash = EmailService.createEmailToken(email);
+
+   const messageId =  await  EmailService.sendEmail({
+        subject:"Reset Password",
+        text:"Rest DebAi password.",
+        email,
+        html:`<div> <h1> RESET YOUR DEBAI PASSWORD .  </h1> </br> <h4>Click the button below to reset  your password. </h4> <br/> <a style="background:blue;height:40px; padding:8px ; cursor:pointer;letter-spacing:1px; border-radius:4px;text-align:center;color:white;" href="${process.env.FRONTEND_URL}/account/resetpassword/${emailHash}"> RESET EMAIL </a> </br> <br> <br>  </div>`,
+      })
+      console.log(messageId)
+      return res.status(200).json({message:"reset link sent",success:true})
+
+    } catch (error) {
+      
+      let errorMessage = "Something went wrong";
+      if(error.type==="custom"){
+        errorMessage = error.message; 
+      }
+
+      return res.status(500).json({message:errorMessage,success:true})
+    }
+  }
 }
 module.exports = new AuthController();
