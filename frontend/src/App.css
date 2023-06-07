@@ -104,7 +104,8 @@ h5{
   letter-spacing: 1px !important;
   background: var(--primary_color) !important;
 }
-p , h1{
+p , h1 ,ul{
+  margin-bottom: 0 !important;
 }
 .css-4t6ey5[data-status=complete] {
   background-color: rgb(64, 70, 221) !important;

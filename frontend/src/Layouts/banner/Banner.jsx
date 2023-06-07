@@ -64,9 +64,12 @@ const Banner = () => {
 
       <div className="banner_content">
         <p className="top_site_info">Virtual Debate platform</p>
-        <h1 className="main_text_banner">Online platform to organize</h1>
+        <div>
+          <h1 className="main_text_banner">
+            Online platform to organize a virtual debate for all
+          </h1>
+        </div>
         <div className="bottom_text">
-          <h1 className="main_text_banner">a virtual debate for all</h1>
           <p className="secondary_main_banner_text">
             Debatasour lets a users to create a online debate and manages the
             audience to watch the debate & provide feedback to the debators.

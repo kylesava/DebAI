@@ -24,6 +24,8 @@
     gap:10px;
     align-items: center;
     display: flex;
+    flex: 10;
+    
 
 }
 .top_user_avatar{
@@ -39,6 +41,8 @@
     font-size: 13px;
     font-weight: bold;
     color: rgb(44, 156, 255);
+    flex: 2;
+   
 }
 .points_box img{
     width: 20px;
@@ -54,4 +58,47 @@ font-size: 13px;
     .own{
         /* background-color: rgba(66, 189, 255, 0.816) !important; */
         border: 2px solid rgb(44, 156, 255) !important;
+    }
+
+
+    @media only screen and (min-width: 769px) and (max-width: 992px) {
+
+        .points_box  {
+           
+            font-size: 12px;
+        }
+        /* .main_info {        } */
+        .top_user_avatar{
+            width: 30px;
+            height: 30px;
+        }
+    }
+    @media only screen and (min-width: 600px)  and (max-width: 769px){
+
+        .top_user_avatar {
+            width: 25px;
+            height: 25px;
+        }
+        .top_email {
+            font-size: 9px;
+        }
+        .top_username{
+            font-size: 12px;
+            width: 7rem;
+        }
+        .top_user{
+           
+            padding: 0.4rem 1.5rem;
+         
+        }
+      
+    }
+
+    @media only screen and (max-width: 480px){
+        .main_info{
+            flex: 10;
+        }
+        .points_box {
+            flex: 2;
+        }
     }
