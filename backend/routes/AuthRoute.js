@@ -1,13 +1,14 @@
 const passport = require("passport");
-const { register, login, logout, handleConfirmation, sentLinkToResetPassword } = require("../controller/AuthController");
+const { register, login, logout, handleConfirmation, sentLinkToResetPassword, handleResetPassword } = require("../controller/AuthController");
 const router = require("express").Router()
-const { RtcTokenBuilder, RtcRole, RtmTokenBuilder, RtmRole } = require('agora-access-token');
+const { RtcTokenBuilder, RtcRole, RtmTokenBuilder } = require('agora-access-token');
 //routes 
 router.post("/register", register)
 router.post("/login", login);
 router.post("/logout", logout);
 router.post("/email_confirmation/:token",handleConfirmation);
 router.post("/sentLinkToResetPassword",sentLinkToResetPassword);                       
+router.post("/resetpassword/:token",handleResetPassword)
 
 
 

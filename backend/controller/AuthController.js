@@ -136,7 +136,59 @@ class AuthController {
     }
   }
 
+  async handleResetPassword(req,res){
+    const {token} = req.params;
+    const {email:userEmail,password} = req.body;
 
+    try {
+        const user = await UserModel.findOne({userEmail});
+        if(!user){
+          throw {type:"custom",message:"Authorization failed"};
+        }
+      const {email,exp  ,invalidLink}  =   await EmailService.verifyEmailConfirmationToken(token);
+      if(email){
+      const newPassword = await hashPassword(password);
+      await UserModel.findOneAndUpdate(
+        {
+        userEmail
+      },
+      {
+        password:newPassword
+      } 
+      )
+
+      return res.status(200).json({message:"password reset successfully",success:true})
+
+
+
+      }else if(invalidLink){
+        throw {
+          type:"custom",
+          message:"Invalid link"
+        }
+      }else{
+        throw {
+          type:"custom",
+          message:"Link expired"
+        }
+      }
+    } catch (error) {
+      console.log(error)
+      let errorMessage = "something went wrong";
+      let expired = false;
+      let invalidLink  = false;
+      if(error.type==="custom"){
+        errorMessage = error.message
+        if(error.message==="Link expired"){
+          expired=true;
+        }else{
+          invalidLink=true
+        }
+      }
+      return res.status(500).json({message:{expired,invalidLink },success:false})
+    }
+
+  }
   async sentLinkToResetPassword(req,res){
 
     const {email} = req.body;

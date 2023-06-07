@@ -81,12 +81,16 @@ class EmailService{
         const decoded =  jwt.verify(token,process.env.CONFIRMATION_HASH)
 
 
-
+        console.log("the decoded",decoded);
         
         return {email:decoded?.email, exp:false, invalidLink:false}
     } catch (error) {
-        console.log(error)
-                return {email:null, exp:true, invalidLink:false}
+        console.log(error.message)
+        if(error?.message==="jwt expired"){
+           return {email:null, exp:true, invalidLink:false}
+        }else{
+            return {email:null, exp:false, invalidLink:true}
+        }
             
     }
     }
