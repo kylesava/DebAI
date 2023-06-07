@@ -15,22 +15,22 @@ class AuthController {
       if (userExist) {
         throw Error("This email is  already used");
       }
-      const customer = await stripe.customers.create(
-        {
-          email,
-        },
-        {
-          apiKey: process.env.STRIPE_SECRET_KEY,
-        }
-      );
+      // const customer = await stripe.customers.create(
+      //   {
+      //     email,
+      //   },
+      //   {
+      //     apiKey: process.env.STRIPE_SECRET_KEY,
+      //   }
+      // );
 
       req.body.lastLoggedIn = Date.now();
       req.body.password = await hashPassword(thePassword);
-      req.body.stripeCustomerId = customer.id;
+      // req.body.stripeCustomerId = customer.id;
       let savedUser = await UserModel.create(req.body);
-      savedUser._doc.subscription = await getUserSubscriptionStatus(
-        customer.id
-      );
+      // savedUser._doc.subscription = await getUserSubscriptionStatus(
+      //   customer.id
+      // );
       const confirmationHash =  EmailService.createEmailConfirmationHash(email)
       console.log("the hash",confirmationHash)
       
@@ -39,7 +39,7 @@ class AuthController {
           text:"Confirm  your DebAi gmail account",
           subject:"DebAi wants to confirm your email . ",
           email,
-          html:`<div> <h1> Hello DebAi welcomes you  </h1> </br> <h3> You are closer to be the part of debAi .  </h3> </br> <h4>Click the button below to confirm your email address. </h4> <br/> <a style="background:blue;height:40px; padding:8px ; cursor:pointer;letter-spacing:1px; border-radius:4px;text-align:center;color:white;" href="http://localhost:3000/confirmation/${confirmationHash}"> CONFIRM EMAIL </a> </br> <br> <br>  </div>`
+          html:`<div> <h1> Hello DebAi welcomes you  </h1> </br> <h3> You are closer to be the part of debAi .  </h3> </br> <h4>Click the button below to confirm your email address. </h4> <br/> <a style="background:blue;height:40px; padding:8px ; cursor:pointer;letter-spacing:1px; border-radius:4px;text-align:center;color:white;" href="http://localhost:3000/account/confirmation/${confirmationHash}"> CONFIRM EMAIL </a> </br> <br> <br>  </div>`
         })
 
 

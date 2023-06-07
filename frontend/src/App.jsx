@@ -20,6 +20,7 @@ import  Watchnow from "./pages/WatchNow/Watchnow";
 import  Subscription from "./pages/Subscription/Subscription";
 import DebateCompletionUi from "./components/DebateRoom/DebateCompletionUi/DebateCompletionUi";
 import Confirmation from "./pages/confirmation/Confirmation";
+import ConfirmationEmailSent from "./pages/Auth/ConfirmationSent/Confirmation_email_sent";
 
 function App() {
   const { data } = useSelector((state) => state.user)
@@ -73,7 +74,10 @@ function App() {
           <Route path="/watch/:debateId" element={<Watchnow />} />
           <Route path="/subscription" element={<Subscription />} />
           <Route path="/completion/:debateId"  element={<DebateCompletionUi/>}/>
-          <Route path="/confirmation/:confirmationCode"  element={<Confirmation/>}/>
+          <Route  path="/account" >
+          <Route path="confirmation/:confirmationCode"  element={<Confirmation/>}/>
+          <Route path="confirmation_email_sent"  element={<ConfirmationEmailSent/>}/>
+          </Route>
         </Routes>
       </div>
 
