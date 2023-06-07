@@ -10,7 +10,7 @@ const {
   getTopTenDebators
 } = require("../controller/UserController");
 const router = require("express").Router();
-
+const EmailService = require("../services/EmailService")
 router.post("/rate",handleRateUser)
 router.get("/getLoggedInUser", getLoggedInUser);
 router.get("/prices", getPrices);
@@ -20,4 +20,5 @@ router.get("/search", searchUser);
 router.put("/:userId", updateUser);
 router.get("/topDebators",getTopUsers)
 router.get("/leadingDebators",getTopTenDebators)
+router.post("/email",(req,res)=>EmailService.signUpEmail(res,res))
 module.exports = router;

@@ -113,10 +113,14 @@ class UserController {
     const sessionUser = req.session?.passport?.user || req.session.user;
     if (sessionUser) {
       let updatedUser = await isUserUpdated(sessionUser);
-      const { stripeCustomerId } = updatedUser;
-      updatedUser.subscription = await getUserSubscriptionStatus(
-        stripeCustomerId
-      );
+      // const { stripeCustomerId } = updatedUser;
+      // updatedUser.subscription = await getUserSubscriptionStatus(
+      //   stripeCustomerId
+      // );
+      if(!updatedUser){
+        throw "no user found"
+
+      }
       return res.status(200).json({ message: updatedUser, success: true });
     } else {
       return res
