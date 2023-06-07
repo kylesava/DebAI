@@ -94,7 +94,9 @@
   line-height: 52px;
   letter-spacing: 2px;
   font-weight: 700;
+  word-break: keep-all;
   color: rgb(14, 11, 61);
+  margin-bottom: 0rem !important;
 }
 .secondary_main_banner_text {
   color: rgb(14, 11, 61);
@@ -103,6 +105,7 @@
   line-height: 23px;
   margin-top: 1rem;
   font-size: 14px;
+  word-break: keep-all;
 }
 .quodium {
   display: inline;
@@ -117,6 +120,9 @@
   letter-spacing: 1px;
   align-items: center;
   justify-content: space-between;
+}
+.banne_bottom_option_box p{
+  margin: 0 !important;
 }
 
 .banne_bottom_option_box button svg {
@@ -204,4 +210,151 @@
 }
 .disabled_vote_button{
 
+}
+
+
+
+@media only screen and (min-width: 769px) and (max-width: 992px) {
+  .main_text_banner {
+    font-size: 30px;
+    line-height: 38px;
+    margin: 0;
+}
+.secondary_main_banner_text {
+  line-height: 22px;
+  font-size: 12px;
+}
+.top_site_info {
+  margin-bottom: 10px;
+}
+.banner_bottom_button_option_button {
+  height: 40px;
+  font-size: 12px;
+}
+.prepare_for_debate_btn {
+  font-size: 12px;
+  height: 40px;
+}
+.User_top_user__3yTkc {
+  padding: 0.3rem 12px;
+}
+
+}
+@media only screen and (min-width: 600px)  and (max-width: 769px){
+  .banner_content {
+    margin-bottom: -1rem;
+}
+  .main_text_banner {
+    font-size: 24px;
+    line-height: 35px;
+}
+.secondary_main_banner_text {
+  line-height: 22px;
+  margin-top: 12px;
+  font-size: 13px;
+}
+.banner_bottom_button_option_button {
+  height: 38px;
+  padding: 0 8px;
+  font-size: 12px;
+}
+.prepare_for_debate_btn {
+  height: 38px;
+  padding: 0 8px;
+  font-size: 12px;
+}
+.top_site_info {
+  margin-bottom: 1rem;
+}
+.main_text_banner {
+  font-size: 25px;
+  line-height: 35px;
+}
+
+
+}
+@media only screen and (min-width: 480px) and (max-width: 600px) {
+
+  .banner_content{
+    width: 100%;
+    padding: 0 0.5rem;
+    gap: 1rem;
+  }
+
+  .robo{
+    display: none!important;
+  }
+
+  .main_text_banner {
+    font-size: 26px;
+    line-height: 38px;
+}
+.bottom_text{
+  width: 80%;
+
+}
+.BannerWrapper {
+  margin-bottom: 3rem;
+}
+.secondary_main_banner_text {
+  font-size: 11px;
+  line-height: 22px;
+  margin: 0;
+}
+.banner_bottom_button_option_button {
+ 
+  font-size: 11px;
+  height: 35px;
+
+}
+
+.prepare_for_debate_btn {
+  height: 35px;
+  font-size: 11px;
+}
+}
+
+@media only screen and (max-width: 480px){
+  .robo{
+    display: none!important;
+  }
+  .banner_content {
+    width: 100%;
+    padding: 0rem !important;
+    padding-bottom: 1rem;
+    margin-top: 1rem;
+}
+.top_site_info {
+  font-size: 11px;
+}
+.main_text_banner {
+  font-size: 15px;
+  line-height: 25px;
+  
+  font-weight: 600;
+ 
+  margin-top: 1rem !important;
+  padding: 0 1rem;
+}
+.bottom_text {
+  width: 85%;
+}
+.secondary_main_banner_text {
+width: 100%;
+font-size: 10px;
+}
+.banne_bottom_option_box {
+ 
+  flex-direction: column;
+}
+.banner_bottom_button_option_button {
+  height: 30px;
+  font-size: 9px;
+  width: 10rem;
+}
+.prepare_for_debate_btn {
+  height: 30px;
+  font-size: 9px;
+  width: 10rem;
+}
 }

@@ -43,9 +43,9 @@ const Banner = () => {
     if (!userData) {
       navigate("/login");
       handleShowToastBar("You need to login first ");
-    } else  {
+    } else {
       navigate(`/create`);
-    } 
+    }
   };
   const handleShowToastBar = (text) => {
     toast({
@@ -64,15 +64,15 @@ const Banner = () => {
 
       <div className="banner_content">
         <p className="top_site_info">Virtual Debate platform</p>
-        <h1 className="main_text_banner">Online platform to organize</h1>
-        <div className="bottom_text">
+        <div>
           <h1 className="main_text_banner">
-            a virtual debate for all{" "}
-           
+            Online platform to organize a virtual debate for all
           </h1>
+        </div>
+        <div className="bottom_text">
           <p className="secondary_main_banner_text">
             Debatasour lets a users to create a online debate and manages the
-            audience to watch the debate & provide feedback to the debators.{" "}
+            audience to watch the debate & provide feedback to the debators.
           </p>
         </div>
       </div>

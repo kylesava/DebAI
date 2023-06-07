@@ -1,6 +1,5 @@
 .home_wrapper {
   width: 100%;
-  max-width: 1024px;
   height: 100%;
   background-color: rgb(255, 255, 255);
   margin: 0 auto;
@@ -13,4 +12,31 @@
   margin-top: 5rem;
   display: flex;
   gap: 1rem;
+}
+
+
+@media only screen and (min-width: 600px)  and (max-width: 769px){
+  .home_bottom_info {
+
+    margin-top: 3rem;
+    flex-direction: column;
+   
+}
+}
+
+@media only screen and (min-width: 480px) and (max-width: 600px){
+  .home_bottom_info {
+    flex-direction: column;
+    margin-top: 1rem;
+}
+}
+
+@media only screen and (max-width: 480px){
+
+  .home_bottom_info {
+    
+    flex-direction: column;
+    margin-top: 2rem;
+    
+  }
 }
