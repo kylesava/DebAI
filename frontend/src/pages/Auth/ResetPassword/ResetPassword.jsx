@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { resetpasswordApi } from '../../../utils/Api'
+import { checkIfTokenIsValidApi, resetpasswordApi } from '../../../utils/Api'
 
 const ResetPassword = () => {
-    const {resetlink} = useParams()
+    const {resettoken} = useParams()
     const [resetData,setResetData] = useState({
       email:"",
       password:"",
@@ -11,8 +11,45 @@ const ResetPassword = () => {
     })
     const toast   =useToast();
     const navigate  =  useNavigate();
-
+    const [invalidToken,setInvalidToken]= useState(null)
+    const [ isExpired,setIsExpired] =useState(null)
+    useEffect(()=>{
+      if(!resettoken){
+        setInvalidToken(true)
+        return 
+      }
+      handleCheckIfTokenIsValid(resettoken)
+    },[resettoken])
     
+
+    useEffect(()=>{
+      if(invalidToken){
+        showToast("reset lin is invalid")
+      }else if(isExpired){
+        showToast("reset link is expired")
+      }
+    },[invalidToken,isExpired])
+
+
+    const handleCheckIfTokenIsValid=async(token)=>{
+      try {
+          const {data} =await checkIfTokenIsValidApi(token)
+          const {message:{exp,invalidLink,email}} = data;
+          if(email){
+            setInvalidToken(false);
+            setIsExpired(false)
+          }else{
+            setInvalidToken(invalidLink);
+            setIsExpired(exp)
+            
+          }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+  
+
     const handleResetPassword=async()=>{
 
       if(resetData.password !== resetData.password){

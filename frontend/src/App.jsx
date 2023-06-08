@@ -80,7 +80,7 @@ function App() {
         <Route path="confirmation/:confirmationCode"  element={<Confirmation/>}/>
         <Route path="confirmation_email_sent"  element={<ConfirmationEmailSent/>}/>
         <Route path="passwordresetlink" element={<SentEmailForPassword/>} />  
-        <Route path="resetpassword/:resetlink" element={<ResetPassword/>}/>
+        <Route path="resetpassword/:resettoken" element={<ResetPassword/>}/>
 
           </Route>
         </Routes>

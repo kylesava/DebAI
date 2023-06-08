@@ -189,6 +189,18 @@ class AuthController {
     }
 
   }
+
+  async  CheckIfTokenIsValid(req,res){
+    const {token}= req.params;
+    if(!token) throw "Invalid token";
+    try {
+        const data =  await EmailService.verifyEmailConfirmationToken(token);
+        return res.status(200).json({message:data,success:true});
+      } catch (error) {
+        return res.status(500).json({message:error.message,success:false});
+    }
+  }
+
   async sentLinkToResetPassword(req,res){
 
     const {email} = req.body;
