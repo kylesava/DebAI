@@ -101,7 +101,7 @@
   width: fit-content;
   padding: 0 10px;
   height: 40px;
-  border-radius: 7px;
+  border-radius: 7.5px;
   font-size: 12px;
   letter-spacing: 1px;
   background: linear-gradient(
@@ -143,4 +143,87 @@
 }
 .delete_debate_btn svg {
   font-size: 15px;
+}
+
+@media only screen and (min-width: 600px)  and (max-width: 769px){
+
+  .debate_topic {
+    font-size: 13px;
+  }
+  .info_key {
+    font-size: 11px;
+}
+
+.DebateCardWrapper button {
+  padding: 0 9px;
+  height: 36px;
+  font-size: 11px;
+}
+.participantsAvatar{
+  width: 2.25rem !important;
+  height: 2.25rem !important;
+}
+.participants_avatar_group span:nth-of-type(1){
+  
+  width: 2.25rem !important;
+  height: 2.25rem !important;
+}
+.DebateCardWrapper {
+  padding: 0.8rem 0.8rem;
+
+}
+}
+@media only screen and (min-width: 480px) and (max-width: 600px) {
+
+  .debate_topic {
+    font-size: 13px;
+  }
+  .participantsAvatar{
+    width: 1.75rem !important;
+    height: 1.75rem !important;
+  }
+  .participants_avatar_group span:nth-of-type(1){
+    
+    width: 1.75rem !important;
+    height: 1.75rem !important;
+  }
+  .DebateCardWrapper {
+    padding: 0.6rem 0.9rem;
+}
+.DebateCardWrapper button {
+  padding: 0 9px;
+  height: 35px;
+  font-size: 10px;
+}
+.info_key {
+  font-size: 10px;
+}
+}
+
+@media only screen and (max-width: 480px){
+
+  .debate_topic {
+    font-size: 11px;
+  }
+  .participantsAvatar{
+    width: 1.70rem !important;
+    height: 1.70rem !important;
+  }
+  .participants_avatar_group span:nth-of-type(1){
+    
+    width: 1.70rem !important;
+    height: 1.70rem !important;
+  }
+  .info_key {
+    font-size: 9px;
+  }
+  .DebateCardWrapper {
+    padding: 0.6rem 0.9rem;
+}
+.DebateCardWrapper button {
+  padding: 0 9px;
+  height: 33px;
+  font-size: 9px;
+}
+
 }

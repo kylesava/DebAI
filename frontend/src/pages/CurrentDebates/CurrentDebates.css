@@ -94,4 +94,73 @@
   width: 100%;
   gap: 20px;
   flex-wrap: wrap;
+  padding-bottom: 1rem;
+}
+
+
+@media only screen and (min-width: 769px) and (max-width: 992px){
+
+  .live_debates {
+    font-size: 35px;
+  }
+
+  .tab_buttons_wrapper button {
+    font-size: 11px;
+   
+    height: 85%;
+    padding: 0 12px;
+}
+}
+@media only screen and (min-width: 600px)  and (max-width: 769px){
+
+  .live_debates {
+    font-size: 28px;
+  }
+  .tab_buttons_wrapper button {
+    font-size: 10px;
+    height: 85%;
+    padding: 0 10px;
+}
+.current_debates_header {
+  gap: 1rem;
+}
+}
+
+@media only screen and (min-width: 480px) and (max-width: 600px) {
+  .live_debates {
+    font-size: 21px;
+}
+  .tab_buttons_wrapper {
+    height: 34px;
+    gap: 0;
+}
+.tab_buttons_wrapper button {
+  font-size: 9px;
+  padding: 0 7px;
+}
+}
+@media only screen and (max-width: 480px){
+
+  .current_debates_header {
+    flex-direction: column;
+  }
+  .live_debates {
+    font-size: 23px;
+}
+.tab_buttons_wrapper button {
+  font-size: 9px;
+  padding: 0 9px;
+  height: 85%;
+}
+.CurrentDebatesWrapper {
+  padding: 1rem;
+}
+.debate_wrapper_list {
+  margin: 1rem 0;
+  align-items: center;
+  justify-content: center;
+}
+.tab_buttons_wrapper {
+  align-self: flex-end;
+}
 }
