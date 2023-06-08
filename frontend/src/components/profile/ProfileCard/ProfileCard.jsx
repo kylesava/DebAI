@@ -88,7 +88,7 @@ const ProfileCard = ({ userData }) => {
     }
     const getSubscriptionPlan=()=>{
         const {subscription} = data;
-        if(!subscription.status || subscription?.status === "canceled" || !subscription){
+        if(!subscription?.status || subscription?.status === "canceled" || !subscription){
 
             return "Free"
 

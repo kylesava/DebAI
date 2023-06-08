@@ -77,7 +77,7 @@ const DebateCard = ({ debate, isLive }) => {
     <div className="DebateCardWrapper">
       <div className="card_top_box">
         <h5 className="debate_topic">{debate.topic}</h5>
-        <AvatarGroup
+        {/* <AvatarGroup
           className="participants_avatar_group"
           size="md"
           max={participants.length - 1}
@@ -87,6 +87,16 @@ const DebateCard = ({ debate, isLive }) => {
               key={participant?._id}
               referrerPolicy="no-referrer"
               className="avatars participantsAvatar"
+              name={participant.firstName}
+              src={participant.avatar}
+            />
+          ))} */}
+        <AvatarGroup size="md" max={participants.length - 1}>
+          {participants.map((participant) => (
+            <Avatar
+              key={participant?._id}
+              referrerPolicy="no-referrer"
+              className="avatars"
               name={participant.firstName}
               src={participant.avatar}
             />
@@ -151,10 +161,7 @@ const DebateCard = ({ debate, isLive }) => {
           >
             <button>
               {" "}
-              <MdOutlineViewInAr /> <p>
-                {" "}
-                {isLive ? "Watch" : "View Debate"}{" "}
-              </p>{" "}
+              <MdOutlineViewInAr /> <p>Join </p>{" "}
             </button>
           </Link>
           {isLive && isParticipant ? (

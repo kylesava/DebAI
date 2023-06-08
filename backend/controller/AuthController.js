@@ -32,14 +32,17 @@ class AuthController {
       //   customer.id
       // );
       const confirmationHash =  EmailService.createEmailConfirmationHash(email)
-      console.log("the hash",confirmationHash)
+      
       
        await EmailService.confirmationEmail({
 
           text:"Confirm  your DebAi gmail account",
           subject:"DebAi wants to confirm your email . ",
           email,
-          html:`<div> <h1> Hello DebAi welcomes you  </h1> </br> <h3> You are closer to be the part of debAi .  </h3> </br> <h4>Click the button below to confirm your email address. </h4> <br/> <a style="background:blue;height:40px; padding:8px ; cursor:pointer;letter-spacing:1px; border-radius:4px;text-align:center;color:white;" href="http://localhost:3000/account/confirmation/${confirmationHash}"> CONFIRM EMAIL </a> </br> <br> <br>  </div>`
+          html:`<div>
+          <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/352850187_808709043911745_566344590095350869_n.jpg?stp=dst-jpg_p403x403&_nc_cat=108&cb=99be929b-3346023f&ccb=1-7&_nc_sid=aee45a&_nc_ohc=Rqrey-x9sZ8AX9n27lg&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdTRKzT-KFPaeoRLfSDMnnD-2bSQylVJ8XczY2N3QVFdkQ&oe=64A91F73" width="200px" style="border-radius:4px"/> <br/>
+           <h1 style="color:#0e0b3d" > Hello DebAi welcomes you  </h1> </br>
+           <h3 style="color:#0e0b3d"> You are closer to be the part of debAi .  </h3> </br> <h4 style="color:#0e0b3d">Click the button below to confirm your email address. </h4> <br/> <a style="background:#686de0;height:40px; text-decoration:none;  padding:8px ; cursor:pointer;letter-spacing:1px; border-radius:4px;text-align:center;color:white;" href="${process.env.FRONTEND_URL}/account/confirmation/${confirmationHash}"> CONFIRM EMAIL </a> </br> <br> <br>  </div>`
         })
 
 
@@ -56,9 +59,12 @@ class AuthController {
       if (!userExist) {
         return res.status(403).json({ message: "This email is not registerd" });
       }
-      const { password, _id, stripeCustomerId } = userExist._doc;
+      const { password, _id, verified, stripeCustomerId } = userExist._doc;
       const isPasswordValid = await compareHashPassword(userPassword, password);
       const lastLoggedIn = Date.now();
+      if(!verified){
+        throw { type:"custom" , message:"This email is not verified" ,from:"verify"}
+      }
       if (isPasswordValid) {
         await UserModel.findByIdAndUpdate(
           _id,
@@ -70,22 +76,28 @@ class AuthController {
           }
         );
 
-        userExist._doc.subscription = await getUserSubscriptionStatus(
-          stripeCustomerId
-        );
+        // userExist._doc.subscription = await getUserSubscriptionStatus(
+        //   stripeCustomerId
+        // );
         userExist._doc.lastLoggedIn = lastLoggedIn;
         req.session.user = userExist._doc;
  
 
         res.status(200).json({ message: userExist._doc, success: true });
       } else {
-        res
-          .status(403)
-          .json({ message: "invalid credentails", success: false });
+        throw {
+          type:"custom",
+          message:"Invalid credentails"
+        }
       }
     } catch (error) {
       console.log(error);
-      res.status(500).json({ message: error.message, success: false });
+      const {type,message ,from} = error
+      let errorMsg = "something went wrong"
+      if(type === "custom"){
+        errorMsg = message 
+      }
+      res.status(500).json({ message: errorMsg,  success: false , verified :from !== "verify"});
     }
   }
 
@@ -139,7 +151,7 @@ class AuthController {
   async handleResetPassword(req,res){
     const {token} = req.params;
     const {email:userEmail,password} = req.body;
-
+    console.log("NEW PASSWORD ",password)
     try {
         const user = await UserModel.findOne({userEmail});
         if(!user){
@@ -150,7 +162,7 @@ class AuthController {
       const newPassword = await hashPassword(password);
       await UserModel.findOneAndUpdate(
         {
-        userEmail
+       email: userEmail
       },
       {
         password:newPassword
@@ -221,7 +233,10 @@ class AuthController {
         subject:"Reset Password",
         text:"Rest DebAi password.",
         email,
-        html:`<div> <h1> RESET YOUR DEBAI PASSWORD .  </h1> </br> <h4>Click the button below to reset  your password. </h4> <br/> <a style="background:blue;height:40px; padding:8px ; cursor:pointer;letter-spacing:1px; border-radius:4px;text-align:center;color:white;" href="${process.env.FRONTEND_URL}/account/resetpassword/${emailHash}"> RESET EMAIL </a> </br> <br> <br>  </div>`,
+        html:`<div>
+        <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/352850187_808709043911745_566344590095350869_n.jpg?stp=dst-jpg_p403x403&_nc_cat=108&cb=99be929b-3346023f&ccb=1-7&_nc_sid=aee45a&_nc_ohc=Rqrey-x9sZ8AX9n27lg&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdTRKzT-KFPaeoRLfSDMnnD-2bSQylVJ8XczY2N3QVFdkQ&oe=64A91F73" width="200px" style="border-radius:4px"/> <br/>
+         <h1 style="color:#0e0b3d" > Reset your password  </h1> </br>
+         > </br> <h4 style="color:#0e0b3d">Click the button below to reset  your password. </h4> <br/> <a style="background:#686de0;height:40px; text-decoration:none;  padding:8px ; cursor:pointer;letter-spacing:1px; border-radius:4px;text-align:center;color:white;" href="${process.env.FRONTEND_URL}/account/resetpassword/${emailHash}"> RESET PASSWORD </a> </br> <br> <br>  </div>`
       })
       console.log(messageId)
       return res.status(200).json({message:"reset link sent",success:true})
@@ -234,6 +249,40 @@ class AuthController {
       }
 
       return res.status(500).json({message:errorMessage,success:true})
+    }
+  }
+  async sendEmailToVerifyEmail(req,res){
+    const {email} = req.body;
+    try {
+
+      const user = await UserModel.findOne({email});
+
+      
+      if(!user) throw {type:"custom",message:"This email is not registered in DebAi"};
+      if(user._doc?.verified) throw {type:"custom",message:"This email is already verified"}
+
+
+
+       const confirmationHash =  EmailService.createEmailConfirmationHash(email)
+      
+    await  EmailService.sendEmail({
+        text:"Confirm  your DebAi gmail account",
+          subject:"DebAi wants to confirm your email . ",
+          email,
+          html:`<div>
+          <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/352850187_808709043911745_566344590095350869_n.jpg?stp=dst-jpg_p403x403&_nc_cat=108&cb=99be929b-3346023f&ccb=1-7&_nc_sid=aee45a&_nc_ohc=Rqrey-x9sZ8AX9n27lg&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdTRKzT-KFPaeoRLfSDMnnD-2bSQylVJ8XczY2N3QVFdkQ&oe=64A91F73" width="200px" style="border-radius:4px"/> <br/>
+           <h1 style="color:#0e0b3d" > Hello DebAi welcomes you  </h1> </br>
+           <h3 style="color:#0e0b3d"> You are closer to be the part of debAi .  </h3> </br> <h4 style="color:#0e0b3d">Click the button below to confirm your email address. </h4> <br/> <a style="background:#686de0;height:40px; text-decoration:none;  padding:8px ; cursor:pointer;letter-spacing:1px; border-radius:4px;text-align:center;color:white;" href="${process.env.FRONTEND_URL}/account/confirmation/${confirmationHash}"> CONFIRM EMAIL </a> </br> <br> <br>  </div>`
+      })
+
+      res.status(200).json({message:"verify email sent",success:true})
+
+
+    } catch (error) {
+        const {type,message} = error
+
+      res.status(500).json({message:type ? message :"something went wrong",success:false})
+
     }
   }
 }

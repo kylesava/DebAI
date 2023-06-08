@@ -143,7 +143,7 @@ box-shadow: #ff0000b8 0px 0px 1px 1px !important;
 width: 100%;
 display: flex;
 justify-content: space-between;
-font-size: 14px;
+font-size: 12px;
 }
 .checkbox_item {
 display: flex;
@@ -177,7 +177,7 @@ cursor: pointer;
 .no_account_text {
 color: #3f51b5;
 cursor: pointer;
-font-size: 14px;
+font-size: 12px;
 }
 .country_flag{
 
@@ -295,7 +295,9 @@ letter-spacing: 1px;
   /* background-color: rgba(232, 235, 238, 0.673); */
 
 }
-.reset_email_main_content >div{
+
+
+.reset_email_main_content >form{
   display: flex;
   width: 70%;
   flex-direction: column;
@@ -306,7 +308,7 @@ letter-spacing: 1px;
   border-radius: 15px;
 
 }
-.reset_email_main_content >div>p{
+.reset_email_main_content >form>p{
   font-size: 12px;
   letter-spacing: 1px;
   text-align: center;
@@ -346,7 +348,7 @@ letter-spacing: 1px;
   color: rgb(170, 170, 170);
   letter-spacing: 1px;
 }
-.reset_link_email_button{
+.reset_link_email_button ,.verify_email_button{
   background-color: var(--primary_color);
   height: 37px;
   color: white;
@@ -378,7 +380,8 @@ letter-spacing: 1px;
 }
 .reset_password_content{
   display: flex;
-  width: 40%;
+  width:95%;
+  max-width: 400px;
   flex-direction: column;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   align-items: center;
@@ -434,18 +437,103 @@ letter-spacing: 1px;
   font-size: 12px;
   display: flex;
 
+  margin:  auto;
   margin-top: 1rem;
+  position:absolute;
   color: gray;
+  left: 0;
   letter-spacing: 1px;
   gap: 5px;
-
+  right: 0;
+display: flex;
+justify-content: center;
+  bottom: 2rem;
 }
 .resent_link_main{
   color: var(--primary_color);
   cursor: pointer;
+  display: block;
   text-decoration: underline;
   transition: all .3s ease-in-out;
 }
 .resent_link_main:hover{
   color: #04097d !important;
 }
+
+.verify_account_text{
+  text-decoration: underline;
+  transition: all  .3s ease-in-out;
+
+}
+.verify_account_text:hover{
+  scale: 1.03;
+    color: #05085c !important;
+
+}
+
+
+/* verify email page*/
+
+.verify_email_page{
+  display: flex;
+  height: 100vh;
+  width: 90%;
+  
+
+
+
+
+
+
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+
+}
+.verify_image_wrapper{
+  flex: 5;
+}
+.verify_image_wrapper >img{
+  width: 100%;
+}
+.verify_content_box{
+  flex: 7;
+  display: flex;
+  justify-content: flex-end;
+}
+.verify_main_content{
+  display: flex;
+  width: 80%;
+
+
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  align-items: center;
+  padding: 2rem;
+  border-radius: 15px;
+}
+
+.verify_main_content input{
+  width: 100%;
+  background-color: rgba(241, 243, 245, 0.735);
+  height: 40px;
+  font-size: 12px;
+  border-radius: 3px;
+
+  padding: 0 5px;
+  letter-spacing: 1px;
+}
+.verify_main_content input::placeholder{
+  color: rgb(170, 170, 170);
+}
+
+.email_verify_top_head{
+  margin-bottom: 2rem;
+}
+/*
+ in mobile and tab mode make
+ .reset_email_main_content > form 
+ width 95% or accordingly and  
+.email_reset_image_wrapper ->display none
+
+ */

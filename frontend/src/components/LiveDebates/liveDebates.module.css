@@ -33,7 +33,7 @@ letter-spacing: 1PX;
     display: flex;
     flex-direction: column;
     gap: 5px;
-    height: 265px;
+max-height: 256px;
     border-radius: 7px;
     overflow-y:auto;
   }
@@ -83,10 +83,38 @@ height: 30px;
     align-self: center;
 }
 
+.no_live_debates_box{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+.no_live_debates_box p{
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.8px;
+    color: gray
+    
+
+}
+.noLiveDebatesImage{
+    
+    margin:auto;
+    width: 70%;
+    object-fit: cover;
+
+}
 
 /* @media only screen and (min-width: 769px) and (max-width: 992px) {} */
 @media only screen and (min-width: 600px)  and (max-width: 769px){
 
+    .noLiveDebatesImage{
+    
+    margin:auto;
+    width: 50%;
+    object-fit: cover;
+
+}
     .liveDebateList{
         
         min-height: 200px;
@@ -101,7 +129,13 @@ height: 30px;
    
 }
 @media only screen and (min-width: 480px) and (max-width: 600px){
+    .noLiveDebatesImage{
+    
+    margin:auto;
+    width: 50%;
+    object-fit: cover;
 
+}
     .liveDebateList {
         
         flex-direction: column;
@@ -111,9 +145,16 @@ height: 30px;
     }
 
     @media only screen and (max-width: 480px){
+.noLiveDebatesImage{
+    
+    margin:auto;
+    width: 50%;
+    object-fit: cover;
 
+}
         .liveDebateList {
-            height: 110px;
+            height: 140px;
+                    
         }
         .live_debate_heading_text {
             font-size: 1rem;

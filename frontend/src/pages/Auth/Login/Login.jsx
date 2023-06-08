@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { LoginUserApi } from '../../../utils/Api';
 import { bindActionCreators } from "redux"
 import { actionCreators } from '../../../redux/store';
@@ -20,10 +20,22 @@ const Login = () => {
       password: ""
     }
   })
+ const {state} = useLocation()
+
   const navigate = useNavigate();
   const dispatch = useDispatch()
   const { AddLoggedInUser } = bindActionCreators(actionCreators, dispatch)
   const toast = useToast()
+  const [isVerified,setIsVerified] = useState(null)
+
+  useEffect(()=>{
+    if(state?.from === "reset_password"){
+      setLoginData((prev)=>({
+        ...prev,data:{...prev,email:state.email}
+      }))
+    }
+  },[state])
+
   const handleInputChange = (name, value) => {
     setLoginData(prev => ({
       ...prev, data: { ...prev.data, [name]: value }
@@ -45,8 +57,11 @@ const Login = () => {
         const {message} = res.data
 
         AddLoggedInUser(message);
-          
-        navigate(-1);
+        if(state?.from==="reset_password"){
+          navigate("/")
+        }else{
+          navigate(-1);
+        }
         toast({
           title: '',
           description: "You Logged in successfully",
@@ -61,9 +76,17 @@ const Login = () => {
 
 
     } catch (error) {
+      
+      const errorMsg = error?.response?.data?.message;
+      const isVerified = error?.response?.data?.verfied;
+      if(isVerified === false){
+        setIsVerified(false)
+      }
+
+
       toast({
         title: '',
-        description: "Invalid Credentials",
+        description: errorMsg ?? "something went wrong",
         status: 'error',
         duration: 5000,
         position: "top",
@@ -86,7 +109,6 @@ const Login = () => {
   return (
     <div className='AuthWrapper'>
       <div className="login_main_box">
-
         <img draggable={false} className='logo_img' src="/images/logo.jpg" alt="logo" />
         <div className="login_welcome_text">
           {/* <h5 className='welcome_back_text'>Welcome back 😋</h5> */}
@@ -106,11 +128,10 @@ const Login = () => {
 
         </div>
         <div className='form_wrapper'>
-
           <div className='auth_input_item'>
 
             <label>Email</label>
-            <input onKeyDown={handleKeyDown} className="input_element" type="email" placeholder='Enter  your email address' value={loginData.data.email} onChange={(e) => handleInputChange("email", e.target.value)} />
+            <input onKeyDown={handleKeyDown}  className="input_element" type="email" placeholder='Enter  your email address' value={loginData.data.email} onChange={(e) => handleInputChange("email", e.target.value)} />
 
           </div>
           <div className='auth_input_item'>
@@ -119,25 +140,29 @@ const Login = () => {
             <input  onKeyDown={handleKeyDown} className="input_element" type="password" placeholder='Enter  your  password' value={loginData.data.password} onChange={(e) => handleInputChange("password", e.target.value)} />
 
           </div>
+          <button className='login_button' onClick={handleLogin}>
+            Login
+          </button>
           <div className='bottom_other_options'>
-
+{/* 
             <div className='checkbox_item'>
 
               <input type="checkbox" />
               <p>Remember me</p>
 
-            </div>
-            <p className='forgot_password_text'>
+            </div> */}
+            <p onClick={()=>navigate("/account/passwordresetlink")} className='forgot_password_text'>
               Forgot your password?
             </p>
 
-          </div>
-          <button className='login_button' onClick={handleLogin}>
-            Login
-          </button>
           <Link to={"/signup"}>
             <p className='no_account_text'>I don't have account </p>
           </Link>
+          </div>
+          <div onClick={()=>navigate("/account/verifyemail")} className='no_account_text verify_account_text' >
+
+            Verify Account Now !! 
+          </div>
 
 
         </div>

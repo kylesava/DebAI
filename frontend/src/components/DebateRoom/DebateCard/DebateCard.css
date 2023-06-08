@@ -2,14 +2,9 @@
   padding: 1.5rem 1rem;
   flex: 1;
   min-width: 310px;
-  background-color: #aeaeae;
+
   border-radius: 15px;
-  background: linear-gradient(
-    45deg,
-    rgba(174, 174, 174, 0.21),
-    rgb(64 70 221 / 12%)
-  );
-  backdrop-filter: blur(20px);
+  
   display: flex;
   gap: 1rem;
   justify-content: space-between;
@@ -17,7 +12,9 @@
   position: relative;
   cursor: pointer;
   transition: all 0.3s;
-  filter: blur(0.21px);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  background-color: rgb(252, 252, 252);
+
 }
 .DebateCardWrapper:hover {
   filter: blur(0px);
@@ -29,10 +26,11 @@
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
+  margin-bottom: 1.5rem;
 }
 .debate_topic {
   font-size: 15px;
-  font-weight: bold;
+  font-weight: 600;
 
   color: rgb(14, 11, 61);
   letter-spacing: 1px;
@@ -63,6 +61,7 @@
 .info_key {
   justify-content: space-between;
   font-size: 12px;
+  letter-spacing: 0.9px;
   display: flex;
 }
 .info_key p:nth-of-type(1) {
@@ -81,7 +80,7 @@
   font-size: 11px;
   right: 12px;
   letter-spacing: 1px;
-  color: rgb(104, 109, 224);
+  /* color: rgb(104, 109, 224); */
 
   bottom: 5px;
 }
@@ -99,36 +98,30 @@
 }
 .DebateCardWrapper button {
   width: fit-content;
-  padding: 0 10px;
+  padding: 0 20px;
   height: 40px;
-  border-radius: 7.5px;
+  border-radius:5px;
   font-size: 12px;
   letter-spacing: 1px;
-  background: linear-gradient(
-    45deg,
-    rgb(195 195 195 / 32%),
-    rgb(64 70 221 / 21%)
-  );
+  background: var(--primary_color);
   display: flex;
   align-items: center;
   gap: 10px;
-  color: rgb(14, 11, 61);
+  color: white;
   transition: all 0.3s;
 }
-.DebateCardWrapper .button :hover {
+.DebateCardWrapper button:hover {
+  
+  background: rgb(56, 46, 201) !important;
   scale: 1.04;
-  background: linear-gradient(
-    45deg,
-    rgb(195 195 195 / 66%),
-    rgb(64 70 221 / 33%)
-  );
+
 }
 .debate_button_box .button:active {
   scale: 1.11;
 }
-.DebateCardWrapper .button svg {
-  font-size: 14px;
-  color: rgb(14, 11, 61);
+.DebateCardWrapper button svg {
+  font-size: 16px !important;
+  color: white ;
 }
 .delete_debate_btn {
   align-items: center;
