@@ -101,4 +101,8 @@ font-size: 13px;
         .points_box {
             flex: 2;
         }
+        .points_box {
+            align-items: center;
+            justify-content: center;
+          }
     }
