@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import {useToast} from "@chakra-ui/react"
 import { checkIfTokenIsValidApi, resetpasswordApi } from '../../../utils/Api'
 
 const ResetPassword = () => {
@@ -58,7 +59,7 @@ const ResetPassword = () => {
       }
 
       try {
-          const {status,message} = await resetpasswordApi(resetlink,{
+          const {status,message} = await resetpasswordApi(resettoken,{
             password:resetData.password,
             email:resetData.email
           })
