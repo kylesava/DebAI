@@ -111,22 +111,20 @@ class UserController {
 
   async getLoggedInUser(req, res) {
     const sessionUser = req.session?.passport?.user || req.session.user;
-    if (sessionUser) {
-      let updatedUser = await isUserUpdated(sessionUser);
-      // const { stripeCustomerId } = updatedUser;
-      // updatedUser.subscription = await getUserSubscriptionStatus(
-      //   stripeCustomerId
-      // );
-      if(!updatedUser){
-        throw "no user found"
+  
 
+      try {
+        if(!sessionUser) throw "you are not loggedIn"
+        
+        let updatedUser = await isUserUpdated(sessionUser);
+        return res.status(200).json({ message: updatedUser, success: true });
+      } catch (error) {
+        console.log("the main",error)
+        return res
+          .status(403)
+          .json({ message: error.message, success: false });
       }
-      return res.status(200).json({ message: updatedUser, success: true });
-    } else {
-      return res
-        .status(403)
-        .json({ message: "You are not logged in", success: false });
-    }
+  
   }
 
   async searchUser(req, res) {

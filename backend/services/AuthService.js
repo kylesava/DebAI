@@ -57,12 +57,12 @@ class AuthService {
     }
 
     async isUserUpdated(prevUser) {
+        
         try {
-            const user = await UserModel.findById(prevUser._id)
-            if(user){
-                throw "no user found"
-
-            }
+            const user = await UserModel.findById(prevUser?._id)
+            if(!user){
+                throw "no user found!"
+                }
             const { updatedAt: newUserUpdatedTime } = user._doc;
             const { updatedAt: prevUserUpdatedTime } = prevUser
             let newUpdatedTimeInMS = new Date(newUserUpdatedTime).getTime()
@@ -74,8 +74,7 @@ class AuthService {
                 return prevUser
             }
         } catch (error) {
-            console.log(error)
-            return false
+            throw error
         }
     }
 
