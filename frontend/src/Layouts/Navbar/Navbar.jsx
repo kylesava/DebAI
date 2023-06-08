@@ -3,6 +3,8 @@ import { useSelector } from "react-redux"
 import { Link, useLocation } from "react-router-dom"
 import SignOutPopover from "../popovers/SignoutPopovers"
 import "./Navbar.css"
+import NavPoper from "../Skeleton/NavPoper/NavPoper"
+import {FcMenu} from "react-icons/fc"
 
 const Navbar = () => {
   const { data } = useSelector((state) => state.user)
@@ -17,6 +19,13 @@ const Navbar = () => {
           <img className="navLogo" src="/images/logo.jpg" alt="logoImg" />
         </div>
       </Link>
+      <div className="dropDownBox">
+
+        <NavPoper>
+            <FcMenu/>
+          </NavPoper>
+
+      </div>
       <div className="other_button_box">
         <ul className="nav_list">
           <Link to={"/"}>

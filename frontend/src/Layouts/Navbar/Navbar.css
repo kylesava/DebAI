@@ -104,8 +104,83 @@
 .other_button_box button:hover {
   background-color: rgb(74 79 181);
 }
-.other_button_box .signup_btn {
+.other_button_box  {
   background-color: white !important;
-  border: 1px solid #686de0;
+  
   color: #686de0;
+}
+.dropDownBox{
+  display: none ;
+}
+
+
+.nav_menuItem{
+  /* padding:   5px !important; */
+    padding: 0 !important;
+    margin-top: 5px;
+
+}
+.nav_menuItem a svg{
+  color: #686de0;
+
+}
+.nav_menuItem p{
+  font-size: 14px;
+  color: #686de0;
+  letter-spacing: 1px;
+  
+}
+.nav_menuItem a{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 10px ;
+}
+ .nav_dropdown_signup_button,  .nav_dropdown_login_button{
+  text-align: start;
+  padding:  10px;
+  border-radius: 1px;
+  font-size: 14px ;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  letter-spacing: 1px;
+  color: #686de0;
+  /* color: white; */
+  /* background-color: var(--primary_color); */
+
+  width: 100% !important;
+}
+.nav_dropdown_login_button {
+  /* margin-top: 1rem; */
+}
+
+@media screen  and (min-width:600px)  and (max-width:768px){
+
+  .other_button_box{
+    gap: 1rem   ;
+  }
+  
+  .other_button_box button{
+
+    height: 28px;
+    font-size: 11px;
+    padding: 0px 9px;
+  }
+  .nav_list{
+    gap: 15px;
+  }
+}
+@media screen    and (max-width:600px){
+  .dropDownBox{
+    display: block !important;
+  }
+  .other_button_box{
+    
+    display: none;
+  }
+  
+
 }
