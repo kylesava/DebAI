@@ -17,7 +17,8 @@ export const getTopUsersApi = ()=> axiosInstance.get("/user/leadingDebators")
 export const emailConfirmationApi=(code)=>axiosInstance.post(`/auth/email_confirmation/${code}`)
 export const resetpasswordApi =(token,data)=>axiosInstance.post(`/auth/resetpassword/${token}`,data)
 export const checkIfTokenIsValidApi = (token)=>axiosInstance.post(`/auth/tokenvalid/${token}`)
-
+export const resentLinkToResetPasswordApi=(email)=>axiosInstance.post(`/auth/sentLinkToResetPassword`,{email})
+export const sentEmailToVerifyEmailApi=(email)=>axiosInstance.post(`/auth/sentEmailToVerifyEmail`,{email})
 // DEBATE API ENDPOINTS
 export const getIsPassocodeUniqueApi = (passcode) =>
   axiosInstance.post("/debate/checkPasscode", { passcode });

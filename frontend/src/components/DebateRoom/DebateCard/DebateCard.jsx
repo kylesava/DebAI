@@ -88,13 +88,12 @@ const DebateCard = ({ debate, isLive }) => {
     <div className="DebateCardWrapper">
       <div className="card_top_box">
         <h5 className="debate_topic">{debate.topic}</h5>
-        <AvatarGroup size='md' max={participants.length - 1}>
+        <AvatarGroup    size='md' max={participants.length - 1}>
           {
             participants.map((participant) => (
-              <Avatar key={participant?._id} referrerPolicy="no-referrer" className="avatars" name={participant.firstName} src={participant.avatar} />
-            ))
+              <Avatar     key={participant?._id} referrerPolicy="no-referrer" className="avatars" name={participant.firstName} src={participant.avatar} />
+            ))  
           }
-
         </AvatarGroup>
       </div>
       <div className="debate_card_bottom">
@@ -153,7 +152,7 @@ const DebateCard = ({ debate, isLive }) => {
           }
 
           <Link to={`${debate.hasEnded ? `/completion/${debate?._id}`:`/debate/${debate?.passcode}?audience=${true}`}` }  state={{debate}}>
-            <button> <MdOutlineViewInAr /> <p> {isLive ? "Watch" : "View Debate"} </p> </button>
+            <button> <MdOutlineViewInAr /> <p>Join </p> </button>
           </Link>
             {
               (isLive && isParticipant) ?

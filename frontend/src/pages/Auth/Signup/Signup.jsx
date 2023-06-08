@@ -28,6 +28,7 @@ const Signup = () => {
   const navigate = useNavigate()
   const toast = useToast()
   const [countries,setCountries] =useState([])
+  const [loading,setLoading] = useState(false)
   const handleInputChange = (name, value) => {
     setUserDetails((prev) => ({ ...prev, [name]: value }))
   }
@@ -43,6 +44,7 @@ const handleGetCountries=async()=>{
   try {
       const {data,status} = await getCountries()
       if(status!==200)return;
+      
       setCountries(data);
   } catch (error) {
     console.log(error)
@@ -50,8 +52,8 @@ const handleGetCountries=async()=>{
 }
 
 
-  const handleRegister = async () => {
-
+  const handleRegister = async (e) => {
+    e.preventDefault()
     let fieldsMissing = false
     for (const key in userDetails) {
       if (Object.prototype.hasOwnProperty.call(userDetails, key)) {
@@ -63,19 +65,12 @@ const handleGetCountries=async()=>{
       }
     }
     if (fieldsMissing) {
-      return    toast({
-        title: '',
-        description: "Fill all the fields",
-        status: 'error',
-        duration: 5000,
-        position: "top",
-        isClosable: true,
-      })
+      handleShowAlert("fill all the fields","error")
     }
 
 
     try {
-
+      setLoading(true)
       let payloadData = {
         firstName: userDetails.firstName,
         lastName: userDetails.lastName,
@@ -84,21 +79,22 @@ const handleGetCountries=async()=>{
         country:userDetails.country
       }
       const res = await RegisterUserApi(payloadData);
+      setLoading(false)
       if (res.status === 200) {
-        navigate("/account/confirmation_email_sent")
+        navigate("/account/confirmation_email_sent",{
+          state:{
+            email:userDetails?.email
+          }
+        })
       } else {
         throw Error(res.data.message)
       }
+
     } catch (error) {
-      console.log(error)
-      toast({
-        title: 'Register Failed.',
-        description: "Something went wrong",
-        status: 'error',
-        duration: 5000,
-        position: "top",
-        isClosable: true,
-      })
+      setLoading(false)
+      const errorMsg = error?.response?.data?.message;
+          console.log(errorMsg)   
+          handleShowAlert(errorMsg??"something went wrong","error")
     }
 
   }
@@ -112,7 +108,16 @@ const handleGetCountries=async()=>{
     await  handleRegister()
     }
   }
-  console.log(userDetails)
+  const handleShowAlert=(text,type)=>{
+    toast({
+      title: '',
+      description: text,
+      status: type,
+      duration: 5000,
+      position: "top",
+      isClosable: true,
+    })
+  }
   return (
     <div className='AuthWrapper'>
       <div className="login_main_box">
@@ -140,7 +145,7 @@ const handleGetCountries=async()=>{
           <label>Choose Avatar </label>
           <AvatarCarousel currentAvatar={userDetails.avatar} onChange={handleInputChange} />
         </div> */}
-        <div className='form_wrapper'>
+        <form className='form_wrapper' onSubmit={handleRegister}>
           <div className='single_item'>
 
             <div className='auth_input_item'>
@@ -211,15 +216,15 @@ const handleGetCountries=async()=>{
 
           </div>
 
-          <button className='login_button'  onClick={() => handleRegister()}>
-            Sign up
+          <button className='login_button' type='submit'>
+            {loading?"Signing in":"Sign in"}
           </button>
           <Link to="/login">
             <p className='no_account_text'>Already have account </p>
           </Link>
 
 
-        </div>
+        </form>
       </div>
     </div>
   )

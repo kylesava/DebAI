@@ -1,0 +1,37 @@
+.invalid_box{
+    max-width: 500px;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+
+}
+.invalid_box >img{
+    width: 250px;
+
+}
+.invalid_box h1{
+    color: var(--primary_color);
+    font-weight: bold;
+    font-size: 2.4rem;
+    letter-spacing: 2px;
+}
+.invalid_box p{
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 1.3px;
+    line-height: 24px;
+    color: rgb(37, 37, 37);
+    width: 80%;
+}
+.invalid_box button{
+    background-color: var(--primary_color);
+    border-radius: 5px;
+    font-size: 13px;
+    height: 37px;
+    width: 125px;
+    color: WHITE;
+        letter-spacing: 1px;
+        margin-top: 2rem ;
+}

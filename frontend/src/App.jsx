@@ -23,6 +23,7 @@ import Confirmation from "./pages/confirmation/Confirmation";
 import ConfirmationEmailSent from "./pages/Auth/ConfirmationSent/Confirmation_email_sent";
 import SentEmailForPassword from "./pages/Auth/SentEmailForPassword/SentEmailForPassword";
 import ResetPassword from "./pages/Auth/ResetPassword/ResetPassword";
+import VerifyEmail from "./pages/Auth/VerifyEmail/VerifyEmail";
 
 function App() {
   const { data } = useSelector((state) => state.user)
@@ -69,7 +70,7 @@ function App() {
         <Route path="/alldebates" element={<CurrentDebates />} />
         <Route path="/chatbot" element={<ChatBot />} />
         <Route path="/create" element={<CreateDebate />} />
-        <Route path="/profile/:profileId" element={!data ? <Navigate to={"/login"} /> : <Profile />} />
+        <Route path="/profile/:profileId" element={  <Profile />} />
         <Route path="/login" element={data ? <Navigate to={"/"} /> : <Login />} />
         <Route path="/signup" element={data ? <Navigate to={"/"} /> : <Signup />} />
         <Route path="/debate/:debateId" element={<DebateRoom />} />
@@ -81,6 +82,7 @@ function App() {
         <Route path="confirmation_email_sent"  element={<ConfirmationEmailSent/>}/>
         <Route path="passwordresetlink" element={<SentEmailForPassword/>} />  
         <Route path="resetpassword/:resettoken" element={<ResetPassword/>}/>
+        <Route path="verifyemail" element={<VerifyEmail/>} />
 
           </Route>
         </Routes>

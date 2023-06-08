@@ -38,7 +38,7 @@ const LiveDebates = () => {
         </p>
       </div>
       <div className={styles.liveDebateList}>
-        {liveDebates.map((debate) => (
+        { liveDebates.length > 0 ? liveDebates.map((debate) => (
           <div key={debate?._id} className={styles.liveDebateItem}>
             <div>
               <h5> 💥 {debate?.topic}</h5>
@@ -61,8 +61,17 @@ const LiveDebates = () => {
               </button>
             </Link>
           </div>
-        ))}
-      </div>
+        )) : <>
+
+          <div className={styles.no_live_debates_box}>
+
+        
+         <img src="/images/nolivedebate.png"  className={styles.noLiveDebatesImage} />
+          <p>No live debates </p>
+          </div>
+        </>
+         }
+      </div> 
     </div>
   );
 };

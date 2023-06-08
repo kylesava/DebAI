@@ -290,7 +290,9 @@ export const avatarsTypeData={
     ],
 }
 
-
+export const DebAiCountriesList = [
+    // ""
+]
 export const DebateMotion={
 
  mini: [
