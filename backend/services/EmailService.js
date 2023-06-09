@@ -8,6 +8,8 @@ class EmailService {
 
 
 
+
+
         let transporter = nodemailer.createTransport({
             host: "smtp.gmail.com",
             port: 465,
@@ -28,7 +30,7 @@ class EmailService {
                 html,
             });
 
-            console.log("Message sent: %s", info.messageId);
+            console.log("Message sent: %s", info.messageId,process.env.APP_EMAIL,process.env.SMTP_PW);
             return info.messageId;
 
         } catch (error) {
