@@ -556,3 +556,90 @@ justify-content: center;
 .email_reset_image_wrapper ->display none
 
  */
+ @media only screen and (min-width: 769px) and (max-width: 992px) {
+  .AuthWrapper {
+    margin: 0;
+   }
+   .login_main_box {
+    margin-top: -2rem;
+}
+ }
+ @media only screen and (min-width: 600px)  and (max-width: 769px){
+  .AuthWrapper {
+    margin: 0;
+
+   }
+   .login_button {
+    font-weight: 500;
+   
+}
+ }
+ @media only screen and (min-width: 480px) and (max-width: 600px) {
+  .AuthWrapper {
+    margin: 0;
+   }
+   .login_button {
+    font-size: 16px;
+    font-weight: 500;
+}
+}
+@media only screen and (max-width: 480px){
+  .AuthWrapper {
+    margin: 0;
+   }
+  .single_item{
+    flex-direction: column;
+
+  }
+
+  .login_with_google_box img {
+    width: 16px;
+}
+  .login_with_google_box p {
+    font-size: 12px;
+}
+.sign_in_with_email_division p {
+  font-size: 11px;
+}
+ 
+.form_wrapper {
+  width: 80%;
+  align-items: center;
+  justify-content: center;
+}
+.logo_img {
+  display: none;
+}
+.auth_input_item .input_element {
+  height: 35px;
+  font-size: 10px;
+}
+.auth_input_item .input_element::placeholder {
+  font-size: 10px;
+  }
+  .login_button {
+    height: 35px;
+    font-size: 14px;
+    font-weight: 500;
+}
+.no_account_text {
+  font-size: 11px;
+  
+}
+.bottom_other_options {
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.login_button {
+  height: 32px;
+  font-size: 12px;
+}
+.login_with_google_box {
+  height: 32px;
+  font-size: 12px;
+}
+.auth_input_item label {
+  font-size: 11px;
+}
+}

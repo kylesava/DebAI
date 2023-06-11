@@ -3,21 +3,21 @@
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
     gap: 2rem;
-    padding: 2rem;
-    margin-top: 2rem;
+    padding: 1rem;
+    margin-top: 1rem;
 }
 .subscription_container h1{
     text-align: center;
     font-size: 24px;
+    font-weight: 600;
 }
 .subscription_container .pricing {
     display: flex;
     justify-content: space-between;
     max-width: 960px;
-    margin: auto;
+    gap:1rem
   }
   .subscription_container .pricing-plan {
     flex: 1;
@@ -26,6 +26,11 @@
     padding: 30px;
     border-radius: 6px;
     color: #fff;
+    box-shadow:  5px 5px 10px #1c2328,
+             -5px -5px 10px #222930;
+            
+
+             
   }
 
 .subscription_container .pricing-plan h2 {
@@ -42,11 +47,11 @@
     font-size: 33px;
   }
   .subscription_container .pricing-plan ul {
-    margin: 0 0 35px;
     padding-left: 16px;
     list-style: none;
     line-height: 1.8;
     color: #b5b5b5;
+    margin-bottom: 30px !important;
   }
   .subscription_container .pricing-plan ul li::before {
     content: "•";
@@ -82,4 +87,87 @@
     .subscription_container .pricing {
       display: block;
     }
-  }  
+  }
+  
+  @media only screen and (min-width: 769px) and (max-width: 992px) {
+
+    .subscription_container .pricing-plan ul li{
+      font-size: 14px;
+    }
+    .subscription_container .pricing-plan a {
+     
+      padding: 8px 14px;
+      
+      font-size: 13px;
+      font-weight: 600;
+  }
+  }
+  @media only screen and (min-width: 600px)  and (max-width: 769px){
+    .subscription_container .pricing-plan {
+      margin: 15px 0px;
+      padding: 2rem;
+      width: 75vw;
+  }
+  .subscription_container .pricing-plan p span {
+    font-size: 30px;
+}
+  .subscription_container .pricing-plan ul li{
+    font-size: 13px;
+  }
+  .subscription_container .pricing-plan a {
+   
+    padding: 8px 14px;
+    
+    font-size: 12px;
+    font-weight: 600;
+}
+  }
+  @media only screen and (min-width: 480px) and (max-width: 600px) {
+    .subscription_container .pricing {
+      width: 75vw;
+  }
+  .subscription_container .pricing-plan {
+    padding: 1rem;
+}
+.subscription_container .pricing-plan ul li{
+  font-size: 12px;
+}
+.subscription_container .pricing-plan a {
+   
+  
+  font-size: 11px;
+  font-weight: 600;
+}
+.subscription_container  .pricing-plan p {
+
+  font-size: 12px;
+}
+.subscription_container .pricing-plan p span {
+  font-size: 29px;
+}
+  }
+  @media only screen and (max-width: 480px){
+    .subscription_container .pricing {
+      width: 90vw;
+  }
+    .subscription_container .pricing-plan {
+      padding: 1rem;
+  }
+  .subscription_container .pricing-plan ul li{
+    font-size: 11px;
+  }
+  .subscription_container .pricing-plan a {
+     
+    
+    font-size: 10px;
+    font-weight: 600;
+    padding: 8px 10px;
+  }
+  .subscription_container  .pricing-plan p {
+  
+    font-size: 11px;
+  }
+  .subscription_container .pricing-plan p span {
+    font-size: 27px;
+  }
+  }

@@ -37,3 +37,8 @@
 .myDebates{
   padding:  1rem 2rem;
 }
+@media only screen and (min-width: 769px) and (max-width: 992px) {
+  .profile_card_top {
+    gap: 1rem;
+}
+}
