@@ -116,3 +116,27 @@
 .mic_control_wrapper svg{
   color: white !important;
 }
+
+@media screen   and (min-width:600px) and (max-width:768px){
+
+  .DebateScreenBoxWrapper{
+    flex-direction: column;
+  }
+  
+}
+
+@media screen   and (min-width:480px) and (max-width:600px){
+
+  .DebateScreenBoxWrapper{
+    flex-direction: column;
+  }
+  
+}
+@media screen  and (max-width:480px){
+  .DebateScreenBoxWrapper{
+    flex-direction: column;
+  }
+  
+
+  
+}

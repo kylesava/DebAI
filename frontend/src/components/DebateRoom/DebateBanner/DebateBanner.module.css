@@ -7,8 +7,8 @@ height: 75vh;
 .debateBanner >img{
     width: 100%;
     height: 100%;
-    filter: blur(3px);
-
+    object-fit: cover;
+    border-radius: 10px;
 }
 .banner_content_wrapper{
     position: absolute;
@@ -16,6 +16,7 @@ height: 75vh;
     left: 0;
     color: white;
     top: 0;
+    border-radius: 15px;
     width: 100%;
     height: 100%;
     display: flex;
@@ -24,6 +25,7 @@ height: 75vh;
 
 }
 .main_box{
+    width: 80%;
     display: flex;
     align-items: center;
     flex-direction:  column;
@@ -31,19 +33,19 @@ height: 75vh;
 
 }
 .debate_topic{
-    font-size: 2.4rem;
+    font-size: 1.2rem;
     margin-bottom: 0.4rem;
+    text-align: center;
     font-weight: bolder;
     text-transform: uppercase;
-    line-height: 70px;
+    line-height: 35px;
     letter-spacing: 2px;
+    margin-bottom: 4rem !important;
 }
 .startsInText{
-    position: absolute;
-    bottom: 5px;
-    left: 0;
-    right: 0;
-    margin: auto;
+   
+ 
+
     text-align: center;
     font-weight: 600;
     color: rgb(236, 236, 236);
@@ -56,8 +58,8 @@ height: 75vh;
     gap: 10px;
 }
 .team_box h3{
-    font-family: 'Ysabeau', sans-serif;
-    text-decoration: line-through;
+
+   
     font-weight: 700;
     letter-spacing: 2px;
     font-size: 2rem;

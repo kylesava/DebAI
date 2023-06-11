@@ -37,6 +37,7 @@
   font-size: 20px;
   display: flex;
   align-items: center;
+  text-align: center;
   gap: 10px;
   letter-spacing: 2px;
 
@@ -114,4 +115,52 @@ word-break: break-all !important;
   width: 100px;
   height: 40px;
   margin-left: auto;
+}
+
+@media screen  and (min-width:768px)and (max-width:992px){
+
+  .debate_bottom_container{
+    flex-direction: column;
+  }
+  
+}
+@media screen  and (min-width:600px)and (max-width:768px){
+
+  .debate_bottom_container{
+    flex-direction: column;
+  }
+  
+}
+@media screen  and (min-width:480px)and (max-width:600px){
+
+  .Debate_room_main_text{
+    font-size: 15px;
+    text-align:center ;
+  }
+
+  .debate_bottom_container{
+    flex-direction: column;
+  }
+  .DebateRoomWrapper{
+    padding: 0  1rem;
+    padding-top: 4rem;
+
+  }  
+}
+@media screen   and (max-width:480px){
+
+  .DebateRoomWrapper{
+    padding: 0 1rem ;
+    padding-top: 4rem;
+  }
+
+
+  .Debate_room_main_text{
+    font-size: 12px;
+    text-align: center;
+  }
+  .debate_bottom_container{
+    flex-direction: column;
+  }
+  
 }

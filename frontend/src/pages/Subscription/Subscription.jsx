@@ -85,10 +85,13 @@ const Subscription = () => {
     <>
       <Navbar />
       <div className={"subscription_container"}>
+      <div className="subscription_header_box">
+      <img width="64" height="64" src="https://img.icons8.com/external-tal-revivo-tritone-tal-revivo/64/external-discount-coupons-at-a-shopping-mall-store-for-reasonable-pricing-in-sales-mall-tritone-tal-revivo.png" alt="external-discount-coupons-at-a-shopping-mall-store-for-reasonable-pricing-in-sales-mall-tritone-tal-revivo"/>
         <h1>Choose Your Plan</h1>
+        </div>  
         <div class="pricing">
           <div class="pricing-plan">
-            <h2>Basic</h2>
+            <h2 className="plan_name">Basic</h2>
             <p>
               <span>Free</span>
             </p>
@@ -101,7 +104,9 @@ const Subscription = () => {
 
           {prices.map((price) => (
             <div class="pricing-plan" key={price.key}>
-              <h2>
+              <div className="plan_main_content_box">
+
+              <h2 className="plan_name">
                 Premium{" "}
                 {price.recurring.interval === "month"
                   ? " Monthly "
@@ -125,6 +130,7 @@ const Subscription = () => {
                 <li>Take Part in Debate</li>
                 <li>Create Debate</li>
               </ul>
+              </div>
               {subStatus === "active" &&
               loggedInUserData?.subscription?.plan ===
                 price.recurring.interval ? (
@@ -143,7 +149,7 @@ const Subscription = () => {
                   <a onClick={showPopconfirm}>Cancel Plan</a>
                 </Popconfirm>
               ) : (
-                <a onClick={() => createSession(price.id)}>Buy Now</a>
+                <button onClick={() => createSession(price.id)}>Buy Now</button>
               )}
             </div>
           ))}

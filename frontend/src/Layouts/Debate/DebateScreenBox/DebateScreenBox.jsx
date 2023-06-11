@@ -198,10 +198,7 @@ RoomService
 
                     )) : <NoneJoined team={teams[0]} roboImg={"/images/roboTeam.png"} /> : ""
                   }
-                  {
-                    !isLive &&
-                    <NotStartedView team={activeDebate?.current?.teams[0]?.members} />
-                  }
+                  
                 </div>
               </div>
               <div className='box_wrappers pink_wrapper'>
@@ -216,9 +213,7 @@ RoomService
                       <DebatorView pink={true} activeSpeakers={activeSpeakers} debator={member} key={member._id} />
                     )) : <NoneJoined team={teams[1]} roboImg={"/images/roboTeam2.png"} /> : ""
                   }
-                  {
-                    !isLive && <NotStartedView pink={true} team={activeDebate?.current?.teams[1]?.members} />
-                  }
+             
                 </div>
               </div>
             </>

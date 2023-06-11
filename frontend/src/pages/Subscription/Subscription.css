@@ -8,26 +8,47 @@
     padding: 1rem;
     margin-top: 1rem;
 }
+.subscription_header_box{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.subscription_header_box img{
+  width: 45px;
+}
 .subscription_container h1{
     text-align: center;
     font-size: 24px;
     font-weight: 600;
+    color: var(--dark_primary_text_color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 .subscription_container .pricing {
     display: flex;
     justify-content: space-between;
-    max-width: 960px;
+    width: 100%;
+    
+    
     gap:1rem
+  }
+  .plan_main_content_box{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-content: space-between ;
   }
   .subscription_container .pricing-plan {
     flex: 1;
-    background-color: #1f262c;
+    background-color: #ebebebc2;
+    min-width: 250px;
     margin: 15px 8px;
     padding: 30px;
     border-radius: 6px;
-    color: #fff;
-    box-shadow:  5px 5px 10px #1c2328,
-             -5px -5px 10px #222930;
+
+    color:var(--dark_primary_text_color); 
+    /* box-shadow:  5px 5px 10px #1c2328,
+             -5px -5px 10px #222930; */
             
 
              
@@ -36,7 +57,7 @@
 .subscription_container .pricing-plan h2 {
     margin-top: 0;
     padding-bottom: 10px;
-    border-bottom: 2px solid #e30046;
+    border-bottom: 2px solid var(--primary_color);
     text-transform: uppercase;
     letter-spacing: 0.07em;
   }
@@ -49,13 +70,18 @@
   .subscription_container .pricing-plan ul {
     padding-left: 16px;
     list-style: none;
+    margin-bottom: 20px !important;
     line-height: 1.8;
     color: #b5b5b5;
-    margin-bottom: 30px !important;
+
+  }
+  .subscription_container .pricing-plan ul li{
+    font-size: 14px;
+    color: var(--dark_primary_text_color);
   }
   .subscription_container .pricing-plan ul li::before {
     content: "•";
-    color: #e30046;
+    color:  var(--dark_primary_text_color) ;
     display: inline-block;
     width: 20px;
     margin-left: -15px;
@@ -64,13 +90,13 @@
     font-size: 26px;
     line-height: 0;
   }
-  .subscription_container .pricing-plan a {
+  .subscription_container .pricing-plan button {
     text-decoration: none;
     color: #fff;
     padding: 10px 20px;
     text-align: center;
-    background: #e30046;
-    border: 2px solid #e30046;
+    background: var(--primary_color);
+    
     border-radius: 5px;
     letter-spacing: 0.05em;
     text-transform: uppercase;
@@ -78,7 +104,13 @@
     font-weight: bold;
     cursor: pointer;
   }
-  .subscription_container .pricing-plan a:hover {
+  .plan_name{
+    color: var(--primary_color);
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 16px;
+  }
+  .subscription_container .pricing-plan button:hover {
     background-color: #1f262c;
   }
 
@@ -94,7 +126,7 @@
     .subscription_container .pricing-plan ul li{
       font-size: 14px;
     }
-    .subscription_container .pricing-plan a {
+    .subscription_container .pricing-plan button {
      
       padding: 8px 14px;
       
@@ -106,7 +138,7 @@
     .subscription_container .pricing-plan {
       margin: 15px 0px;
       padding: 2rem;
-      width: 75vw;
+    width: 100%;
   }
   .subscription_container .pricing-plan p span {
     font-size: 30px;
@@ -114,7 +146,7 @@
   .subscription_container .pricing-plan ul li{
     font-size: 13px;
   }
-  .subscription_container .pricing-plan a {
+  .subscription_container .pricing-plan button {
    
     padding: 8px 14px;
     
@@ -124,7 +156,7 @@
   }
   @media only screen and (min-width: 480px) and (max-width: 600px) {
     .subscription_container .pricing {
-      width: 75vw;
+      width: 100%;
   }
   .subscription_container .pricing-plan {
     padding: 1rem;
@@ -148,7 +180,7 @@
   }
   @media only screen and (max-width: 480px){
     .subscription_container .pricing {
-      width: 90vw;
+      width: 100%
   }
     .subscription_container .pricing-plan {
       padding: 1rem;
