@@ -125,7 +125,7 @@ const ProfileCard = ({ userData }) => {
 
                         </div>
                         <div className="profile_card_item basic_userinfo_item">
-                            <div>
+                            <div className="user_main_detail">
                     <div className="profile_name_user_point_box">
 
                                 <h1 className="profile_card_username">{`${userData?.firstName} ${userData?.lastName}`}
@@ -137,11 +137,14 @@ const ProfileCard = ({ userData }) => {
                                 <img width="94" height="94" src="https://img.icons8.com/3d-fluency/94/popular-topic.png" alt="popular-topic"/>
                                 </div>
                     </div>
+        
+
+                                <p className="profile_card_email">{userData?.email}</p>
                                 <div className="profile_card_user_country_box">
                                 <img width={"20px"} src={ flag} alt="" />
                                 <p>{userData?.country   } </p>
-                                </div>
-                                <p className="profile_card_email">{userData?.email}</p>
+                          
+                    </div>
                       
                             </div>
                             {
@@ -154,26 +157,29 @@ const ProfileCard = ({ userData }) => {
                     </div>
 
                 </div>
-                <div className="profile_card_item">
+                <div className="profile_card_item_other_item">
                     <h1 className="profile_card_item_title">OTHER INFORMATION</h1>
+                            {
+                        (debatesCount.upcomingDebate !== null && debatesCount.upcomingDebate > 0) && <div className="other_info_text_item">
+
+                            <GoBroadcast className="upcoming_icon" />
+                              <p className="other_info_text">{debatesCount.upcomingDebate}  {debatesCount.upcomingDebate > 1 ? "debates are " : "debate is"} upcoming</p>
+
+
+                        </div>
+                    }
                     <div className="other_info_text_item">
 
                         <BsFillSpeakerFill />
 
                         <p className="other_info_text">created {debatesCount.liveDebate !== null ? parseInt(debatesCount.liveDebate) + parseInt(debatesCount.upcomingDebate) : ""} {parseInt(debatesCount.liveDebate) + parseInt(debatesCount.upcomingDebate) > 1 ? "debates" : "debate"}</p>
                     </div>
+            
                     {
                         (debatesCount.liveDebate !== null && debatesCount.liveDebate > 0) && <div className="other_info_text_item">
 
-                            <BsBroadcast className="live_icon" />   <p className="other_info_text">{debatesCount.liveDebate}  {debatesCount.liveDebate > 1 ? "debates are " : "debate is"} live</p>
-                        </div>
-                    }
-                    {
-                        (debatesCount.upcomingDebate !== null && debatesCount.upcomingDebate > 0) && <div className="other_info_text_item">
-
-                            <GoBroadcast className="upcoming_icon" />  <p className="other_info_text">{debatesCount.upcomingDebate}  {debatesCount.upcomingDebate > 1 ? "debates are " : "debate is"} upcoming</p>
-
-
+                            <BsBroadcast className="live_icon" />   
+                            <p className="other_info_text">{debatesCount.liveDebate}  {debatesCount.liveDebate > 1 ? "debates are " : "debate is"} live</p>
                         </div>
                     }
                     {

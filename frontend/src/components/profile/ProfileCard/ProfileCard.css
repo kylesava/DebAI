@@ -151,4 +151,158 @@
 .profile_name_user_point_box{
     display: flex;
     gap: 5px;
+
+  }
+  .profile_card_item_other_item{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .user_main_detail{
+          display: flex;
+          gap: 10px;
+      flex-direction: column;
+  }
+
+  @media screen  and (min-width:600px) and (max-width:768px) {
+.ProfileCard{
+  align-items: center;
 }
+    .profile_card_top{
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+    .profile_basic_info_item{
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .profile_card_item_other_item{
+      align-items: center;
+
+    }
+    .profile_name_user_point_box{
+      gap: 15px;
+    }
+    .user_main_detail{
+
+      align-items: center;
+    }
+    .basic_userinfo_item{
+      align-items: center;
+    }
+    .other_info_text {
+      font:17px;
+    }
+    .profile_card_email{
+      font-size: 18px;
+
+    }
+    .profile_card_username{
+      font-size: 1.8rem;
+    }
+    .profile_card_user_country_box p{
+      font-size: 16px;
+    }
+    .other_info_text {
+      letter-spacing: 1px;
+      font-size: 17px !important;
+    }
+  }
+  
+    @media screen  and (min-width:480px) and (max-width:600px) {
+.ProfileCard{
+  align-items: center;
+}
+    .profile_card_top{
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+    .profile_basic_info_item{
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .profile_card_item_other_item{
+      align-items: center;
+
+    }
+    .profile_name_user_point_box{
+      gap: 15px;
+    }
+    .user_main_detail{
+
+      align-items: center;
+    }
+    .basic_userinfo_item{
+      align-items: center;
+    }
+    .other_info_text {
+      font:17px;
+    }
+    .profile_card_email{
+      font-size: 18px;
+
+    }
+    .profile_card_username{
+      font-size: 1.8rem !important;
+    }
+    .profile_card_user_country_box p{
+      font-size: 16px;
+    }
+      .other_info_text {
+        letter-spacing: 1px;
+      font-size: 17px !important;
+    }
+  }
+
+    @media screen  and (max-width:480px) {
+.ProfileCard{
+  align-items: center;
+  width: 95%;
+}
+    .profile_card_top{
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+    .profile_basic_info_item{
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .profile_card_item_other_item{
+      align-items: center;
+
+    }
+    .profile_name_user_point_box{
+      gap: 0px;
+    }
+    .user_main_detail{
+
+      align-items: center;
+    }
+    .basic_userinfo_item{
+      align-items: center;
+    }
+    .other_info_text {
+      font:17px;
+    }
+    .profile_card_email{
+      font-size: 14px;
+
+    }
+    .profile_card_username{
+      font-size: 1rem !important;
+      letter-spacing: 2px !important;
+    }
+    .profile_card_user_country_box p{
+      font-size: 14px;
+    }
+      .other_info_text {
+        letter-spacing: 1px;
+      font-size: 14px !important;
+    }
+  }
