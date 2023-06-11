@@ -530,6 +530,25 @@ justify-content: center;
 .email_verify_top_head{
   margin-bottom: 2rem;
 }
+.country_input{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center ;
+  padding:  0 !important;
+} 
+
+.country_input p{
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  padding: 0 5px;
+
+  align-items: center;
+
+}
 /*
  in mobile and tab mode make
  .reset_email_main_content > form 

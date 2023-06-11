@@ -8,17 +8,15 @@ class EmailService {
 
 
 
-
-
         let transporter = nodemailer.createTransport({
             host: "smtp.gmail.com",
             port: 465,
             secure: true,
             auth: {
-                user: process.env.APP_EMAIL,
-                pass: process.env.SMTP_PW
+                user: process.env.SMTP_PW,
+                pass: process.env.APP_EMAIL
             },
-        });
+        }); 
 
         try {
 
@@ -30,7 +28,7 @@ class EmailService {
                 html,
             });
 
-            console.log("Message sent: %s", info.messageId,process.env.APP_EMAIL,process.env.SMTP_PW);
+            console.log("Message sent: %s", info.messageId);
             return info.messageId;
 
         } catch (error) {

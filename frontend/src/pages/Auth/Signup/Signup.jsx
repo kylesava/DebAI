@@ -5,6 +5,7 @@ import { AddLoggedInUser } from '../../../redux/action/actionCreators';
 import { RegisterUserApi, getCountries } from '../../../utils/Api';
 import "../Auth.css"
 import SelectCountry from '../../../Layouts/popovers/selectCountry/SelectCountry';
+import { DebAiCountriesList } from '../../../utils/data';
 
 
 
@@ -37,15 +38,18 @@ const Signup = () => {
 
 useEffect(()=>{
   handleGetCountries()
-},[])
+},[DebAiCountriesList])
 
 const handleGetCountries=async()=>{
 
   try {
       const {data,status} = await getCountries()
       if(status!==200)return;
-      
-      setCountries(data);
+      const filterdCountries = data.filter(count=>DebAiCountriesList.find(name=>{
+            return name=== count?.name?.common
+      })) 
+
+      setCountries(filterdCountries);
   } catch (error) {
     console.log(error)
   }
@@ -178,7 +182,7 @@ const handleGetCountries=async()=>{
 
 
         <SelectCountry countries={countries}  handleInputChange={setUserDetails}>
-          <div className='input_element' style={{height:"100%" ,color:"rgba(128, 128, 128, 0.678)" , display:"flex",alignItems:"center"}}>
+          <div className='input_element country_input' style={{height:"100%" ,color:"rgba(128, 128, 128, 0.678)" , display:"flex",alignItems:"center" ,width:"100%" }}>
             <p>
 
         {

@@ -5,8 +5,8 @@
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.5s;
-  padding: 0.71rem  10px;
-  background:#fafafa;
+  padding: 0.41rem  10px;
+  background:#fafafaa1;
   backdrop-filter: blur(45px);
 }
 .ParticipationPersonWrapper:hover {

@@ -173,11 +173,11 @@ RoomService
 
     {
       isLive ? <>
-  <SpeakTimeLeft
+  {/* <SpeakTimeLeft
         startTeam={startTeam}
         debateState={debateState}
          countDown={countDown} 
-         />
+         /> */}
       <div className="DebateScreenBoxWrapper" onClick={handleSetFunc}>
           {
           (activeDebate?.current && activeParticipants) ?
@@ -186,7 +186,7 @@ RoomService
               <div className='box_wrappers'>
                 <div className='screen_box_header'>
 
-                  <h4 className='team_name teamOne'>{teams[0]?.name}</h4>
+                <img width="64" height="64" src="https://img.icons8.com/external-justicon-lineal-color-justicon/64/external-sword-pirates-justicon-lineal-color-justicon.png" alt="external-sword-pirates-justicon-lineal-color-justicon"/>   <h4 className='team_name teamOne'>{teams[0]?.name}</h4>
               
 
                 </div>
@@ -196,7 +196,7 @@ RoomService
 
                       <DebatorView activeSpeakers={activeSpeakers} debator={mem} key={mem.id} />
 
-                    )) : <NoneJoined team={teams[0]} /> : ""
+                    )) : <NoneJoined team={teams[0]} roboImg={"/images/roboTeam.png"} /> : ""
                   }
                   {
                     !isLive &&
@@ -207,13 +207,14 @@ RoomService
               <div className='box_wrappers pink_wrapper'>
 
                 <div className='screen_box_header'>
+                  <img width="64" height="64" src="https://img.icons8.com/external-justicon-lineal-color-justicon/64/external-sword-pirates-justicon-lineal-color-justicon.png" alt="external-sword-pirates-justicon-lineal-color-justicon"/>
                   <div className='team_name teamTwo'> {teams[1]?.name}</div>
                 </div>
                 <div className="right_team">
                   {
                     isLive ? teams[1] && teams[1]?.members?.length > 0 ? teams[1]?.members?.map((member) => (
                       <DebatorView pink={true} activeSpeakers={activeSpeakers} debator={member} key={member._id} />
-                    )) : <NoneJoined team={teams[1]} /> : ""
+                    )) : <NoneJoined team={teams[1]} roboImg={"/images/roboTeam2.png"} /> : ""
                   }
                   {
                     !isLive && <NotStartedView pink={true} team={activeDebate?.current?.teams[1]?.members} />

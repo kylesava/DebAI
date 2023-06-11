@@ -16,104 +16,112 @@ const SpeakTimeLeft = ({debateState,countDown ,startTeam}) => {
    <div className='speak_time_left_box' >
     <div className="speakTime_left_box_time_show">
  
-        <div className="speak_time_debate_state">
-        
-          { 
-(isLive && !debateState?.isStarted && !debateState?.hasFinished) ? "Waiting for debators to start":
 
-
-          debateState?.isPaused ? "Paused" :   debateState?.isStarted ? "Ongoing":
-         debateState?.hasFinished ? "Completed":"Not Started"  
-          }
-        </div>
       </div>
       <div className="speak_time_info">
 
-        <table>
-          <thead style={{display:"none"}}>
-            <th>hell</th>
-            <th>loo</th>
-          </thead>
+   
 
-      <tbody>
-    
-            {
-              (!debateState?.isStarted && !debateState?.hasFinished) &&      <tr className="speakTime_item">
-              <td className="speakTime_title">
-              <TiGroup/>
-              <p className="speak_time_key">Debate Start Team </p>
-              </td> 
-              <td className="speak_time_value">{startTeam}</td>
-            </tr>
-            }
-            <tr className="speakTime_item" >
-            <td className="speakTime_title">
 
-            <FiType/>
+         <div className="speakTime_item" >
+            <div className="speakTime_title">
+
+<img width="96" height="96" src="https://img.icons8.com/fluency/96/diversity.png" alt="diversity"/>            
             <p className="speak_time_key">Debate Type  </p>
-            </td>
+            </div>
             
-            <td className="speak_time_value">{activeDebate?.current?.type}</td>
-          <tr className="speakTime_item" >
-            <td className="speakTime_title">
+            <p className="speak_time_value">{activeDebate?.current?.type}</p>
+       
+          </div>       
+        <div className="speakTime_item" >
+            <div className="speakTime_title">
 
-            <GiTennisCourt/>
-            <p className="speak_time_key">Judge Type  </p>
-            </td>
+         <img width="48" height="48" src="https://img.icons8.com/fluency/48/expired.png" alt="expired"/>
+            <p className="speak_time_key">Total speech   </p>
+            </div>
             
-            <td className="speak_time_value">{activeDebate?.current?.judgeType}</td>
-          </tr>
-          </tr>
-            <tr className="speakTime_item" >
-            <td className="speakTime_title">
+            <p className="speak_time_value">{activeDebate?.current?.timeFormat?.length}</p>
+      
+          </div>
+    
+            
+{/*                
+                    <div className="speakTime_item" >
+            <div className="speakTime_title">
 
-            <AiOutlineFieldNumber/>
-            <p className="speak_time_key">Total speech count  </p>
-            </td>
+         <img width="48" height="48" src="https://img.icons8.com/fluency/48/expired.png" alt="expired"/>
+            <p className="speak_time_key">Total speech   </p>
+            </div>
             
-            <td className="speak_time_value">{activeDebate?.current?.timeFormat?.length}</td>
-          {
-           ( debateState?.isStarted || debateState?.isPaused ) &&
-            <tr className="speakTime_item" >
-            <td className="speakTime_title">
-
-            <CgTimelapse/>
-            <p className="speak_time_key">Active Speak Count   </p>
-            </td>
+            <p className="speak_time_value">{activeDebate?.current?.timeFormat?.length}</p>
+      
+          </div>    */}
+           <div className="speakTime_item">
+              <div className="speakTime_title">
+              <img width="94" height="94" src="https://img.icons8.com/3d-fluency/94/user-group-man-woman--v1.png" alt="user-group-man-woman--v1"/>
+              <p className="speak_time_key">Start Team </p>
+              </div> 
+              <p className="speak_time_value">{startTeam}</p>
+            </div>
             
-            <td className="speak_time_value">{debateState?.round_shot}</td>
-          </tr>
           
-          }
-          </tr>
+      
+
+
+
+
+          
+          
+          
+   
+
+
+                {
+           ( debateState?.isStarted || debateState?.isPaused ) &&
+            <div className="speakTime_item" >
+            <div className="speakTime_title">
+
+            <img width="66" height="66" src="https://img.icons8.com/external-smashingstocks-outline-color-smashing-stocks/66/external-Mic-party-and-celebrations-smashingstocks-outline-color-smashing-stocks-2.png" alt="external-Mic-party-and-celebrations-smashingstocks-outline-color-smashing-stocks-2"/>
+            <p className="speak_time_key">Active Speak Count   </p>
+            </div>
+            <p className="speak_time_value">{debateState?.round_shot}</p>
+          </div>
+          
+          }            
+
+               <div className="speakTime_item" >
+            <div className="speakTime_title">
+
+            <img width="64" height="64" src="https://img.icons8.com/external-flatart-icons-flat-flatarticons/64/external-judge-auction-flatart-icons-flat-flatarticons-1.png" alt="external-judge-auction-flatart-icons-flat-flatarticons-1"/>
+            <p className="speak_time_key">Judge Type  </p>
+            </div>
+            
+            <p className="speak_time_value">{activeDebate?.current?.judgeType}</p>
+          </div>
+      
+       
+
+
+
+
       {
 
-(debateState?.isStarted || debateState?.isPaused) &&    <tr className="speakTime_item">
-            <td className="speakTime_title">
-            <TiGroup />
+ debateState?.isStarted && <>
+
+  
+
+          <div className="speakTime_item">
+               <div className="speakTime_title">
+          <img width="94" height="94" src="https://img.icons8.com/3d-fluency/94/talk-male--v2.png" alt="talk-male--v2"/> 
             <p className="speak_time_key">Speech Team </p>
-            </td> 
-            <td className="speak_time_value">{debateState?.speakTeam}</td>
-            {
-  
-            (debateState?.isStarted || debateState?.isPaused) &&  <tr className="speakTime_item" >
-              <td className="speakTime_title">
-  
-              <GiTimeBomb/>
-              <p className="speak_time_key">Time Left  </p>
-              </td>
-              
-              <td className="speak_time_value">{countDown?.min} min &nbsp; {countDown?.sec} sec</td>
-            </tr>
-            
-            }
-          </tr>
+            </div> 
+            <p className="speak_time_value">{debateState?.speakTeam}</p>
+            </div>
+        </>
         } 
-      </tbody>
-        </table>
-          {/* <h1>
-            {`Speech Time left ${countDown?.min !==null ? `${countDown?.min} min : ${countDown?.sec} sec`:""} for   ${debateState?.speakTeam} team`}
-          </h1> */}
+    
+    
+     
           </div>
     </div>
         

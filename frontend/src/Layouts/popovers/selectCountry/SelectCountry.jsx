@@ -19,7 +19,7 @@ const SelectCountry = ({children,countries,handleInputChange}) => {
       
         onOpen={onOpen}
         onClose={onClose}
-        closeOnBlur={false}
+        closeOnBlur={true}
         placement='top'
  >
   <PopoverTrigger>

@@ -148,3 +148,7 @@
   font-size: 13px;
   letter-spacing: 1px;
 }
+.profile_name_user_point_box{
+    display: flex;
+    gap: 5px;
+}

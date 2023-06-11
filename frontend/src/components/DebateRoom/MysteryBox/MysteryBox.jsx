@@ -58,6 +58,7 @@ const MysteryBox = ({handleNext ,debateResult ,activeDebate ,isAudience}) => {
       transition={{ duration: 0.5 ,bounce:200 }}
       className={styles.modelContent}
     >
+
     <div className={styles.top_winning_team}>
         <img  className={styles.win_logo} width="40" height="40" src="https://img.icons8.com/external-smashingstocks-flat-smashing-stocks/66/external-Win-casino-smashingstocks-flat-smashing-stocks.png" alt="external-Win-casino-smashingstocks-flat-smashing-stocks"/>
         <h1 className={styles.winning_team_text}> {getResultText()}</h1> 

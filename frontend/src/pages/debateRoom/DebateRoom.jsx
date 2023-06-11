@@ -18,6 +18,7 @@ import DebateAction from "../../components/DebateRoom/DebateAction/DebateAction"
 import "./DebateRoom.css"
 import DebateInfo from "../../Layouts/Debate/DebateInfo/DebateInfo";
 import AnalyzeResultModal from '../../Layouts/modal/DebateFinishedModal/AnalyzingResult';
+import SpeakTimeLeft from '../../Layouts/Debate/SpeakTimeLeft/SpeakTimeLeft';
 const APPID = process.env.REACT_APP_AGORA_APP_ID;
 const Rtm_client = AgoraRTM.createInstance(APPID);
 const Rtc_client = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" })
@@ -285,42 +286,61 @@ const DebateRoom = () => {
       {
        (startAnalyze ) && <AnalyzeResultModal activeDebate={activeDebateRef.current}/>
       }
-      <div  className='DebateRoomWrapper' onClick={()=>RoomService.getArgument()} >
+      <div  className='DebateRoomWrapper'  >
+                <div className="speak_time_debate_state">
+        
+          { 
+(isLive && !debateState?.isStarted && !debateState?.hasFinished) ? "Waiting for debators to start":
+
+
+          debateState?.isPaused ? "Paused" :   debateState?.isStarted ? "Ongoing":
+         debateState?.hasFinished ? "Completed":"Not Started"  
+          }
+        </div>
+        <div className='debate_room_top'>
         <div className='debate_room_top_header'>
           {isLive &&
+          <>
             <div className="debate_room_top_header_left">
-              <img width={"40px"} src="/images/error_dino.png" alt="dinosour" />
+            
               <h1 className='Debate_room_main_text' >
                 {activeDebateRef.current?.topic}  </h1>
             </div>
-          }
-          {isLive &&
-            (debateState.isStarted && !debateState.isPaused) && (<>
+          {  (debateState.isStarted && !debateState.isPaused) && (<>
               <div>
                 <h1 className="main_timing_text">
-                  {`ROUND FINISH IN ${getTime(speakTimeLeft)} `}
+                  {`TIME LEFT  ${getTime(speakTimeLeft)} `}
                 </h1>
               </div>
             </>
-            )
+            )}
+          
+          </>
           }
+          
         </div>
         <DebateScreenBox
-          isLive={isLive}
-          lastApiCallConfig={lastApiCallConfig}
-          setSpeakTimeLeft={setSpeakTimeLeft}
-          roomMembers={RoomMembers}
-          debateState={debateState}
-          activeSpeakers={activeSpeakers}
-          timeRemainingRef={timeRemainingRef}
-          isUserParticipant={isUserParticipant}
-          isNotWatch={WatchType !== "AUDIENCE"}
-          activeMicControlTeam={activeMicControlTeam}
-          RoomService={RoomService}
-         
-          startTeam={activeDebateRef.current?.timeFormat[0].team}
+   isLive={isLive}
+   lastApiCallConfig={lastApiCallConfig}
+   setSpeakTimeLeft={setSpeakTimeLeft}
+   roomMembers={RoomMembers}
+   debateState={debateState}
+   activeSpeakers={activeSpeakers}
+   timeRemainingRef={timeRemainingRef}
+   isUserParticipant={isUserParticipant}
+   isNotWatch={WatchType !== "AUDIENCE"}
+   activeMicControlTeam={activeMicControlTeam}
+   RoomService={RoomService}
+  
+   startTeam={activeDebateRef.current?.timeFormat[0].team}
         />
-      
+  
+    <SpeakTimeLeft
+        startTeam={activeDebateRef?.current?.timeFormat[0].team}
+        debateState={debateState}
+        //  countDown={countDown} 
+         />
+   </div>
         <div className="debate_bottom_content">
         {
           !debateStateRef.current?.hasFinished  &&   <DebateAction
@@ -341,7 +361,7 @@ const DebateRoom = () => {
           activeMicControlTeam={activeMicControlTeam}
         />
         }
-          <DebateInfo />
+          {/* <DebateInfo /> */}
           <div className='debate_bottom_container'>
             <Participants />
             <LiveChat 

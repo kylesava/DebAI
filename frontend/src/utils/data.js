@@ -291,7 +291,13 @@ export const avatarsTypeData={
 }
 
 export const DebAiCountriesList = [
-    // ""
+    "Canada",
+    "Germany",
+    "Switzerland",
+    "India",
+    "United Kingdom",
+    "United States",
+    "France"
 ]
 export const DebateMotion={
 

@@ -3,24 +3,29 @@
     border-radius: 5px;
     padding: 10px ;
     position: relative;
-
+    background-color: white;
 }
 .speak_time_debate_state{
     position: absolute;
 
-    top: 10px;
+    top: 15px;
     right: 10px;
     color: white;
     font-size: 12px ;
     border-radius: 4px;
-    background: var(--dark_primary_text_color);
+    background: var(--primary_color);
+    letter-spacing: 1px;
     height: 30px;
 
     width: fit-content;
     padding: 0 10px;
     padding-top: 5px;
     font-size: 12px;
-    letter-spacing: 0.80px;
+}
+.speak_time_info{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
 }
 .speak_time_left{
     width: fit-content;
@@ -49,17 +54,21 @@
 
 
 }
-.speakTime_item td{
+.speakTime_title img{
+    width: 30px;
+}
+.speakTime_item p{
     padding-right: 20px;    
-    height: 30px;
+    
     color: rgb(73, 73, 73);
-    font-weight: 200;
+    font-weight: 200; 
+    margin-bottom: 0 !important;
 
 }
 
 
 .speakTime_item{
-
+    display: flex;
     margin-bottom: 10px;
 }
 .speakTime_title{

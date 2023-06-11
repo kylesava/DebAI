@@ -1009,9 +1009,10 @@ async setInitialDebateState  () {
 
   if(!speakersData || !debateRounds){
     const {state} = this.activeDebate?.current;
-    const {speakTeam ,isStarted} = state;
+    
 
-    if(isStarted){
+    if(state?.isStarted){
+      const {speakTeam} = state;
       this.changeDebateState(state)
       const team = this.getTeamDataByName(speakTeam);
       if(team){
@@ -1025,7 +1026,7 @@ async setInitialDebateState  () {
         await this.setTheSpeakerTeamToChannel(team);
       }else{
         this.activeMicControlTeam(null)
-        if(speakTeam==="both"){
+        if(state?.speakTeam==="both"){
           await this.setTheSpeakerTeamToChannel("both");
         }else{
           await this.setTheSpeakerTeamToChannel('null');

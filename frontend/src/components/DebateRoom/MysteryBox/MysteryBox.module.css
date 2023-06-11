@@ -17,10 +17,12 @@
     padding: 1.5rem 1rem;
     padding-bottom: 1rem;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.582);
-    box-shadow: 1px 1px 3px 2px rgb(0 0 0 / 74%);
+    background-color: rgba(73, 73, 73, 0.233); 
     border-radius: 20px;
     padding-top: 0.5rem;
+        position: relative;
+z-index: 3 !important;
+    backdrop-filter: blur(5px);
 }
 .top_winning_team{
     display: flex;
@@ -97,4 +99,22 @@
     margin-left: auto;
     opacity: 0.7;
     transition: all .3s ;
+}
+
+.robo_1,.robo_2{
+
+    position: absolute;
+    
+    z-index: -1 !important;
+
+
+}
+.robo_1 {
+    right: -3rem;
+
+    width: 20%;
+}
+.robo_2{
+    width: 20%;
+    left: -3rem;
 }

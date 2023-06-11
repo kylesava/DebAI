@@ -126,15 +126,17 @@ const ProfileCard = ({ userData }) => {
                         </div>
                         <div className="profile_card_item basic_userinfo_item">
                             <div>
+                    <div className="profile_name_user_point_box">
 
                                 <h1 className="profile_card_username">{`${userData?.firstName} ${userData?.lastName}`}
-                                <p className="profile_card_user_points">
+                                </h1>
+                                <div className="profile_card_user_points">
                              <p>
                                    {userData?.points} 
                                 </p>
                                 <img width="94" height="94" src="https://img.icons8.com/3d-fluency/94/popular-topic.png" alt="popular-topic"/>
-                                </p>
-                                </h1>
+                                </div>
+                    </div>
                                 <div className="profile_card_user_country_box">
                                 <img width={"20px"} src={ flag} alt="" />
                                 <p>{userData?.country   } </p>

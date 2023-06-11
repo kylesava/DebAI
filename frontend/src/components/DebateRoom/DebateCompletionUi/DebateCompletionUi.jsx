@@ -60,7 +60,8 @@ const DebateCompletionUi = () => {
   return (
     <div 
     className={styles.finishModalContainer}>
-     <img src="https://img.freepik.com/premium-photo/cartoon-slot-machine-with-money-illustration-casino-games_863013-8080.jpg?w=740" alt="winner image"  className={styles.main_bg_image} />
+
+    
     <div className={styles.modalBodyContent}
     >
           {
