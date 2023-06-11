@@ -141,7 +141,6 @@ const DebateCard = ({ debate, isLive }) => {
               )}
             </div>
           </div>
-          {/* <span className="started_time">Started 3 hours ago</span>    */}
         </div>
         <div className="debate_button_box">
           {data?._id === debate?.admin?._id && location === "profile" && (
@@ -164,6 +163,7 @@ const DebateCard = ({ debate, isLive }) => {
               <MdOutlineViewInAr /> <p>Join </p>{" "}
             </button>
           </Link>
+
           {isLive && isParticipant ? (
             <button onClick={handleParticipateInDebate}>
               {" "}
