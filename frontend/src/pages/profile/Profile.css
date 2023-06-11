@@ -38,7 +38,63 @@
   padding:  1rem 2rem;
 }
 @media only screen and (min-width: 769px) and (max-width: 992px) {
+  .profile_card_avatar_wrapper {
+    width: 85px;
+    height: 85px;
+}
   .profile_card_top {
     gap: 1rem;
+}
+.profile_card_user_points {
+  height: 32px;
+  padding: 8px 12px;
+}
+.profile_card_user_points p {
+  font-size: 12px;
+}
+.profile_card_user_points img {
+  width: 17px;
+}
+
+.profile_card_username {
+  font-size: 1rem;
+}
+}
+@media only screen and (min-width: 480px) and (max-width: 600px){
+  .ProfileCard {
+    padding: 1rem;
+    width: 85%;
+}
+.profile_card_user_points {
+ 
+  gap: 5px;
+  padding: 5px;
+  border-radius: 7px;
+}
+.profile_name_user_point_box {
+  gap: 10px;
+}
+.profile_card_avatar_wrapper {
+  width: 80px;
+  height: 80px;
+}
+.profile_card_username {
+  font-size: 14px;
+}
+.profile_card_user_points p {
+  font-size: 11px;
+}
+.profile_card_user_points img {
+  width: 13px;
+}
+.profile_card_top {
+  flex-direction: column;
+}
+.logout_button {
+  font-size: 12px;
+ 
+  height: 30px;
+ 
+  padding: 0px 14px;
 }
 }
