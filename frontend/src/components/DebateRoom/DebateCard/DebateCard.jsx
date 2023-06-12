@@ -107,35 +107,41 @@ const DebateCard = ({ debate, isLive }) => {
         <div className="debate_more_details">
           <div className="debate_details_left">
             <div className="info_key">
-              <p>Debate Type</p> <p className="info_value"> {debate.type}</p>
-              {/* British Parliamentary */}
-              {/* ,WSDC, Public forum, Lincoln–Douglas  */}
+              <div className="debate_card_info_box">
+                <img width="96" height="96" src="https://img.icons8.com/fluency/96/diversity.png" alt="diversity"/>
+              <p>Debate Type</p>
+              </div>
+               <p className="info_value"> {debate.type}</p>
+
             </div>
             <div className="info_key">
+              <div className="debate_card_info_box">
+                <img width="94" height="94" src="https://img.icons8.com/3d-fluency/94/administrator-male--v1.png" alt="administrator-male--v1"/>
               <p>Debate Admin</p>{" "}
+              </div>
               <p className="info_value">
                 {debate.admin?.firstName} {debate.admin?.lastName}
               </p>
             </div>
-            <div className="info_key">
-              <p>Number of participants</p>{" "}
-              <p className="info_value">{debate.participantsCount}</p>
-            </div>
+          
           </div>
           <div className="debate_details_right">
-            <div className="info_key">
-              <p> Number of Rounds</p>{" "}
-              <p className="info_value">{debate.noOfRounds}</p>
-            </div>
+
             <div className="info_key started_time">
               {isLive ? (
                 <>
+                <div className="debate_card_info_box">
+                  <img width="94" height="94" src="https://img.icons8.com/3d-fluency/94/alarm-clock--v2.png" alt="alarm-clock--v2"/>
                   <p>Started </p>
+                </div>
                   <p>{format(debate.startTime)}</p>
                 </>
               ) : (
                 <>
+                <div className="debate_card_info_box">
+                  <img width="94" height="94" src="https://img.icons8.com/3d-fluency/94/alarm-clock--v2.png" alt="alarm-clock--v2"/>
                   <p>Starts At </p>
+                </div>
                   <p>{moment(debate.startTime).format("LLL")}</p>
                 </>
               )}

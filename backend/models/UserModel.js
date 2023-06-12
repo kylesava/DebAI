@@ -23,7 +23,7 @@ const UserSchema = mongoose.Schema(
     },
     avatar: {
       type: String,
-      default: "https://cdn-icons-png.flaticon.com/512/8353/8353258.png",
+      default:  "https://firebasestorage.googleapis.com/v0/b/vrumies-1f269.appspot.com/o/53.jpg?alt=media&token=7cda4c2e-f7ab-4b4c-a6e0-807ad2366672",
     },
     equipedAvatars:[],
     verified:{

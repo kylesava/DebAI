@@ -60,7 +60,10 @@ const CurrentDebates = () => {
         <div className="currentDebates_bg"></div>
         <div className="current_debates_header">
           <h3 className="live_debates text1">
-            {currentDebateTab === Enums.UPCOMING_TAB ? "UPCOMING " : "ONGOING "}
+        <h4 className="debate_live_status_text">
+          
+          {currentDebateTab === Enums.UPCOMING_TAB ? "UPCOMING " : "ONGOING "}
+          </h4>    
             DEBATES
           </h3>
           <div className="tab_buttons_wrapper">

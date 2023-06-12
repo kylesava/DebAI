@@ -6,7 +6,7 @@
   border-radius: 15px;
   
   display: flex;
-  gap: 1rem;
+
   justify-content: space-between;
   flex-direction: column;
   position: relative;
@@ -25,12 +25,12 @@
 .card_top_box {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 1rem;
   margin-bottom: 1.5rem;
 }
 .debate_topic {
   font-size: 15px;
-  font-weight: 600;
+  
 
   color: rgb(14, 11, 61);
   letter-spacing: 1px;
@@ -60,12 +60,17 @@
 }
 .info_key {
   justify-content: space-between;
+  width: 100%;
   font-size: 12px;
   letter-spacing: 0.9px;
+  align-items: center;
   display: flex;
+  gap: 3.5rem;
 }
 .info_key p:nth-of-type(1) {
-  flex: 7;
+  font-size: 13px;
+  
+
 }
 .info_key p:nth-of-type(2) {
   flex: 5;
@@ -137,7 +142,17 @@
 .delete_debate_btn svg {
   font-size: 15px;
 }
-
+.debate_card_info_box{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 0 !important;
+  flex: 1;
+}
+.debate_card_info_box img{
+  
+  width: 30px;
+}
 @media only screen and (min-width: 600px)  and (max-width: 769px){
 
   .debate_topic {

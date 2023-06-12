@@ -44,13 +44,15 @@
   font-weight: bolder;
   color: #686de0;
   display: flex;
-
+  display: flex;
+  align-items: center;
+  margin-bottom: 0 !important;
   gap: 10px;
   position: relative;
   width: fit-content;
 }
 
-.live_debates::after {
+/* .live_debates::after {
   content: "";
   bottom: 0;
   width: 100%;
@@ -66,7 +68,7 @@
     rgb(64 70 221 / 52%),
     rgb(64 70 221 / 62%)
   );
-}
+} */
 .text2 {
   color: rgb(14, 11, 61) !important    ;
 }
@@ -95,6 +97,13 @@
   gap: 20px;
   flex-wrap: wrap;
   padding-bottom: 1rem;
+
+}
+.debate_live_status_text{
+  color: var(--dark_primary_text_color);
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom:  0 !important;
 }
 
 

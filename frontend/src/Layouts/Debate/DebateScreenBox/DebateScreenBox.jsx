@@ -186,8 +186,17 @@ RoomService
               <div className='box_wrappers'>
                 <div className='screen_box_header'>
 
-                <img width="64" height="64" src="https://img.icons8.com/external-justicon-lineal-color-justicon/64/external-sword-pirates-justicon-lineal-color-justicon.png" alt="external-sword-pirates-justicon-lineal-color-justicon"/>   <h4 className='team_name teamOne'>{teams[0]?.name}</h4>
+             <div className='screen_box_team_name_box'>
               
+                 <img width="94" height="94" src="https://img.icons8.com/3d-fluency/94/user-group-man-woman--v2.png" alt="user-group-man-woman--v2"/>  <h4 className='team_name_debate_screen teamOne'>{teams[0]?.name}</h4>
+              
+              </div>
+            <button className='screen_box_vote_button'>
+         
+              <p>Vote </p>
+              
+
+            </button>
 
                 </div>
                 <div className="left_team">
@@ -204,8 +213,16 @@ RoomService
               <div className='box_wrappers pink_wrapper'>
 
                 <div className='screen_box_header'>
-                  <img width="64" height="64" src="https://img.icons8.com/external-justicon-lineal-color-justicon/64/external-sword-pirates-justicon-lineal-color-justicon.png" alt="external-sword-pirates-justicon-lineal-color-justicon"/>
-                  <div className='team_name teamTwo'> {teams[1]?.name}</div>
+                  <div className='screen_box_team_name_box'>
+
+                <img width="94" height="94" src="https://img.icons8.com/3d-fluency/94/user-group-man-woman--v3.png" alt="user-group-man-woman--v3"/>
+                  <div className='team_name_debate_screen teamTwo'> {teams[1]?.name}</div>
+                  </div>
+                  <button className='screen_box_vote_button'>
+        
+                  <p>Vote </p>
+                    
+                  </button>
                 </div>
                 <div className="right_team">
                   {

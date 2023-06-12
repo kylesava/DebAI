@@ -12,9 +12,10 @@ class EmailService {
             host: "smtp.gmail.com",
             port: 465,
             secure: true,
+            
             auth: {
-                user: process.env.SMTP_PW,
-                pass: process.env.APP_EMAIL
+                pass: process.env.SMTP_PW,
+                user: process.env.APP_EMAIL
             },
         }); 
 

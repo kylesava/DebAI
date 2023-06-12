@@ -304,7 +304,7 @@ const DebateRoom = () => {
             <div className="debate_room_top_header_left">
             
               <h1 className='Debate_room_main_text' >
-                {activeDebateRef.current?.topic}  </h1>
+                 {activeDebateRef.current?.topic}  </h1>
             </div>
           {  (debateState.isStarted && !debateState.isPaused) && (<>
               <div>

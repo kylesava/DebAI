@@ -43,9 +43,14 @@ const Navbar = () => {
             <li className={`${location === "/subscription" && "active_li"}`}>Subscription </li>
           </Link>
           }
+       {
+
+        data &&
+
           <Link to={`/profile/${data?._id}`}>
             <li className={`${location === "/profile" && "active_li"}`}>Profile</li>
           </Link>
+       }
         </ul>
         {
           data ?

@@ -27,7 +27,7 @@
 }
 .debate_room_top_header {
   display: flex;
-
+  height: 110px;
   gap: 10px;
   flex-direction: column
   ;

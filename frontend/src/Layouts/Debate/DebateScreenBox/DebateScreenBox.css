@@ -17,7 +17,7 @@
 .pink_wrapper {
  
 }
-.team_name {
+.team_name_debate_screen {
   letter-spacing: 0.8px;
   font-size: 20px;
   margin-bottom: 0 !important;
@@ -26,39 +26,31 @@
   opacity: 0.7;
   width: fit-content;
   /* background:var(--dark_gradient_bg); */
-  padding: 2px 15px;
+  padding: 2px ;
   border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   height: 35px;
+ color: var(--dark_primary_text_color);
  
- 
-  font-size: 15px;
+  font-size: 19px;
 }
-.teamTwo .team_name ::after {
-  content: "";
-  bottom: 0;
-  width: 100%;
-  right: 0;
-  position: absolute;
-  height: 4px;
-  border-radius: 10px;
-}
+
 .screen_box_header {
   height: 50px;
   display: flex;
   width: 100%;
-  gap: 0px;
+  justify-content: space-between;
   align-items: center;
   
   
   
 }
 .screen_box_header img{
-  width: 20px;
-  height: 20px;
+  width: 34px;
+
 }
 .speakTime_left_box_time_show{
   display: flex;
@@ -75,12 +67,8 @@
 .screen_box_header .team_mic_icon{
   font-size: 1.2rem !important;
 }
-.teamOne {
-  color: var(--primary_color);
-}
-.teamTwo {
 
-}
+
 .teamTwo::after {
   background: linear-gradient(
     45deg,
@@ -116,7 +104,35 @@
 .mic_control_wrapper svg{
   color: white !important;
 }
+.screen_box_team_name_box{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.screen_box_vote_button{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    height: 35px;
+    border-radius: 4px;
+    background: var(--primary_color);
+    background-color: white;
 
+    padding: 0 10px;
+    border: 2px solid var(--primary_color);
+  
+} 
+.screen_box_vote_button p{
+  letter-spacing: 1px;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: var(--primary_color);
+
+
+}
+.vote_img{
+  width: 20px !important;
+}
 @media screen   and (min-width:600px) and (max-width:768px){
 
   .DebateScreenBoxWrapper{
