@@ -40,7 +40,11 @@ const LiveDebates = () => {
       </div>
 <div className={styles.live_debate_debates_wrapper}>
 
-        { liveDebates.length > 0 ? <AutoSlider debates={liveDebates}/>: <>
+        { liveDebates.length > 0 ? 
+        
+          liveDebates?.map(deb=><LiveDebateItem debate={deb} key={deb._id}/>)
+        
+        : <>
 
           <div className={styles.no_live_debates_box}>
 

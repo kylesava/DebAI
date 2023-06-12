@@ -8,12 +8,12 @@
 
 .theText{
     padding-left: 1rem;
-    font-size: 12px;
-    color: red;
+    font-size: 11px;
+    color:gray;
     letter-spacing: 1px;
 }
 .loginToChatWrapper button{
-    background: var(--primary_color);
+    background: var(--dark_primary_text_color);
     font-size: 12px;
 
     letter-spacing: 1px;
