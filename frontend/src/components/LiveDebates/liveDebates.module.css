@@ -104,7 +104,10 @@ height: 30px;
     object-fit: cover;
 
 }
-
+.live_debate_debates_wrapper{
+    height: 400px;
+    background-color: red;
+}
 /* @media only screen and (min-width: 769px) and (max-width: 992px) {} */
 @media only screen and (min-width: 600px)  and (max-width: 769px){
 

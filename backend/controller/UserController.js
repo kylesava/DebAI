@@ -111,7 +111,8 @@ class UserController {
 
   async getLoggedInUser(req, res) {
     const sessionUser = req.session?.passport?.user || req.session.user;
-  
+
+    console.log("sessin",sessionUser)
 
       try {
         if(!sessionUser) throw "you are not loggedIn"

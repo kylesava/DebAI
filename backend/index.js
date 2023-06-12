@@ -75,7 +75,6 @@ app.use(
     secret: "helloworld",
     resave: false,
     saveUninitialized: true,
-
     store,
     cookie: {
       secure: true,

@@ -16,33 +16,33 @@ class AuthService {
                             lastLoggedIn: Date.now()
                         }
                     })
-                    const {stripeCustomerId} = User._doc;
-                    User._doc.subscription =  await getUserSubscriptionStatus(
-                        stripeCustomerId
-                      );
+                    // const {stripeCustomerId} = User._doc;
+                    // User._doc.subscription =  await getUserSubscriptionStatus(
+                    //     stripeCustomerId
+                    //   );
                     const { password,  ...others } = User._doc
                     req.session.user = {
                         ...others,
                     }
                     return req.session.user
                 } else {
-                    const customer = await stripe.customers.create(
-                        {
-                          email,
-                        },
-                        {
-                          apiKey: process.env.STRIPE_SECRET_KEY,
-                        }
-                      );
+                    // const customer = await stripe.customers.create(
+                    //     {
+                    //       email,
+                    //     },
+                    //     {
+                    //       apiKey: process.env.STRIPE_SECRET_KEY,
+                    //     }
+                    //   );
                     const salt = await bcrypt.genSalt(10)
                     const hashedPassword = await bcrypt.hash(user.firstName, salt)
                     user.password = hashedPassword
                     user.lastLoggedIn = Date.now()
-                    user.stripeCustomerId =customer.id;
+                    // user.stripeCustomerId =customer.id;
                     const User = await UserModel.create(user)
-                    User._doc.subscription = await getUserSubscriptionStatus(
-                        customer.id
-                      );
+                    // User._doc.subscription = await getUserSubscriptionStatus(
+                    //     customer.id
+                    //   );
                     const { password, ...others } = User._doc
                     req.session.user = {
                         ...others,

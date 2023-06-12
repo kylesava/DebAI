@@ -1,15 +1,20 @@
-import React, { createRef, useEffect, useRef } from 'react'
+import React, { createRef, useEffect, useRef, useState } from 'react'
 import styles from "./DebatePasscodeInput.module.css"
 import { HiOutlineViewfinderCircle } from 'react-icons/hi2'
 import { getDebateByPassocde } from '../../../../utils/Api';
 import { useToast } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
-
+import {useSelector} from "react-redux"
 const DebatePasscodeInput = () => {
   
-  const toast  = useToast() 
-  const navigate = useNavigate()
+const toast  = useToast() 
+  const navigate = useNavigate();
+  const {data} = useSelector(state=>state.user);
+  const [loading,setLoading] =useState(false)
+
+
   const otpInputs = Array.from({ length: 6 }, () => createRef (null));
+
   const handleKeyUp = (index, e) => {
     if (e.target.value.length === e.target.maxLength && index < otpInputs.length - 1) {
       otpInputs[index + 1].current.focus();
@@ -31,14 +36,15 @@ const DebatePasscodeInput = () => {
   const handleWatchDebate=async()=>{
 
 
-    let debateCodeInput = ""
+    let debateCodeInput = "";
     otpInputs.forEach(ref=>{
       debateCodeInput += ref.current.value.toString();
     });
-    
+    setLoading(true)
     try {
         const {data,status} = await getDebateByPassocde(+debateCodeInput)
-        console.log(data)
+        setLoading(false)
+      
         if(status===200){
           
           const {message} = data;
@@ -57,9 +63,11 @@ const DebatePasscodeInput = () => {
           navigate(`/watch/${message[0]?._id}`,{
             state:message[0]
           })
-        }
+
+        }else throw "some"
     } catch (error) {
       console.log(error.message)
+      setLoading(false)
     }
   }
 
@@ -80,7 +88,7 @@ const DebatePasscodeInput = () => {
     <div className={styles.passcode_text}>
       Enter a passcode of a debate ! 
     </div>
-      <button className={styles.watchButton }  onClick={handleWatchDebate}>  <HiOutlineViewfinderCircle className="watch_icon"/> JOIN NOW </button>
+      <button className={styles.watchButton }  onClick={handleWatchDebate}>  <HiOutlineViewfinderCircle className="watch_icon"/> {loading?"JOINING" :"JOIN NOW"}  </button>
       </div>
     </>
   )

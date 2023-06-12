@@ -15,6 +15,7 @@ export default function AutoSlider({debates}) {
       cssEase: "linear",
        vertical: true,
       verticalSwiping: true,
+      
 
       beforeChange: function(currentSlide, nextSlide) {
         console.log("before change", currentSlide, nextSlide);
@@ -24,10 +25,10 @@ export default function AutoSlider({debates}) {
       }
     };
     return (
-      <div style={{height:"210px"}}>
+      <div style={{height:"100%" ,background:"green",display:"flex",flexDirection:"column"}}>
         
-        <Slider {...settings}>
-          <div>
+        <Slider  {...settings}>
+          <div style={{height:"100%",background:"blue"}}>
             {
                 debates.map((debate)=>(
 

@@ -38,7 +38,8 @@ const LiveDebates = () => {
           watch debate which ever you like{" "}
         </p>
       </div>
-  
+<div className={styles.live_debate_debates_wrapper}>
+
         { liveDebates.length > 0 ? <AutoSlider debates={liveDebates}/>: <>
 
           <div className={styles.no_live_debates_box}>
@@ -49,6 +50,7 @@ const LiveDebates = () => {
           </div>
         </>
          }
+         </div>
       
     </div>
   );

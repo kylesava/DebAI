@@ -61,14 +61,15 @@ const Banner = () => {
     <div className="BannerWrapper">
       <img className="robo roboLeft" src="/images/robo1.png" alt="roboImg" />
       <img className="robo roboRight" src="/images/robo2.png" alt="roboImg" />
+      {/* <img className="logo_second" src="/images/banner_logo.jpeg" alt="logo2" /> */}
 
       <div className="banner_content">
-        <p className="top_site_info">Virtual Debate platform</p>
-        <div>
+        {/* <p className="top_site_info">Virtual Debate platform</p> */}
+
           <h1 className="main_text_banner">
             Online platform to organize a virtual debate for all
           </h1>
-        </div>
+    
         <div className="bottom_text">
           <p className="secondary_main_banner_text">
             Debatasour lets a users to create a online debate and manages the
