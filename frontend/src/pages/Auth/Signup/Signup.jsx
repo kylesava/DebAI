@@ -184,29 +184,8 @@ const handleGetCountries=async()=>{
                 onChange={(e) => handleInputChange("email", e.target.value)}
               />
             </div>
-            <div className="auth_input_item">
-              <SelectCountry
-                countries={countries}
-                handleInputChange={setUserDetails}
-              >
-                <div
-                  className="input_element"
-                  style={{
-                    height: "100%",
-                    color: "rgba(128, 128, 128, 0.678)",
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
-                  <p>
-                    {userDetails.country
-                      ? userDetails.country
-                      : "select country"}
-                  </p>
-                </div>
-              </SelectCountry>
             </div>
-          </div>
+      
            <div className='auth_input_item'>
 
 
