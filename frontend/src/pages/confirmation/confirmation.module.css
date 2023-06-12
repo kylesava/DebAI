@@ -7,7 +7,8 @@
 
 .confirmation_page_box{
       background-color: rgba(232, 235, 238, 0.673);
-      width: 35%;
+      width: 90%; 
+      max-width: 400px;
     display: flex;
     flex-direction: column;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;

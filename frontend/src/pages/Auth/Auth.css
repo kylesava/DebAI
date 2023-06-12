@@ -204,19 +204,18 @@ height: 100vh;
 justify-content: center;
 
 }
-.confimation_email_sent_box{
-
-
-background-color: rgba(232, 235, 238, 0.673);
-width: 40%;
-display: flex;
-flex-direction: column;
-align-items: center;
-border-radius: 15px;
-padding: 1rem;
-gap: 10px;
-
+.confimation_email_sent_box {
+  background-color: rgba(232, 235, 238, 0.673);
+  width: 90%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 15px;
+  padding: 1rem;
+  gap: 10px;
 }
+
 .email_sent_content_box{
 width: 100%;
 display: flex;
@@ -573,6 +572,40 @@ justify-content: center;
     font-weight: 500;
    
 }
+.verify_content_box {
+  justify-content: center;
+}
+.verify_email_page {
+  flex-direction: column;
+}
+.verify_image_wrapper >img {
+  height: 185px;
+}
+.verify_main_content {
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+.email_sent_alert_box {
+  font-size: 1.2rem;
+}
+.email_sent_content_box .email_desc {
+  font-size: 12px;
+}
+.reset_link_email_button, .verify_email_button {
+  height: 35px;
+  font-size: 12px;
+}
+.verify_image_wrapper {
+  margin-top: 1rem;
+}
+.email_reset_image_wrapper {
+  display: none;
+}
+.reset_email_main_content {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
  }
  @media only screen and (min-width: 480px) and (max-width: 600px) {
   .AuthWrapper {
@@ -581,6 +614,23 @@ justify-content: center;
    .login_button {
     font-size: 16px;
     font-weight: 500;
+}
+.verify_image_wrapper {
+  display: none;
+}
+.verify_content_box {
+  justify-content: center;
+}
+.email_reset_image_wrapper {
+  display: none;
+}
+.reset_email_main_content {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.resend_bottom_text {
+  bottom: 5rem;
 }
 }
 @media only screen and (max-width: 480px){
@@ -642,4 +692,63 @@ justify-content: center;
 .auth_input_item label {
   font-size: 11px;
 }
+.verify_image_wrapper {
+  display: none;
+}
+.verify_content_box {
+  justify-content: center;
+}
+.verify_main_content {
+  width: 95%;
+  padding:1rem;
+}
+.email_sent_alert_box {
+  font-size: 1.1rem;
+}
+.email_sent_content_box .email_desc {
+  font-size: 11px;
+}
+.resent_email_expires_time {
+  width: 90%;
+}
+.reset_link_email_button, .verify_email_button {
+  background-color: var(--primary_color);
+  height: 34px;
+  margin: 0.8rem 0;
+  font-size: 11px;
+}
+.email_reset_image_wrapper {
+  display: none;
+}
+.reset_email_main_content {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.reset_email_main_content >form {
+  width: 85%;
+}
+.reset_password_heading_text {
+  font-size: 1.4rem;
+}
+.reset_email_main_content >form>p {
+  font-size: 11px;
+  margin-bottom: 1rem !important;
+}
+.confimation_email_sent_box >img {
+  display: none;
+}
+.resent_button {
+  height: 36px;
+  font-size: 10px;
+  margin: 0.8rem 0;
+}
+.resend_bottom_text {
+  font-size: 11px;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  bottom: 6rem;
+}
+
 }

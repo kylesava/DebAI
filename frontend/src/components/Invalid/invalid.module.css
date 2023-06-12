@@ -35,3 +35,34 @@
         letter-spacing: 1px;
         margin-top: 2rem ;
 }
+
+@media only screen and (min-width: 480px) and (max-width: 600px) {
+
+    .invalid_box >img{
+        width: 150px;
+    }
+    .invalid_box h1{
+        font-size: 1.5rem;
+    }
+    .invalid_box button{
+        font-size: 12px;
+        height: 36px;
+        margin-top: 1rem;
+    }
+   
+}
+@media only screen and (max-width: 480px){
+    .invalid_box >img{
+        display: none;
+    }
+    .invalid_box h1{
+        font-size: 1.2rem;
+    }
+    .invalid_box button {
+        font-size: 11px;
+        height: 33px;
+        width: 115px;
+        margin-top: 10px;
+    }
+  
+}
