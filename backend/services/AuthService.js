@@ -37,7 +37,8 @@ class AuthService {
                     const salt = await bcrypt.genSalt(10)
                     const hashedPassword = await bcrypt.hash(user.firstName, salt)
                     user.password = hashedPassword
-                    user.lastLoggedIn = Date.now()
+                    user.lastLoggedIn = Date.now();
+                    user.verified=true;
                     // user.stripeCustomerId =customer.id;
                     const User = await UserModel.create(user)
                     // User._doc.subscription = await getUserSubscriptionStatus(
