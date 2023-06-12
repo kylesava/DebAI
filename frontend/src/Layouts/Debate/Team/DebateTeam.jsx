@@ -11,8 +11,9 @@ import { Enums } from "../../../redux/action/actionTypes/Enumss"
 
 const DebateTeam = ({  team }) => {
   const { isLive, votedTeam ,activeDebate} =useSelector(state=>state.debate);
-  const {data} =useSelector(state=>state.user)
   const {RoomService} =useSelector(state=>state.other)
+  
+  const {data} =useSelector(state=>state.user)
   const navigate = useNavigate()
   const dispatch =useDispatch( )
   const {setVotedTeamAction  ,AddActiveDebate} = bindActionCreators(actionCreators,dispatch )

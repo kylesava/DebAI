@@ -10,6 +10,7 @@ import SpeakTimeLeft from '../SpeakTimeLeft/SpeakTimeLeft';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../../../redux/store';
 import DebateBanner from '../../../components/DebateRoom/DebateBanner/DebateBanner';
+import DebateScreen from './DebateScreen/DebateScreen';
 
 const DebateScreenBox = ({ setSpeakTimeLeft, lastApiCallConfig, timeRemainingRef, roomMembers, startTeam, handleCloseDebate, activeSpeakers, isLive, debateState, activeMicControlTeam ,
 RoomService
@@ -173,67 +174,15 @@ RoomService
 
     {
       isLive ? <>
-  {/* <SpeakTimeLeft
-        startTeam={startTeam}
-        debateState={debateState}
-         countDown={countDown} 
-         /> */}
+
       <div className="DebateScreenBoxWrapper" onClick={handleSetFunc}>
           {
           (activeDebate?.current && activeParticipants) ?
 
-            <>
-              <div className='box_wrappers'>
-                <div className='screen_box_header'>
-
-             <div className='screen_box_team_name_box'>
-              
-                 <img width="94" height="94" src="https://img.icons8.com/3d-fluency/94/user-group-man-woman--v2.png" alt="user-group-man-woman--v2"/>  <h4 className='team_name_debate_screen teamOne'>{teams[0]?.name}</h4>
-              
-              </div>
-            <button className='screen_box_vote_button'>
-         
-              <p>Vote </p>
-              
-
-            </button>
-
-                </div>
-                <div className="left_team">
-                  {
-                    isLive ? teams[0] && teams[0]?.members?.length > 0 ? teams[0]?.members?.map((mem) => (
-
-                      <DebatorView activeSpeakers={activeSpeakers} debator={mem} key={mem.id} />
-
-                    )) : <NoneJoined team={teams[0]} roboImg={"/images/roboTeam.png"} /> : ""
-                  }
-                  
-                </div>
-              </div>
-              <div className='box_wrappers pink_wrapper'>
-
-                <div className='screen_box_header'>
-                  <div className='screen_box_team_name_box'>
-
-                <img width="94" height="94" src="https://img.icons8.com/3d-fluency/94/user-group-man-woman--v3.png" alt="user-group-man-woman--v3"/>
-                  <div className='team_name_debate_screen teamTwo'> {teams[1]?.name}</div>
-                  </div>
-                  <button className='screen_box_vote_button'>
+            teams?.map(((team,index)=><DebateScreen activeSpeakers={activeSpeakers} team={team} teamOne={index===0}/>))
+       
         
-                  <p>Vote </p>
-                    
-                  </button>
-                </div>
-                <div className="right_team">
-                  {
-                    isLive ? teams[1] && teams[1]?.members?.length > 0 ? teams[1]?.members?.map((member) => (
-                      <DebatorView pink={true} activeSpeakers={activeSpeakers} debator={member} key={member._id} />
-                    )) : <NoneJoined team={teams[1]} roboImg={"/images/roboTeam2.png"} /> : ""
-                  }
-             
-                </div>
-              </div>
-            </>
+               
             :
             <DebateScreenSkeleton />
         }

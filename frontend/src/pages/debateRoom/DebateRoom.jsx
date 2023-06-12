@@ -301,17 +301,17 @@ const DebateRoom = () => {
         <div className='debate_room_top_header'>
           {isLive &&
           <>
-            <div className="debate_room_top_header_left">
+          
             
               <h1 className='Debate_room_main_text' >
                  {activeDebateRef.current?.topic}  </h1>
-            </div>
+          
           {  (debateState.isStarted && !debateState.isPaused) && (<>
-              <div>
+              
                 <h1 className="main_timing_text">
                   {`TIME LEFT  ${getTime(speakTimeLeft)} `}
                 </h1>
-              </div>
+              
             </>
             )}
           
@@ -320,28 +320,19 @@ const DebateRoom = () => {
           
         </div>
         <DebateScreenBox
-   isLive={isLive}
-   lastApiCallConfig={lastApiCallConfig}
-   setSpeakTimeLeft={setSpeakTimeLeft}
-   roomMembers={RoomMembers}
-   debateState={debateState}
-   activeSpeakers={activeSpeakers}
-   timeRemainingRef={timeRemainingRef}
-   isUserParticipant={isUserParticipant}
-   isNotWatch={WatchType !== "AUDIENCE"}
-   activeMicControlTeam={activeMicControlTeam}
-   RoomService={RoomService}
-  
-   startTeam={activeDebateRef.current?.timeFormat[0].team}
+         isLive={isLive}
+        lastApiCallConfig={lastApiCallConfig}
+        setSpeakTimeLeft={setSpeakTimeLeft}
+         roomMembers={RoomMembers}
+         debateState={debateState}
+         activeSpeakers={activeSpeakers}
+         timeRemainingRef={timeRemainingRef}
+         isUserParticipant={isUserParticipant}
+          isNotWatch={WatchType !== "AUDIENCE"}
+         activeMicControlTeam={activeMicControlTeam}
+         RoomService={RoomService}
+         startTeam={activeDebateRef.current?.timeFormat[0].team}
         />
-  
-    <SpeakTimeLeft
-        startTeam={activeDebateRef?.current?.timeFormat[0].team}
-        debateState={debateState}
-        //  countDown={countDown} 
-         />
-   </div>
-        <div className="debate_bottom_content">
         {
           !debateStateRef.current?.hasFinished  &&   <DebateAction
           MicElmRef={MicElmRef}
@@ -360,7 +351,17 @@ const DebateRoom = () => {
           isUserParticipant={isUserParticipant}
           activeMicControlTeam={activeMicControlTeam}
         />
-        }
+}
+  
+    <SpeakTimeLeft
+        startTeam={activeDebateRef?.current?.timeFormat[0].team}
+        debateState={debateState}
+        //  countDown={countDown} 
+         />
+   </div>
+        <div className="debate_bottom_content">
+        
+        
           {/* <DebateInfo /> */}
           <div className='debate_bottom_container'>
             <Participants />

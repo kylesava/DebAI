@@ -119,12 +119,13 @@
     background-color: white;
 
     padding: 0 10px;
-    border: 2px solid var(--primary_color);
+    border: 3px solid var(--primary_color);
   
 } 
 .screen_box_vote_button p{
   letter-spacing: 1px;
   font-size: 14px;
+  font-weight: bold;
   text-transform: uppercase;
   color: var(--primary_color);
 
@@ -132,6 +133,9 @@
 }
 .vote_img{
   width: 20px !important;
+}
+.disable_vote_button{
+  display: none !important;
 }
 @media screen   and (min-width:600px) and (max-width:768px){
 

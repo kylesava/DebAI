@@ -241,8 +241,10 @@ class DebateRoomServices{
    
 
   }
+  
 
  async  removeParticipant ()  {
+ 
     if (!this.isAudience && this.currentUser && this.activeDebate.current) {
       try {
         await removeParticipantApi(this.activeDebate?.current?._id, {

@@ -80,7 +80,7 @@ const DebatePasscodeInput = () => {
     <div className={styles.passcode_text}>
       Enter a passcode of a debate ! 
     </div>
-      <button className={styles.watchButton }  onClick={handleWatchDebate}>  <HiOutlineViewfinderCircle className="watch_icon"/> WATCH</button>
+      <button className={styles.watchButton }  onClick={handleWatchDebate}>  <HiOutlineViewfinderCircle className="watch_icon"/> JOIN NOW </button>
       </div>
     </>
   )
