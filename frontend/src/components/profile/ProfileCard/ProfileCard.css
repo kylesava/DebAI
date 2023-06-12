@@ -163,7 +163,29 @@
           gap: 10px;
       flex-direction: column;
   }
-
+  @media only screen and (min-width: 769px) and (max-width: 992px) {
+    .ProfileCard {
+      gap: 2rem;
+  }
+    .profile_card_username {
+      font-size: 1rem;
+  }
+  .profile_card_user_points {
+    padding: 5px;
+}
+.profile_card_user_points p {
+  font-size: 12px;
+}
+.profile_card_user_points img {
+  width: 17px;
+}
+.profile_card_item_other_item {
+  gap: 7px;
+}
+.profile_card_item_other_item p{
+  font-size: 13px;
+}
+  }
   @media screen  and (min-width:600px) and (max-width:768px) {
 .ProfileCard{
   align-items: center;
@@ -200,7 +222,7 @@
 
     }
     .profile_card_username{
-      font-size: 1.8rem;
+      font-size: 1.3rem;
     }
     .profile_card_user_country_box p{
       font-size: 16px;
@@ -247,7 +269,7 @@
 
     }
     .profile_card_username{
-      font-size: 1.8rem !important;
+      font-size: 1.2rem !important;
     }
     .profile_card_user_country_box p{
       font-size: 16px;
@@ -278,8 +300,14 @@
 
     }
     .profile_name_user_point_box{
-      gap: 0px;
+      gap: 3px;
     }
+    .profile_card_user_points p {
+      font-size: 12px;
+  }
+  .profile_card_user_points img {
+    width: 17px;
+}
     .user_main_detail{
 
       align-items: center;
@@ -295,7 +323,7 @@
 
     }
     .profile_card_username{
-      font-size: 1rem !important;
+      font-size: 0.9rem !important;
       letter-spacing: 2px !important;
     }
     .profile_card_user_country_box p{
@@ -303,6 +331,9 @@
     }
       .other_info_text {
         letter-spacing: 1px;
-      font-size: 14px !important;
+      font-size: 13px !important;
     }
+    .profile_card_item_title {
+      font-size: 0.8rem;
+  }
   }

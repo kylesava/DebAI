@@ -41,7 +41,7 @@ max-height: 256px;
 .liveDebateItem{
     justify-content: space-between;
     display: flex;
-    min-height: 50px;
+    /* min-height: 50px; */
     width: 100%;
     background-color: aliceblue;
     padding: 0.5rem 0.5rem ;
@@ -145,6 +145,9 @@ height: 30px;
     }
 
     @media only screen and (max-width: 480px){
+        .liveDebateItem{
+            padding: 8px;
+        }
 .noLiveDebatesImage{
     
     margin:auto;
