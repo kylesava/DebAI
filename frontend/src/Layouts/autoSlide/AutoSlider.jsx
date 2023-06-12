@@ -25,10 +25,10 @@ export default function AutoSlider({debates}) {
       }
     };
     return (
-      <div style={{height:"100%" ,background:"green",display:"flex",flexDirection:"column"}}>
+      <div style={{height:"100%",display:"flex",flexDirection:"column"}}>
         
         <Slider  {...settings}>
-          <div style={{height:"100%",background:"blue"}}>
+          <div style={{height:"100%"}}>
             {
                 debates.map((debate)=>(
 
