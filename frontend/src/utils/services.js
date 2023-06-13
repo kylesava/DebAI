@@ -166,7 +166,11 @@ const  getRandomAvatar=(avatars , avatarType)=>{
   let randomNum = Math.floor(Math.random() * avatars.length);
  return { type:avatarType,  avatar: avatars[randomNum]}
 }
- 
+export const getVoteOfTeam=(debate,teamName)=>{
+if(!debate || !teamName)return;
+  return debate.teams.find(team=>team.name ===teamName)?.vote.length
+
+} 
 export const checkIfUserAlreadyExist=(speakers,uid)=>{
   return speakers.find(speaker=>speaker?.uid ===uid)
 }

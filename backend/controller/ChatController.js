@@ -47,7 +47,8 @@ class ChatController{
             
         })
 
-            if(debateId){
+            
+            if(debateId !=="undefined"){
             
             let text = response.data?.choices[0].text;
             let textARr = text.split(" ")

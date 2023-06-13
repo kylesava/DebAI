@@ -35,3 +35,30 @@
   padding: 0 1rem;
   flex: 9;
 }
+
+.chatbot_bg_bot{
+  position: absolute;
+  left:0 ;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin:auto;
+  opacity: 0.5;
+  width: 30%;
+  animation: chatBotAnimate  3s ease-in-out infinite alternate-reverse ;
+}
+
+@keyframes chatBotAnimate {
+
+  0%{
+    scale: 1;
+    transform: translateY(-10px);
+    opacity: 0.4;
+  }
+  100%{
+    transform:translateY(10px);
+    scale: 1.03 ;
+    opacity: 0.6;
+  }
+  
+}

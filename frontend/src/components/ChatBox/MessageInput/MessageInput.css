@@ -2,17 +2,13 @@
   width: 80%;
   height: 55px;
   padding: 0 0.5rem;
-  border-radius: 5px;
+  border-radius: 14px;
   margin: auto;
-  background-color: #eff3f6;
-  background: linear-gradient(
-    45deg,
-    rgba(174, 174, 174, 0.21),
-    rgb(64 70 221 / 17%),
-    rgba(174, 174, 174, 0.21)
-  );
+  background-color: #cecdcd63;
   display: flex;
   gap: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  
   overflow: hidden;
   align-items: center;
 }
@@ -61,7 +57,8 @@
   display: grid;
   place-items: center;
   color: white;
-  background-color: #4046dd;
+  background-color: var(--primary_color);
+  transition: all .3s ease-in-out;
   cursor: pointer;
   border-radius: 8px;
 }

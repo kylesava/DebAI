@@ -42,6 +42,7 @@ max-height: 256px;
     justify-content: space-between;
     display: flex;
     /* min-height: 50px; */
+    margin-bottom: 5px;
     width: 100%;
     background-color: aliceblue;
     padding: 0.5rem 0.5rem ;

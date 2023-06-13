@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import MessageInput from "../../components/ChatBox/MessageInput/MessageInput"
 import MessageText from "../../components/ChatBox/MessageText"
 import Sidebar from "../../Layouts/ChatAI/Sidebar/Sidebar"
@@ -12,8 +12,15 @@ const ChatBot = () => {
 
   const [chatbotMsgArr,setChatBotMsgArr] =useState([])
   const {data} = useSelector(state=>state.user)
-  const [loading,setLoading]=useState(false)
+  const [loading,setLoading]=useState(false);
+  const messageBoxRef = useRef()
 
+
+  useEffect(()=>{
+   
+      
+      messageBoxRef.current.scrollTo(0,messageBoxRef.current.scrollHeight)
+  },[chatbotMsgArr])
 
 
   const writeMessage =(message)=>{
@@ -117,16 +124,23 @@ const ChatBot = () => {
 
 
         <div className="chat_bot_message_play_ground">
-          <div className="chat_box_message">
+          <div className="chat_box_message" ref={messageBoxRef}>
 
+
+{         chatbotMsgArr.length >0 &&   <img  className="chatbot_bg_bot" src="/images/bot2.png" alt="chatBotImg" />}
         {
           chatbotMsgArr.length > 0 ? chatbotMsgArr.map(msg=>(
+            <>
             <MessageText 
                 key={msg?._id}
-              message={msg}
-              own={msg.own}
-            />
+                message={msg}
+                own={msg.own}
+                />
+                </>
           )): <ChatBotStarter/>
+        }
+        {
+          loading && <MessageText  own={false} message={{text:"loading...",owner:"bot"}} key={new Date().getTime()} />
         }
 
           </div>

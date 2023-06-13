@@ -7,6 +7,7 @@ import { unVoteTeamApi, voteAndUnvoteTeamApi, voteTeamApi } from '../../../../ut
 import { actionCreators } from '../../../../redux/store'
 import { bindActionCreators } from 'redux'
 import { useNavigate } from 'react-router-dom'
+import { getVoteOfTeam } from '../../../../utils/services'
 
 const DebateScreen = ({team,activeSpeakers,teamOne}) => {
   const toast  = useToast()
@@ -93,7 +94,7 @@ const DebateScreen = ({team,activeSpeakers,teamOne}) => {
   </div>
 <button className={`screen_box_vote_button  ${RoomService.AmIParticipants() ? "disable_vote_button":"" } `}onClick={handleVote}>
 
-  <p>11 Vote </p>
+  <p>{getVoteOfTeam(activeDebate?.current,team?.name)} Vote </p>
   
 
 </button>
