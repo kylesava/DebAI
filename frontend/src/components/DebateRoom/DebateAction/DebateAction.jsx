@@ -113,13 +113,7 @@ const handleCopyLink=()=>{
     })
   }
 
-const passTurnToNextTeam=()=>{
-    if(removeInterval){
-     clearInterval(removeInterval.intervalRef?.current);
-     removeInterval.intervalArrRef.current=[];
-      RoomService.handleFinishSpeakTime(true);
-    }
-}
+
  
 const handleStartMicToggle=async()=>{
   if(micMuted){
@@ -168,12 +162,7 @@ const handleLeaveRoom=async()=>{
         RESUME DEBATE
         </button>   
 }
-          {
-            ( !debateState.isPaused && isMicWithUs) ?  <button className="pass_mic_button" onClick={passTurnToNextTeam}>
-            <TbMicroscope/>
-           PASS TURN  TO NEXT TEAM 
-          </button>:""
-          } 
+         
     <div className="DebateActionWrapper">
 
       

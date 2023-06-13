@@ -93,12 +93,8 @@ const DebateScreen = ({team,activeSpeakers,teamOne}) => {
      <img width="94" height="94" src="https://img.icons8.com/3d-fluency/94/user-group-man-woman--v2.png" alt="user-group-man-woman--v2"/>  <h4 className='team_name_debate_screen teamOne'>{team?.name}</h4>
   </div>
 <button className={`screen_box_vote_button  ${RoomService.AmIParticipants() ? "disable_vote_button":"" } `}onClick={handleVote}>
-
-  <p>{getVoteOfTeam(activeDebate?.current,team?.name)} Vote </p>
-  
-
+  <p>{getVoteOfTeam(activeDebate?.current,team?.name)} Vote </p> 
 </button>
-
     </div>
     <div className="left_team">
       {
