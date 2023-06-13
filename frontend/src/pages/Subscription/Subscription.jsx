@@ -108,20 +108,20 @@ const Subscription = () => {
 
               <h2 className="plan_name">
                 Premium{" "}
-                {price.recurring.interval === "month"
+                {price.recurring?.interval === "month"
                   ? " Monthly "
                   : " Yearly "}{" "}
               </h2>
               <h3>
                 {subStatus === "active" &&
                   loggedInUserData?.subscription?.plan ===
-                    price.recurring.interval && (
+                    price.recurring?.interval && (
                     <Tag color="green">Current Plan</Tag>
                   )}
               </h3>
               <p>
                 <span>${price.unit_amount / 100}</span> /{" "}
-                {price.recurring.interval}
+                {price.recurring?.interval}
               </p>
               <ul>
                 <li>Watch Debate</li>
@@ -133,7 +133,7 @@ const Subscription = () => {
               </div>
               {subStatus === "active" &&
               loggedInUserData?.subscription?.plan ===
-                price.recurring.interval ? (
+                price.recurring?.interval ? (
                 <Popconfirm
                   title="Cancel Subscription"
                   description="Are you sure, you want to cancel?"
