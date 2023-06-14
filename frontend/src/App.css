@@ -106,13 +106,13 @@ p , h1 ,ul{
   margin-bottom: 0 !important;
 }
 .css-4t6ey5[data-status=complete] {
-  background-color: rgb(64, 70, 221) !important;
+  background-color:rgba(64,70,221,.52)!important;
 
 }
 .css-kq5oaw[data-status=complete] {
-  background-color: rgb(64, 70, 221) !important;
+  background-color:rgba(64,70,221,.52)!important;
 }
 
 .css-kq5oaw[data-status=active] {
-border-color: rgb(64,70,221) !important;
+border-color: rgba(64,70,221,.52)!important;
 }

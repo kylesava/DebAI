@@ -368,7 +368,11 @@ height: 85%;
 .input_row_box_parent input{
   height: 100%;
   outline: none;
+      color: rgb(153 148 148);
   border: none;
+}
+.input_row_box_parent input::placeholder{
+      color: rgb(153 148 148);
 }
 .input_row_box_parent button{
   height: 95%;
