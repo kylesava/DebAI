@@ -150,11 +150,13 @@
   letter-spacing: 1px;
   border-radius: 3px;
   outline: none;
-  color: var(--primary_color);
+  color: var(--dark_primary_text_color);
+  transition: all .3s ease;
 }
 .prepare_for_debate_btn:hover {
-  background-color: var(--primary_color);
-  color: white !important ;
+  scale: 1.05;
+  /* background-color: var(--primary_color); */
+  /* color: white !important ; */
 }
 
 .debate_link_box {
@@ -183,7 +185,7 @@
   font-size: 12px;
 }
 .banner_bottom_button_option_button {
-  background-color: var(--primary_color);
+  background-color: var(--dark_primary_text_color);
 
   width: fit-content;
   color: white;
@@ -198,7 +200,7 @@
   gap: 10px;
 }
 .banner_bottom_button_option_button:hover {
-  background-color: var(--primary_dark_color);
+  /* background-color: var(--primary_dark_color); */
 }
 .watch_button {
   background-color: var(--primary_color);
@@ -212,7 +214,7 @@
   gap: 10px;
 }
 .watch_button:hover {
-  background-color: var(--primary_dark_color);
+  /* background-color: var(--primary_dark_color); */
 }
 .disable_watch_button_banner{
   opacity: 0.8;

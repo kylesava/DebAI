@@ -19,7 +19,7 @@
     height: 80%;
     border: none;
     width: 14px;
-    box-shadow: 0px 0px 2px rgb(64 70 221);
+    box-shadow: 0px 0px 2px rgb(49, 50, 73);
     color: grey;
     outline: none;
     text-align: center;
@@ -27,7 +27,7 @@
     transform: skewX(350deg);
 }
  .watchButton{
-    background-color: var(--primary_color);
+    background-color: var(--dark_primary_text_color);
     height:38px    ;
     color: white;
     display: flex;
@@ -39,6 +39,10 @@
     outline: none;
     transform: skewX(350deg);
     gap: 10px;
+}
+.watchButton svg{
+    color: white !important;
+    fill: white !important;
 }
 .passcode_text{
     color: rgba(128, 128, 128, 0.709);
