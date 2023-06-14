@@ -85,6 +85,8 @@ gap: 10px;
     display: flex;
     justify-content: center;
     width: 100%;
+    background-color: #8080800f;
+    border-radius: 9px;
 }
 .coach_desc{
     font-size: 11px;
