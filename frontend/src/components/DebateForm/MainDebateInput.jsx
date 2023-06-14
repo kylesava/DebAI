@@ -1,6 +1,11 @@
 import DatePicker from "react-datepicker"
 import { Enums } from '../../redux/action/actionTypes/Enumss'
 import DebateMotionModal from '../../Layouts/modal/DebateMotions/DebateMotions';
+import { MdOutlineTopic } from "react-icons/md";
+import {VscTypeHierarchy} from "react-icons/vsc"
+import {BiCode} from "react-icons/bi";
+import {AiOutlineFieldTime, AiOutlineTeam} from "react-icons/ai"
+import { HiSquaresPlus } from "react-icons/hi2";
 
 const MainDebateInput = ({debateForm,handleInputChange,handleAutoGenerateePasscode,handleDebateTopicChange,handleStartDate,handlePassCodeChange ,startTime,isPasscodeValid,filterPassedTime,durationType,handleInstatDebateChange,instantDebateTimes,returnTeamFormatOptions}) => {
   console.log(debateForm)
@@ -11,12 +16,13 @@ const MainDebateInput = ({debateForm,handleInputChange,handleAutoGenerateePassco
       <DebateMotionModal activeTopic={debateForm.topic} handleDebateTopicChange={handleDebateTopicChange}>
 
       <div className='input_item'>
-
+        <MdOutlineTopic/>
         <input type="text" disabled placeholder='Topic for debate' name='topic' onChange={handleInputChange}  value={debateForm.topic}/>
       </div>
       </DebateMotionModal>
    
       <div className='input_item'>
+        <VscTypeHierarchy/>
         <select id="" name='type'  value={debateForm?.type} onChange={handleInputChange}>
           <option selected disabled value={""}>choose debate type</option>
           <option value="British Parliamentary">British Parliamentary</option>
@@ -27,7 +33,8 @@ const MainDebateInput = ({debateForm,handleInputChange,handleAutoGenerateePassco
       <div className='input_item'>
 
 
-<div className='input_row_box_parent'>
+<div className='input_row_box_parent ' >
+  <BiCode/>
 <input type="number" minLength={6} maxLength={6} max={6} placeholder='random 6 digit number'  name='passcode' onChange={handlePassCodeChange} value={debateForm.passcode}/>
 <button onClick={handleAutoGenerateePasscode}>Auto Generate</button>
 </div>
@@ -40,6 +47,8 @@ const MainDebateInput = ({debateForm,handleInputChange,handleAutoGenerateePassco
     </div>
     <div className="right_input_box">
       <div className='form_input_row_box input_item'>
+
+  <AiOutlineFieldTime/>
 
         <div className='starting_time_item_box'>
 
@@ -59,6 +68,7 @@ const MainDebateInput = ({debateForm,handleInputChange,handleAutoGenerateePassco
         </div>
       </div>
       <div className='input_item'>
+        <AiOutlineTeam/>
         <select value={debateForm.team_format}  name='team_format' className='team_format' onChange={handleInputChange}>
           <option value="" selected disabled>chose team format</option>
           {
@@ -68,6 +78,7 @@ const MainDebateInput = ({debateForm,handleInputChange,handleAutoGenerateePassco
         </select>
       </div>
         <div className='input_item'>
+          <HiSquaresPlus/>
           <select value={debateForm.judgeType}  name='judgeType' className='team_format' onChange={handleInputChange}>
           <option value={""} disabled selected >Choose Judge Type</option>
           <option value={`${Enums.AIJUDGE}`}>AI Judge</option>
@@ -79,7 +90,7 @@ const MainDebateInput = ({debateForm,handleInputChange,handleAutoGenerateePassco
 
 
 
-      <div className='starting_time_item input_item'>
+      {/* <div className='starting_time_item input_item'>
 
         {
           durationType === "Instant Debate" && <div className='instant_box'>
@@ -92,7 +103,7 @@ const MainDebateInput = ({debateForm,handleInputChange,handleAutoGenerateePassco
         }
 
 
-      </div>
+      </div> */}
     </div>
   </div>
   )

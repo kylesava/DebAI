@@ -27,7 +27,7 @@
   align-items: flex-start;
 }
 .input_box_wrappers {
-  padding: 2rem 1rem;
+
   border-radius: 10px;
   display: flex;
   gap: 2rem;
@@ -230,8 +230,8 @@ h2 {
   text-align: center;
 }
 
-.input_item input,
-.input_item select {
+.input_item ,
+.input_item  {
   height: 50px;
   width: 100%;
   border-radius: 4px;
@@ -240,12 +240,30 @@ h2 {
   outline: none;
   letter-spacing: 1px;
   border: none;
-     color: rgba(101, 112, 124, 0.712);
-  background-color: rgba(245, 245, 245, 0.808);
+     color:black; 
+     border-radius: 10px;
+  background-color: #ffffff;
+  display: flex;
+
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #e2dddd94;
   /* box-shadow: 0px 0px 2px rgb(64, 70, 221); */
+}
+.input_item svg{
+  font-size: 17px;
+  color: #b1b0b0;
+}
+.input_item input, .input_item select{
+  width: 90%;
+  background-color: transparent !important;
+  font: 15px !important;
+
 }
 .input_item input::placeholder {
   color: rgba(143, 143, 143, 0.651) !important;
+  color: black;
 }
 .participants_list option {
   height: 40px;
@@ -335,9 +353,16 @@ h2 {
 }
 .input_row_box_parent{
   display: flex;
-  align-items: center;
 
+  align-items: center;
+  width:98%;
+height: 85%;
   gap: 10px;
+}
+.input_row_box_parent input{
+  height: 100%;
+  outline: none;
+  border: none;
 }
 .input_row_box_parent button{
   height: 95%;
@@ -345,6 +370,8 @@ h2 {
   color: white;
   font-size: 12px;
   letter-spacing: 1px;
+  margin-left: auto;
+  outline: none;
   text-transform: uppercase;
   background-color: var(--primary_color);
   border-radius: 7px;

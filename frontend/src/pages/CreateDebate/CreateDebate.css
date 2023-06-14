@@ -4,3 +4,8 @@
   margin: 2rem auto;
   height: 100%;
 }
+.create_debate_form{
+  border-radius: 14px;
+  padding: 2rem;
+  background-color:#F6F6F6;
+}
