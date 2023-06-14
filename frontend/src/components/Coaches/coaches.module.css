@@ -128,3 +128,73 @@ gap: 10px;
 
     gap: 1rem;
 }
+
+/* media queries */
+@media only screen and (min-width: 769px) and (max-width: 992px) {
+    .coaches_heading_box img{
+        width: 36px;
+    }
+    .coaches_heading_box h1{
+        font-size: 1rem;
+    }
+    .coaches_header_top p {
+        font-size: 13px;
+        line-height: 23px;
+    }
+    .coach_container {
+        width: 85%;
+    }
+    .coach_box{
+        width: 320px;
+        height: 330px;
+    }
+}
+@media only screen and (min-width: 600px)  and (max-width: 769px){
+    .coaches_heading_box img{
+        width: 30px;
+    }
+    .coaches_heading_box h1{
+        font-size: 0.96rem;
+    }
+    .coaches_header_top p {
+        font-size: 11px;
+        line-height: 22px;
+    }
+    .coach_box{
+        width: 370px;
+        height: 365px;
+    }
+}
+@media only screen and (min-width: 480px) and (max-width: 600px) {
+    .coaches_heading_box img{
+        width: 30px;
+    }
+    .coaches_heading_box h1{
+        font-size: 0.9rem;
+    }
+    .coaches_header_top p {
+        font-size: 11px;
+        line-height: 22px;
+    }
+}
+
+@media only screen and (max-width: 480px){
+
+    .coaches_header_top{
+        width: 80%;
+        padding: 1.4rem 1rem;
+    }
+    .coaches_heading_box img{
+        width: 30px;
+    }
+    .coaches_heading_box h1{
+        font-size: 0.84rem;
+    }
+    .coaches_header_top p {
+        font-size: 11px;
+        line-height: 21px;
+    }
+    .coach_box img{
+        width: 100%;
+    }
+}
