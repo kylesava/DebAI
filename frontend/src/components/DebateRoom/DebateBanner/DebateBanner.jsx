@@ -38,9 +38,9 @@ const DebateBanner = () => {
                 <div className={styles.main_box}>
                     <h1 className={styles.debate_topic}>{activeDebate?.current?.topic}</h1>
                     <div className={styles.team_box}>
-                        <h3>Heros </h3>
+                        <h3>{activeDebate?.current?.teams[0]?.name} </h3>
                         <p>vs</p>
-                        <h3>Feros </h3>
+                        <h3>{activeDebate?.current?.teams[1]?.name} </h3>
                             </div>
                   <h1 className={styles.startsInText}> Starts in {getTimeCountDown(null,remainingTime.day,remainingTime.hour,remainingTime.min,remainingTime.sec)}</h1> 
 

@@ -3,7 +3,9 @@ import React, { useState } from 'react'
 import SearchedParticipantsList from '../../Participants/SearchedParticipantsList/SearchedParticipantsList';
 import SelectedParticipants from '../../Participants/selectedParticipants/SelectedParticipants';
 import { GrClose } from "react-icons/gr"
+import {BsMicrosoftTeams, BsPersonAdd} from "react-icons/bs"
 import "./TeamForm.css"
+
 
 
 
@@ -109,18 +111,21 @@ const TeamForm = ({ team, index, handleTeamName, setDebateForm, debateForm }) =>
   return (
     <div className='teamFormWrapper' pinkBg={index === 1 ? true : false}>
 
-      <h2>Team {index + 1} </h2>
       <SelectedParticipants index={index} removeSelectedParticipants={removeSelectedParticipants} selectedParticipants={team.members} />
       <div className='team_form_input_box'>
+        <div className='input_item'>
 
-        <input type="text" className='search_team_name_input' placeholder='Enter team name' name="name" onChange={(e) => handleTeamName(e, index)} value={team.name} />
-        <div className='search_user_input'>
-          <input type="text" placeholder='Add member...' className='addMember_input' onChange={(e) => setParticipantsSearchInput(e.target.value)} value={participantsSearchInput} />
+        <BsMicrosoftTeams/>
+        <input  type="text"  autoComplete='off' className='search_team_name_input' placeholder= {` ${index===0 ? "First":"Second"} teamname`} name="name" onChange={(e) => handleTeamName(e, index)} value={team.name} />
+        </div>
+        <form className='search_user_input input_item'>
+          <BsPersonAdd/>
+          <input type="text"  autoComplete='off' placeholder='Add member...' className='addMember_input' onChange={(e) => setParticipantsSearchInput(e.target.value)} value={participantsSearchInput} />
           {
 
             participantsSearchInput.length > 0 && <GrClose className={"searchUserSvgClose"} onClick={() => setParticipantsSearchInput("")} />
           }
-        </div>
+        </form>
       </div>
 
       <SearchedParticipantsList index={index} handleSelectParticipants={handleSelectParticipants} selectedParticipants={team.members} participantsSearchInput={participantsSearchInput} />

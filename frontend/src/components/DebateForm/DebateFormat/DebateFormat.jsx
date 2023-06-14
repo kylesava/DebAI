@@ -81,6 +81,10 @@ const DebateFormat = ({ teams ,debateForm ,setDebateForm}) => {
 
   return (
     <>
+    <div className="debate_create_header_top">
+    <img width="94" height="94" src="https://img.icons8.com/3d-fluency/94/save-as.png" alt="save-as"/>
+    <h1 className='team_form_header'> <h1>DEBATE</h1> FORMAT</h1>
+    </div>
     {
 
     (teamArr[0] && teamArr[1])  ?  <div className="team_format_container">
@@ -143,7 +147,7 @@ const DebateFormat = ({ teams ,debateForm ,setDebateForm}) => {
 }
 </tbody>
 </table>
- <div className="team_format_team_selection">
+ {/* <div className="team_format_team_selection">
 
 
       <select onChange={(e)=>setStartBy(e.target.value)}>
@@ -154,7 +158,7 @@ const DebateFormat = ({ teams ,debateForm ,setDebateForm}) => {
           ))
         }
       </select>
-        </div>
+        </div> */}
     </div>
 </div>:""
 }

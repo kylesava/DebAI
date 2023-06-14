@@ -3,9 +3,17 @@
   width: 95%;
   margin: 2rem auto;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding: 2rem;
 }
 .create_debate_form{
-  border-radius: 14px;
+  border-radius: 20px;
+  background-color: transparent;
+
+  position: relative;
   padding: 2rem;
-  background-color:#F6F6F6;
+  
+  box-shadow:rgba(110, 85, 255, 0.25) -1px 11px 50px -12px;
 }

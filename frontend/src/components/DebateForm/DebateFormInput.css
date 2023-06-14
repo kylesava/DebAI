@@ -2,20 +2,22 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
   padding-bottom: 1rem;
 }
 .create_debate_header {
   display: flex;
   gap: 2rem;
   align-items: center;
+  justify-content: center;
   margin-bottom: 1rem;
+  
 }
 .team_box_container {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-top: 2rem;
+ 
 }
 .team_header_text {
   color: var(--dark_primary_text_color);
@@ -98,7 +100,7 @@ h2 {
   display: flex;
   flex: 1;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
 }
 .form_input_row_box {
   width: 100%;
@@ -110,7 +112,7 @@ h2 {
 .right_input_box {
   flex: 1;
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
   flex-direction: column;
 }
 .duration_type {
@@ -257,13 +259,17 @@ h2 {
 }
 .input_item input, .input_item select{
   width: 90%;
+  height: 100%;
+  cursor: pointer;
   background-color: transparent !important;
   font: 15px !important;
-
+    color: rgb(153 148 148);
+    outline: none;
+    letter-spacing: 1px;
 }
 .input_item input::placeholder {
-  color: rgba(143, 143, 143, 0.651) !important;
-  color: black;
+letter-spacing: 1px;
+  color: rgb(153 148 148);
 }
 .participants_list option {
   height: 40px;
@@ -394,11 +400,48 @@ background-color: rgba(104, 108, 224, 0.918) !important;
 
 }
 .next_debate_step,.back_button{
-  background-color: var(--primary_color);
-  height: 40px;
-  border-radius: 3px;
-  color: white;
   letter-spacing: 1px;
+    height:50px;
+  background-color: rgb(64 70 221 / 52%) !important;
+  color: white !important;
+  border-radius: 5px;
+  border: none;
+}
+.debate_create_header_top{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  position: absolute;
+  top: -3.7rem;
+  align-items: center;
+  HEIGHT: 57PX;
+  left: 0;
+  width: fit-content;
+  padding: 0 1rem;
+  BORDER-RADIUS: 10PX;
+  right: 0;
+  background: #e3e3e333;
+  margin: auto;
+
+}
+.debate_create_header_top img{
+  width: 40px;
+
+}
+.starting_time_item_box{
+  width: 100%;
+}
+.team_form_header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: var(--dark_primary_text_color);
+  font-size: 1.2rem;
+  letter-spacing:1px ;
+}
+.team_form_header >h1{
+  color: var(--primary_color);
 }
 .confirm_create_box{
   text-align: center;
@@ -425,6 +468,7 @@ background-color: rgba(104, 108, 224, 0.918) !important;
   display: flex;
   align-items: center;
   gap: 10px;
+
 }
 .create_debate_bottom_button button{
   flex: 1;
