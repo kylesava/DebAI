@@ -145,7 +145,7 @@
   gap: 10px;
   padding: 0 10px;
   background-color: white;
-  border: 1px solid var(--primary_color);
+  border: 1px solid var(--dark_primary_text_color);
   font-size: 14px;
   letter-spacing: 1px;
   border-radius: 3px;

@@ -12,7 +12,7 @@
         align-items: center;
     background-color: #fff;
     border-radius: 18px;
-    box-shadow: 0 48px 100px 0 rgba(17,12,46,.15);
+   box-shadow:  -2px -3px 100px 0 rgba(17,12,46,.15);
     padding:  1.4rem 2rem;
 
 }
@@ -70,9 +70,10 @@ gap: 10px;
     flex-direction: column;
     background-color: #fff;
     border-radius: 18px;
-    box-shadow: 0 48px 100px 0 rgba(17,12,46,.15);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
     padding: 1rem;
     gap: 2rem;    
+    cursor: pointer;    
 }
 .coach_box img{
     width: 65%;        
@@ -88,9 +89,8 @@ gap: 10px;
 .coach_desc{
     font-size: 11px;
     letter-spacing: 1px;
-    color: var(--dark_primary_text_color);
     text-align: center;
-    color: gray;
+    color: #282727;
 }
 .coach_desc b{
     color: var(--dark_primary_text_color);
@@ -103,11 +103,21 @@ gap: 10px;
     cursor: pointer;
     letter-spacing: 1px;
     text-transform: uppercase;
-    width: 80%;
-    
+   background-color: var(--dark_primary_text_color); 
+    width: 70%;
+    color: #eff0f1;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    align-items: center;
     border-radius: 5px;
     height:40px;
     box-shadow: rgba(144, 144, 153, 0.25) 0px 2px 5px -1px, rgba(119, 119, 119, 0.178) 0px 1px 3px -1px;
+}
+.coach_hire_button svg{
+    font-size: 15px !important 
+        
+    
 }
 .coach_bottom_content{
     display: flex;
