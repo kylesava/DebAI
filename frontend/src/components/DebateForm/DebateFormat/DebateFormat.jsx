@@ -130,12 +130,11 @@ const DebateFormat = ({ teams ,debateForm ,setDebateForm}) => {
             <td className="t_data t_data_sn">{index+1}</td>
             <td className="t_data t_data_team_name">  <p> 
               {item.team}
-              
               </p> 
               </td>
            <td className="t_input_data">
       
-            <input className="debate_format_time_input" min={1} disabled={debateForm.type==="Lincoln–Douglas"} onChange={(e)=>handleSpeakTimeChange(e,index)} type="number" name="" id="" value={item.time}/>
+        <input className="debate_format_time_input" min={1}  onChange={(e)=>handleSpeakTimeChange(e,index)} type="number" name="" id="" value={item.time}/>
             </td>
    
     </tr>

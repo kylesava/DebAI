@@ -277,7 +277,7 @@ const DebateRoom = () => {
     }
   }
 
- console.log(transcript)
+ 
 
 
   return (
@@ -290,11 +290,19 @@ const DebateRoom = () => {
                 <div className="speak_time_debate_state">
         
           { 
-(isLive && !debateState?.isStarted && !debateState?.hasFinished) ? "Waiting for debators to start":
-
-
-          debateState?.isPaused ? "Paused" :   debateState?.isStarted ? "Ongoing":
-         debateState?.hasFinished ? "Completed":"Not Started"  
+(isLive &&  debateState?.isStarted  === false && debateState?.hasFinished === false ) && "Waiting for debators to start"
+          }
+          {
+            isLive && debateState?.isPaused && "paused"
+          }
+          {
+            (isLive && debateState?.isStarted && debateState?.hasFinished === false && debateState?.isPaused ===false ) && "Ongoing"
+          }
+          {
+            (isLive && debateState?.hasFinished ) && "Completed"
+          }
+          {
+            isLive === false && "Not Started"
           }
         </div>
         <div className='debate_room_top'>
@@ -309,7 +317,7 @@ const DebateRoom = () => {
           {  (debateState.isStarted && !debateState.isPaused) && (<>
               
                 <h1 className="main_timing_text">
-                  {`TIME LEFT  ${getTime(speakTimeLeft)} `}
+                  {   `${getTime(speakTimeLeft) && `TIME LEFT  ${getTime(speakTimeLeft)}`}  `}
                 </h1>
               
             </>

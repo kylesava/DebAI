@@ -7,6 +7,7 @@
   align-items: center;
   transition: all 0.3s;
   cursor: pointer;
+  background-color: #f9f9f9;
   padding: 7px 4px;
 }
 .ParticipantsItemWrapper:hover {

@@ -1,11 +1,9 @@
-import TeamForm from './TeamForm/TeamForm'
 import DatePicker from "react-datepicker"
-import DebateInformation from "./DebateInformation.jsx"
-import DebateFormat from './DebateFormat/DebateFormat'
 import { Enums } from '../../redux/action/actionTypes/Enumss'
 import DebateMotionModal from '../../Layouts/modal/DebateMotions/DebateMotions';
 
 const MainDebateInput = ({debateForm,handleInputChange,handleAutoGenerateePasscode,handleDebateTopicChange,handleStartDate,handlePassCodeChange ,startTime,isPasscodeValid,filterPassedTime,durationType,handleInstatDebateChange,instantDebateTimes,returnTeamFormatOptions}) => {
+  console.log(debateForm)
   return (
     <div className='input_box_wrappers'>
 
@@ -20,7 +18,7 @@ const MainDebateInput = ({debateForm,handleInputChange,handleAutoGenerateePassco
    
       <div className='input_item'>
         <select id="" name='type'  value={debateForm?.type} onChange={handleInputChange}>
-          <option selected disabled>choose debate type</option>
+          <option selected disabled value={""}>choose debate type</option>
           <option value="British Parliamentary">British Parliamentary</option>
           <option value="Public forum">Public forum</option>
           <option value="Lincoln–Douglas">Lincoln–Douglas</option>

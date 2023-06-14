@@ -1,7 +1,7 @@
 
 import styles from "./MysteryBox.module.css"
 import ClaimReward from "../ClaimReward/ClaimReward"
-import {BiUpvote,BiDownvote, BiArrowBack} from "react-icons/bi"
+import {BiUpvote,BiDownvote, BiArrowBack, BiArrowFromRight, BiArrowFromLeft, BiArrowToRight, BiArrowToLeft} from "react-icons/bi"
 import {GrFormNextLink} from "react-icons/gr"
 import {motion} from "framer-motion"
 import { useEffect, useState } from "react"
@@ -63,7 +63,7 @@ const MysteryBox = ({handleNext ,debateResult ,activeDebate ,isAudience}) => {
         <img  className={styles.win_logo} width="40" height="40" src="https://img.icons8.com/external-smashingstocks-flat-smashing-stocks/66/external-Win-casino-smashingstocks-flat-smashing-stocks.png" alt="external-Win-casino-smashingstocks-flat-smashing-stocks"/>
         <h1 className={styles.winning_team_text}> {getResultText()}</h1> 
         </div>
-      <h1 className={styles.debate_topic}>{activeDebate?.topic}</h1>
+      <h1 className={styles.debate_topic}>💥{activeDebate?.topic}</h1>
         <div className={styles.vote_count_box}>
           {
 
@@ -82,26 +82,32 @@ const MysteryBox = ({handleNext ,debateResult ,activeDebate ,isAudience}) => {
       ))
       }
         </div>
-      {
- !isAudience && <ClaimReward activeDebate={activeDebate} setGoToNext={setGoToNext} debateResult={debateResult}/>
-      } 
-       {
-         ( judgeType===Enums.AIJUDGE &&  goToNext ) && <button className={styles.nextButton} onClick={()=>handleNext(Enums.TRANSCRIPT_TAB)}>
-          <GrFormNextLink className={styles.nextIcon}/>
+   {
+ !isAudience && <ClaimReward handleNext={handleNext} goToNext={goToNext} judgeType={judgeType} activeDebate={activeDebate} setGoToNext={setGoToNext} debateResult={debateResult}/>
+      }
+        
+       { isAudience && <>
+       <div className={styles.mysteryButtonBox}>
+
+         <button className={styles.nextButton} onClick={()=>navigate("/alldebates")}>
+        BACK
+            <BiArrowToLeft className={styles.backIcon}/>
+        </button> 
+               
+        {  judgeType ===Enums.AIJUDGE  && <button className={styles.nextButton} onClick={()=>handleNext(Enums.TRANSCRIPT_TAB)}>
+          <BiArrowFromLeft  color="white"  fill="white" />
           Next
         </button>
         }
-        {
-          ( judgeType !==Enums.AIJUDGE && goToNext  && !isAudience) && <button className={styles.nextButton} onClick={()=>navigate("/")}>
-          <BiArrowBack className={styles.nextIcon}/>
-        BACK
-        </button>
-
+        </div>
+       </>
         }
+
+
     </motion.div>
     
     </>
-  )
+    )
 }
 
 export default MysteryBox

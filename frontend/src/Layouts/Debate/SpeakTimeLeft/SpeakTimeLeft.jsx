@@ -1,11 +1,5 @@
 import "./speakTimeLeft.css"
-import {RiTimerFlashFill} from "react-icons/ri"
-import {AiOutlineFieldNumber} from "react-icons/ai"
-import {FiType} from "react-icons/fi"
-import {TiGroup} from "react-icons/ti"
 import { useSelector } from "react-redux"
-import { GiTennisCourt, GiTimeBomb } from "react-icons/gi"
-import { CgTimelapse } from "react-icons/cg"
 const SpeakTimeLeft = ({debateState,countDown ,startTeam}) => {
 
   const {activeDebate ,isLive} = useSelector(state=>state.debate)
@@ -82,7 +76,7 @@ const SpeakTimeLeft = ({debateState,countDown ,startTeam}) => {
             <div className="speakTime_title">
 
             <img width="66" height="66" src="https://img.icons8.com/external-smashingstocks-outline-color-smashing-stocks/66/external-Mic-party-and-celebrations-smashingstocks-outline-color-smashing-stocks-2.png" alt="external-Mic-party-and-celebrations-smashingstocks-outline-color-smashing-stocks-2"/>
-            <p className="speak_time_key">Active Speak Count   </p>
+            <p className="speak_time_key">Active Speech   </p>
             </div>
             <p className="speak_time_value">{debateState?.round_shot}</p>
           </div>

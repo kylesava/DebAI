@@ -4,17 +4,17 @@
 .debate_topic{
     font-size: 12px;
     opacity: 0.7;
+    text-align: center;
     letter-spacing: 2px;
     text-transform: uppercase;
 }
 .modelContent{
-    min-height: 50%;
+    
     max-width: 500px;
     width: 90%;
     display: flex;
     gap: 15px;
     flex-direction: column;
-    padding: 1.5rem 1rem;
     padding-bottom: 1rem;
     align-items: center;
     background-color: rgba(73, 73, 73, 0.233); 
@@ -22,7 +22,8 @@
     padding-top: 0.5rem;
         position: relative;
 z-index: 3 !important;
-    backdrop-filter: blur(5px);
+backdrop-filter: blur(5px);
+padding: 2rem 1rem;
 }
 .top_winning_team{
     display: flex;
@@ -75,31 +76,6 @@ z-index: 3 !important;
     letter-spacing: 1px;
 }
 
-.nextButton:hover{
-
-    scale: 1.03 !important;
-    opacity: 1 !important;
-}
-
-.nextIcon{
-    color: white !important;
-}.nextButton{
-    background-color: #F9B938;
-    width: fit-content;
-    padding: 0 15px;
-    border-radius: 4px;
-    font-size: 12px;
-    height: 30px;
-    letter-spacing: 1px;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    flex-direction: row-reverse;
-    color: black;
-    margin-left: auto;
-    opacity: 0.7;
-    transition: all .3s ;
-}
 
 .robo_1,.robo_2{
 
@@ -117,4 +93,30 @@ z-index: 3 !important;
 .robo_2{
     width: 20%;
     left: -3rem;
+}
+.nextButton{
+    background-color: #7c38f9;
+    width: fit-content;
+    padding: 0 15px;
+    border-radius: 4px;
+    font-size: 12px;
+    height: 30px;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-direction: row-reverse;
+    color: rgb(238, 233, 233);
+    opacity: 0.7;
+    transition: all .3s ;
+}
+.nextButton svg{
+    font-size: 18px !important;
+    fill: white !important;
+}
+.mysteryButtonBox{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    align-items: center;
 }

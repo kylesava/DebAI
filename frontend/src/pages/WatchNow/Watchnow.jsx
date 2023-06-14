@@ -139,11 +139,14 @@ debatorsInRoom?.length > 0 &&  <p className="watch_box_joined_participants_text"
        <Link to={`/debate/${debateData?.passcode}?audience=${true}`}>
     <button> <MdOutlineViewInAr /> <p>Watch </p>  </button>
     </Link>
-  <Link     className={`    "watchNow_participateLink"  ${!isParticipant && "disable_participateBtn"}` } to={`/debate/${debateData?.passcode}`}>
+    {
+
+   isParticipant &&    <Link     className={`    "watchNow_participateLink"  ${!isParticipant && "disable_participateBtn"}` } to={`/debate/${debateData?.passcode}`}>
       <button disabled={!isParticipant}  className="watch_now_participate_button">
         <AiOutlineUsergroupAdd/> <p>Participate</p>
       </button>
       </Link>
+  }
   
     </>
     : <button className="disable_participateBtn">

@@ -1,5 +1,9 @@
 .SearchParticipantsListWrapper {
-  background: var(--dark_gradient_bg) !important;
+  background:#ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
 }
 .participants_list {
   display: flex;

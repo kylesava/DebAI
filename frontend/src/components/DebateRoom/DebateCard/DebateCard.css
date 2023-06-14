@@ -14,6 +14,8 @@
   transition: all 0.3s;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   background-color: rgb(252, 252, 252);
+  background: linear-gradient(35deg,rgba(202, 14, 202, 0.055),rgba(27, 185, 224, 0.034),rgba(73, 73, 206, 0.068));
+  /* background-color: transparent !important; */
 
 }
 .DebateCardWrapper:hover {
@@ -106,18 +108,20 @@
   padding: 0 20px;
   height: 40px;
   border-radius:5px;
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 1px;
-  background: var(--primary_color);
+  
   display: flex;
   align-items: center;
   gap: 10px;
-  color: white;
+  
+  color: var(--primary_color);
+  border: 2px solid rgba(212, 212, 212, 0.76);
   transition: all 0.3s;
 }
 .DebateCardWrapper button:hover {
   
-  background: rgb(56, 46, 201) !important;
+  /* background: rgb(56, 46, 201) !important; */
   scale: 1.04;
 
 }
@@ -126,7 +130,7 @@
 }
 .DebateCardWrapper button svg {
   font-size: 16px !important;
-  color: white ;
+  color: var(--primary_color);
 }
 .delete_debate_btn {
   align-items: center;

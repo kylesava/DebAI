@@ -6,7 +6,7 @@ const ParticipantsListItem = ({ person, selectParticipantsFunc, index }) => {
       <img src={person.avatar} alt="userAvatarImg" />
       <div className="details_box">
         <div className="username">{person.firstName} </div>
-        <div className="email">{person.email}</div>
+        {/* <div className="email">{person.email}</div> */}
       </div>
     </div>
   )
