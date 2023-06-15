@@ -11,6 +11,10 @@ import MainDebateInput from './MainDebateInput'
 import Teams from './Teams';
 import TeamFormat from './TeamFormat';
 import ConfirmCreate from './ConfirmCreate';
+import {GiReturnArrow} from "react-icons/gi"
+import { IoReturnUpBackOutline } from 'react-icons/io5';
+import { GrReturn } from 'react-icons/gr';
+import { BsArrowReturnLeft } from 'react-icons/bs';
 
 
 
@@ -402,8 +406,8 @@ if(formatArr){
      {
 
 
-      stepIndex !==0 && <button onClick={()=>setStepIndex(prev=>prev-1)} className='back_button'>
-       PREVIOUS
+      stepIndex !==0 && <button  onClick={()=>setStepIndex(prev=>prev-1)} className='back_button'>
+       <BsArrowReturnLeft className='backIcon'/>
        
       </button>
       }
