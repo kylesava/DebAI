@@ -8,9 +8,9 @@ const Coaches = () => {
     <div className={styles.coaches_header_top}>
 
         <div className={styles.coaches_heading_box}>
-        <img width="94" height="94" src="https://img.icons8.com/3d-fluency/94/user-group-man-woman--v4.png" alt="user-group-man-woman--v4"/> <h1>DebAI coach</h1>
+ <h1>DebAI coach</h1>
         </div>
-        <p>Discover talented DebAi coaches for hire. Our expert team brings AI expertise and transformative coaching to empower individuals.</p>
+      
 
 
     </div>

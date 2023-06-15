@@ -4,6 +4,7 @@ import {RiTimerFlashFill} from "react-icons/ri"
 import {CgMenuMotion} from "react-icons/cg"
 import { useEffect, useState } from "react"
 import { TimeFormatMappingMethod } from "../../../utils/data"
+import TeamFormatTable from "../../../Layouts/Table/TeamFormatTable/TeamFormatTable"
 const DebateFormat = ({ teams ,debateForm ,setDebateForm}) => {
 
   const [startBy,setStartBy] =useState("");
@@ -86,84 +87,15 @@ const DebateFormat = ({ teams ,debateForm ,setDebateForm}) => {
     <h1 className='team_form_header'> <h1>DEBATE</h1> FORMAT</h1>
     </div>
     {
+      (debateForm?.timeFormat && teamArr[0] && teamArr[1]) &&
+    <TeamFormatTable  handleSpeakTimeChange={handleSpeakTimeChange} debateForm={debateForm}/>
+    }
+    </>
 
-    (teamArr[0] && teamArr[1])  ?  <div className="team_format_container">
+)}
 
-   
-    <div className='debateFormatBox'>
-
-      <table>
-      <thead>
-
-    <th>
-      <div>
-        <CgMenuMotion/>
-<p>
-      {/* SN  */}
-
-</p>
-      </div>
-    </th>
-    <th>
-    <div>
-
-    <TiGroup/>
-      <p>
-
-      Team Name 
-      </p>
-    </div>
-    </th>
-    <th>
-      <div>
-
-      <RiTimerFlashFill/>
-      <p>
-      Speak Time
-
-      </p>
-      </div>
-    </th>
-
-      </thead>
-      <tbody>
-        
-        {
-          debateForm?.timeFormat &&   debateForm.timeFormat.map((item,index)=>(
-            <tr className="debate_format_item"> 
-            <td className="t_data t_data_sn">{index+1}</td>
-            <td className="t_data t_data_team_name">  <p> 
-              {item.team}
-              </p> 
-              </td>
-           <td className="t_input_data">
-      
-        <input className="debate_format_time_input" min={1}  onChange={(e)=>handleSpeakTimeChange(e,index)} type="number" name="" id="" value={item.time}/>
-            </td>
-   
-    </tr>
-))
-
-}
-</tbody>
-</table>
- {/* <div className="team_format_team_selection">
-
-
-      <select onChange={(e)=>setStartBy(e.target.value)}>
-        <option disabled selected value="">--select-team--</option>
-      {
-         teamArr?.map(item=>(
-          <option   value={item}  > {item} </option>
-          ))
-        }
-      </select>
-        </div> */}
-    </div>
-</div>:""
-}
-</>
-  )
-}
 
 export default DebateFormat
+
+
+

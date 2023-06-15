@@ -1,7 +1,7 @@
 .Coaches{
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: 2rem;
     align-items: center;
 }
 .coaches_header_top{
@@ -10,9 +10,7 @@
     flex-direction: column;
     gap: 1rem;
         align-items: center;
-    background-color: #fff;
-    border-radius: 18px;
-   box-shadow:  -2px -3px 100px 0 rgba(17,12,46,.15);
+     border-radius: 18px;
     padding:  1.4rem 2rem;
 
 }

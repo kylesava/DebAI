@@ -5,6 +5,7 @@ import SelectedParticipants from '../../Participants/selectedParticipants/Select
 import { GrClose } from "react-icons/gr"
 import {BsMicrosoftTeams, BsPersonAdd} from "react-icons/bs"
 import "./TeamForm.css"
+import SelectParticipants from '../../../Layouts/popovers/selectParticipants/SelectParticipants';
 
 
 
@@ -111,7 +112,6 @@ const TeamForm = ({ team, index, handleTeamName, setDebateForm, debateForm }) =>
   return (
     <div className='teamFormWrapper' pinkBg={index === 1 ? true : false}>
 
-      <SelectedParticipants index={index} removeSelectedParticipants={removeSelectedParticipants} selectedParticipants={team.members} />
       <div className='team_form_input_box'>
         <div className='input_item'>
 
@@ -122,13 +122,18 @@ const TeamForm = ({ team, index, handleTeamName, setDebateForm, debateForm }) =>
           <BsPersonAdd/>
           <input type="text"  autoComplete='off' placeholder='Add member...' className='addMember_input' onChange={(e) => setParticipantsSearchInput(e.target.value)} value={participantsSearchInput} />
           {
-
+            
             participantsSearchInput.length > 0 && <GrClose className={"searchUserSvgClose"} onClick={() => setParticipantsSearchInput("")} />
           }
         </form>
       </div>
+<SelectedParticipants index={index} removeSelectedParticipants={removeSelectedParticipants} selectedParticipants={team.members} />
+{
 
-      <SearchedParticipantsList index={index} handleSelectParticipants={handleSelectParticipants} selectedParticipants={team.members} participantsSearchInput={participantsSearchInput} />
+<SelectParticipants team={team} index={index} handleSelectParticipants={handleSelectParticipants} selectedParticipants={team.members} participantsSearchInput={participantsSearchInput} />
+}
+
+     
     </div>
   )
 }

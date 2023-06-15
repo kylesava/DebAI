@@ -2,6 +2,7 @@ import React from 'react'
 import TeamForm from './TeamForm/TeamForm'
 
 const Teams = ({formLevel,debateForm,setDebateForm ,handleTeamName}) => {
+  console.log(debateForm.teams)
   return (
        <div className={`team_box_container ${formLevel !== 1 && "disable_team_box_container_form" } `}>
 
@@ -17,7 +18,9 @@ const Teams = ({formLevel,debateForm,setDebateForm ,handleTeamName}) => {
              debateForm={debateForm}
               setDebateForm={setDebateForm} 
               handleTeamName={handleTeamName}
-               team={team} index={index} key={index} />)}
+              team={team}
+              index={index}
+               key={index} />)}
         </div>
 
       </div> 

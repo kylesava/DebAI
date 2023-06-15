@@ -1,7 +1,9 @@
 .teamFormWrapper {
   width: 100%;
   border-radius: 10px;
+  position: relative;
 }
+
 .teamFormWrapper h2 {
   text-transform: uppercase;
   font-weight: 400;

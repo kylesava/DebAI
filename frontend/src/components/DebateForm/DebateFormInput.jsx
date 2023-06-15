@@ -224,37 +224,15 @@ useEffect(()=>{
       return false;
     }
 
-    if (durationType === "Set Duration") {
-      const hasMoreThanOneMember = payload.teams.every(team => team.members.length >= 1);
-      if (!hasMoreThanOneMember) {
-        handleShowAlert(" `Add atleast one member`","error")
-        return false
-      }
-    } else {
-      const hasOnlyOneMember = payload.teams.every(team => team.members.length === 1);
-      if (!hasOnlyOneMember) {
-          handleShowAlert(" `Quick debate should have one member`","error")
-        return false
-      }
-    }
-    const hasTopic = payload.teams.every(team => team.name);
-    if (!hasTopic) {
-            handleShowAlert(" `Team name is required`","error")
-      return false
-    }
+
+
+    
+
     if (payload.duration <= 0) {
       handleShowAlert(" `Duration should not be  0`","error")
 
       return false
     }
-
-    if(payload.teams[0]?.name === payload.teams[1]?.name) {
-      handleShowAlert(" `Teams should not have the same name`","error")
-      return false
-    }
-
-
-
     return true
 
 
@@ -347,8 +325,34 @@ if(formatArr){
       if(!topic  || !type || !timeFormat || !startTime || !judgeType || !passcode || !team_format){
         return false
       }
+    }else if(stepIndex===1){
+
+
+      const hasTeamName = debateForm.teams.every(team=>team.name)
+      if (!hasTeamName) {
+        handleShowAlert(" Team name is required","error")
+        return false
+      }
+      if(debateForm.teams[0]?.name ===  debateForm.teams[1]?.name) {
+      handleShowAlert(" Teams should not have the same name","error")
+      return false
+    }
+         const hasMoreThanOneMember = debateForm.teams.every(team => team.members.length >= 1);
+      if (!hasMoreThanOneMember) {
+        handleShowAlert(" Add atleast one member","error")
+        return false
+      }
+      
+
     }
     return true
+  }
+
+  const handleGoToNext=()=>{
+    const canGo =  goToNext()
+    if(canGo){
+      setStepIndex(prev=>prev+1)
+    }
   }
 
   const debateStepMap={
@@ -404,10 +408,10 @@ if(formatArr){
       </button>
       }
        {
-         stepIndex !== 3 && <button className={`${ !goToNext() ? "disableNext":"" }  next_debate_step`} onClick={()=>setStepIndex(prev=>prev+1)}> NEXT </button>
+         stepIndex !== 3 && <button className={ `next_debate_step`} onClick={handleGoToNext}> NEXT </button>
         }  
         </div>
-            {/* <DebateInformation  handleInputChange={handleInputChange} debateForm={debateForm} debateType={debateForm.type}/> */}
+      
 
     
     </div>

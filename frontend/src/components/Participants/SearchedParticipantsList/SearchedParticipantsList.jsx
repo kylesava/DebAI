@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { searchUserByNames } from '../../../utils/Api'
 import ParticipantsListItem from '../ParticipantsListItem'
 import "./SearchParticipantsList.css"
+import { MenuItem } from '@chakra-ui/react'
 
 
 
 
-const SearchedParticipantsList = ({ participantsSearchInput, index, handleSelectParticipants, selectedParticipants }) => {
+const SearchedParticipantsList = ({ searchUser, participantsSearchInput, index, handleSelectParticipants, selectedParticipants }) => {
   const [searchedParticipants, setSearchParticipants] = useState([]);
   const [isFetching, setFetching] = useState(false)
 
@@ -48,12 +49,12 @@ const SearchedParticipantsList = ({ participantsSearchInput, index, handleSelect
 
 
   return (
-    <div className='SearchParticipantsListWrapper'>
+    <div className='SearchParticipantsListWrapper' style={{gap:`${searchUser ? "0px":"5px"}`}}>
 
       {
-        participantsSearchInput.length > 0 ? isFetching ? <p>loading...</p> : searchedParticipants.map(person => (
-          <ParticipantsListItem selectParticipantsFunc={handleSelectParticipants} index={index} person={person} key={person._id} />
-        )) : null
+        participantsSearchInput.length > 0 ? isFetching ? <img style={{margin:"auto"}} width={"60px"} src="/gif/loading.gif" alt="loading" /> : searchedParticipants.map(person => (
+        <ParticipantsListItem selectParticipantsFunc={handleSelectParticipants} index={index} person={person} key={person._id} />
+    )) : null
       }
     </div>
   )
