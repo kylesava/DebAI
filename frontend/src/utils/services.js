@@ -197,7 +197,7 @@ export const getFlag=(country)=>{
 
   return    getCountries().then(res=>{
   
-     let flag =   res.data.find(coun=>coun.name?.common ===country)?.flags?.svg
+     let flag =   res.data.find(coun=>coun.name?.common.toLowerCase() ===country.toLowerCase())?.flags?.svg
      
       return flag;
       })

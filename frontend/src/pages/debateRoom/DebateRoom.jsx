@@ -314,10 +314,10 @@ const DebateRoom = () => {
               <h1 className='Debate_room_main_text' >
                  {activeDebateRef.current?.topic}  </h1>
           
-          {  (debateState.isStarted && !debateState.isPaused) && (<>
+          {  (debateState.isStarted ) && (<>
               
                 <h1 className="main_timing_text">
-                  {   `${getTime(speakTimeLeft) && `TIME LEFT  ${getTime(speakTimeLeft)}`}  `}
+                  {   `${ !Number.isNaN(getTime(speakTimeLeft)) && `TIME LEFT  ${getTime(speakTimeLeft)}`}  `}
                 </h1>
               
             </>

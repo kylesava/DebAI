@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import "../Auth.css";
 import {
   emailConfirmationApi,
@@ -9,19 +9,24 @@ import { useToast } from "@chakra-ui/react";
 const VerifyEmail = () => {
   const toast = useToast();
   const emailRef = useRef();
+  const [ sending,setSending] = useState(false)
   const handleSendEmail = async (e) => {
     e.preventDefault();
 
     try {
+      setSending(true)
       const { status } = await sentEmailToVerifyEmailApi(
         emailRef.current.value
       );
+      setSending(false)
       if (status === 200) {
         handleShowAlert("Verify link is sent to your email", "success");
       }
+
     } catch (error) {
       const data = error?.response?.data;
       handleShowAlert(data?.message, "error");
+      setSending(false)
     }
   };
 
@@ -59,7 +64,7 @@ const VerifyEmail = () => {
             />
 
             <button className="verify_email_button" type="submit">
-              SEND EMAIL
+              {sending ?"SENDING...":"SEND EMAIL"}
             </button>
             <small className="resent_email_expires_time">
               Did not receive the email ? Check your spam filter or try again

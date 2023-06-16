@@ -6,6 +6,7 @@ import {VscTypeHierarchy} from "react-icons/vsc"
 import {BiCode} from "react-icons/bi";
 import {AiOutlineFieldTime, AiOutlineTeam} from "react-icons/ai"
 import { HiSquaresPlus } from "react-icons/hi2";
+import { debateFormat } from "../../utils/data";
 
 const MainDebateInput = ({debateForm,handleInputChange,handleAutoGenerateePasscode,handleDebateTopicChange,handleStartDate,handlePassCodeChange ,startTime,isPasscodeValid,filterPassedTime,durationType,handleInstatDebateChange,instantDebateTimes,returnTeamFormatOptions}) => {
   console.log(debateForm)
@@ -24,10 +25,15 @@ const MainDebateInput = ({debateForm,handleInputChange,handleAutoGenerateePassco
       <div className='input_item'>
         <VscTypeHierarchy/>
         <select id="" name='type'  value={debateForm?.type} onChange={handleInputChange}>
+          {
+            // debateFormat.entries()
+          }
           <option selected disabled value={""}>choose debate type</option>
-          <option value="British Parliamentary">British Parliamentary</option>
-          <option value="Public forum">Public forum</option>
-          <option value="Lincoln–Douglas">Lincoln–Douglas</option>
+         
+               {Array.from(debateFormat).map(([debateType]) => (
+          <option  value={debateType} key={debateType}>{debateType}</option>
+        ))}
+
         </select>
       </div>
       <div className='input_item'>

@@ -140,7 +140,8 @@ RoomService
   }
 
   const handlePausedTimeLeft = () => {
-    const { remainingTime } = debateState;
+      const { remainingTime } = debateState;
+      setSpeakTimeLeft(remainingTime);
       let min = Math.floor(remainingTime / (1000 * 60));
       let sec = Math.floor((remainingTime / 1000) % 60);
       setCountDown({

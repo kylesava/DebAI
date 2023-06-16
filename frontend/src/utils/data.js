@@ -136,6 +136,29 @@ export const TimeFormatMappingMethod= (teamsNameArr,format)=>{
            
             ]
         ],
+          [
+            "WSDC",[
+                { team : teamsNameArr[0], time :8 },
+                { team: teamsNameArr[1], time : 8 },
+                { team : teamsNameArr[0], time :8 },
+                { team: teamsNameArr[1], time : 8 },
+                { team : teamsNameArr[0], time :8 },
+                { team: teamsNameArr[1], time : 8 },
+                { team : teamsNameArr[0], time :4 },
+                { team: teamsNameArr[1], time : 4 }
+           
+            ]
+        ],
+            [
+            "Cafe Debate",[
+                { team : teamsNameArr[0], time :5 },
+                { team: teamsNameArr[1], time : 5 },
+                { team : teamsNameArr[0], time :5 },
+                { team: teamsNameArr[1], time : 5 },
+  
+           
+            ]
+        ],
     ])
     
     
@@ -147,8 +170,34 @@ export const debateFormat=new Map([
     ["British Parliamentary",[2,4]],
     ["Public forum",[2]],
     ["Lincoln–Douglas",[1]],
+    ["WSDC",[3]],
+    ["Cafe Debate",[2]]
 ])
 
+export const coachData = [
+    {
+        name:"Olivia",
+        image:"images/coach1.png",
+        country:"United States",
+        desc:"Oxford Graudate and DebAI coach,empowering minds with expertise.",
+        calendlyLink:""
+    },
+    {
+        name:"Rachel",
+        image:"images/coach2.png",
+        country:"United States",
+        desc:"  Oxford Graudate and DebAI coach,guiding individuals towards their full potential.",
+        calendlyLink:""
+    },
+    {
+        name:"Tan Weinja",
+        image:"images/coach3.png",
+        country:"Singapore",
+        desc:"  Oxford Graudate and DebAI coach, transforming lives through personalized guidance.",
+        calendlyLink:""
+    },
+    
+]
 export const avatarsTypeData={
     common:[
 
