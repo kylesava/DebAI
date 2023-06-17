@@ -79,10 +79,12 @@ app.use(
     cookie: {
       secure: true,
       maxAge: 31556952000,
-      httpOnly: false
+      httpOnly: false,
+      sameSite:"none"
     },
   })
 );
+
 
 // middlewares
 app.use(passport.initialize());
@@ -90,7 +92,9 @@ app.use(passport.session());
 cron.schedule("0 0 * * *", endTheDebateAfterTwoDays);
 io.on("connection", (socket) => {
   console.log("someone connected");
-});
+})
+
+
 
 EventEmiter.on(Enums.UPDATED_DEBATE, (data) => {
   io.emit(Enums.UPDATED_DEBATE, data);
