@@ -1,37 +1,10 @@
 import "./debateFormatBox.css"
-import {TiGroup} from "react-icons/ti"
-import {RiTimerFlashFill} from "react-icons/ri"
-import {CgMenuMotion} from "react-icons/cg"
-import { useEffect, useState } from "react"
-import { TimeFormatMappingMethod } from "../../../utils/data"
+
 import TeamFormatTable from "../../../Layouts/Table/TeamFormatTable/TeamFormatTable"
-const DebateFormat = ({ teams ,debateForm ,setDebateForm}) => {
+import { useEffect } from "react"
+import { TimeFormatMappingMethod } from "../../../utils/data"
+const DebateFormat = ({ teams, debateForm ,setDebateForm}) => {
 
-  const [startBy,setStartBy] =useState("");
-  const [teamArr,setTeamArr] =useState([])
-
-
-    useEffect(()=>{
-      const teamsNameArr = teams.map(team=>team.name);
-      setTeamArr(teamsNameArr)
-      if(teamsNameArr.length === 2 && teamsNameArr[0] !== "" && teamsNameArr[1]!=="" && debateForm.type){
-       let data=    TimeFormatMappingMethod(  teamsNameArr, debateForm.type)
-
-
-            setDebateForm((prev)=>{
-              return {...prev, timeFormat:data }
-            })
-      }
-    },[teams,debateForm.type]);
-
-    useEffect(()=>{
-      if(!startBy)return;
- 
-      setDebateForm((prev)=>({
-        ...prev, 
-        timeFormat:handleSpeakOrder(startBy)
-      }))
-    },[startBy])
 
    const handleSpeakTimeChange=(event,changedIndex)=>{
     const {timeFormat} = debateForm
@@ -52,33 +25,18 @@ const DebateFormat = ({ teams ,debateForm ,setDebateForm}) => {
         }
 
 
-    
+      useEffect(()=>{
+        const teamsNameArr = teams.map(team=>team.name);
 
-    const getNextTeam=(theTeam)=>{
-     
-      return teamArr.find(team =>team !== theTeam)
-  }
+        if(teamsNameArr.length === 2 && teamsNameArr[0] !== "" && teamsNameArr[1]!=="" && debateForm.type){
+         let data=    TimeFormatMappingMethod(  teamsNameArr, debateForm.type)
   
-  const handleSpeakOrder=(team)=>{
-    console.log('inside')
-    const {timeFormat} = debateForm
-    if(timeFormat[0].team === team){
-        return timeFormat;
-    };
-    let barrier = 0;
-    return timeFormat.map((format_item,index)=>{
-        if(format_item.team === "both"){
-        ++barrier;
-        return format_item
+  
+              setDebateForm((prev)=>{
+                return {...prev, timeFormat:data }
+              })
         }
-        if((index + barrier) % 2 ===0){
-            return {...format_item  ,team  }
-        }else{
-              return {  ...format_item ,team :getNextTeam(team)}
-        }
-    })
-}
-
+      },[teams,debateForm.type]);
 
   return (
     <>
@@ -87,8 +45,11 @@ const DebateFormat = ({ teams ,debateForm ,setDebateForm}) => {
     <h1 className='team_form_header'> <h1>DEBATE</h1> FORMAT</h1>
     </div>
     {
-      (debateForm?.timeFormat && teamArr[0] && teamArr[1]) &&
-    <TeamFormatTable  handleSpeakTimeChange={handleSpeakTimeChange} debateForm={debateForm}/>
+
+
+      debateForm?.timeFormat &&
+      
+      <TeamFormatTable  handleSpeakTimeChange={handleSpeakTimeChange} debateForm={debateForm}/>
     }
     </>
 

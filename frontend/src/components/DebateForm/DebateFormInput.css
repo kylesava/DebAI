@@ -138,7 +138,7 @@ h2 {
 }
 .team_format{
   /* opacity: 0.7; */
-  /* pointer-events: none; */
+ 
 }
 .DebateFormWrapper button:hover {
   background-color: var(--primary_color);
@@ -347,7 +347,7 @@ letter-spacing: 1px;
 }
 .disable_team_box_container_form{
   opacity: 1;
-  pointer-events: none;
+  /* pointer-events: none; */
   backdrop-filter: blur(1px);
 }
 .additional_inputs{
@@ -505,4 +505,11 @@ background-color: rgba(104, 108, 224, 0.918) !important;
   font-weight: 600 !important;
   color: var(--dark_primary_text_color);
 
+
+}
+
+.additional_input_form{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }

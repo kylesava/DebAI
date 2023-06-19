@@ -16,6 +16,7 @@ const steps = [
   { title: 'Debate Information', description: '' },
   { title: 'Teams', description: '' },
   {title:"Time Format",description:""},
+  {title:"Additional",description:""},
   { title: 'Confirm', description: '' },
 ]
 

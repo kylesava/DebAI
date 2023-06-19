@@ -15,6 +15,7 @@ import {GiReturnArrow} from "react-icons/gi"
 import { IoReturnUpBackOutline } from 'react-icons/io5';
 import { GrReturn } from 'react-icons/gr';
 import { BsArrowReturnLeft } from 'react-icons/bs';
+import AdditionalInput from './AdditionalInput';
 
 
 
@@ -40,7 +41,8 @@ const DebateFormInput = ({stepIndex,setStepIndex}) => {
     duration: 0,
     team_format:"",
     passcode:"",
-    timeFormat:{},
+    intervalTime:"",
+    timeFormat:[],
     teams: [
       {
         name: "",
@@ -323,7 +325,7 @@ if(formatArr){
   }
 
   const goToNext=()=>{
-    const {topic, type, timeFormat,startTime,judgeType,passcode,team_format} = debateForm;
+    const {topic, type, timeFormat,startTime,judgeType,passcode,team_format ,intervalTime} = debateForm;
     if(stepIndex===0){
 
       if(!topic  || !type || !timeFormat || !startTime || !judgeType || !passcode || !team_format){
@@ -348,6 +350,8 @@ if(formatArr){
       }
       
 
+    }else  if(stepIndex===3){
+      if(!intervalTime)return false
     }
     return true
   }
@@ -388,7 +392,12 @@ if(formatArr){
           debateForm={debateForm}
           setDebateForm={setDebateForm}
           /> ,
-          "3":<ConfirmCreate
+          "3":<AdditionalInput
+          debateForm={debateForm}
+          teams={debateForm?.teams}
+          setDebateForm={setDebateForm}
+          /> ,
+          "4":<ConfirmCreate
           currentUser={currentUser}
           handleCreateDebate={handleCreateDebate}
           />
@@ -412,7 +421,7 @@ if(formatArr){
       </button>
       }
        {
-         stepIndex !== 3 && <button className={ `next_debate_step`} onClick={handleGoToNext}> NEXT </button>
+         stepIndex !== 4 && <button className={ `next_debate_step`} onClick={handleGoToNext}> NEXT </button>
         }  
         </div>
       

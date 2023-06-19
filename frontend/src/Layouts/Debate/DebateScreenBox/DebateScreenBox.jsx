@@ -1,18 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux'
-import DebatorView from '../DebatorView/DebatorView'
 import "./DebateScreenBox.css"
 import { useEffect, useState, useRef } from 'react';
-import NotStartedView from '../DebatorView/NotStartedView/NotStartedView';
-import NoneJoined from '../NoneJoined/NoneJoined';
+
 import DebateScreenSkeleton from "../../Skeleton/DebateScreenBox/DebateScreenSkeleton"
-import { TbMicrophone2 } from "react-icons/tb"
-import SpeakTimeLeft from '../SpeakTimeLeft/SpeakTimeLeft';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../../../redux/store';
 import DebateBanner from '../../../components/DebateRoom/DebateBanner/DebateBanner';
 import DebateScreen from './DebateScreen/DebateScreen';
 
-const DebateScreenBox = ({ setSpeakTimeLeft, lastApiCallConfig, timeRemainingRef, roomMembers, startTeam, handleCloseDebate, activeSpeakers, isLive, debateState, activeMicControlTeam ,
+const DebateScreenBox = ({ setGapCountDown, setSpeakTimeLeft, timeRemainingRef, roomMembers, activeSpeakers, isLive, debateState ,
 RoomService
 }) => {
   const { activeDebate, activeParticipants } = useSelector((state) => state.debate);
@@ -80,10 +76,12 @@ RoomService
 
   useEffect(() => {
     if (!debateState ) return;
-    const { hasFinished, isStarted, isPaused } = debateState;
-    if(!isStarted || hasFinished)return;
+    const { hasFinished, isStarted, isPaused ,isInterval  ,changedAt} = debateState;
 
-    if(isPaused){
+    if(!isStarted || hasFinished)return;
+    if(isInterval){
+       handleIntervalLeft()
+    }else if(isPaused){
       handlePausedTimeLeft()
     }else if(intervalArrRef.current.length < 1){
       handleTimeLeft()
@@ -152,6 +150,44 @@ RoomService
       closeInterval()
     
     } 
+
+    const handleIntervalLeft=()=>{
+
+  const {changedAt} = debateState;
+  const {intervalTime} = activeDebate?.current;
+  const endsAt = changedAt + (intervalTime * 1000);  // * 1000 to change sec to ms
+
+
+  let intervalId= setInterval(() => {
+    
+    const diff =   endsAt - Date.now();
+      
+    if(diff>0){
+
+      
+      let sec = Math.floor((diff / 1000) % 60);
+
+
+      setGapCountDown({
+        sec
+      })
+      
+    }else{
+       setGapCountDown({
+        sec:0,
+      })
+      clearInterval(intervalId)
+      RoomService.finishInterval();
+      
+    }
+
+  }, 1000);
+
+
+
+
+
+    }
 
     const handleSetFunc=()=>{
       let data={

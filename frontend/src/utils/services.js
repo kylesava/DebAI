@@ -195,9 +195,11 @@ SUMMERIZE THE BELOW DEBATE IN 300 WORDS AND 3 PARAGRAPHS. MOST IMPORTANTLY THE T
 
 export const getFlag=(country)=>{
 
+
+
   return    getCountries().then(res=>{
   
-     let flag =   res.data.find(coun=>coun.name?.common.toLowerCase() ===country.toLowerCase())?.flags?.svg
+     let flag =   res.data.find(coun=>coun.name?.common?.toLowerCase() ===country?.toLowerCase())?.flags?.svg
      
       return flag;
       })
@@ -323,10 +325,12 @@ class DebateRoomServices{
 
   }
 
+  
+
   async UpdateChannelAttr(key,payload){
     const {channelId} = this.rtmChannelRef.current
     try {
-      if(key==="debateRounds"){
+      if(key===Enums.DEBATE_STATE){
         await this.updateDebateInDb(payload);
       }
       await Rtm_client.addOrUpdateChannelAttributes(channelId, {
@@ -351,7 +355,7 @@ class DebateRoomServices{
     try {
       if (otherDebators.length === 0) {
         console.log("pausing",otherDebators)
-        await this.UpdateChannelAttr("debateRounds",debateRoundsPayload)
+        await this.UpdateChannelAttr(Enums.DEBATE_STATE,debateRoundsPayload)
         await this.createChannelMessage({
           ...debateRoundsPayload,
           type:"pause_debate" ,
@@ -564,8 +568,7 @@ async handleLastSetup(){
   }
     
   }
-  async handleCloseDebate () {
-    console.log("inside close debate")
+async handleCloseDebate () {
     const { timeFormat } = this.activeDebate?.current;
     let debateRoundsPayload = {
       round_shot: timeFormat.length + 1,
@@ -579,14 +582,14 @@ async handleLastSetup(){
       both: false,
       isPaused: false,
       changedAt: 0,
+      isInterval:false
     }
     this.changeDebateState(debateRoundsPayload)
     this.changeMicControlTeam(null);
     try {
 
   if(this.getMemberWithHighUid())return;
-  await this.UpdateChannelAttr("debateRounds",debateRoundsPayload)
-  await this.UpdateChannelAttr("speaker","null");
+  await this.UpdateChannelAttr(Enums.DEBATE_STATE,debateRoundsPayload)
   await this.handleLastSetup()
 } catch (error) {
   console.log(error)
@@ -644,6 +647,7 @@ async handleChannelMessage  (message)  {
   const data = JSON.parse(message.text);
 
   switch (data.type) {
+
     case "resume_debate":
       this.changeDebateState(data)
       
@@ -680,6 +684,17 @@ async handleChannelMessage  (message)  {
     case "pause_debate":
       delete data.type;
       this.changeDebateState(data);
+      break;
+
+    case "interval_finish":
+      delete data.type ;
+      {     
+        const {rounds,speakers} = data;
+        this.changeDebateState(rounds)
+        this.changeMicControlTeam(speakers)
+        break;
+
+      }
       
 
     default:
@@ -790,7 +805,7 @@ async handleResumeDebate ()  {
   };
 
   this.changeDebateState(debateRoundsPayload);
-  await this.UpdateChannelAttr("debateRounds",debateRoundsPayload)
+  await this.UpdateChannelAttr(Enums.DEBATE_STATE,debateRoundsPayload)
 
   await this.createChannelMessage({ ...debateRoundsPayload, type: "resume_debate" })
 } catch (error) {
@@ -824,10 +839,13 @@ async handleDebateInitChange  (nextround, isMicPassed,isStarted)  {
 
 
   try {
+
   if (!this.activeDebate.current) return;
-  const { timeFormat } = this.activeDebate.current;
+  const { timeFormat  ,intervalTime} = this.activeDebate.current;
   const { team: teamName, time } = timeFormat[nextround - 1];
 
+  const remainingTimeInMs = time * 60 * 1000;
+  const intervalDuration = intervalTime * 1000;
 
   let debateRoundsPayload = {
     round_shot: nextround,
@@ -837,9 +855,10 @@ async handleDebateInitChange  (nextround, isMicPassed,isStarted)  {
     noOfRounds: timeFormat.length,
     changedAt: Date.now(),
     hasFinished: false,
-    remainingTime: time * 60 * 1000,
+    remainingTime: isStarted ?  remainingTimeInMs : remainingTimeInMs + intervalDuration ,
     startedAt: Date.now(),
     isPaused: false,
+    isInterval: !Boolean(isStarted) ,
     both: teamName === "both",
     isMicPassed: isMicPassed ?? false
   }
@@ -856,9 +875,8 @@ async handleDebateInitChange  (nextround, isMicPassed,isStarted)  {
   }
   
   if(!await this.getMemberWithHighUid() || isStarted ){
-    await this.UpdateChannelAttr("debateRounds", debateRoundsPayload);
-    await this.setTheSpeakerTeamToChannel(teamName);
-  };
+    await this.UpdateChannelAttr(Enums.DEBATE_STATE, debateRoundsPayload);
+    };
      
 } catch (error) {
     console.log(error)
@@ -903,7 +921,6 @@ async handleFinishSpeakTime(isMicPassed)  {
   let nextRoundShot = ++debateShot;
   try {
   await this.addSpeechToChannel()
-
     if(!this.audioTracks?.localAudioTracks?.muted){
    await   this.closeMic();
     }
@@ -920,43 +937,32 @@ console.log(error)
 }
 }
 
-async setInitialDebateState  () {
+async setInitialDebateState() {
   try {
+    if(!this.activeDebate?.current)return;
   const attr = await this.getChannelAttributeFunc()
-  let { speakersData, debateRounds } = attr;
-console.log("initial",speakersData,debateRounds)
+  let debate_State = attr[Enums.DEBATE_STATE];
+  const {state} = this.activeDebate?.current;
+  console.log("the intial  db state",this.activeDebate?.current)
 
-  if(!speakersData || !debateRounds){
-    const {state} = this.activeDebate?.current;
+  if(debate_State){           
     
+    debate_State = JSON.parse(debate_State.value);
+    const {speakTeam} =debate_State;
+    this.changeDebateState(debate_State);
+    this.changeMicControlTeam(speakTeam);
 
-    if(state?.isStarted){
-      const {speakTeam} = state;
-      this.changeDebateState(state)
-      if(speakTeam !== "null"){
-        this.changeMicControlTeam(speakTeam);
-        await this.setTheSpeakerTeamToChannel(speakTeam);
-      }else{
-          this.changeMicControlTeam(null)
-          await this.setTheSpeakerTeamToChannel('null');
-      }
-      await this.UpdateChannelAttr("debateRounds",state);
-    }
-      return ;
-  }else{
 
-    speakersData = JSON.parse(speakersData?.value);
-  
-    if (speakersData === "null") {
-      this.changeMicControlTeam(null)
-    } else {
-      this.changeMicControlTeam(speakersData);
-    }
-    if (debateRounds) {
-      debateRounds = JSON.parse(debateRounds?.value)
-      this.changeDebateState(debateRounds);
-    }
-  console.log("intial ",debateRounds,speakersData);
+   
+
+  }else if(state?.isStarted){
+
+     this.changeDebateState(state)
+    this.changeMicControlTeam(state.speakTeam)
+    await this.UpdateChannelAttr(Enums.DEBATE_STATE,state);
+
+
+
   }
 
 } catch (error) {
@@ -969,6 +975,26 @@ async startDebate() {
   await this.handleDebateInitChange(1,null,true)
 }
 
+async finishInterval(){
+  if(!this.debateState?.current)return;
+    const stateObj = this.debateState?.current;
+  try {
+    const newState = {
+      ...stateObj,
+      isInterval:false,
+    }
+    this.changeDebateState(newState)
+    
+    
+    if(!await this.getMemberWithHighUid() ){ 
+    await this.UpdateChannelAttr(Enums.DEBATE_STATE, newState);
+  };
+
+
+  } catch (error) {
+    console.log(error.message)
+  }
+}
 
 async handleLeaveRoom  () {
   try {
@@ -1019,6 +1045,7 @@ export  { DebateRoomServices}
 
 
 
+// peer js 
 
 
-
+// {}

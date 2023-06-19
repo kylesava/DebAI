@@ -33,7 +33,7 @@ class UserController {
           returnOriginal:false
         }
       );
-      const {password,...others} = updatedUser;
+      const {password,...others} = updatedUser._doc;
       res.status(200).json({ message: others, success: true });
     } catch (error) {
       console.log(error);

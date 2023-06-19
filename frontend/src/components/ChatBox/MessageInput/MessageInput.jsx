@@ -2,25 +2,31 @@ import React, { useState, useEffect } from 'react'
 import "./MessageInput.css"
 import { BsFillSendFill } from "react-icons/bs"
 import { MdKeyboardVoice } from 'react-icons/md';
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
-import { useSelector } from 'react-redux';
+  import { useSelector } from 'react-redux';
 import LoginToChat from '../../../Layouts/FirstLoginToChat/LoginToChat';
-
+import { useSpeechRecognition } from 'react-speech-kit';
 const MessageInput = ({ isLiveChat, handleSendMessage }) => {
 
   const {data:userData} =useSelector(state=>state.user)
   const [voiceText, setVoiceText] = useState("");
-  const {
-    transcript,
-    listening,
-  } = useSpeechRecognition();
+  
+    const { listen, listening, stop ,transcript } = useSpeechRecognition({
+      onResult: (result) => {
+        setVoiceText(prev=>` ${prev} ${result}`)
+      },
+    });
 
 
-  useEffect(() => {
-    setVoiceText(transcript)
+  useEffect(()=>{
+  return ()=>{
 
-  }, [transcript]);
-
+    if(listening){
+      stop()
+    }
+  }
+  },[listening])
+ 
+console.log("the transcript",voiceText,listening)
 
   const handleKeyDown=(e)=>{
     if(e.key==="Enter"){
@@ -35,9 +41,9 @@ const MessageInput = ({ isLiveChat, handleSendMessage }) => {
 
   const handleListen = () => {
     if (listening) {
-      SpeechRecognition.stopListening();
+        stop()
     } else {
-      SpeechRecognition.startListening({ continuous: true })
+      listen({interimResults:false})
     }
   }
   

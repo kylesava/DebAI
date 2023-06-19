@@ -57,16 +57,17 @@ const DebateRoom = () => {
     startApiCalled:false,
   })
   const [debateState, setDebateState] = useState({
-    round_shot: 0,
     speakTime: 0,
+    round_shot: 0,
+    changedAt: 0,
+    startedAt: 0,
+    remainingTime: 0,
     speakTeam: "",
     isStarted: false,
     hasFinished: false,
-    changedAt: 0,
-    startedAt: 0,
+    isInterval:false,
     isPaused: false,
     both: false,
-    remainingTime: 0,
   })
   const showToast = (message, type) => {
     toast({
@@ -121,6 +122,9 @@ const DebateRoom = () => {
     sec: 0,
   })
   const [speakTimeLeft,setSpeakTimeLeft] = useState(0)
+  const [gapCountDown,setGapCountDown]=useState({
+    sec:0,
+  })
 
   useEffect(()=>{
     setRoomService(RoomService)
@@ -277,7 +281,7 @@ const DebateRoom = () => {
     }
   }
 
- 
+console.log(debateState) 
 
 
   return (
@@ -314,10 +318,19 @@ const DebateRoom = () => {
               <h1 className='Debate_room_main_text' >
                  {activeDebateRef.current?.topic}  </h1>
           
-          {  (debateState.isStarted ) && (<>
+          {  (debateState?.isStarted && !debateState?.isInterval) && (<>
               
                 <h1 className="main_timing_text">
-                  {   `${ !Number.isNaN(getTime(speakTimeLeft)) && `TIME LEFT  ${getTime(speakTimeLeft)}`}  `}
+                  {   `${ Boolean(getTime(speakTimeLeft)) ? `TIME LEFT  ${getTime(speakTimeLeft)}`:""}  `}
+                </h1>
+              
+            </>
+            )}
+
+                {  (debateState.isStarted && debateState.isInterval) && (<>
+              
+                <h1 className="main_timing_text">
+                  {   `${ Boolean(gapCountDown.sec) ? `INTERVAL FINISHES AFTER  ${gapCountDown.sec} sec`:""}  `}
                 </h1>
               
             </>
@@ -329,6 +342,7 @@ const DebateRoom = () => {
         </div>
         <DebateScreenBox
          isLive={isLive}
+         setGapCountDown={setGapCountDown}
         lastApiCallConfig={lastApiCallConfig}
         setSpeakTimeLeft={setSpeakTimeLeft}
          roomMembers={RoomMembers}
