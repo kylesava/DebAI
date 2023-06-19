@@ -216,7 +216,7 @@ RoomService
           {
           (activeDebate?.current && activeParticipants) ?
 
-            teams?.map(((team,index)=><DebateScreen activeSpeakers={activeSpeakers} team={team} teamOne={index===0}/>))
+            teams?.map(((team,index)=><DebateScreen debateState={debateState} activeSpeakers={activeSpeakers} team={team} teamOne={index===0}/>))
        
         
                

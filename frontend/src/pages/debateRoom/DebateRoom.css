@@ -18,7 +18,7 @@
   height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 3rem;
 
 }
 .debate_room_wave{
@@ -64,7 +64,7 @@
   letter-spacing: 1.2px;
   text-align: center;
   text-transform: uppercase;
-  font-size: 1.52rem;
+  font-size: 2.52rem;
 }
 .main_text_one {
   color: var(--primary_color);

@@ -9,7 +9,7 @@ import { bindActionCreators } from 'redux'
 import { useNavigate } from 'react-router-dom'
 import { getVoteOfTeam } from '../../../../utils/services'
 
-const DebateScreen = ({team,activeSpeakers,teamOne}) => {
+const DebateScreen = ({team,activeSpeakers,teamOne,debateState}) => {
   const toast  = useToast()
   const navigate =useNavigate()
   const dispatch = useDispatch();
@@ -18,6 +18,7 @@ const DebateScreen = ({team,activeSpeakers,teamOne}) => {
   const {activeDebate,votedTeam,isLive} = useSelector(state=>state.debate);
     const {setVotedTeamAction  ,AddActiveDebate} = bindActionCreators(actionCreators,dispatch )
 
+    console.log(debateState.speakTeam);
 
   
 
@@ -86,7 +87,7 @@ const DebateScreen = ({team,activeSpeakers,teamOne}) => {
   }
 
   return (
-    <div className='box_wrappers'>
+    <div className={`box_wrappers ${debateState.speakTeam === team.name ? "active_screen":""}`}>
     <div className='screen_box_header'>
 
  <div className='screen_box_team_name_box'>
@@ -100,7 +101,7 @@ const DebateScreen = ({team,activeSpeakers,teamOne}) => {
       {
         team && team.members?.length > 0 ? team?.members?.map((mem) => (
 
-          <DebatorView activeSpeakers={activeSpeakers} debator={mem} key={mem.id} />
+          <DebatorView  activeSpeakers={activeSpeakers} debator={mem} key={mem.id} />
 
         )) : <NoneJoined team={team?.name} roboImg={ teamOne ?  "/images/roboTeam.png":"/images/roboTeam2.png"} /> 
       }

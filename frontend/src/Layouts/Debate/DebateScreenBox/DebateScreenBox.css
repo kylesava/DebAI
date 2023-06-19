@@ -1,7 +1,7 @@
 .DebateScreenBoxWrapper {
   width: 100%;
   display: flex;
-  gap: 1rem;
+  gap: 3rem;
 }
 .box_wrappers {
   flex: 1;
@@ -140,6 +140,9 @@
   /* display: none !important; */
   pointer-events: none;
   opacity: 0.7;
+}
+.active_screen{
+  box-shadow: rgb(64, 70, 221) 0px 0px 4px 1px !important;
 }
 @media screen   and (min-width:600px) and (max-width:768px){
 
