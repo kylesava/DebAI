@@ -26,13 +26,19 @@ const MysteryBox = ({handleNext ,debateResult ,activeDebate ,isAudience}) => {
 
 
   const getResultText=()=>{
+    console.log(activeDebate,debateResult)
     if(!activeDebate || !debateResult)return;
     if(debateResult===Enums.WON){
      return  `Your team won the debate`
     }else if(debateResult===Enums.LOSE){
        return  `Your team lose the debate`
-     }else if(debateResult==="AUDIENCE"){
-      return `${activeDebate?.winner} won the debate`
+     }else if(debateResult==="AUDIENCE")
+     {
+      if(activeDebate?.winner === Enums.TIED){
+        return `DEBATE TIED `
+      }else{
+        return `${activeDebate?.winner} won the debate` 
+      }
      } else{
      return `Debate Tied`
     }

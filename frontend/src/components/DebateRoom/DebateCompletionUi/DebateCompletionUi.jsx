@@ -26,12 +26,14 @@ const DebateCompletionUi = () => {
  
 
   useEffect(()=>{
-    if(activeDebate && currentUser){
+    if(activeDebate ){
       const {winner,teams} = activeDebate;
       const myTeamName  =     getMyTeam(teams,currentUser?._id)?.name; 
       if(!myTeamName){
         setDebateResult("AUDIENCE")
+        
         return setisparticipants(false)
+
       }else{
         setIsAudience(false)
       }
@@ -45,7 +47,7 @@ const DebateCompletionUi = () => {
     }
   },[activeDebate,currentUser]);
 
-
+console.log(debateResult)
 
   const fetchDebateById=async()=>{
     try {
