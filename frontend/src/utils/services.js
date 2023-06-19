@@ -845,7 +845,7 @@ async handleDebateInitChange  (nextround, isMicPassed,isStarted)  {
   const { team: teamName, time } = timeFormat[nextround - 1];
 
   const remainingTimeInMs = time * 60 * 1000;
-  const intervalDuration = intervalTime * 1000;
+  const intervalDuration = (intervalTime +2) * 1000;
 
   let debateRoundsPayload = {
     round_shot: nextround,
