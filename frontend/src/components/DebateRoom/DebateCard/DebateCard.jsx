@@ -156,8 +156,10 @@ const DebateCard = ({ debate, isLive }) => {
             </button>
           )}
 
-          <Link
-            to={`${
+      {
+        isParticipant === false?
+        <Link
+        to={`${
               debate.hasEnded
                 ? `/completion/${debate?._id}`
                 : `/debate/${debate?.passcode}?audience=${true}`
@@ -165,12 +167,13 @@ const DebateCard = ({ debate, isLive }) => {
             state={{ debate }}
           >
             <button>
-              {" "}
+
               <MdOutlineViewInAr /> <p>Join </p>{" "}
             </button>
-          </Link>
+          </Link> : ""
 
-          {isLive && isParticipant ? (
+            } 
+          {  isParticipant ===true ? (
             <button onClick={handleParticipateInDebate}>
               {" "}
               <AiOutlineUsergroupAdd /> <p>Participate</p>{" "}

@@ -24,6 +24,7 @@ import ConfirmationEmailSent from "./pages/Auth/ConfirmationSent/Confirmation_em
 import SentEmailForPassword from "./pages/Auth/SentEmailForPassword/SentEmailForPassword";
 import ResetPassword from "./pages/Auth/ResetPassword/ResetPassword";
 import VerifyEmail from "./pages/Auth/VerifyEmail/VerifyEmail";
+import Motions from "./pages/motions/Motions";
 
 function App() {
   const { data } = useSelector((state) => state.user)
@@ -77,14 +78,16 @@ function App() {
         <Route path="/watch/:debateId" element={<Watchnow />} />
         <Route path="/subscription" element={<Subscription />} />
         <Route path="/completion/:debateId"  element={<DebateCompletionUi/>}/>
-        <Route  path="/account" >
+        <Route path="/motions"  element={<Motions/>} />
+
+        <Route path="/account" >
         <Route path="confirmation/:confirmationCode"  element={<Confirmation/>}/>
         <Route path="confirmation_email_sent"  element={<ConfirmationEmailSent/>}/>
         <Route path="passwordresetlink" element={<SentEmailForPassword/>} />  
         <Route path="resetpassword/:resettoken" element={<ResetPassword/>}/>
         <Route path="verifyemail" element={<VerifyEmail/>} />
 
-          </Route>
+        </Route>
         </Routes>
       </div>
 

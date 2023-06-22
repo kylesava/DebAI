@@ -50,7 +50,7 @@ const SignOutPopover = ({ children }) => {
     }
 
     return (
-        <Popover closeOnBlur autoFocus={false} placement={"right-end"}>
+        <Popover closeOnBlur  placement={"right-end"}>
             <PopoverTrigger>
                 <span style={{ cursor: "pointer" }}>{children}</span>
             </PopoverTrigger>

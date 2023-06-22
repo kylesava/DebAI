@@ -15,7 +15,6 @@ passport.use(new GoogleStrategy({
             firstName: profile.name?.givenName,
             lastName: profile.name?.familyName,
             email: profile._json.email,
-            avatar: profile._json.picture,
         };
 
 

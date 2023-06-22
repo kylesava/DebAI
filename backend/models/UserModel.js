@@ -22,7 +22,7 @@ const UserSchema = mongoose.Schema(
     },
     avatar: {
       type: String,
-      default:  "https://firebasestorage.googleapis.com/v0/b/vrumies-1f269.appspot.com/o/53.jpg?alt=media&token=7cda4c2e-f7ab-4b4c-a6e0-807ad2366672",
+      default:  "https://scontent.fbwa1-1.fna.fbcdn.net/v/t1.15752-9/355963233_221024274146752_1208712342795325701_n.jpg?_nc_cat=100&cb=99be929b-3346023f&ccb=1-7&_nc_sid=ae9488&_nc_ohc=IfT_EbUiTZEAX9plmgi&_nc_ht=scontent.fbwa1-1.fna&oh=03_AdRGwggIYgvb6aqwuyCZhtr1qN6XCe7HVTkj9VtqfVwDzw&oe=64BBF0EC",
     },
     equipedAvatars:[],
     verified:{
