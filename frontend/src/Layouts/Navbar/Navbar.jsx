@@ -37,6 +37,9 @@ const Navbar = () => {
           <Link to={"/chatbot"}>
             <li className={`${location === "/chatbot" && "active_li"}`}>chatbot </li>
           </Link>
+          <Link to={"/motion"}>
+                  <li className={`${location === "/motion" && "motions"}`}>motion </li>
+          </Link>
           {
 
            data && <Link to={"/subscription"}>

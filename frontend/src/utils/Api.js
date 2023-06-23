@@ -96,6 +96,10 @@ export const updateDebateApi=(debateId,data)=>axiosInstance.put(`/debate/${debat
 export const addAvatarEquipedMembersInDebate=(debateId,userId)=>axiosInstance.put(`/debate/addAvatarEquipedMembersInDebate/${debateId}/${userId}`)
 export const finishDebateApi=(debateId,data)=>axiosInstance.post(`/debate/debateEnd/${debateId}`,data)
 
+//MOTION API
+export const getAllMotionCategoryApi=()=>axiosInstance.get(`/motion/allcats`);
+export const getMotionOfType=(typeId)=>axiosInstance.get(`/motion/alltypes?typeId=${typeId}`)
+
 
 // GET COUNTRIES API
 

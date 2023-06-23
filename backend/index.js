@@ -77,6 +77,7 @@ app.use(
     saveUninitialized: true,
     store,
     cookie: {
+
       secure: true,
       maxAge: 31556952000,
       httpOnly: false,

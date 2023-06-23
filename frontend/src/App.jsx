@@ -78,8 +78,8 @@ function App() {
         <Route path="/watch/:debateId" element={<Watchnow />} />
         <Route path="/subscription" element={<Subscription />} />
         <Route path="/completion/:debateId"  element={<DebateCompletionUi/>}/>
-        <Route path="/motions"  element={<Motions/>} />
-
+        <Route path="/motion"  element={<Motions/>} />
+        
         <Route path="/account" >
         <Route path="confirmation/:confirmationCode"  element={<Confirmation/>}/>
         <Route path="confirmation_email_sent"  element={<ConfirmationEmailSent/>}/>

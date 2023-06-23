@@ -62,6 +62,7 @@ padding: 10px;
     text-align: center;
     color: gray;
     letter-spacing: 1px;
+    text-transform: capitalize;
 }
 /* motion button contaienr */
 
