@@ -3,4 +3,5 @@ module.exports = (app) => {
     app.use("/api/auth", require("./routes/AuthRoute"))
     app.use("/api/debate", require("./routes/DebateRoute"));
     app.use("/api/chat", require("./routes/ChatRoute"));
+    app.use("/api/motion",require("./routes/MotionRoute"))
 }
