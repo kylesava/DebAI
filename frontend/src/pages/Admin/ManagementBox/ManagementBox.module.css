@@ -1,0 +1,21 @@
+.manage{
+    width: 150px ;
+    height: 150px;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+.manage img{
+    width: 64px;
+}
+.management_box{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    
+}

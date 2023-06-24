@@ -5,6 +5,10 @@ const motionSchema =mongoose.Schema({
     name:{
         type:String,
         required:[true,"name is required"]
+    },
+    image:{
+        type:String,
+        
     }
 },
 {

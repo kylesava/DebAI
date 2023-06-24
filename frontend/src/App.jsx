@@ -25,6 +25,8 @@ import SentEmailForPassword from "./pages/Auth/SentEmailForPassword/SentEmailFor
 import ResetPassword from "./pages/Auth/ResetPassword/ResetPassword";
 import VerifyEmail from "./pages/Auth/VerifyEmail/VerifyEmail";
 import Motions from "./pages/motions/Motions";
+import Admin from "./pages/Admin/Home/Admin";
+import UploadMotions from "./pages/Admin/uploads/uploadMotions/UploadMotions";
 
 function App() {
   const { data } = useSelector((state) => state.user)
@@ -67,6 +69,14 @@ function App() {
           ( roomLoading  || isLoading) ? <Loader /> :""
         }
         <Routes>
+      {
+        data?.isAdmin ? 
+        <>
+        <Route  path="" element={<Admin/>}/> 
+        <Route  path="/motion/upload" element={<UploadMotions/>}/>
+        </>
+        :
+        <>
         <Route path="" element={<Home/>} />
         <Route path="/alldebates" element={<CurrentDebates />} />
         <Route path="/chatbot" element={<ChatBot />} />
@@ -88,6 +98,8 @@ function App() {
         <Route path="verifyemail" element={<VerifyEmail/>} />
 
         </Route>
+        </>
+      }
         </Routes>
       </div>
 

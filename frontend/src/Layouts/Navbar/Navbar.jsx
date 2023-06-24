@@ -26,7 +26,7 @@ const Navbar = () => {
           </NavPoper>
 
       </div>
-      <div className="other_button_box">
+ 
         <ul className="nav_list">
           <Link to={"/"}>
             <li className={`${location === "/" && "active_li"}`}>Home</li>
@@ -38,7 +38,7 @@ const Navbar = () => {
             <li className={`${location === "/chatbot" && "active_li"}`}>chatbot </li>
           </Link>
           <Link to={"/motion"}>
-                  <li className={`${location === "/motion" && "motions"}`}>motion </li>
+                  <li className={`${location === "/motion" && "active_li"}`}>motion </li>
           </Link>
           {
 
@@ -87,8 +87,7 @@ const Navbar = () => {
 
 
       </div>
-    </div>
-  )
+   )
 }
 
 export default Navbar

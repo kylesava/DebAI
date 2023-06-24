@@ -1,0 +1,23 @@
+.upload_form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.upload_form input,select{
+      height: 50px;
+  width: 100%;
+  border-radius: 4px;
+  font-size: 11px;
+  padding-left: 28px;
+  outline: none;
+  letter-spacing: 1px;
+  border: none;
+     color:black; 
+     border-radius: 10px;
+  background-color: #f0efef;
+  display: flex;
+
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}

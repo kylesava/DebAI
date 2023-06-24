@@ -1,0 +1,28 @@
+.comment{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.comment_user_box{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.comment_user_avatar{
+    width: 25px;
+    height: 25px;
+
+    border-radius: 50%;
+    object-fit: cover;
+
+}
+.comment_username{
+    /* font-weight: bold; */
+    font-size:14px;
+    text-transform: capitalize;
+    color: var(--dark_primary_text_color);
+}
+.comment_text{
+    padding-left: 45px;
+    font-size: 14px;
+}

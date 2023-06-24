@@ -98,7 +98,9 @@ export const finishDebateApi=(debateId,data)=>axiosInstance.post(`/debate/debate
 
 //MOTION API
 export const getAllMotionCategoryApi=()=>axiosInstance.get(`/motion/allcats`);
-export const getMotionOfType=(typeId)=>axiosInstance.get(`/motion/alltypes?typeId=${typeId}`)
+export const getMotionOfType=(typeId,group)=>axiosInstance.get(`/motion/alltypes?typeId=${typeId}&group=${group}`)
+export const addNewMotionApi=(data)=>axiosInstance.post(`/motion/addmotion`,data);
+export const addCommentOnMotionApi=(motionId,data)=>axiosInstance.post(`/motion/comment/${motionId}`,data)
 
 
 // GET COUNTRIES API

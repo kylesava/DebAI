@@ -8,7 +8,15 @@ const userType= {
 const motionSchema =mongoose.Schema({
     topic:{
         type:String,
+        unique:[true,"topic cannot be same"],
         required:[true,"Topic is required"]
+    },
+    group:{
+        type:String,
+        enums:[
+            "senior",
+            "junior",
+        ]
     },
     type:{
         type:mongoose.Schema.Types.ObjectId,

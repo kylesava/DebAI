@@ -39,26 +39,32 @@
 /* motion cat box */
 .motion_category_wrapper{
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
     padding: 2rem;
     justify-content: center;
 }
 .motion_cat_box{
-    width: 120px;
-    height: 120px;
-        border-radius: 5px;
-      box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-        display: grid;
-        place-items: center;
-        cursor: pointer;
-padding: 10px;
+    width: 90px;
+    height: 90px;
+    border-radius: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    padding: 10px;
+    transition: all .3s ease-in-out;
+    opacity: 0.8;
+    
+}
+.motion_cat_box:hover{
+    scale: 1.04;
 }
 
 .motion_cat_box img{
-    width: 50%;
+width: 60%;
 }
 .motion_cat_box p{
-    font-size: 11px;
+    font-size: 8px;
     text-align: center;
     color: gray;
     letter-spacing: 1px;
@@ -105,4 +111,9 @@ padding: 10px;
 }
 .active_tab p{
     color: white !important;
+}
+.active_motion_cat{
+    opacity: 1;
+    scale: 1.1;
+    border: 2px solid var(--dark_primary_text_color);
 }

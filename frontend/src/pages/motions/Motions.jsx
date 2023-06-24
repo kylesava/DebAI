@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react'
 import styles from "./motions.module.css"
 import Navbar from "../../Layouts/Navbar/Navbar"
 import { getAllMotionCategoryApi, getMotionOfType } from '../../utils/Api'
+import MotionListTab from '../../components/Motion/MotionListTab/MotionListTab'
 const Motions = () => {
 
 
-const [motionPerson,setMotionPerson] =useState("senior")
+const [activeGroup,setActiveGroup] =useState("senior")
 const [activeMotionCat,setActiveMotionCat] =useState({})
 const [motionCategories,setMotionCategories] = useState([]);
 const [allMotions,setAllMotions] =useState([])
@@ -28,12 +29,12 @@ useEffect(()=>{
 
 useEffect(()=>{
 fetchMotionsOfType()
-},[activeMotionCat])
+},[activeMotionCat,activeGroup])
 
 const fetchMotionsOfType=async()=>{
     if(!activeMotionCat?._id)return;
     try {
-            const {status,data} =await getMotionOfType(activeMotionCat._id)
+            const {status,data} =await getMotionOfType(activeMotionCat._id,activeGroup)
             setAllMotions(data.message)
     } catch (error) {
             console.log(error)
@@ -52,7 +53,7 @@ const fetchDebateCategory=async()=>{
     }
 }
 
-console.log(motionCategories)
+
 
 
   return (
@@ -69,10 +70,10 @@ console.log(motionCategories)
             </div>
 
             <div className={styles.motion_button_container}>
-                <button className={`${styles.button_tab} ${styles.active_tab} `}>
+                <button onClick={()=>setActiveGroup("senior")} className={`${styles.button_tab} ${ activeGroup==="senior" && styles.active_tab} `}>
                     <img width="48" height="48" src="https://img.icons8.com/emoji/48/older-person-medium-light-skin-tone.png" alt="older-person-medium-light-skin-tone"/>
                     <p>Senior</p></button>
-                <button className={styles.button_tab}>
+                <button onClick={()=>setActiveGroup("junior")} className={`${styles.button_tab} ${activeGroup==="junior" && styles.active_tab}  `}>
 
                 <img width="48" height="48" src="https://img.icons8.com/emoji/48/boy-light-skin-tone.png" alt="boy-light-skin-tone"/>
                 <p>Junior</p>
@@ -84,9 +85,9 @@ console.log(motionCategories)
         {
             motionCategories.map(motion_cat=>(
 
-                        <div onClick={()=>setActiveMotionCat(motion_cat)} className={styles.motion_cat_box}>
+                        <div onClick={()=>setActiveMotionCat(motion_cat)} className={`${styles.motion_cat_box} ${ activeMotionCat.name === motion_cat.name ? styles.active_motion_cat :""}` }>
 
-                    <img width="94" height="94" src="https://img.icons8.com/3d-fluency/94/yin-yang.png" alt="yin-yang"/>
+                    <img src={motion_cat.image} alt="yin-yang"/>
                     <p>{motion_cat.name}</p>
                 </div>
 
@@ -94,6 +95,8 @@ console.log(motionCategories)
         }
 
             </div>
+
+            <MotionListTab motionList={allMotions} setMotion={setAllMotions}/>
 
         </div>
 

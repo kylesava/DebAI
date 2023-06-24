@@ -38,12 +38,14 @@ class MotionController{
             }
         }
     async  getAllMotionOfType(req,res){
-        const {typeId} = req.query
+        const {typeId,group} = req.query
+
 
 
         try {
             const motions = await MotionModel.find({
-                type:typeId
+                type:typeId,
+                group
             }).populate({
                 path:"comments.userId",
                 select:{

@@ -1,0 +1,28 @@
+.MotionListTab{
+    width: 60%;
+    margin:auto;
+    padding-bottom: 5rem;
+}
+.no_motion_list_img{
+    /* width:  ; */
+    width: 20%;
+}
+.no_motion_box{
+    display: flex;
+    background-color: rgba(249, 249, 249, 58);
+    padding: 4rem;
+    border-radius: 10px;
+    /* width: fit-content; */
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    gap: 2rem;
+
+}
+
+.no_motion_box h1{
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: var(--dark_text_primary_color)
+}
