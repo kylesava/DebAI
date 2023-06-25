@@ -3,7 +3,7 @@ import styles from "./motions.module.css"
 import Navbar from "../../Layouts/Navbar/Navbar"
 import { getAllMotionCategoryApi, getMotionOfType } from '../../utils/Api'
 import MotionListTab from '../../components/Motion/MotionListTab/MotionListTab';
-import {Link} from "react-router-dom"
+import {Link, useLocation} from "react-router-dom"
 import MotionCatItem from '../../components/Motion/MotionCatItem/MotionCatItem';
 const Motions = () => {
 
@@ -54,7 +54,8 @@ const fetchDebateCategory=async()=>{
         console.log(error)
     }
 }
-
+const  location = useLocation()
+const adminPage = location.pathname.split("/")[1]
 
 
 
@@ -62,7 +63,7 @@ const fetchDebateCategory=async()=>{
   return (
     <div className={styles.motion_page}>
 
-        <Navbar/>
+      { !Boolean(adminPage )?   <Navbar/>:""}
         <div className={styles.motion_container}>
 
             <div className={styles.motion_header}>
