@@ -1,4 +1,4 @@
-const { addMotionCategory, addMotion, getAllMotionCats, getAllMotionOfType, addComment, deleteComment } = require("../controller/MotionController");
+const { addMotionCategory, addMotion, getAllMotionCats, getAllMotionOfType, addComment, deleteComment, deleteCatMotion } = require("../controller/MotionController");
 
 const router = require("express").Router()
 
@@ -8,6 +8,7 @@ router.get("/allcats",getAllMotionCats)
 router.get("/alltypes",getAllMotionOfType)
 router.post("/comment/:motionId",addComment)
 router.delete("/comment/:_id/:comment_id",deleteComment)
+router.delete("/cat/:id",deleteCatMotion)
 
 
 

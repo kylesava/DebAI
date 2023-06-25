@@ -106,6 +106,16 @@ try {
     res.status(500).json({message:error.message})
 }
 }
+
+async deleteCatMotion(req,res){
+    const {id} = req.params;
+    try {
+            await MotionCatModel.findByIdAndDelete(id)
+            return res.status(200).json({message:"successfully deleted",success:true})
+    } catch (error) {
+            return res.status(500).json({message:error.message,success:false })
+    }
+}
 }
 
 module.exports = new MotionController()

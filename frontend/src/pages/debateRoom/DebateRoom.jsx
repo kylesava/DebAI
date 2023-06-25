@@ -281,7 +281,6 @@ const DebateRoom = () => {
     }
   }
 
-console.log(debateState) 
 
 
   return (
@@ -311,12 +310,12 @@ console.log(debateState)
         </div>
         <div className='debate_room_top'>
         <div className='debate_room_top_header'>
+          
+            <h1 className='Debate_room_main_text' >
+               {activeDebateRef.current?.topic}  </h1>
+        
           {isLive &&
           <>
-          
-            
-              <h1 className='Debate_room_main_text' >
-                 {activeDebateRef.current?.topic}  </h1>
           
           {  (debateState?.isStarted && !debateState?.isInterval) && (<>
               

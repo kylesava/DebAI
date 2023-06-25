@@ -26,7 +26,8 @@ import ResetPassword from "./pages/Auth/ResetPassword/ResetPassword";
 import VerifyEmail from "./pages/Auth/VerifyEmail/VerifyEmail";
 import Motions from "./pages/motions/Motions";
 import Admin from "./pages/Admin/Home/Admin";
-import UploadMotions from "./pages/Admin/uploads/uploadMotions/UploadMotions";
+import Index from "./pages/Admin/Index/Index";
+import MotionUpload from "./pages/Admin/motionUpload/MotionUpload";
 
 function App() {
   const { data } = useSelector((state) => state.user)
@@ -68,16 +69,54 @@ function App() {
         {
           ( roomLoading  || isLoading) ? <Loader /> :""
         }
-        <Routes>
-      {
-        data?.isAdmin ? 
-        <>
-        <Route  path="" element={<Admin/>}/> 
-        <Route  path="/motion/upload" element={<UploadMotions/>}/>
-        </>
-        :
-        <>
-        <Route path="" element={<Home/>} />
+       {
+        data?.isAdmin ? <AdminRoutes/> :<VisitorsRoutes data={data}/>
+       }
+      </div>
+
+    </>
+  );
+}
+
+export default App;
+
+
+
+
+const AdminRoutes=()=>{
+  return (
+
+      <>
+          <Routes>
+        <Route path="/admin" element={<Index />}>
+          <Route path="" element={<Admin/>} />
+
+
+          <Route path="motion" element={<Motions />} />
+          {/* <Route path="users" element={<Users />} /> */}
+          {/* <Route path="users/upload" element={<UserUpload />} /> */}
+          <Route path="motion/upload" element={<MotionUpload/>} />
+        </Route>
+      </Routes>
+      
+      
+      
+      
+      
+      </>
+
+
+
+  )
+}
+
+
+const VisitorsRoutes=(data)=>{
+  return(
+
+      <Routes>
+
+          <Route path="" element={<Home/>} />
         <Route path="/alldebates" element={<CurrentDebates />} />
         <Route path="/chatbot" element={<ChatBot />} />
         <Route path="/create" element={<CreateDebate />} />
@@ -97,14 +136,10 @@ function App() {
         <Route path="resetpassword/:resettoken" element={<ResetPassword/>}/>
         <Route path="verifyemail" element={<VerifyEmail/>} />
 
-        </Route>
-        </>
-      }
-        </Routes>
-      </div>
+      </Route>
 
-    </>
-  );
+      </Routes>
+
+
+  )
 }
-
-export default App;

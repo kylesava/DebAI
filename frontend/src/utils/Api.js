@@ -101,8 +101,8 @@ export const getAllMotionCategoryApi=()=>axiosInstance.get(`/motion/allcats`);
 export const getMotionOfType=(typeId,group)=>axiosInstance.get(`/motion/alltypes?typeId=${typeId}&group=${group}`)
 export const addNewMotionApi=(data)=>axiosInstance.post(`/motion/addmotion`,data);
 export const addCommentOnMotionApi=(motionId,data)=>axiosInstance.post(`/motion/comment/${motionId}`,data)
-
-
+export const addNewMotionCatApi=(data)=>axiosInstance.post(`/motion/addcat`,data)
+export const deltedCatMotionApi=(motionCatId)=>axiosInstance.delete(`/motion/cat/${motionCatId}`)
 // GET COUNTRIES API
 
 export const getCountries=()=>axios.get("https://restcountries.com/v3.1/all");

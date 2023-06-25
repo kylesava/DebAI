@@ -1,3 +1,5 @@
+import { Enums } from "../redux/action/actionTypes/Enumss";
+
 export const AI_OPTIONS = [
     {
         name: "Q&A",
@@ -198,6 +200,14 @@ export const coachData = [
     },
     
 ]
+
+
+// export const adminForm= new Map([
+//     [Enums.MOTION_FORM,[
+//         "topic",
+//         "name"
+//     ]]
+// ])
 export const avatarsTypeData={
     common:[
 

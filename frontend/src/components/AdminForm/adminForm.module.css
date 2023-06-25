@@ -1,0 +1,22 @@
+.admin_form{
+    width: 95%;
+    max-width: 600px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+
+}
+.form_box{
+    width: 100%;
+}
+.form_header_text{
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: var(--dark_primary_text_color);
+    letter-spacing: 1px;
+    text-align: center;
+
+}

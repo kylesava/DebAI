@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react'
 import styles from "./motions.module.css"
 import Navbar from "../../Layouts/Navbar/Navbar"
 import { getAllMotionCategoryApi, getMotionOfType } from '../../utils/Api'
-import MotionListTab from '../../components/Motion/MotionListTab/MotionListTab'
+import MotionListTab from '../../components/Motion/MotionListTab/MotionListTab';
+import {Link} from "react-router-dom"
+import MotionCatItem from '../../components/Motion/MotionCatItem/MotionCatItem';
 const Motions = () => {
 
 
@@ -56,6 +58,7 @@ const fetchDebateCategory=async()=>{
 
 
 
+
   return (
     <div className={styles.motion_page}>
 
@@ -83,17 +86,22 @@ const fetchDebateCategory=async()=>{
 
 
         {
-            motionCategories.map(motion_cat=>(
+            motionCategories.map(motion_cat=><MotionCatItem 
+                key={motion_cat.name} 
+                motion_cat={motion_cat}
+                setMotionCategories={setMotionCategories}
+                activeMotionCat={activeMotionCat} setActiveMotionCat={setActiveMotionCat} />)
+        }
+             <Link  to="upload">
+             
+                <div  className={`${styles.motion_cat_box} ${styles.motion_add}` }>
 
-                        <div onClick={()=>setActiveMotionCat(motion_cat)} className={`${styles.motion_cat_box} ${ activeMotionCat.name === motion_cat.name ? styles.active_motion_cat :""}` }>
-
-                    <img src={motion_cat.image} alt="yin-yang"/>
-                    <p>{motion_cat.name}</p>
+                    <img width="96" height="96" src="https://img.icons8.com/color/96/add--v1.png" alt="add--v1"/>
+                    <p>Add </p>
                 </div>
 
-            ))
-        }
 
+             </Link>
             </div>
 
             <MotionListTab motionList={allMotions} setMotion={setAllMotions}/>

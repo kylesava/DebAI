@@ -70,7 +70,7 @@ const handleSpeakOrder=(team)=>{
         
         <option  selected disabled value={""}>Interval Duration</option>
          
-               {[5,10,15].map((time) => (
+               {[10,15,30].map((time) => (
           <option  value={time} key={time}>{time} seconds</option>
         ))}
 

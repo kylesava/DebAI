@@ -140,7 +140,7 @@ const ChatBot = () => {
           )): <ChatBotStarter/>
         }
         {
-          loading && <MessageText  own={false} message={{text:"loading...",owner:"bot"}} key={new Date().getTime()} />
+          loading && <MessageText  own={false} message={{text:"...",owner:"bot"}} key={new Date().getTime()} />
         }
 
           </div>

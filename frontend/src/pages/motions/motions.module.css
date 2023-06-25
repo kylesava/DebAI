@@ -42,8 +42,10 @@
     gap: 1rem;
     padding: 2rem;
     justify-content: center;
+    align-items: center;
 }
 .motion_cat_box{
+    position: relative;
     width: 90px;
     height: 90px;
     border-radius: 5px;
@@ -55,6 +57,10 @@
     transition: all .3s ease-in-out;
     opacity: 0.8;
     
+}
+.motion_add{
+    width: 80px;
+    height: 80px;
 }
 .motion_cat_box:hover{
     scale: 1.04;
@@ -116,4 +122,16 @@ width: 60%;
     opacity: 1;
     scale: 1.1;
     border: 2px solid var(--dark_primary_text_color);
+}
+.delete_motion_icon{
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 1.6rem;
+    color: red;
+    opacity: 0.7;
+    display: none;
+}
+.showDelIcon{
+    display: block !important;
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from "./ManagementBox.module.css"
-
+import {Link} from "react-router-dom";
 const ManagementBox = () => {
   return (
     <div className={styles.management_box}>
@@ -20,10 +20,12 @@ const ManagementBox = () => {
             <p>Earnings </p>
         
         </div>
+        <Link to="motion">
         <div className={styles.manage}>
             <img width="96" height="96" src="https://img.icons8.com/fluency/96/comments.png" alt="comments"/>
             <p>Motions</p>
         </div>
+        </Link>
 
     </div>
   )
