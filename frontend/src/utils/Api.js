@@ -12,7 +12,7 @@ export const searchUserByNames = (username) =>
   axiosInstance.get(`/user/search?search_query=${username}`);
 export const searchUserByIdApi = (userId) =>
   axiosInstance.get(`/user/search?userId=${userId}`);
-
+export const getAllDebaiUsersApi=()=>axiosInstance.get("/user/search")
 export const getTopUsersApi = ()=> axiosInstance.get("/user/leadingDebators")
 export const emailConfirmationApi=(code)=>axiosInstance.post(`/auth/email_confirmation/${code}`)
 export const resetpasswordApi =(token,data)=>axiosInstance.post(`/auth/resetpassword/${token}`,data)

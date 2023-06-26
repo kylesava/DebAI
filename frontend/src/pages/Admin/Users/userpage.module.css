@@ -1,0 +1,24 @@
+.user_page{
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+
+
+    
+
+}
+
+.users_container{
+    /* width: 80%; */
+    margin: auto    ;
+}
+.user_page_header{
+    text-align: center;
+    margin: auto;
+}
+.user_header_text{
+    font-size: 2rem;
+    font-weight: bold;
+
+}

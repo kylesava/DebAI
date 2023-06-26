@@ -28,6 +28,7 @@ import Motions from "./pages/motions/Motions";
 import Admin from "./pages/Admin/Home/Admin";
 import Index from "./pages/Admin/Index/Index";
 import MotionUpload from "./pages/Admin/motionUpload/MotionUpload";
+import UsersPage from "./pages/Admin/Users/UsersPage";
 
 function App() {
   const { data } = useSelector((state) => state.user)
@@ -83,6 +84,7 @@ export default App;
 
 
 
+
 const AdminRoutes=()=>{
   return (
 
@@ -90,11 +92,8 @@ const AdminRoutes=()=>{
           <Routes>
         <Route path="/admin" element={<Index />}>
           <Route path="" element={<Admin/>} />
-
-
           <Route path="motion" element={<Motions />} />
-          {/* <Route path="users" element={<Users />} /> */}
-          {/* <Route path="users/upload" element={<UserUpload />} /> */}
+          <Route path="user"  element={<UsersPage/>}/>
           <Route path="motion/upload" element={<MotionUpload/>} />
         </Route>
       </Routes>
@@ -107,14 +106,14 @@ const AdminRoutes=()=>{
 
 
 
-  )
+)
 }
 
 
 const VisitorsRoutes=(data)=>{
   return(
-
-      <Routes>
+    
+    <Routes>
 
           <Route path="" element={<Home/>} />
         <Route path="/alldebates" element={<CurrentDebates />} />
