@@ -29,6 +29,7 @@ import Admin from "./pages/Admin/Home/Admin";
 import Index from "./pages/Admin/Index/Index";
 import MotionUpload from "./pages/Admin/motionUpload/MotionUpload";
 import UsersPage from "./pages/Admin/Users/UsersPage";
+import EditUserPage from "./pages/Admin/EditUser/EditUserPage";
 
 function App() {
   const { data } = useSelector((state) => state.user)
@@ -95,6 +96,11 @@ const AdminRoutes=()=>{
           <Route path="" element={<Admin/>} />
           <Route path="motion" element={<Motions />} />
           <Route path="user"  element={<UsersPage/>}/>
+            {/* if i want to nest the user in the parent route there should be only the component or content which is same for all nested route if not you can leave empty adding only with <Outlet/> to display the nested route elements but adding the <Outlet/> is compulsion */}
+
+
+\\            <Route path="user/edit/:id" element={<EditUserPage/>}/> 
+
           <Route path="motion/upload" element={<MotionUpload/>} />
         </Route>
       </Routes>

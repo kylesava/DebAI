@@ -56,7 +56,7 @@ const UserTable = () => {
     </Thead>
     <Tbody>
         {
-            debAiUsers.map(user=><UserTableItem user={user} key={user._id}/>)
+            debAiUsers.map(user=><UserTableItem  setAllUsers={setDebAiUsers} user={user} key={user._id}/>)
         }
     </Tbody>
 

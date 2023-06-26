@@ -7,7 +7,8 @@ const {
   cancelSubscription,
   handleRateUser,
   getTopUsers,
-  getTopTenDebators
+  getTopTenDebators,
+  deleteUser
 } = require("../controller/UserController");
 const router = require("express").Router();
 const EmailService = require("../services/EmailService")
@@ -21,4 +22,5 @@ router.put("/:userId", updateUser);
 router.get("/topDebators",getTopUsers)
 router.get("/leadingDebators",getTopTenDebators)
 router.post("/email",(req,res)=>EmailService.signUpEmail(res,res))
+router.delete("/:id",deleteUser)
 module.exports = router;

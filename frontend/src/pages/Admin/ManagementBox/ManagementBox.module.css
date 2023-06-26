@@ -1,6 +1,6 @@
 .manage{
-    width: 150px ;
-    height: 150px;
+    width: 100px ;
+    height: 100px;
     border-radius: 10px;
     padding: 10px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -11,11 +11,14 @@
     gap: 10px;
 }
 .manage img{
-    width: 64px;
+    width: 40px;
 }
 .management_box{
     display: flex;
     justify-content: center;
     gap: 2rem;
+    font-size: 13px;
+    color: gray ;
+    letter-spacing: 1px;
     
 }
