@@ -90,6 +90,7 @@ const AdminRoutes=()=>{
 
       <>
           <Routes>
+        <Route path="" element={<Navigate  to={"/admin"} />}/>
         <Route path="/admin" element={<Index />}>
           <Route path="" element={<Admin/>} />
           <Route path="motion" element={<Motions />} />
