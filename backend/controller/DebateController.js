@@ -35,6 +35,12 @@ class DebateController {
         })
           .populate(["admin", "teams.members", "joinedParticipants"])
           .sort({ startTime: 1 });
+      }else if(req.query.past){
+           fetchedDebate = await DebateModel.find({
+          hasEnded:true
+        })
+          .populate(["admin", "teams.members", "joinedParticipants"])
+          .sort({ startTime: 1 });
       } else {
         fetchedDebate = await DebateModel.find({
           ...searchQuery
@@ -127,7 +133,7 @@ class DebateController {
       res
         .status(200)
         .json({ message: "successfully added the participant", success: true });
-    } catch (error) {
+    } catch (error) {``
       console.log(error);
       res
         .status(500)

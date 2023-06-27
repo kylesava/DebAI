@@ -1,98 +1,4 @@
-import { Enums } from "../redux/action/actionTypes/Enumss";
-
-export const AI_OPTIONS = [
-    {
-        name: "Q&A",
-        id: "q&a",
-        description: "Answer questions based on existing knowledge",
-        option: {
-            model: "text-davinci-003",
-            temperature: 0,
-            max_tokens: 100,
-            top_p: 1,
-            frequency_penalty: 0.0,
-            presence_penalty: 0.0,
-        },
-    },
-    {
-        name: "Grammer Correction",
-        id: "grammerCorrection",
-        description: "Corrects sentences into standard English.",
-        option: {
-            model: "text-davinci-003",
-            temperature: 0,
-            max_tokens: 100,
-            top_p: 1,
-            frequency_penalty: 0.0,
-            presence_penalty: 0.0,
-        },
-    },
-    {
-        name: "Summarize for a 2nd grader",
-        id: "summary",
-        description: "Translates difficult text into simpler concepts.",
-        option: {
-            model: "text-davinci-003",
-            temperature: 0.7,
-            max_tokens: 64,
-            top_p: 1.0,
-            frequency_penalty: 0.0,
-            presence_penalty: 0.0,
-        },
-    },
-    {
-        name: "English to Other languages",
-        id: "translate",
-        description: "Translates English text into French, Spanish and Japanese.",
-        option: {
-            model: "text-davinci-003",
-            temperature: 0.3,
-            max_tokens: 100,
-            top_p: 1.0,
-            frequency_penalty: 0.0,
-            presence_penalty: 0.0,
-        },
-    },
-    {
-        name: "Movie to Emoji",
-        id: "movieToEmoji",
-        description: "Convert movie titles into emoji.",
-        option: {
-            model: "text-davinci-003",
-            temperature: 0,
-            max_tokens: 100,
-            top_p: 1,
-            frequency_penalty: 0.0,
-            presence_penalty: 0.0,
-        },
-    },
-    {
-        name: "Explain code",
-        id: "explainCode",
-        description: "Explain a complicated piece of code.",
-        option: {
-            model: "code-davinci-002",
-            temperature: 0,
-            max_tokens: 64,
-            top_p: 1.0,
-            frequency_penalty: 0.0,
-            presence_penalty: 0.0,
-        },
-    },
-    {
-        name: "JavaScript to Python",
-        id: "jstopy",
-        description: "Convert simple JavaScript expressions into Python.",
-        option: {
-            model: "code-davinci-002",
-            temperature: 0,
-            max_tokens: 64,
-            top_p: 1.0,
-            frequency_penalty: 0.0,
-            presence_penalty: 0.0,
-        },
-    },
-];
+import { Enums } from "../redux/action/actionTypes/Enumss"
 
 export const AvatarsImg = [
     "https://firebasestorage.googleapis.com/v0/b/vrumies-1f269.appspot.com/o/avatar2.png?alt=media&token=4300e22f-ddbb-4705-89f2-be07f874482e",
@@ -168,6 +74,11 @@ export const TimeFormatMappingMethod= (teamsNameArr,format)=>{
     return timeMaps.get(format)
     
 } 
+export const judgeType=[
+    "AI_JUDGE",
+    "JUDGE",
+    "NO JUDGE"
+]
 export const debateFormat=new Map([
     ["British Parliamentary",[2,4]],
     ["Public forum",[2]],

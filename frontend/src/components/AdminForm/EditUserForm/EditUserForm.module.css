@@ -1,4 +1,4 @@
-.edit_user_form{
+.edit_user_form,.edit_debate_page{
 display: flex;    
 flex-direction: column;
 gap: 1rem;

@@ -13,6 +13,7 @@ export const searchUserByNames = (username) =>
 export const searchUserByIdApi = (userId) =>
   axiosInstance.get(`/user/search?userId=${userId}`);
 
+export const getDebateByTimeApi=(time)=>axiosInstance.get(`/debate?${time}=true`)
 export const deleteUserApi=(userId)=>axiosInstance.delete(`/user/${userId}`);
 export const getAllDebaiUsersApi=()=>axiosInstance.get("/user/search")
 export const getTopUsersApi = ()=> axiosInstance.get("/user/leadingDebators")

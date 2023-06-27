@@ -30,6 +30,8 @@ import Index from "./pages/Admin/Index/Index";
 import MotionUpload from "./pages/Admin/motionUpload/MotionUpload";
 import UsersPage from "./pages/Admin/Users/UsersPage";
 import EditUserPage from "./pages/Admin/EditUser/EditUserPage";
+import DebatesPage from "./pages/Admin/DebatesPage/DebatesPage";
+import EditDebatePage from "./pages/Admin/DebatesPage/EditDebatePage/EditDebatePage";
 
 function App() {
   const { data } = useSelector((state) => state.user)
@@ -95,11 +97,13 @@ const AdminRoutes=()=>{
         <Route path="/admin" element={<Index />}>
           <Route path="" element={<Admin/>} />
           <Route path="motion" element={<Motions />} />
+          <Route path="debates"  element={<DebatesPage/>}/>
+
           <Route path="user"  element={<UsersPage/>}/>
             {/* if i want to nest the user in the parent route there should be only the component or content which is same for all nested route if not you can leave empty adding only with <Outlet/> to display the nested route elements but adding the <Outlet/> is compulsion */}
 
-
-\\            <Route path="user/edit/:id" element={<EditUserPage/>}/> 
+            <Route   path="debates/edit/:id" element={<EditDebatePage/>}/>
+           <Route path="user/edit/:id" element={<EditUserPage/>}/> 
 
           <Route path="motion/upload" element={<MotionUpload/>} />
         </Route>
@@ -127,8 +131,8 @@ const VisitorsRoutes=(data)=>{
         <Route path="/chatbot" element={<ChatBot />} />
         <Route path="/create" element={<CreateDebate />} />
         <Route path="/profile/:profileId" element={  <Profile />} />
-        <Route path="/login" element={data ? <Navigate to={"/"} /> : <Login />} />
-        <Route path="/signup" element={data ? <Navigate to={"/"} /> : <Signup />} />
+        <Route path="/login" element={ <Login />} />
+        <Route path="/signup" element={ <Signup />} />
         <Route path="/debate/:debateId" element={<DebateRoom />} />
         <Route path="/watch/:debateId" element={<Watchnow />} />
         <Route path="/subscription" element={<Subscription />} />

@@ -25,9 +25,7 @@ const MainDebateInput = ({debateForm,handleInputChange,handleAutoGenerateePassco
       <div className='input_item'>
         <VscTypeHierarchy/>
         <select id="" name='type'  value={debateForm?.type} onChange={handleInputChange}>
-          {
-            // debateFormat.entries()
-          }
+      
           <option selected disabled value={""}>choose debate type</option>
          
                {Array.from(debateFormat).map(([debateType]) => (
