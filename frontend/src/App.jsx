@@ -32,6 +32,7 @@ import UsersPage from "./pages/Admin/Users/UsersPage";
 import EditUserPage from "./pages/Admin/EditUser/EditUserPage";
 import DebatesPage from "./pages/Admin/DebatesPage/DebatesPage";
 import EditDebatePage from "./pages/Admin/DebatesPage/EditDebatePage/EditDebatePage";
+import Dashboard from "./pages/Admin/Dashboard/Dashboard";
 
 function App() {
   const { data } = useSelector((state) => state.user)
@@ -76,6 +77,7 @@ function App() {
        {
         data?.isAdmin ? <AdminRoutes/> :<VisitorsRoutes data={data}/>
        }
+       {/* <AdminRoutes/> */}
       </div>
 
     </>
@@ -95,7 +97,7 @@ const AdminRoutes=()=>{
           <Routes>
         <Route path="" element={<Navigate  to={"/admin"} />}/>
         <Route path="/admin" element={<Index />}>
-          <Route path="" element={<Admin/>} />
+          <Route path="" element={<Dashboard/>} />
           <Route path="motion" element={<Motions />} />
           <Route path="debates"  element={<DebatesPage/>}/>
 

@@ -9,6 +9,8 @@ import {FcMenu} from "react-icons/fc"
 const Navbar = () => {
   const { data } = useSelector((state) => state.user)
   const location = useLocation().pathname
+  const adminPage = location.split("/")[1]
+  console.log(adminPage)
 
 
 
@@ -28,7 +30,9 @@ const Navbar = () => {
       </div>
  
         <ul className="nav_list">
-          <Link to={"/"}>
+          {
+          adminPage!=="admin" &&<>
+           <Link to={"/"}>
             <li className={`${location === "/" && "active_li"}`}>Home</li>
           </Link>
           <Link to={"/alldebates"}>
@@ -37,23 +41,25 @@ const Navbar = () => {
           <Link to={"/chatbot"}>
             <li className={`${location === "/chatbot" && "active_li"}`}>chatbot </li>
           </Link>
-          <Link to={"/motion"}>
-                  <li className={`${location === "/motion" && "active_li"}`}>motion </li>
-          </Link>
           {
-
-           data && <Link to={"/subscription"}>
+            
+            data &&
+            
+            <Link to={`/profile/${data?._id}`}>
+               <li className={`${location === "/profile" && "active_li"}`}>Profile</li>
+             </Link>
+          }
+          {
+            
+            data && <Link to={"/subscription"}>
             <li className={`${location === "/subscription" && "active_li"}`}>Subscription </li>
           </Link>
           }
-       {
-
-        data &&
-
-          <Link to={`/profile/${data?._id}`}>
-            <li className={`${location === "/profile" && "active_li"}`}>Profile</li>
+          </>
+          }
+          <Link to={ adminPage==="admin" ?"motion": "/motion"}>
+                  <li className={`${location === "/motion" && "active_li"}`}>motion </li>
           </Link>
-       }
         </ul>
         {
           data ?
@@ -70,12 +76,16 @@ const Navbar = () => {
 
             : <>
 
-              <><Link to={"/login"}>
+              <>
+              <div className={"other_button_box"}>
+
+              <Link to={"/login"}>
                 <button>Login</button>
               </Link>
                 <Link to={"/signup"}>
                   <button className="signup_btn">Signup</button>
                 </Link>
+              </div>
               </>
 
 

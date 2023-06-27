@@ -1,0 +1,13 @@
+.dashboard{
+    width: 100%;
+
+    padding: 2rem;
+ 
+}
+.upper_item_box{
+    flex-wrap: wrap;
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+
+}

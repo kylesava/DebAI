@@ -16,12 +16,14 @@ import { actionCreators } from '../../redux/store'
 
 import { logoutApi } from '../../utils/Api'
 import { removeLoggedInUserData } from '../../utils/services'
+import { useNavigate } from 'react-router-dom'
 
 
 
 const SignOutPopover = ({ children }) => {
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const navigate =useNavigate()
 
     const { RemoveLoggedInUser } = bindActionCreators(actionCreators, dispatch)
     const toast = useToast()
@@ -33,6 +35,7 @@ const SignOutPopover = ({ children }) => {
             if (res.status === 200) {
                 RemoveLoggedInUser()
                 removeLoggedInUserData();
+                navigate("/")
                 toast({
                     title: '',
                     description: "You Logged out successfully",

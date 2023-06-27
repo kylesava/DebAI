@@ -107,7 +107,7 @@ class AuthController {
         if (err) {
           throw Error(err);
         }
-        res.clearCookie("debatosour.sid");
+        res.clearCookie("debai.sid");
         res
           .status(200)
           .json({ message: "successfully logged out", success: true });
