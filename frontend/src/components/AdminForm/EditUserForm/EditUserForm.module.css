@@ -8,7 +8,7 @@ gap: 1rem;
     height: 50px;
 
 }
-.input_item input,.input_item select{
+.input_item input,.input_item select ,.teamBox input{
     background-color: transparent;
     border-radius: 5px;
     padding: 0 1rem;
@@ -39,4 +39,22 @@ height: 25px;
     height: 45px;
     padding: 0 10px;
         color: white;
+}
+.teamBox{
+    display: flex;
+    margin-top: 3rem;
+    flex-direction: column;
+    position: relative;
+    height: auto;
+        gap: 1rem;
+}
+.teamBox input{
+    height: 45px;
+    background-color: #9f9f9f3d;
+}
+.team_box_item{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    gap:10px
 }

@@ -1,10 +1,11 @@
 import { useParams } from "react-router-dom"
 import styles from "../EditUserForm/EditUserForm.module.css"
 import { useEffect, useState } from "react"
-import { getDebateByIdApi } from "../../../utils/Api"
+import { getDebateByIdApi, updateDebateApi } from "../../../utils/Api"
 import { Enums } from "../../../redux/action/actionTypes/Enumss"
 import { debateFormat } from "../../../utils/data"
-
+import useAlert from "../../../hook/useAlert"
+import EditDebateSearchParticipants from "./EditDebateSearchParticipants"
 
 const EditDebateForm = () => {
     const [debate,setDebate]  =useState({})
@@ -19,6 +20,7 @@ const EditDebateForm = () => {
             {name:"",members:[] }
         ]
     })
+    const {open} = useAlert()
     const {id} = useParams()
 
     useEffect(()=>{
@@ -42,7 +44,7 @@ const EditDebateForm = () => {
 
     },[debate])
     
-
+      // console.log(debateData)
 
     const fetchDebateToEdit=async()=>{
 
@@ -55,19 +57,70 @@ const EditDebateForm = () => {
     const handleChangeInput=(event)=>{
       const {value,name}=event.target;
 
-      setUserData(prev=>({
+      setDebateData(prev=>({
         ...prev,[name]:value
       }))
 
     }
+    
+    const handleRemoveSelectedParticipants=(person,index)=>{
 
-const handleEdit=async(e)=>{
+         setDebateData(prev=>({
+            ...prev,
+            teams: prev.teams.map((prev,_ind)=>{
+                if(index===_ind){
+                    return {...prev ,members:prev.members.filter(user=>user._id !==person._id)}
+                }else{
+                    return prev
+                }
+            })
+        }))
+
+
+
+
+    }
+
+    const handleChangeDebateName=(event,index)=>{
+
+
+        const {value} = event.target;
+
+        setDebateData(prev=>({
+            ...prev,
+            teams: prev.teams.map((prev,_ind)=>{
+                if(index===_ind){
+                    return {...prev ,name:value}
+                }else{
+                    return prev
+                }
+            })
+        }))
+
+
+
+
+    }
+
+    const handleEdit=async(e)=>{
+      e.preventDefault()
+    const payload = {
+      ...debateData,
+      teams:debateData.teams.map(team=>{
+        return {
+          ...team,
+          members:team.members.map(user=>user._id)
+        }
+      })
+    }
+    // console.log(payload)
+// return;
       e.preventDefault()
         try {
-            const {status,data}= await updateUserapi(id,userData)
+            const {status,data}= await updateDebateApi(id,debateData)
             if(status===200){
               open({type:"success",text:"user updated successfully"})
-              setUser(data.message)
+        setDebate(data.message)
 
             }else{
               throw "something went wrong"
@@ -76,8 +129,7 @@ const handleEdit=async(e)=>{
           open({type:"error",text:"failed to update user"})
         }
     }
-
-
+    
   return (
   <form onSubmit={handleEdit} className={styles.edit_debate_page} >
 
@@ -93,7 +145,7 @@ const handleEdit=async(e)=>{
 
 <div className={styles.input_item}>
   
-       <select value={debateData.judgeType}  name='judgeType' className='team_format' onChange={handleInputChange}>
+       <select value={debateData.judgeType}  name='judgeType' className='team_format' onChange={handleChangeInput}>
           <option value={""} disabled selected >Choose Judge Type</option>
           <option value={`${Enums.AIJUDGE}`}>AI Judge</option>
           <option value={`${Enums.VOTING}`}>Voting</option>
@@ -112,6 +164,14 @@ const handleEdit=async(e)=>{
 
         </select>
 </div>
+
+
+<div className={styles.teamBox}> 
+
+{
+    debateData.teams.map((team,index)=><EditDebateSearchParticipants  debateData={debateData.teams} setDebateData={setDebateData} team={team} index={index} handleChangeDebateName={handleChangeDebateName} handleRemoveSelectedParticipants={handleRemoveSelectedParticipants}/>)
+}
+        </div>
 
 
 <button type="submit" className={styles.update_button}>UPDATE</button>

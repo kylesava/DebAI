@@ -23,7 +23,6 @@ const SelectParticipants = ({index,handleSelectParticipants,selectedParticipants
 
   
 
-    console.log("team",team)
 
   return (
 <Menu  isOpen={isOpen}  onClose={onClose} >

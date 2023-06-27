@@ -1,6 +1,7 @@
 import React from 'react'
 import AdminForm from '../../../../components/AdminForm/AdminForm'
 import EditDebateForm from '../../../../components/AdminForm/EditDebateForm/EditDebateForm'
+import styles from "./editdebatepage.module.css"
 
 const EditDebatePage = () => {
   return (

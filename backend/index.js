@@ -71,17 +71,17 @@ const store = MongoStore.create({
 });
 app.use(
   session({
-    name: "debatosour.sid",
+    name: "debai.sid",
     secret: "helloworld",
     resave: false,
     saveUninitialized: true,
     store,
     cookie: {
-
-      secure:true,
+      
+      secure: true,
       maxAge: 31556952000,
       httpOnly: false,
-      sameSite:"none"
+    sameSite:"none"
     },
   })
 );

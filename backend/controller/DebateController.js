@@ -68,7 +68,7 @@ class DebateController {
           new: true,
           returnOriginal: false,
         }
-      );
+      ).populate(["teams.members"])
       res.status(200).json({ message: updatedDebate, success: true });
     } catch (error) {
       res.status(500).json({ message: error.message, sucess: false });
