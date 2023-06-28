@@ -112,7 +112,6 @@ class UserController {
   async getLoggedInUser(req, res) {
     const sessionUser = req.session?.passport?.user || req.session.user;
 
-    console.log("sessin",sessionUser)
 
       try {
         if(!sessionUser) throw "you are not loggedIn"
@@ -251,5 +250,127 @@ res.status(200).json({message:topDebators,success:true})
         res.status(500).json({message:error.message,success:false})
     }
   }
+  async getUserStats (req,res){
+
+    const {month} = req.query;
+
+    try {
+      const user_count = await UserModel.countDocuments({});
+      const startOfTwoMonthsCount = await UserModel.countDocuments({ createdAt: { $lt: new Date().setMonth(new Date().getMonth() - Number(month)) } });
+
+    // Get the total number of users at the end of the two-month period
+    const endOfTwoMonthsCount = await UserModel.countDocuments({ createdAt: { $lte: new Date() } });
+
+    // Calculate the percentage change
+    let percentageChange = ((endOfTwoMonthsCount - startOfTwoMonthsCount) / startOfTwoMonthsCount) * 100;
+      console.log(startOfTwoMonthsCount,endOfTwoMonthsCount,percentageChange)
+    res.status(200).json({ message:{
+      stats:  percentageChange.toFixed(2),
+      user_count
+    } });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message:error.message,success:false });
+  }
+
+  }
+
+  // async getUserAnalytics(req,res){
+  //   const {year} = req.query;
+  //   const currentDate = new Date();
+  // const currentMonth = currentDate.getMonth();
+  // const months = [
+  //   '',
+  //   'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+  //   'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+  // ];
+  
+  // const userStatistics = await UserModel.aggregate([
+  //   {
+  //     $match: {
+  //       createdAt: {
+  //         $gte: new Date(year, 0, 1),
+  //         $lte: new Date(year, currentMonth, currentDate.getDate()),
+  //       },
+  //     },
+  //   },
+  //   {
+  //     $group: {
+  //       _id: { $month: '$createdAt' },
+  //       count: { $sum: 1 },
+  //     },
+  //   },
+  //   {
+  //     $sort: { '_id': 1 },
+  //   },
+  //   {
+  //     $group: {
+  //       _id: null,
+  //       userStatistics: { $push: { month: { $arrayElemAt: [months, '$_id'] }, users: '$count' } },
+  //     },
+  //   },
+  //   {
+  //     $project: {
+  //       userStatistics: {
+  //         $map: {
+  //           input: months.slice(1, currentMonth + 1),
+  //           as: 'month',
+  //           in: {
+  //             $let: {
+  //               vars: {
+  //                 matchedStat: {
+  //                   $arrayElemAt: [
+  //                     '$userStatistics',
+  //                     { $indexOfArray: ['$userStatistics.month', '$$month'] },
+  //                   ],
+  //                 },
+  //               },
+  //               in: {
+  //                 $cond: [
+  //                   { $ne: ['$$matchedStat', null] },
+  //                   '$$matchedStat',
+  //                   { month: '$$month', users: 0 },
+  //                 ],
+  //               },
+  //             },
+  //           },
+  //         },
+  //       },
+  //       _id: 0,
+  //     },
+  //   },
+  //   {
+  //     $unwind: '$userStatistics',
+  //   },
+  //   {
+  //     $replaceRoot: { newRoot: '$userStatistics' },
+  //   },
+  // ]);
+  // return res.status(200).json({userStatistics})
+  // }
+  async getUserAnalytics(req,res){
+    const {year} = req.query; 
+      const userStatistics = [];
+
+  for (let month = 0; month < 12; month++) {
+    const startDate = new Date(year, month, 1);
+    const endDate = new Date(year, month + 1, 0);
+
+    const count = await UserModel.countDocuments({
+      createdAt: { $gte: startDate, $lte: endDate },
+    });
+
+    userStatistics.push({ [startDate.toLocaleString('en-us', { month: 'long' })]: count });
+  }
+  return  res.status(200).json({message:userStatistics})
+  }
 }
+
 module.exports = new UserController();
+
+
+
+
+
+
+

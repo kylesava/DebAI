@@ -1,10 +1,11 @@
-const { createDebate, getDebate,handleDebateEnd, updateDebate, getSingleDebate, deleteDebate  ,removeParticipant,joinedParticipant, usersDebateCounts, voteTeam, voteAndUnVote, unVoteTeam, checkIfPasscodeIsUnique, getDebateOfUser, addAvatarEquipedMembersInDebate } = require("../controller/DebateController");
+const { createDebate, getDebate,handleDebateEnd, updateDebate, getSingleDebate, deleteDebate  ,removeParticipant,joinedParticipant, usersDebateCounts, voteTeam, voteAndUnVote, unVoteTeam, checkIfPasscodeIsUnique, getDebateOfUser, addAvatarEquipedMembersInDebate, getDebateStats } = require("../controller/DebateController");
 const {handleRateUser} = require("../controller/UserController");
 const router = require("express").Router()
 
 router.post("/vote",voteTeam)
 router.post("/unvote",unVoteTeam)
 router.post("/voteAndUnvote",voteAndUnVote)
+router.get("/stats",getDebateStats)
 router.post("/", createDebate)
 router.get("/", getDebate)
 router.get("/:userId", getDebateOfUser)

@@ -1,6 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from "./dashboardItem.module.css"
+import { getAccountBalanceApi } from '../../../utils/Api'
 const DashboardBalance = () => {
+
+  const [balanceStats,setBalanceStats]=useState({
+    balance:null,
+    pending_balance:null
+  })
+
+ useEffect(()=>{
+    fetchBalance()
+  },[])
+
+  const fetchBalance=async()=>{
+    try {
+        const {data,status} = await getAccountBalanceApi()
+        const {balance,pending_balance} = data.message;
+
+        setBalanceStats({
+          balance,
+          pending_balance  
+        })
+
+    } catch (error) {
+        console.log(error)      
+    }
+  }
   return (
 
     <div className={styles.dashboard_item}>
@@ -8,13 +33,13 @@ const DashboardBalance = () => {
     <div  className={styles.item_header}>
       <h1  className={styles.item_name}>MY BALANCE</h1>
       <div  className={`${styles.item_result}`}>
-        3%
+        {/* 3% */}
       </div>
 
       </div>
 
  <div className={styles.data}>
-  $1002K
+  ${balanceStats.balance}
  </div>
 <div className={styles.item_footer}>
 

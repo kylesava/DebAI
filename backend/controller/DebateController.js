@@ -55,6 +55,30 @@ class DebateController {
     }
   }
 
+  async getDebateStats(req,res){
+
+    const {month} = req.query;
+
+    try {
+      const debate_count = await DebateModel.countDocuments({});
+      const startOfTwoMonthsCount = await DebateModel.countDocuments({ createdAt: { $lt: new Date().setMonth(new Date().getMonth() - Number(month)) } });
+
+    // Get the total number of users at the end of the two-month period
+    const endOfTwoMonthsCount = await DebateModel.countDocuments({ createdAt: { $lte: new Date() } });
+
+    // Calculate the percentage change
+    let percentageChange = ((endOfTwoMonthsCount - startOfTwoMonthsCount) / startOfTwoMonthsCount) * 100;
+    res.status(200).json({ message:{
+      stats:  percentageChange.toFixed(2),
+      debate_count
+    } });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message:error.message,success:false });
+  }
+
+  }
+
   async updateDebate(req, res) {
     const { debateId } = req.params;
     if (!debateId) throw Error("debateId is required");

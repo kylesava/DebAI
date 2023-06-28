@@ -12,7 +12,7 @@ export const searchUserByNames = (username) =>
   axiosInstance.get(`/user/search?search_query=${username}`);
 export const searchUserByIdApi = (userId) =>
   axiosInstance.get(`/user/search?userId=${userId}`);
-
+export const getUserStatsApi=(month)=>axiosInstance.get(`/user/stats?month=${month}`)
 export const getDebateByTimeApi=(time)=>axiosInstance.get(`/debate?${time}=true`)
 export const deleteUserApi=(userId)=>axiosInstance.delete(`/user/${userId}`);
 export const getAllDebaiUsersApi=()=>axiosInstance.get("/user/search")
@@ -98,7 +98,7 @@ export const getInvitationDebatesOfCurrentUserApi = (data) =>
 export const updateDebateApi=(debateId,data)=>axiosInstance.put(`/debate/${debateId}`,data)
 export const addAvatarEquipedMembersInDebate=(debateId,userId)=>axiosInstance.put(`/debate/addAvatarEquipedMembersInDebate/${debateId}/${userId}`)
 export const finishDebateApi=(debateId,data)=>axiosInstance.post(`/debate/debateEnd/${debateId}`,data)
-
+export const getDebateStatsApi=(month)=>axiosInstance.get(`/debate/stats?month=${month}`)
 //MOTION API
 export const getAllMotionCategoryApi=()=>axiosInstance.get(`/motion/allcats`);
 export const getMotionOfType=(typeId,group)=>axiosInstance.get(`/motion/alltypes?typeId=${typeId}&group=${group}`)
@@ -109,3 +109,9 @@ export const deltedCatMotionApi=(motionCatId)=>axiosInstance.delete(`/motion/cat
 // GET COUNTRIES API
 
 export const getCountries=()=>axios.get("https://restcountries.com/v3.1/all");
+
+
+// stripe 
+
+export const getAccountBalanceApi=()=>axiosInstance.get("/payment/balance")
+

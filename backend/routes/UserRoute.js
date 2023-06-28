@@ -8,7 +8,9 @@ const {
   handleRateUser,
   getTopUsers,
   getTopTenDebators,
-  deleteUser
+  deleteUser,
+  getUserStats,
+  getUserAnalytics
 } = require("../controller/UserController");
 const router = require("express").Router();
 const EmailService = require("../services/EmailService")
@@ -21,6 +23,10 @@ router.get("/search", searchUser);
 router.put("/:userId", updateUser);
 router.get("/topDebators",getTopUsers)
 router.get("/leadingDebators",getTopTenDebators)
+router.get("/stats",getUserStats)
+router.get("/analytics",getUserAnalytics  )
 router.post("/email",(req,res)=>EmailService.signUpEmail(res,res))
+
 router.delete("/:id",deleteUser)
+
 module.exports = router;

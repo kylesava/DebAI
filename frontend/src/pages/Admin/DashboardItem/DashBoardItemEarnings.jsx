@@ -6,13 +6,13 @@ const DashBoardItemEarnings = () => {
     <div  className={styles.item_header}>
       <h1  className={styles.item_name}>EARNINGS</h1>
       <div  className={styles.item_result}>
-        +22%
+        0%
       </div>
 
       </div>
 
  <div className={styles.data}>
-  $442K
+  $0
  </div>
 <div className={styles.item_footer}>
 
