@@ -1,0 +1,36 @@
+.user_chart{
+    height: 35vh;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+
+}
+.chart_header{
+    display: flex;
+    align-items: center;
+    padding-left: 2rem ;
+    justify-content: space-between;
+
+}
+.chart_header select{
+    width: fit-content;
+}
+.chart_header select {
+    font-size: 14px;
+}
+.header_left{
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.chart_header img{
+    width:70px;
+}
+.chart_header_text{
+    letter-spacing: 1px;
+    font-size: 2.3rem;
+    font-weight: bold;
+    color: var(--dark_primary_text_color);
+}

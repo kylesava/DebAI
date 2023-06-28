@@ -350,19 +350,28 @@ res.status(200).json({message:topDebators,success:true})
   // }
   async getUserAnalytics(req,res){
     const {year} = req.query; 
+    try{
+
+      if(!year) throw "pass year query"
       const userStatistics = [];
-
-  for (let month = 0; month < 12; month++) {
-    const startDate = new Date(year, month, 1);
-    const endDate = new Date(year, month + 1, 0);
-
-    const count = await UserModel.countDocuments({
-      createdAt: { $gte: startDate, $lte: endDate },
-    });
-
-    userStatistics.push({ [startDate.toLocaleString('en-us', { month: 'long' })]: count });
-  }
-  return  res.status(200).json({message:userStatistics})
+      
+      
+      for (let month = 0; month < 12; month++) {
+        const startDate = new Date(year, month, 1);
+        const endDate = new Date(year, month + 1, 0);
+        
+        const count = await UserModel.countDocuments({
+          createdAt: { $gte: startDate, $lte: endDate },
+        });
+        
+        userStatistics.push({
+          month:   startDate.toLocaleString('en-us', { month: 'long' }), 
+          users: count });
+        }
+        return  res.status(200).json({message:userStatistics,success:true})
+      }catch(err){
+        return res.status(500).json({message:err.message,success:false})
+      }
   }
 }
 

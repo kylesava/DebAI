@@ -2,6 +2,7 @@ import DashBoardItemEarnings from "../DashboardItem/DashBoardItemEarnings"
 import DashboardBalance from "../DashboardItem/DashboardBalance"
 import DashboardItem from "../DashboardItem/DashboardItem"
 import DashboardItemDebate from "../DashboardItem/DashboardItemOrder"
+import UserChart from "../../../components/Admin/ChartLayout/UserChart"
 import styles from "./dashboard.module.css"
 
 const Dashboard = () => {
@@ -16,6 +17,7 @@ const Dashboard = () => {
             <DashBoardItemEarnings/>
             <DashboardBalance/>
         </div>
+        <UserChart/>
 
 
     </div>

@@ -12,6 +12,7 @@ export const searchUserByNames = (username) =>
   axiosInstance.get(`/user/search?search_query=${username}`);
 export const searchUserByIdApi = (userId) =>
   axiosInstance.get(`/user/search?userId=${userId}`);
+export const getUserChartDataApi=(year)=>axiosInstance.get(`/user/analytics?year=${year}`)
 export const getUserStatsApi=(month)=>axiosInstance.get(`/user/stats?month=${month}`)
 export const getDebateByTimeApi=(time)=>axiosInstance.get(`/debate?${time}=true`)
 export const deleteUserApi=(userId)=>axiosInstance.delete(`/user/${userId}`);
