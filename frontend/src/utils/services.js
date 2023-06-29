@@ -207,6 +207,15 @@ export const getFlag=(country)=>{
 
 }
 
+
+export const AmIParticipants=(teams,userId)=>{
+  if(!teams || !userId)return false;
+  
+ return teams.some(team=>team.members.some(mem=>mem._id ===userId));
+  
+}
+
+
 class DebateRoomServices{
 
   constructor({rtmChannelRef, MicElmRef ,hasLeftRoom , addLiveMessages, navigate,rtcUid ,data:user , lastApiCallConfig, setRoomLoading ,activeDebateRef , debateStateRef ,setDebateState ,setActiveMicControlTeam  ,isAudience ,setRoomMembers ,setMicMuted ,debateId ,RoomMembers ,audioTracks ,setActiveSpeakers ,setRtmChannelAction ,isLive  ,micMuted  ,AddActiveDebate,setMessage  ,showToast , transcript,resetTranscript, activeSpeakers ,timeRemainingRef ,otherState  ,activeMicControlTeam

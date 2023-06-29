@@ -5,11 +5,12 @@ import { getDebateByPassocde } from '../../../../utils/Api';
 import { useToast } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import {useSelector} from "react-redux"
+import { AmIParticipants } from '../../../../utils/services';
 const DebatePasscodeInput = () => {
   
 const toast  = useToast() 
   const navigate = useNavigate();
-  const {data} = useSelector(state=>state.user);
+  const {data:currentUser} = useSelector(state=>state.user);
   const [loading,setLoading] =useState(false)
 
 
@@ -60,9 +61,17 @@ const toast  = useToast()
             })
             return 
           }
-          navigate(`/watch/${message[0]?._id}`,{
-            state:message[0]
-          })
+          console.log(message)
+         if( AmIParticipants(message[0].teams,currentUser?._id)){
+            navigate(`/debate/${message[0].passcode}`)
+         }else{
+            navigate(`/debate/${message[0].passcode}?audience=true`)
+         }
+
+
+          // navigate(`/watch/${message[0]?._id}`,{
+          //   state:message[0]
+          // })
 
         }else throw "some"
     } catch (error) {
