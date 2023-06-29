@@ -93,8 +93,8 @@ class UserController {
               quantity: 1,
             },
           ],
-          success_url: 'https://'.req.body.redirectUrl,
-          cancel_url: 'https://'.req.body.redirectUrl,
+          success_url: 'https://'+req.body.redirectUrl,
+          cancel_url: 'https://'+req.body.redirectUrl,
           customer: user.stripeCustomerId,
         },
         {
