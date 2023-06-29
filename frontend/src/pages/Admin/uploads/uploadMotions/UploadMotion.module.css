@@ -4,7 +4,7 @@
     gap: 10px;
     width: 100%;
  }
-.upload_form input,select{
+.upload_form input, .upload_form select{
   height: 40px;
   width: 100%;
   border-radius: 4px;

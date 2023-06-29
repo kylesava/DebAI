@@ -14,13 +14,13 @@ const MainDebateInput = ({debateForm,handleInputChange,handleAutoGenerateePassco
     <div className='input_box_wrappers'>
 
     <div className='input_basic_box'>
-      <DebateMotionModal activeTopic={debateForm.topic} handleDebateTopicChange={handleDebateTopicChange}>
+      {/* <DebateMotionModal activeTopic={debateForm.topic} handleDebateTopicChange={handleDebateTopicChange}> */}
 
       <div className='input_item'>
         <MdOutlineTopic/>
-        <input type="text" disabled placeholder='Topic for debate' name='topic' onChange={handleInputChange}  value={debateForm.topic}/>
+        <input type="text"  placeholder='Topic for debate' name='topic' onChange={handleInputChange}  value={debateForm.topic}/>
       </div>
-      </DebateMotionModal>
+      {/* </DebateMotionModal> */}
    
       <div className='input_item'>
         <VscTypeHierarchy/>
