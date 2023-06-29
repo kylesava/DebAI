@@ -81,6 +81,7 @@ class UserController {
   }
 
   async setStripeSession(req, res) {
+    console.log("the set session fire");
     try {
       const user = await UserModel.findOne({ _id: req.body.userId });
       const session = await stripe.checkout.sessions.create(
