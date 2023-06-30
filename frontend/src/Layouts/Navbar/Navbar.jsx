@@ -18,7 +18,7 @@ const Navbar = () => {
     <div className="NavbarWrapper" >
       <Link to={"/"}>
         <div className="nav_logo_box">
-          <img className="navLogo" src="/images/logo.jpg" alt="logoImg" />
+          <img className="navLogo" src="/images/logo2.jpeg" alt="logoImg" />
         </div>
       </Link>
       <div className="dropDownBox">

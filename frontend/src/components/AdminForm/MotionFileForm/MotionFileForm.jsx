@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getAllMotionCategoryApi, uploadMotionFileApi } from '../../../utils/Api';
+import styles from './motionFileForm.module.css'
 
 
 
@@ -78,29 +79,32 @@ fetchAllCat()
       
     }
   };
-  console.log(uploadData)
-  return (
-    <div>
-      <div style={{marginBottom:"2rem"}}>
+   return (
+    <div className={styles.motion_upload}>
+      <div className={styles.upload_content}>
 
-      <h2>Debate Topic Uploader</h2>
-      <p>WARNING : upload the txt file .  Each motion should be in one line . There should not be   empty line </p>
+      <div className={styles.motion_upload_header}>
+
+      <h2 className={styles.upload_main_text}>Upload Motion File</h2>
+
+      <p className={styles.upload_warning_text}>Note : upload the txt file .  Each motion should be in one line . There should not be   empty line </p>
       </div>
-      <form onSubmit={handleSubmit}>
-        <input type="file" accept=".txt" onChange={handleFileChange} />
-        <select name="type" onChange={handleInputChange} >
+      <form className={styles.upload_form} onSubmit={handleSubmit}>
+        <select required name="type" onChange={handleInputChange} >
           <option value="">choose category</option>
           {
             categoryType.map(cat=><option value={cat._id}>{cat.name}</option>)
           }
         </select>
-        <select name="group" onChange={handleInputChange} >
+        <select required name="group" onChange={handleInputChange} >
           <option value="" selected disabled>choose group</option>
           <option value="senior">senior</option>
           <option value="junior">junior</option>
         </select>
-        <button type="submit">Upload</button>
+          <input type="file" accept=".txt" onChange={handleFileChange} />
+        <button className={styles.upload_button} type="submit">Upload</button>
       </form>
+          </div>
     </div>
   );
 };
