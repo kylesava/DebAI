@@ -33,6 +33,7 @@ import EditUserPage from "./pages/Admin/EditUser/EditUserPage";
 import DebatesPage from "./pages/Admin/DebatesPage/DebatesPage";
 import EditDebatePage from "./pages/Admin/DebatesPage/EditDebatePage/EditDebatePage";
 import Dashboard from "./pages/Admin/Dashboard/Dashboard";
+import DebateTopicUploader from "./components/AdminForm/MotionFileForm/MotionFileForm";
 
 function App() {
   const { data } = useSelector((state) => state.user)
@@ -93,6 +94,9 @@ export default App;
 const AdminRoutes=()=>{
   return (
 
+
+
+
       <>
           <Routes>
         <Route path="" element={<Navigate  to={"/admin"} />}/>
@@ -107,7 +111,8 @@ const AdminRoutes=()=>{
             <Route   path="debates/edit/:id" element={<EditDebatePage/>}/>
            <Route path="user/edit/:id" element={<EditUserPage/>}/> 
 
-          <Route path="motion/upload" element={<MotionUpload/>} />
+          {/* <Route  path="motion/"   /> */}
+          <Route path="motion/upload" element={<DebateTopicUploader/>} />
         </Route>
       </Routes>
       

@@ -1,5 +1,7 @@
 const MotionCatModel = require("../models/MotionCatModel");
 const MotionModel = require("../models/MotionModel");
+const fs = require('fs');
+const readline = require('readline');
 
 class MotionController{
 
@@ -115,6 +117,40 @@ async deleteCatMotion(req,res){
     } catch (error) {
             return res.status(500).json({message:error.message,success:false })
     }
+}
+async addBulkMotion(req,res){
+      const topics = [];
+      const {type,group} = req.body;
+      console.log(type,group)
+      if(!req.file){
+        res.status(403).json({message:"provide txt file",success:false})
+      }
+  const rl = readline.createInterface({
+    input: fs.createReadStream(req.file.path),
+    crlfDelay: Infinity
+  });
+
+  rl.on('line', (line) => {
+    topics.push({ topic: line ,type,group });
+});
+
+rl.on('close', async () => {
+    try {
+        
+        console.log(topics)
+     console.log("uploading in db")
+       await MotionModel.insertMany(topics);
+      res.json({ message: 'Topics added successfully' });   
+    } catch (err) {
+      console.error('Error adding topics to the database:', err);
+      res.status(500).json({ message: 'Internal server error' });
+    } finally {
+    console.log("deleting file")
+      fs.unlink(req.file.path, (err) => {
+        if (err) console.error('Error deleting file:', err);
+      });
+    }
+  });
 }
 }
 

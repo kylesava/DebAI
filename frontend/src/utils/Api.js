@@ -107,12 +107,16 @@ export const addNewMotionApi=(data)=>axiosInstance.post(`/motion/addmotion`,data
 export const addCommentOnMotionApi=(motionId,data)=>axiosInstance.post(`/motion/comment/${motionId}`,data)
 export const addNewMotionCatApi=(data)=>axiosInstance.post(`/motion/addcat`,data)
 export const deltedCatMotionApi=(motionCatId)=>axiosInstance.delete(`/motion/cat/${motionCatId}`)
-// GET COUNTRIES API
+export const  uploadMotionFileApi=(file,options)=>axiosInstance.post(`/motion/file`,file,options)
 
+
+
+
+
+// GET COUNTRIES API
 export const getCountries=()=>axios.get("https://restcountries.com/v3.1/all");
 
 
 // stripe 
-
 export const getAccountBalanceApi=()=>axiosInstance.get("/payment/balance")
 

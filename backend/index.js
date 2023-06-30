@@ -59,7 +59,7 @@ module.exports = openAi;
 
 app.use(cookieParser());
 app.use(morgan("common"));
-app.use(express.json());
+app.use(express.json({}));
 require("./utils/db")();
 require("./utils/passport");
 
@@ -78,12 +78,12 @@ app.use(
     store,
     cookie: {
 
-      secure: true ,
+      secure:true ,
       maxAge: 31556952000,
       httpOnly: true, 
       sameSite:"none"
       },
-  })
+  }   )
 );
 
 
