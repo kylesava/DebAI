@@ -67,6 +67,13 @@ export const TimeFormatMappingMethod= (teamsNameArr,format)=>{
            
             ]
         ],
+        [
+            "Fun Debate",[
+                {team:teamsNameArr[0],time:3},
+                {team:teamsNameArr[1],time:2},
+                {team:teamsNameArr[0],time:1},
+            ]
+        ]
     ])
     
     
@@ -84,7 +91,8 @@ export const debateFormat=new Map([
     ["Public forum",[2]],
     ["Lincoln–Douglas",[1]],
     ["WSDC",[3]],
-    ["Cafe Debate",[2]]
+    ["Cafe Debate",[2]],
+    ["Fun Debate",[2]],
 ])
 
 export const coachData = [

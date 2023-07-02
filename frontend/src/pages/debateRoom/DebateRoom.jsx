@@ -41,6 +41,13 @@ const DebateRoom = () => {
     localAudioTracks: null,
     remoteAudioTracks: {}
   });
+  
+      const [remainingTime,setRemainingTime] =useState({
+        day:null,
+        hour:null,
+        min:null,
+        sec:null
+      })
   const toast = useToast();
   const navigate = useNavigate()
   const debateStateRef = useRef()
@@ -50,7 +57,8 @@ const DebateRoom = () => {
   const [micMuted, setMicMuted] = useState(true)
   const [RoomMembers, setRoomMembers] = useState([]);
   const [activeSpeakers, setActiveSpeakers] = useState([]);
-  const [startAnalyze,setStartAnalyze] =useState(false)
+  const [startAnalyze,setStartAnalyze] =useState(false);
+  const startsIntervalIdRef  =useRef()
   const lastApiCallConfig= useRef({
     admin:null,
     hasApiCalled:false,
@@ -231,6 +239,32 @@ const DebateRoom = () => {
   },[activeDebate?.current])
 
 
+    useEffect(()=>{
+      if(debateState?.isStarted===false){
+        if(activeDebate?.current){
+          const {startTime} = activeDebate?.current
+           startsIntervalIdRef.current =  setInterval(() => {
+
+            if(startTime > Date.now()){
+
+              
+              const {sec,min,hour,day} = getTimeFromMs(activeDebate?.current?.startTime);
+            setRemainingTime({
+                sec,
+                day,
+                hour,
+                min
+              })
+              
+            }else{
+                clearInterval(startsIntervalIdRef.current)
+            }
+            
+        }, 1000);
+      }
+    }
+    },[activeDebate?.current]);
+
   useEffect(() => {
 
 
@@ -336,6 +370,11 @@ const DebateRoom = () => {
             )}
           
           </>
+          }
+          {
+            isLive ===false && <h1 className='main_timing_text'>
+              DEBATE STARTS IN {getTimeCountDown(null,remainingTime.day,remainingTime.hour,remainingTime.min,remainingTime.sec)}
+            </h1>
           }
           
         </div>

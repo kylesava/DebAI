@@ -7,6 +7,7 @@ const useAlert=()=>{
 
 
  const open=({type,text})=>{
+   console.log("inside toast")
     toast({
        title: '',
         description:text,
