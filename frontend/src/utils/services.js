@@ -51,6 +51,8 @@ export const getTimeCountDown=(timeInMs , day,hour,min,sec)=>{
       `
   }else{
 
+    if(day===null || hour===null || min ===null || sec===null)return null;
+
     return ` ${day ? `${day > 1 ? `${day}days` :`${day}day`} :` :""}  ${hour ? `${hour > 1 ? `${hour}hours`:`${hour}hour`}  :`:""} ${(min ||  hour) ? `${min}min :`:""} ${`${sec}sec`}
     `
   }
@@ -218,10 +220,11 @@ export const AmIParticipants=(teams,userId)=>{
 
 class DebateRoomServices{
 
-  constructor({rtmChannelRef, MicElmRef ,hasLeftRoom , addLiveMessages, navigate,rtcUid ,data:user , lastApiCallConfig, setRoomLoading ,activeDebateRef , debateStateRef ,setDebateState ,setActiveMicControlTeam  ,isAudience ,setRoomMembers ,setMicMuted ,debateId ,RoomMembers ,audioTracks ,setActiveSpeakers ,setRtmChannelAction ,isLive  ,micMuted  ,AddActiveDebate,setMessage  ,showToast , transcript,resetTranscript, activeSpeakers ,timeRemainingRef ,otherState  ,activeMicControlTeam
+  constructor({rtmChannelRef, setAllusers, MicElmRef ,hasLeftRoom , addLiveMessages, navigate,rtcUid ,data:user , lastApiCallConfig, setRoomLoading ,activeDebateRef , debateStateRef ,setDebateState ,setActiveMicControlTeam  ,isAudience ,setRoomMembers ,setMicMuted ,debateId ,RoomMembers ,audioTracks ,setActiveSpeakers ,setRtmChannelAction ,isLive  ,micMuted  ,AddActiveDebate,setMessage  ,showToast , transcript,resetTranscript, activeSpeakers ,timeRemainingRef ,otherState  ,activeMicControlTeam
   }){
     this.navigate = navigate
     this.rtmChannelRef = rtmChannelRef; 
+    this.setAllusers = setAllusers;
     this.rtcUid = rtcUid;
     this.currentUser= user;
     this.activeDebate = activeDebateRef;
@@ -495,6 +498,8 @@ class DebateRoomServices{
       }
 
     }));
+    console.log("all",allMembers)
+    this.setAllusers(allMembers)
     return  allMembers = allMembers.filter(mem => mem.type !== "audience")
   } catch (error) {
 console.log(error)

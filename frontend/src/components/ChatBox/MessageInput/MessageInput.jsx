@@ -26,7 +26,7 @@ const MessageInput = ({ isLiveChat, handleSendMessage }) => {
   }
   },[listening])
  
-console.log("the transcript",voiceText,listening)
+// console.log("the transcript",voiceText,listening)
 
   const handleKeyDown=(e)=>{
     if(e.key==="Enter"){

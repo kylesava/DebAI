@@ -10,7 +10,6 @@ const Navbar = () => {
   const { data } = useSelector((state) => state.user)
   const location = useLocation().pathname
   const adminPage = location.split("/")[1]
-  console.log(adminPage)
 
 
 

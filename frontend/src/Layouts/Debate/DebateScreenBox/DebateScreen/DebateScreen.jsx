@@ -18,8 +18,7 @@ const DebateScreen = ({team,activeSpeakers,teamOne,debateState}) => {
   const {activeDebate,votedTeam,isLive} = useSelector(state=>state.debate);
     const {setVotedTeamAction  ,AddActiveDebate} = bindActionCreators(actionCreators,dispatch )
 
-    console.log(debateState.speakTeam);
-
+ 
   
 
   const handleVote=async()=>{

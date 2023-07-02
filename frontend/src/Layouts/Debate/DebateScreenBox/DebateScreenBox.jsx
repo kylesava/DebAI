@@ -82,7 +82,7 @@ RoomService
     if(isInterval){
        handleIntervalLeft()
     }else if(isPaused){
-      handlePausedTimeLeft()
+      // handlePausedTimeLeft()
     }else if(intervalArrRef.current.length < 1){
       handleTimeLeft()
     }
@@ -216,7 +216,7 @@ RoomService
           {
           (activeDebate?.current && activeParticipants) ?
 
-            teams?.map(((team,index)=><DebateScreen debateState={debateState} activeSpeakers={activeSpeakers} team={team} teamOne={index===0}/>))
+            teams?.map(((team,index)=><DebateScreen key={index} debateState={debateState} activeSpeakers={activeSpeakers} team={team} teamOne={index===0}/>))
        
         
                

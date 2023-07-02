@@ -19,6 +19,7 @@ import "./DebateRoom.css"
 import DebateInfo from "../../Layouts/Debate/DebateInfo/DebateInfo";
 import AnalyzeResultModal from '../../Layouts/modal/DebateFinishedModal/AnalyzingResult';
 import SpeakTimeLeft from '../../Layouts/Debate/SpeakTimeLeft/SpeakTimeLeft';
+import DebateRoomHeader from './DebateRoomHeader/DebateRoomHeader';
 const APPID = process.env.REACT_APP_AGORA_APP_ID;
 const Rtm_client = AgoraRTM.createInstance(APPID);
 const Rtc_client = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" })
@@ -37,17 +38,17 @@ const DebateRoom = () => {
   const rtmChannelRef = useRef()
   const { AddActiveDebate, addLiveMessages, SetRoomIsLiveOrNot, SetIsUserParticipant, setRtmChannelAction,  SetRoomLoading ,setRoomService } = bindActionCreators(actionCreators, dispatch)
   const [activeMicControlTeam, setActiveMicControlTeam] = useState(null)
-  const [audioTracks, setAudioTracks] = useState({
-    localAudioTracks: null,
-    remoteAudioTracks: {}
-  });
-  
-      const [remainingTime,setRemainingTime] =useState({
+  const [allUsers,setAllusers] =useState([])
+    const [remainingTime,setRemainingTime] =useState({
         day:null,
         hour:null,
         min:null,
         sec:null
       })
+  const [audioTracks, setAudioTracks] = useState({
+    localAudioTracks: null,
+    remoteAudioTracks: {}
+  });
   const toast = useToast();
   const navigate = useNavigate()
   const debateStateRef = useRef()
@@ -57,8 +58,7 @@ const DebateRoom = () => {
   const [micMuted, setMicMuted] = useState(true)
   const [RoomMembers, setRoomMembers] = useState([]);
   const [activeSpeakers, setActiveSpeakers] = useState([]);
-  const [startAnalyze,setStartAnalyze] =useState(false);
-  const startsIntervalIdRef  =useRef()
+  const [startAnalyze,setStartAnalyze] =useState(false)
   const lastApiCallConfig= useRef({
     admin:null,
     hasApiCalled:false,
@@ -110,6 +110,7 @@ const DebateRoom = () => {
     rtmChannelRef,
     activeSpeakers,
     setDebateState,
+    setAllusers,
     setRoomMembers,
     debateStateRef,
     AddActiveDebate,
@@ -123,6 +124,7 @@ const DebateRoom = () => {
     setRoomLoading:SetRoomLoading,
     isAudience: UrlSearchParams.get("audience"),
   });
+    const   startsIntervalIdRef =useRef()
   const [handleRemaining, setHandleRemaining] = useState({
     day: 0,
     hour: 0,
@@ -161,7 +163,10 @@ const DebateRoom = () => {
   useLayoutEffect(() => {
     if (!isLive && !activeDebate?.current) return;
     if(activeDebate?.current?.hasEnded)return;
-    RoomService.getAgoraToken()
+    if(allUsers.find(user=>user.rtcUid !== rtcUid.toString()) ){
+      RoomService.getAgoraToken()
+    }
+    
   }, [isLive , activeDebate?.current?.hasEnded]);
 
   useEffect(() => {
@@ -192,6 +197,31 @@ const DebateRoom = () => {
 
   }, [activeDebateRef.current, data])
   
+     useEffect(()=>{
+      if(debateState?.isStarted===false){
+        if(activeDebate?.current){
+          const {startTime} = activeDebate?.current
+           startsIntervalIdRef.current =  setInterval(() => {
+
+            if(startTime > Date.now()){
+
+              
+              const {sec,min,hour,day} = getTimeFromMs(activeDebate?.current?.startTime);
+            setRemainingTime({
+                sec,
+                day,
+                hour,
+                min
+              })
+              
+            }else{
+                clearInterval(startsIntervalIdRef.current)
+            }
+            
+        }, 1000);
+      }
+    }
+    },[activeDebate?.current]);
   useEffect(() => {
     if (!isLive && activeDebateRef.current) {
       const { startTime } = activeDebateRef.current;
@@ -238,32 +268,6 @@ const DebateRoom = () => {
     }
   },[activeDebate?.current])
 
-
-    useEffect(()=>{
-      if(debateState?.isStarted===false){
-        if(activeDebate?.current){
-          const {startTime} = activeDebate?.current
-           startsIntervalIdRef.current =  setInterval(() => {
-
-            if(startTime > Date.now()){
-
-              
-              const {sec,min,hour,day} = getTimeFromMs(activeDebate?.current?.startTime);
-            setRemainingTime({
-                sec,
-                day,
-                hour,
-                min
-              })
-              
-            }else{
-                clearInterval(startsIntervalIdRef.current)
-            }
-            
-        }, 1000);
-      }
-    }
-    },[activeDebate?.current]);
 
   useEffect(() => {
 
@@ -324,60 +328,17 @@ const DebateRoom = () => {
        (startAnalyze ) && <AnalyzeResultModal activeDebate={activeDebateRef.current}/>
       }
       <div  className='DebateRoomWrapper'  >
-                <div className="speak_time_debate_state">
-        
-          { 
-(isLive &&  debateState?.isStarted  === false && debateState?.hasFinished === false ) && "Waiting for debators to start"
-          }
-          {
-            isLive && debateState?.isPaused && "paused"
-          }
-          {
-            (isLive && debateState?.isStarted && debateState?.hasFinished === false && debateState?.isPaused ===false ) && "Ongoing"
-          }
-          {
-            (isLive && debateState?.hasFinished ) && "Completed"
-          }
-          {
-            isLive === false && "Not Started"
-          }
-        </div>
+           
+           <DebateRoomHeader  
+           isLive={isLive}
+           debateState={debateState}
+           gapCountDown={gapCountDown}
+           speakTimeLeft={speakTimeLeft}
+           remainingTime={remainingTime}
+          activeDebateRef={activeDebateRef}
+          />
         <div className='debate_room_top'>
-        <div className='debate_room_top_header'>
-          
-            <h1 className='Debate_room_main_text' >
-               {activeDebateRef.current?.topic}  </h1>
-        
-          {isLive &&
-          <>
-          
-          {  (debateState?.isStarted && !debateState?.isInterval) && (<>
-              
-                <h1 className="main_timing_text">
-                  {   `${ Boolean(getTime(speakTimeLeft)) ? `TIME LEFT  ${getTime(speakTimeLeft)}`:""}  `}
-                </h1>
-              
-            </>
-            )}
-
-                {  (debateState.isStarted && debateState.isInterval) && (<>
-              
-                <h1 className="main_timing_text">
-                  {   `${ Boolean(gapCountDown.sec) ? `INTERVAL FINISHES AFTER  ${gapCountDown.sec} sec`:""}  `}
-                </h1>
-              
-            </>
-            )}
-          
-          </>
-          }
-          {
-            isLive ===false && <h1 className='main_timing_text'>
-              DEBATE STARTS IN {getTimeCountDown(null,remainingTime.day,remainingTime.hour,remainingTime.min,remainingTime.sec)}
-            </h1>
-          }
-          
-        </div>
+     
         <DebateScreenBox
          isLive={isLive}
          setGapCountDown={setGapCountDown}
