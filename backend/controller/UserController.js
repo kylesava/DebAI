@@ -58,11 +58,11 @@ class UserController {
       const prices = await stripe.prices.list(
         {
           active: true,
+          limit: 1,
         },{
-        apiKey: process.env.STRIPE_SECRET_KEY,
-        
-        
-      });
+        apiKey: process.env.STRIPE_SECRET_KEY,              
+      }
+      );
       res.send(prices);
     } catch (error) {
       console.log("*error: ", error);
