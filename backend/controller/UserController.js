@@ -57,8 +57,7 @@ class UserController {
     try {
       const prices = await stripe.prices.list(
         {
-          active: true,
-          limit: 1,
+          active: true,          
         },{
         apiKey: process.env.STRIPE_SECRET_KEY,              
       }
