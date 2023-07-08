@@ -1,8 +1,8 @@
+import "./Navbar.css"
 import React from "react"
 import { useSelector } from "react-redux"
 import { Link, useLocation } from "react-router-dom"
 import SignOutPopover from "../popovers/SignoutPopovers"
-import "./Navbar.css"
 import NavPoper from "../Skeleton/NavPoper/NavPoper"
 import {FcMenu} from "react-icons/fc"
 
@@ -17,7 +17,7 @@ const Navbar = () => {
     <div className="NavbarWrapper" >
       <Link to={"/"}>
         <div className="nav_logo_box">
-          <img className="navLogo" src="/images/logo2.jpeg" alt="logoImg" />
+          <img className="navLogo" src="/images/logo.jpg" alt="logoImg" />
         </div>
       </Link>
       <div className="dropDownBox">

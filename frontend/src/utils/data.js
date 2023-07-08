@@ -87,7 +87,7 @@ export const judgeType=[
     "NO JUDGE"
 ]
 export const debateFormat=new Map([
-    ["British Parliamentary",[2,4]],
+    ["British Parliamentary",[4]],
     ["Public forum",[2]],
     ["Lincoln–Douglas",[1]],
     ["WSDC",[3]],
@@ -99,21 +99,21 @@ export const coachData = [
     {
         name:"Olivia",
         image:"images/coach1.png",
-        country:"United States",
+        country:"Canada",
         desc:"Oxford Graudate and DebAI coach,empowering minds with expertise.",
         calendlyLink:""
     },
     {
         name:"Rachel",
         image:"images/coach2.png",
-        country:"United States",
+        country:"Canada",
         desc:"  Oxford Graudate and DebAI coach,guiding individuals towards their full potential.",
         calendlyLink:""
     },
     {
-        name:"Tan Weinja",
+        name:"Olivia",
         image:"images/coach3.png",
-        country:"Singapore",
+        country:"United Kingdom",
         desc:"  Oxford Graudate and DebAI coach, transforming lives through personalized guidance.",
         calendlyLink:""
     },
