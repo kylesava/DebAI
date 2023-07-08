@@ -55,9 +55,13 @@ class UserController {
 
   async getPrices(req, res) {
     try {
-      const prices = await stripe.prices.list({
-        apiKey: process.env.STRIPE_SECRET_KEY,
-      });
+      const prices = await stripe.prices.list(
+        {
+          active: true,          
+        },{
+        apiKey: process.env.STRIPE_SECRET_KEY,              
+      }
+      );
       res.send(prices);
     } catch (error) {
       console.log("*error: ", error);
