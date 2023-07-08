@@ -107,10 +107,7 @@ const Subscription = () => {
               <div className="plan_main_content_box">
 
               <h2 className="plan_name">
-                Premium{" "}
-                {price.recurring?.interval === "month"
-                  ? " Monthly "
-                  : " Yearly "}{" "}
+                {price.nickname}                
               </h2>
               <h3>
                 {subStatus === "active" &&
