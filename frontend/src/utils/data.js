@@ -92,7 +92,7 @@ export const debateFormat=new Map([
     ["Lincoln–Douglas",[1]],
     ["WSDC",[3]],
     ["Cafe Debate",[2]],
-    ["Fun Debate",[2]],
+    ["Fun Debate",[1]],
 ])
 
 export const coachData = [
