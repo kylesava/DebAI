@@ -27,7 +27,7 @@ const OtherReducer = (state = INITIAL_OTHER_STATE, action) => {
                return { ...state,   removeInterval : action.payload}
         
         case ActionTypes.SET_ROOM_SERVICE:
-            console.log('setting room',action.payload)
+            // console.log('setting room',action.payload)
             return {...state, RoomService : action.payload}
 
         case ActionTypes.SET_RTM_CHANNEL:

@@ -167,7 +167,7 @@ const handleLeaveRoom=async()=>{
 
       
       {
-        (debateState.isStarted && !debateState.isPaused) ?   
+        (debateState.isStarted && !debateState.isPaused===true) ?   
          (micMuted ?
          <BsFillMicMuteFill
          ref={MicElmRef}

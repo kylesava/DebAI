@@ -161,13 +161,15 @@ const DebateRoom = () => {
   },[activeDebateRef.current])
 
   useLayoutEffect(() => {
+    console.log(activeDebate)
     if (!isLive && !activeDebate?.current) return;
     if(activeDebate?.current?.hasEnded)return;
-    if(allUsers.find(user=>user.rtcUid !== rtcUid.toString()) ){
+    console.log(allUsers.some(user=>user.rtcUid?.toString() === rtcUid.toString()))
+    if(!allUsers.some(user=>user.rtcUid?.toString() === rtcUid.toString()) ){
       RoomService.getAgoraToken()
     }
     
-  }, [isLive , activeDebate?.current?.hasEnded]);
+  }, [isLive , activeDebate?.current?.hasEnded,allUsers]);
 
   useEffect(() => {
     debateStateRef.current = debateState
@@ -287,9 +289,10 @@ const DebateRoom = () => {
 
   }, [isLive, activeSpeakers, activeDebateRef.current])
   useEffect(() => {
+    // console.log("initializing",rtmChannelRef.current,Rtm_client,activeDebateRef)
     if (!Rtm_client || !rtmChannelRef.current || !activeDebateRef.current) return;
     RoomService.setInitialDebateState()
-  }, [rtmChannelRef.current , activeDebateRef?.current])
+  }, [rtmChannelRef.current , activeDebateRef?.current ,Rtm_client])
 
   useEffect(()=>{
     if(lastApiCallConfig.current.hasApiCalled){
@@ -318,8 +321,8 @@ const DebateRoom = () => {
       console.log(error.message)
     }
   }
-
-
+  // console.log("watch audio tracks ",audioTracks.localAudioTracks)
+  // console.log("watch channel ref",rtmChannelRef.current)
 
   return (
     <>

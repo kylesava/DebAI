@@ -5,6 +5,7 @@ import { chatBotApi, finishDebateApi, getAgoraTokenApi, getCountries, joinPartic
 import { avatarsTypeData } from "./data";
 import SpeechRecognition from "react-speech-recognition";
 import moment from "moment";
+// import { connection } from "mongoose";
 
 export const getMyTeam = (teams, myUserId) => {
   if (!teams || !myUserId) return;
@@ -340,6 +341,7 @@ class DebateRoomServices{
   
 
   async UpdateChannelAttr(key,payload){
+    console.localAudioTracks("watch updating channel  attr",this.rtmChannelRef.current)
     const {channelId} = this.rtmChannelRef.current
     try {
       if(key===Enums.DEBATE_STATE){
@@ -720,6 +722,7 @@ async handleChannelMessage  (message)  {
 }
 async InitRTM({token}){
 
+  console.log("init rtm ",this.rtmChannelRef)
   try {
     const {_id,avatar,firstName,lastName}   =  this.currentUser;
     const {admin:{_id:adminId}} = this.activeDebate?.current
@@ -743,8 +746,8 @@ async InitRTM({token}){
     channel.on("MemberJoined",(memId)=> this.handleMemberJoined(memId))
     channel.on("MemberLeft", (memId)=> this.handleMemberLeft(memId));
     channel.on("ChannelMessage", (message)=> this.handleChannelMessage(message))
-    this.setRtmChannelAction(channel)
     this.rtmChannelRef.current = channel;
+    // this.setRtmChannelAction(channel)
     await channel.join()
     this.setChannelMember(channel);
   } catch (error) {
@@ -764,9 +767,8 @@ async setChannelMember(channel){
 }
 async initRTC  (token)  {
   try {
-
-  await Rtc_client.join(process.env.REACT_APP_AGORA_APP_ID, this.debateId, token, this.rtcUid);
-  Rtc_client.on("user-published", (user,mediaType)=> this.handleUserPublished(user,mediaType));
+    await Rtc_client.join(process.env.REACT_APP_AGORA_APP_ID, this.debateId, token, this.rtcUid);
+    Rtc_client.on("user-published", (user,mediaType)=> this.handleUserPublished(user,mediaType));
   Rtc_client.on("user-left",(user)=> this.handleUserLeave(user));
   if (!this.isAudience) {
     this.audioTracks.localAudioTracks = await AgoraRTC.createMicrophoneAudioTrack()
@@ -774,13 +776,14 @@ async initRTC  (token)  {
     await Rtc_client.publish(this.audioTracks.localAudioTracks);
   }
   await this.initVolumeIndicator();
-        
+  
 } catch (error) {
-      console.log(error)
+  console.log(error)
 }
 }
 
 async getAgoraToken() {
+  // console.log("init rtc",this.isLive)
   try {
     this.SetRoomLoading(true)
     const res = await getAgoraTokenApi({ channelName: this.debateId, role: "publisher", uid: this.rtcUid, tokentype: "1000", expiry: 86400 })
@@ -887,7 +890,7 @@ async handleDebateInitChange  (nextround, isMicPassed,isStarted)  {
   
     await this.createChannelMessage(startPayload)
   }
-  
+  console.log("watch debate change",await this.getMemberWithHighUid() )
   if(!await this.getMemberWithHighUid() || isStarted ){
     await this.UpdateChannelAttr(Enums.DEBATE_STATE, debateRoundsPayload);
     };
@@ -958,6 +961,7 @@ async setInitialDebateState() {
   let debate_State = attr[Enums.DEBATE_STATE];
   const {state} = this.activeDebate?.current;
   console.log("the intial  db state",this.activeDebate?.current)
+  console.log("the initial channnel state",attr)
 
   if(debate_State){           
     
@@ -1040,14 +1044,20 @@ async getArgument(){
 }
 
 async closeMic(){
-  this.audioTracks.localAudioTracks.setMuted(true);
-  this.setMicMuted(true);
-  await this.addSpeechToChannel();
+  console.log(this.audioTracks)
+  if(this.audioTracks){
+    this.audioTracks.localAudioTracks.setMuted(true);
+    this.setMicMuted(true);
+    await this.addSpeechToChannel();
+  }
 }
 
 async openMic(){
-  this.audioTracks.localAudioTracks.setMuted(false);
-  this.setMicMuted(false);
+  console.log(this.audioTracks)
+  if(this.audioTracks){
+    this.audioTracks.localAudioTracks.setMuted(false);
+    this.setMicMuted(false);
+  }
  
 }
 

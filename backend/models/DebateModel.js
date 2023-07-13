@@ -64,7 +64,7 @@ const MongooseSchema = mongoose.Schema({
     },
     endTime: {
         type: Number, // milliseconds
-        required: [true, "endTime time is required"]
+        // required: [true, "endTime time is required"]
     },
     intervalTime:{
         type:Number,
