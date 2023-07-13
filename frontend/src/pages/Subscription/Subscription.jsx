@@ -117,7 +117,7 @@ const Subscription = () => {
                   )}
               </h3>
               <p>
-                <span>${price.unit_amount / 100}</span> /{" "}
+                <span>£{price.unit_amount / 100}</span> /{" "}
                 {price.recurring?.interval}
               </p>
               <ul>
