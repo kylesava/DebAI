@@ -106,7 +106,8 @@ height: 30px;
 
 }
 .live_debate_debates_wrapper{
-    /* height: 400px; */
+    height: 270px;
+    overflow-y: scroll;
     
 }
 /* @media only screen and (min-width: 769px) and (max-width: 992px) {} */

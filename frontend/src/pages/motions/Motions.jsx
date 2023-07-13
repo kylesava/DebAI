@@ -5,9 +5,10 @@ import { getAllMotionCategoryApi, getMotionOfType } from '../../utils/Api'
 import MotionListTab from '../../components/Motion/MotionListTab/MotionListTab';
 import {Link, useLocation} from "react-router-dom"
 import MotionCatItem from '../../components/Motion/MotionCatItem/MotionCatItem';
+import { useSelector } from 'react-redux';
 const Motions = () => {
 
-
+const {data:user} = useSelector(state=>state.user)
 const [activeGroup,setActiveGroup] =useState("senior")
 const [activeMotionCat,setActiveMotionCat] =useState({})
 const [motionCategories,setMotionCategories] = useState([]);
@@ -93,7 +94,9 @@ const adminPage = location.pathname.split("/")[1]
                 setMotionCategories={setMotionCategories}
                 activeMotionCat={activeMotionCat} setActiveMotionCat={setActiveMotionCat} />)
         }
-             <Link  to="upload">
+            {
+                user?.isAdmin &&
+            <Link  to="upload">
              
                 <div  className={`${styles.motion_cat_box} ${styles.motion_add}` }>
 
@@ -103,6 +106,7 @@ const adminPage = location.pathname.split("/")[1]
 
 
              </Link>
+            } 
             </div>
 
             <MotionListTab motionList={allMotions} setMotion={setAllMotions}/>
