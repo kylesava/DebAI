@@ -281,7 +281,7 @@ class DebateRoomServices{
 
   getMemberWithHighUid(){
     let myUid = Number(this.rtcUid)
-    return this.RoomMembers.find((mem)=>Number(mem.rtcUid) > myUid)
+    return this.RoomMembers.some((mem)=>Number(mem.rtcUid) > myUid)
   }
 
   getWinnerByVote(teams){
@@ -341,7 +341,7 @@ class DebateRoomServices{
   
 
   async UpdateChannelAttr(key,payload){
-    console.localAudioTracks("watch updating channel  attr",this.rtmChannelRef.current)
+    console.log("watch debate change 4")
     const {channelId} = this.rtmChannelRef.current
     try {
       if(key===Enums.DEBATE_STATE){
@@ -800,9 +800,14 @@ async getAgoraToken() {
 }
 }
 async createChannelMessage(message)  {
-  if(!this.rtmChannelRef.current)return;
+  console.log("watch inside channelMessage function  1",this.rtmChannelRef?.current)
+
+
+  if(!this.rtmChannelRef?.current)return;
+   console.log("watch inside channelMessage function  2")
+
   try {
-    await this.rtmChannelRef.current.sendMessage({ text: JSON.stringify(message) })
+    await this.rtmChannelRef?.current.sendMessage({ text: JSON.stringify(message) })
     
   } catch (error) {
     console.log(error)
@@ -858,6 +863,8 @@ async handleDebateInitChange  (nextround, isMicPassed,isStarted)  {
   try {
 
   if (!this.activeDebate.current) return;
+    console.log("watch debate change 1")
+
   const { timeFormat  ,intervalTime} = this.activeDebate.current;
   const { team: teamName, time } = timeFormat[nextround - 1];
 
@@ -881,6 +888,7 @@ async handleDebateInitChange  (nextround, isMicPassed,isStarted)  {
   }
   this.changeDebateState(debateRoundsPayload);
   this.changeMicControlTeam(teamName);
+
   if(isStarted || isMicPassed ){
     let startPayload={
       type:"debate_start",
@@ -890,8 +898,9 @@ async handleDebateInitChange  (nextround, isMicPassed,isStarted)  {
   
     await this.createChannelMessage(startPayload)
   }
-  console.log("watch debate change",await this.getMemberWithHighUid() )
+  console.log("watch debate change 2",await this.getMemberWithHighUid() )
   if(!await this.getMemberWithHighUid() || isStarted ){
+    console.log("watch debate change 3")
     await this.UpdateChannelAttr(Enums.DEBATE_STATE, debateRoundsPayload);
     };
      

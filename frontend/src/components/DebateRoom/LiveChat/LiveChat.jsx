@@ -70,9 +70,10 @@ const LiveChat = () => {
 
   const sendRtmChannelMessage=async(data)=>{
     data.type="live_chat"
-    console.log("sending",rtmChannel.current ,RoomService)
+    // console.log("sending",rtmChannel.current ,RoomService)
+          console.log("watch sending channel msg 0",RoomService  )
     if(RoomService){
-      console.log("inside",RoomService  )
+      console.log("watch sending channel msg 1",RoomService  )
       // await rtmChannel.current.sendMessage({ text: JSON.stringify(data) })
    await   RoomService.createChannelMessage(data)
   }
