@@ -162,14 +162,14 @@ const DebateRoom = () => {
 
   useLayoutEffect(() => {
     console.log(activeDebate)
-    if (!isLive && !activeDebate?.current) return;
+    if ( !activeDebate?.current) return;
     if(activeDebate?.current?.hasEnded)return;
-    console.log(allUsers.some(user=>user.rtcUid?.toString() === rtcUid.toString()))
+    // console.log(allUsers.some(user=>user.rtcUid?.toString() === rtcUid.toString()))
     if(!allUsers.some(user=>user.rtcUid?.toString() === rtcUid.toString()) ){
       RoomService.getAgoraToken()
     }
     
-  }, [isLive , activeDebate?.current?.hasEnded,allUsers]);
+  }, [ activeDebate?.current?.hasEnded,allUsers]);
 
   useEffect(() => {
     debateStateRef.current = debateState

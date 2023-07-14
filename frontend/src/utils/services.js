@@ -789,11 +789,11 @@ async getAgoraToken() {
     const res = await getAgoraTokenApi({ channelName: this.debateId, role: "publisher", uid: this.rtcUid, tokentype: "1000", expiry: 86400 })
   if (res.status === 200) {
     let { rtcToken, rtmToken } = res.data;
-    if (this.isLive) {
+    // if (this.isLive) {
       await this.initRTC(rtcToken);
       await this.InitRTM({ rtmToken });
       this.SetRoomLoading(false)
-    }
+    // }
   }
 } catch (error) {
   
